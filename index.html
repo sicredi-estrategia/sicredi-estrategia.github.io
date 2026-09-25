@@ -5831,7 +5831,8 @@ async function iniciar(){
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
-  ciclo: 2027
+  ciclo: 2027,
+  endereco: "https://sicredi-estrategia.github.io/"          
 };
 const LS_AUTH = "pe_auth_v1", LS_ULT_ENT = "pe_ult_ent";
 let AUTH = null, SESSAO_REAL = null, PLANO_SRV = null, CATALOGO = null, VINCULO_ATUAL = null;
@@ -6403,15 +6404,23 @@ async function admRedefinir(id){
 }
 function textoConvite(c){
   return `Olá, ${c.nome.split(" ")[0]}! ${c.nova?"Sua senha da Plataforma da Estratégia foi redefinida.":"Seu acesso à Plataforma da Estratégia foi liberado ("+c.ent+", "+c.papel+")."}\n\n`
-   +`1. Abra a plataforma (arquivo/endereço que o time de Estratégia compartilhou).\n2. Entre com o e-mail ${c.email} e a senha temporária: ${c.senha}\n3. No primeiro acesso, crie a sua senha.\n\nQualquer dúvida, fale com o time de Estratégia do CAS.`;
+   +`1. Abra a plataforma: ${PE.endereco}\n2. Entre com o e-mail ${c.email} e a senha temporária: ${c.senha}\n3. No primeiro acesso, crie a sua senha.\n\n`
+   +`Dica: no Edge ou no Chrome dá para instalar a plataforma como aplicativo (ícone "Instalar" na barra de endereço).\n\nQualquer dúvida, fale com o time de Estratégia do CAS.`;
+}
+function admEmailConvite(){                    
+  const c=ADM.convite;
+  const assunto=c.nova?"Plataforma da Estratégia · nova senha":"Plataforma da Estratégia · seu acesso";
+  location.href=`mailto:${encodeURIComponent(c.email)}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoConvite(c))}`;
 }
 function admModalConvite(){
   const c=ADM.convite;
   return `<div class="adm-modal" onclick="if(event.target===this){ADM.convite=null;pinta()}"><div class="adm-caixa">
     <h3>${c.nova?"Nova senha gerada":"Acesso criado"}</h3>
-    <p>Mande a mensagem abaixo para <b>${esc(c.nome)}</b> pelo Teams ou por e-mail. A senha só aparece agora: ela não fica guardada.</p>
+    <p>Mande a mensagem abaixo para <b>${esc(c.nome)}</b> pelo Teams ou por e-mail. A senha só aparece agora: ela não fica guardada.
+      Se fechar sem enviar, use <b>Nova senha</b> na linha da pessoa.</p>
     <textarea id="adm-msg" readonly rows="9">${esc(textoConvite(c))}</textarea>
     <div class="adm-linha"><button class="btn-p" onclick="admCopiar()">Copiar mensagem</button>
+      <button class="btn-p" onclick="admEmailConvite()">Enviar por e-mail</button>
       <button class="btn-t" onclick="ADM.convite=null;pinta()">Fechar</button></div></div></div>`;
 }
 function admCopiar(){
@@ -8120,6 +8129,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 240920262208 -->
+<!-- beta 250920261001 -->
 </body>
 </html>
