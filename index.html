@@ -2508,8 +2508,19 @@ body.simulando .topbar{box-shadow:inset 0 -3px 0 #5B2A86}
 .pf-id{min-width:0} .pf-id b,.pf-id span{overflow-wrap:anywhere}
 .nav .conta-t .ent,.nav .conta-t .pes{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block}
 
-.pe-versao{display:block; margin-top:12px; font-size:11px; color:#6F9179; letter-spacing:.02em}
+.nav .quem-bts{display:block; margin-top:4px; padding-left:10px}
+.pe-versao{display:block; font-size:11px; color:#6F9179; letter-spacing:.02em; text-align:left}
 body.rail .pe-versao{display:none}
+
+
+.pe-acoes-conta{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid var(--linha)}
+@media (min-width:760px){ .pf-d-largo{grid-column:span 2} }
+
+
+.pe-legenda{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px}
+.pe-legenda h4{margin:0 0 6px; font-size:14px}
+.pe-legenda dl{margin:0} .pe-legenda dt{font-weight:700; font-size:13.5px; margin-top:8px}
+.pe-legenda dd{margin:2px 0 0; font-size:13.5px; color:var(--tenue, #5D6F62)}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -5848,7 +5859,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "25/09/2026 11:43";
+const PE_VERSAO = "25/09/2026 14:30";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6218,21 +6229,21 @@ htmlPerfil = function(){
 const htmlPessoaOriginal = htmlPessoa;
 htmlPessoa = function(){
   const vs=(SESSAO_REAL&&SESSAO_REAL.vinculos)||[];
-  const extra=`<section class="secao">
-      <div class="secao-cab"><h3>Acesso</h3></div>
-      <div class="pf-cartao pe-acoes-conta">
+  const botoes=`<div class="pe-acoes-conta">
         ${vs.length>1?`<button class="btn-t" onclick="trocarEntidade()">Trocar de entidade (${vs.length} com acesso)</button>`:""}
         <button class="btn-t" onclick="abrirTrocaSenha()">Trocar a minha senha</button>
         <button class="btn-t" onclick="sair()">Sair</button>
-      </div></section>`;
+      </div>`;
   return htmlPessoaOriginal()
     .replace(/(<span class="pf-d-r">Acesso nesta entidade<\/span><span class="pf-d-v">)[^<]*(<\/span><\/div>)/,
              (m,a,b)=>a+esc(rotuloPapelAtual())+b+(ehAdministrador()?`<div class="pf-d"><span class="pf-d-r">Na plataforma</span><span class="pf-d-v">Administrador</span></div>`:""))
     .replace(/(<div class="pf-id"><b>[^<]*<\/b><span>)[^·<]*·/, (m,a)=>a+esc(rotuloPapelAtual())+" ·")
-    .replace("vêm do login corporativo","vêm do cadastro da plataforma")
+    .replace('<div class="pf-d"><span class="pf-d-r">E-mail</span>','<div class="pf-d pf-d-largo"><span class="pf-d-r">E-mail</span>')
+    .replace(/<h3>Meus dados<\/h3><span class="cnt">[^<]*<\/span>/, '<h3>Perfil e acessos</h3><span class="cnt">vêm do cadastro da plataforma</span>')
     .replace("Nome, e-mail e cargo chegam com o seu login e mudam lá. O acesso nesta entidade é definido pelo ponto focal.",
              "Nome, e-mail e cargo vêm do pré-cadastro e do cadastro de colaboradores. O acesso é liberado pelos administradores.")
-    .replace(/<div class="dummy">[\s\S]*?<\/div>\s*$/, extra);
+    .replace(/(\s*<\/div>\s*<\/section>\s*<section class="secao">\s*<div class="secao-cab"><h3>Minhas preferências)/, botoes+"$1")
+    .replace(/<div class="dummy">[\s\S]*?<\/div>\s*$/, "");
 };
 function abrirTrocaSenha(){
   document.body.classList.remove("dentro");
@@ -6344,7 +6355,8 @@ function faixaSimulacao(){
     <button onclick="encerrarSimulacao(false)">Encerrar simulação</button></span>`;
 }
 function iniciarSimulacao(entidade, papel){
-  const e=ADM.ents.find(x=>x.codigo===entidade); if(!e) return aviso("Escolha a entidade.", true);
+  const e=ADM.ents.find(x=>x.codigo===entidade) || (entidade==="CAS" ? {codigo:"CAS", nome:"Centro Administrativo Sicredi"} : null);
+  if(!e) return aviso("Escolha a entidade.", true);
   gravarSim({entidade, papel, nome:e.nome, voltar:(SIM&&SIM.voltar)||(ENTIDADE&&ENTIDADE.id)||null}); lsSet(LS_ULT_ENT, entidade); location.reload();
 }
 function encerrarSimulacao(voltarParaEscolha){
@@ -6616,7 +6628,19 @@ function admJanelas(){
         <td><input type="datetime-local" id="ja-novo"></td><td><input type="datetime-local" id="jf-novo"></td>
         <td><select id="jc-novo"><option value="">Todas</option>${ADM.ents.filter(e=>e.tipo==="central").map(e=>`<option value="${e.codigo}">${esc(e.nome)}</option>`).join("")}</select></td>
         <td class="adm-acoes"><button class="btn-p mini" onclick="admSalvarJanela('novo')">Criar</button></td></tr>
-      </tbody></table></div></section>`;
+      </tbody></table></div></section>
+    <section class="secao"><div class="secao-cab"><h3>O que significa cada opção</h3></div>
+      <div class="pe-legenda">
+        <div><h4>Situação do ciclo</h4><dl>
+          <dt>Em preparação</dt><dd>Só administradores e o CAS veem o catálogo. Nenhuma entidade monta plano, mesmo com janela aberta.</dd>
+          <dt>Publicado</dt><dd>Todos com acesso veem o catálogo (temas, movimentos, indicadores, entregas). Montar e registrar só dentro de uma janela aberta.</dd>
+          <dt>Encerrado</dt><dd>Só leitura: os planos oficiais ficam guardados para o histórico e para o ciclo seguinte.</dd></dl></div>
+        <div><h4>Tipo de janela</h4><dl>
+          <dt>Preenchimento</dt><dd>Para rascunhar: só registra versões provisórias, que não valem como plano.</dd>
+          <dt>Construção</dt><dd>A janela principal: registra provisórias e a final. A última final vira a oficial quando a janela fecha. Sem final no fechamento, a entidade fica como "não registrou".</dd>
+          <dt>Ajuste</dt><dd>Revisão durante o ano: a nova versão exige um motivo e só existe para quem já tem a final.</dd>
+          <dt>Só para a Central</dt><dd>A janela vale só para a Central escolhida e as suas cooperativas (ex.: prorrogação). "Todas" vale para o Sistema.</dd></dl></div>
+      </div></section>`;
 }
 async function registrarDecisao(area, titulo, descricao, motivo){
   return rest("decisao",{method:"POST", prefer:"return=minimal", body:{ciclo_id:PE.ciclo, area, titulo:titulo.slice(0,140), descricao, motivo,
@@ -8245,9 +8269,19 @@ htmlVisao = function(){
   const st=document.createElement("style"); st.id="css-sistemico"; st.textContent=css;
   document.head.appendChild(st);
 })();
+const htmlVisaoComTeste = htmlVisao;
+htmlVisao = function(){
+  const h = htmlVisaoComTeste();
+  if(typeof SIM!=="undefined" && SIM)
+    return `<div class="pe-demo leve">Simulação: esta visão mostra só os <b>planos de teste</b> montados nas simulações. Os planos reais não aparecem aqui.</div>` + h;
+  if(typeof ehAdministrador==="function" && ehAdministrador() && ENTIDADE.tipo!=="cooperativa")
+    return `<div class="pe-demo leve">Quer ver como fica com os planos de teste das simulações?
+      <button class="btn-t mini" onclick="iniciarSimulacao('CAS','editor')">Abrir como CAS com os planos de teste</button></div>` + h;
+  return h;
+};
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261143 -->
+<!-- beta 250920261430 -->
 </body>
 </html>
