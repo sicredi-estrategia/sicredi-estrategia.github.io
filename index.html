@@ -2521,6 +2521,11 @@ body.rail .pe-versao{display:none}
 .pe-legenda h4{margin:0 0 6px; font-size:14px}
 .pe-legenda dl{margin:0} .pe-legenda dt{font-weight:700; font-size:13.5px; margin-top:8px}
 .pe-legenda dd{margin:2px 0 0; font-size:13.5px; color:var(--tenue, #5D6F62)}
+
+
+.fw-cols.sem-tese .fw-i{white-space:normal; overflow:visible; align-items:flex-start}
+.fw-cols.sem-tese .fw-i > :nth-child(2){white-space:normal; overflow:visible; text-overflow:clip}
+.fw-cols.sem-tese .fw-i i{margin-top:4px}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -5859,7 +5864,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "25/09/2026 14:59";
+const PE_VERSAO = "25/09/2026 15:29";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -8287,6 +8292,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261459 -->
+<!-- beta 250920261529 -->
 </body>
 </html>
