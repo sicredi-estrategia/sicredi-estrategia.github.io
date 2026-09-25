@@ -2490,6 +2490,18 @@ body.rail .nav .quem{padding:8px 0 12px}
 .fk-entregas .fk-frente span{display:block; margin-top:2px; color:var(--texto)}
 
 #nav-admin[hidden], li:has(> #nav-admin[hidden]){display:none !important}
+
+
+#pe-sim{position:fixed;left:0;right:0;margin:0 auto;width:fit-content;bottom:14px;z-index:3000;display:flex;gap:14px;align-items:center;
+  max-width:min(760px, calc(100vw - 32px));padding:10px 14px 10px 18px;border-radius:14px;background:#5B2A86;color:#fff;
+  box-shadow:0 8px 28px rgba(40,10,70,.35);font-size:13.5px;line-height:1.35}
+#pe-sim small{display:block;opacity:.85;font-size:12px}
+#pe-sim > span:first-child{min-width:0}
+#pe-sim .pe-sim-bt{display:flex;gap:6px;flex-shrink:0}
+#pe-sim button{border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:9px;padding:6px 10px;font:inherit;font-size:12.5px;cursor:pointer}
+#pe-sim button:last-child{background:#fff;color:#5B2A86;border-color:#fff;font-weight:600}
+@media (max-width:640px){#pe-sim{flex-direction:column;align-items:stretch;gap:8px}}
+body.simulando .topbar{box-shadow:inset 0 -3px 0 #5B2A86}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -5834,7 +5846,7 @@ const PE = {
   ciclo: 2027,
   endereco: "https://sicredi-estrategia.github.io/"          
 };
-const LS_AUTH = "pe_auth_v1", LS_ULT_ENT = "pe_ult_ent";
+const LS_AUTH = "pe_auth_v1", LS_ULT_ENT = "pe_ult_ent", SS_SIM = "pe_simular";
 let AUTH = null, SESSAO_REAL = null, PLANO_SRV = null, CATALOGO = null, VINCULO_ATUAL = null;
 let PODE_EDITAR_SRV = false;
 const $id = id => document.getElementById(id);
@@ -5845,6 +5857,9 @@ function fmtDataHora(iso){ if(!iso) return ""; const d=new Date(iso);
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ v==null ? localStorage.removeItem(k) : localStorage.setItem(k,v); }catch(e){} }
 function aviso(txt, erro){ if(typeof avisoExport==="function") avisoExport(txt, erro); else if(erro) alert(txt); }
+function lerSim(){ try{ return JSON.parse(sessionStorage.getItem(SS_SIM)||"null"); }catch(e){ return null; } }
+function gravarSim(v){ try{ v ? sessionStorage.setItem(SS_SIM, JSON.stringify(v)) : sessionStorage.removeItem(SS_SIM); }catch(e){} }
+let SIM = lerSim();
 function lerAuth(){ try{ return JSON.parse(lsGet(LS_AUTH)||"null"); }catch(e){ return null; } }
 function gravarAuth(a){ AUTH=a; lsSet(LS_AUTH, a?JSON.stringify(a):null); }
 function traduzErroAuth(m){
@@ -5887,6 +5902,7 @@ async function chamar(url, opcoes){
   await garantirToken();
   const monta=()=>{ const h=Object.assign({apikey:PE.chave, "Content-Type":"application/json"}, opcoes.headers||{});
     if(AUTH) h.Authorization="Bearer "+AUTH.access_token;
+    if(SIM && url.indexOf("/rest/v1/")>=0) h["x-simular"]=SIM.entidade+":"+SIM.papel;
     return fetch(url,{method:opcoes.method||"GET", headers:h, body:opcoes.body}); };
   let r;
   try{ r=await monta(); }catch(e){ throw new Error(traduzErroAuth(e.message)); }
@@ -5974,6 +5990,7 @@ async function posLogin(){
   try{ SESSAO_REAL=await rpc("minha_sessao"); }
   catch(e){ return telaLogin("entrar","Não consegui carregar o seu cadastro: "+e.message,true); }
   if(!SESSAO_REAL || !SESSAO_REAL.pessoa) return telaLogin("sem_acesso");
+  if(SIM && !SESSAO_REAL.simulacao){ gravarSim(null); SIM=null; return posLogin(); }   
   const vs=SESSAO_REAL.vinculos||[];
   if(!vs.length) return telaLogin("sem_acesso");
   await carregarCatalogo();
@@ -6007,6 +6024,7 @@ function entrarVinculo(i){
   try{ localStorage.removeItem(LS_SESSAO); }catch(e){}
   aplicarMenuReal();
   sincronizarEntidade();
+  abrirSimularSePedido();
 }
 async function sincronizarEntidade(){
   const ent=ENTIDADE.id;
@@ -6067,7 +6085,7 @@ async function carregarPlano(){
   estado.status=p.status||"vazio";
   estado.registradoEm=p.registrado_em?fmtDataHora(p.registrado_em):null;
   estado.salvoEm=p.atualizado_em?fmtDataHora(p.atualizado_em):null;
-  estado.janelaAberta=!!p.janela;
+  estado.janelaAberta=!!p.janela || !!p.teste;
   PODE_EDITAR_SRV=!!p.pode_editar;
   ULTIMO_ENVIADO=JSON.stringify(estadoParaSalvar());
   if(typeof sincronizarBase==="function") sincronizarBase();
@@ -6142,7 +6160,7 @@ recomecar = function(){
 sair = function(){
   const tk=AUTH&&AUTH.access_token;
   if(tk) fetch(PE.url+"/auth/v1/logout",{method:"POST",headers:{apikey:PE.chave,Authorization:"Bearer "+tk}}).catch(()=>{});
-  gravarAuth(null); lsSet(LS_SESSAO,null); location.reload();
+  gravarAuth(null); gravarSim(null); lsSet(LS_SESSAO,null); location.reload();
 };
 carregarRealizados = async function(){
   if(!AUTH || !ENTIDADE.id) return {ok:false};
@@ -6266,6 +6284,7 @@ function aplicarMenuReal(){
   const r=$id("btn-recomecar"); if(r) r.hidden=true;
 }
 function textoJanelaTopo(){
+  if(SIM) return "Simulação · plano de teste, sem janela (aberta até o fim da simulação)";
   const j=PLANO_SRV&&PLANO_SRV.janela;
   if(j) return `${j.nome} · aberta até ${fmtData(j.fecha_em)}`;
   const agora=Date.now();
@@ -6290,7 +6309,27 @@ pinta = function(){
   const st=$id("nav-montar-st"); if(st) st.title = estado.janelaAberta ? textoJanelaTopo() : "Janela fechada";
   if(ERRO_SALVAR) mostrarSalvo(null, ERRO_SALVAR); else if(estado.status==="rascunho") mostrarSalvo(SALVAR_TIMER&&ENVIANDO?"salvando…":null);
   const ad=$id("nav-admin"); if(ad) ad.setAttribute("aria-current", estado.vista==="modulo" && estado.modulo==="admin");
+  faixaSimulacao();
 };
+function faixaSimulacao(){
+  let f=$id("pe-sim");
+  if(!SIM || !document.body.classList.contains("dentro")){ if(f) f.remove(); document.body.classList.remove("simulando"); return; }
+  if(!f){ f=document.createElement("div"); f.id="pe-sim"; document.body.prepend(f); }
+  document.body.classList.add("simulando");
+  f.innerHTML=`<span><b>Simulação</b> · ${esc(SIM.nome||SIM.entidade)} · ${esc(ROT_PAPEL[SIM.papel]||SIM.papel)}
+    <small>Você vê e age como essa pessoa. O plano é de teste: não conta no real e nada real é gravado.</small></span>
+    <span class="pe-sim-bt"><button onclick="encerrarSimulacao(true)">Trocar perfil</button>
+    <button onclick="encerrarSimulacao(false)">Encerrar simulação</button></span>`;
+}
+function iniciarSimulacao(entidade, papel){
+  const e=ADM.ents.find(x=>x.codigo===entidade); if(!e) return aviso("Escolha a entidade.", true);
+  gravarSim({entidade, papel, nome:e.nome, voltar:(SIM&&SIM.voltar)||(ENTIDADE&&ENTIDADE.id)||null}); lsSet(LS_ULT_ENT, entidade); location.reload();
+}
+function encerrarSimulacao(voltarParaEscolha){
+  lsSet(LS_ULT_ENT, (SIM&&SIM.voltar)||null); gravarSim(null);
+  try{ voltarParaEscolha ? sessionStorage.setItem("pe_abrir_simular","1") : sessionStorage.removeItem("pe_abrir_simular"); }catch(e){}
+  location.reload();
+}
 const htmlModuloOriginal = htmlModulo;
 htmlModulo = function(){ return estado.modulo==="admin" ? htmlAdmin() : htmlModuloOriginal(); };
 function irAdmin(){ ir(()=>{ estado.vista="modulo"; estado.modulo="admin"; pinta(); fecharNav(); }); if(!ADM.carregado) admCarregar(); }
@@ -6314,7 +6353,35 @@ async function admCarregar(){
   }catch(e){ aviso("Não consegui carregar a administração: "+e.message, true); }
   finally{ ADM.carregando=false; if(estado.modulo==="admin") pinta(); }
 }
-function admAba(a){ ADM.aba=a; pinta(); }
+function admAba(a){ ADM.aba=a; pinta(); if(a==="simular") admCarregarTestes(); }
+async function admCarregarTestes(){
+  try{ ADM.testes=await rpc("planos_teste"); }catch(e){ ADM.testes=[]; aviso("Não consegui ler os planos de teste: "+e.message, true); }
+  if(estado.modulo==="admin" && ADM.aba==="simular") pinta();
+}
+function admSimular(){
+  const t=ADM.testes||[], sim=ADM.sim||{entidade:"", papel:"responsavel"};
+  return `<section class="secao"><h2>Ver a plataforma como outra pessoa</h2>
+    <p class="secao-desc">Escolha a entidade e o papel. A plataforma passa a se comportar exatamente como para essa pessoa, com as regras de acesso do banco:
+    o que ela vê, o que pode editar, indicadores e recortes da entidade. Dá para montar e registrar o plano: ele fica marcado como <b>teste</b>,
+    não depende da janela, não aparece fora da simulação e pode ser apagado aqui. Nada real é gravado durante a simulação.</p>
+    <div class="adm-form">
+      <select onchange="ADM.sim=Object.assign(ADM.sim||{papel:'responsavel'},{entidade:this.value})">${optsEnt(sim.entidade)}</select>
+      <select onchange="ADM.sim=Object.assign(ADM.sim||{entidade:''},{papel:this.value})">${optsLista(ROT_PAPEL, sim.papel)}</select>
+      <button class="btn-p mini" onclick="iniciarSimulacao((ADM.sim||{}).entidade, (ADM.sim||{}).papel||'responsavel')">Entrar na simulação</button>
+    </div>
+    <p class="secao-desc">Dica: para testar a visão de uma Central com os planos das suas cooperativas, monte antes os planos de teste de algumas coops dela.</p></section>
+    <section class="secao"><h2>Planos de teste</h2>
+    ${t.length?`<table class="adm-tab"><thead><tr><th>Entidade</th><th>Situação</th><th>Versões</th><th>Atualizado</th><th></th></tr></thead><tbody>
+      ${t.map(x=>`<tr><td>${esc(x.nome)} (${esc(x.entidade)})</td><td>${x.status==="registrado"?"Registrado":"Em preenchimento"}</td><td>${x.versoes||0}</td>
+        <td>${fmtDataHora(x.atualizado_em)}</td><td><button class="btn-t mini" onclick="admApagarTeste('${esc(x.entidade)}')">Apagar</button></td></tr>`).join("")}
+      </tbody></table><div class="adm-linha"><button class="btn-t" onclick="admApagarTeste(null)">Apagar todos os planos de teste</button></div>`
+      :`<p class="vazio">Nenhum plano de teste.</p>`}</section>`;
+}
+async function admApagarTeste(ent){
+  if(!confirm(ent?`Apagar o plano de teste de ${nomeEnt(ent)}?`:"Apagar TODOS os planos de teste?")) return;
+  try{ const n=await rpc("apagar_planos_teste",{p_entidade:ent}); aviso(`${n} plano(s) de teste apagado(s).`); admCarregarTestes(); }
+  catch(e){ aviso("Não consegui apagar: "+e.message, true); }
+}
 function nomeEnt(cod){ const e=ADM.ents.find(x=>x.codigo===cod); return e?e.nome:(cod||"—"); }
 function optsEnt(sel){
   const g={cas:"CAS", central:"Centrais", cooperativa:"Cooperativas"};
@@ -6324,10 +6391,10 @@ function optsEnt(sel){
 function optsLista(obj, sel, vazio){ return (vazio?`<option value="">${vazio}</option>`:"")+Object.entries(obj).map(([k,v])=>`<option value="${k}" ${k===sel?"selected":""}>${v}</option>`).join(""); }
 function htmlAdmin(){
   const abas=[["pessoas","Pessoas e convites"],["pedidos",`Pedidos de acesso${ADM.pedidos.length?` (${ADM.pedidos.length})`:""}`],
-              ["situacao","Situação dos planos"],["janelas","Janelas e ciclo"],["decisoes","Registro de decisões"]];
+              ["situacao","Situação dos planos"],["janelas","Janelas e ciclo"],["decisoes","Registro de decisões"],["simular","Simular perfil"]];
   const corpo = !ADM.carregado ? `<p class="vazio">Carregando…</p>`
     : ADM.aba==="pessoas" ? admPessoas() : ADM.aba==="pedidos" ? admPedidos() : ADM.aba==="situacao" ? admSituacaoPlanos()
-    : ADM.aba==="janelas" ? admJanelas() : admDecisoes();
+    : ADM.aba==="janelas" ? admJanelas() : ADM.aba==="simular" ? admSimular() : admDecisoes();
   return `<h1 class="titulo">Administração</h1>
     <p class="sub">Quem entra e com que papel, as janelas do ciclo e o registro das decisões. Só os administradores veem esta área.</p>
     <div class="adm-abas">${abas.map(([id,rot])=>`<button class="${ADM.aba===id?"on":""}" onclick="admAba('${id}')">${rot}</button>`).join("")}
@@ -6593,6 +6660,11 @@ async function admFinalizarDecisao(id){
   try{ await rest(`decisao?id=eq.${id}`,{method:"PATCH", body:{situacao:"final"}});
        ADM.decisoes=await rest("vw_decisao?select=*&order=decidido_em.desc,id.desc"); pinta(); }
   catch(e){ aviso(e.message, true); }
+}
+function abrirSimularSePedido(){        
+  let pedir=false; try{ pedir=sessionStorage.getItem("pe_abrir_simular")==="1"; sessionStorage.removeItem("pe_abrir_simular"); }catch(e){}
+  if(pedir && SESSAO_REAL && SESSAO_REAL.pessoa && SESSAO_REAL.pessoa.owner && document.body.classList.contains("dentro")){
+    ADM.aba="simular"; irAdmin(); admCarregarTestes(); }
 }
 async function iniciarReal(){
   const mk=$id("lg-marca"); if(mk) mk.innerHTML=marcaSVG(56);
@@ -7063,7 +7135,7 @@ anelTema = function(arcos,{px=124,w=12,gap=3,apagado=false}={}){
   const corpo=arcos.map((x,i)=>{
     const r=(px-w)/2 - 2 - i*(w+gap), C=2*Math.PI*r;
     const cor=apagado?"#C3CDC5":(COR_ARCO[i]||COR_ARCO[2]);
-    const trilho=`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${cor}" stroke-opacity="${apagado?".10":".13"}" stroke-width="${w}"><title>${esc(x.nome)} · ${ehNum(x.pct)?quartilNome(x.pct):"sem posição"}</title></circle>`;
+    const trilho=`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${cor}" stroke-opacity="${apagado?".10":".13"}" stroke-width="${w}"><title>${esc(x.nome)} · ${x.rotulo?esc(x.rotulo):ehNum(x.pct)?quartilNome(x.pct):"sem posição"}</title></circle>`;
     if(!ehNum(x.pct)) return trilho;
     const pct=Math.max(2,Math.min(100,x.pct)), len=(pct/100)*C;
     const ang=(-90 + pct*3.6)*Math.PI/180;
@@ -7073,14 +7145,33 @@ anelTema = function(arcos,{px=124,w=12,gap=3,apagado=false}={}){
         stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C-len).toFixed(1)}"
         transform="rotate(-90 ${c} ${c})"
         style="--fim:${(C-len).toFixed(1)}; --volta:${C.toFixed(1)}; animation-delay:${(i*0.12).toFixed(2)}s"
-      ><title>${esc(x.nome)} · melhor que ${Math.round(x.pct)}% das cooperativas · ${quartilNome(x.pct)}</title></circle>
+      ><title>${esc(x.nome)} · ${x.rotulo?esc(x.rotulo):`melhor que ${Math.round(x.pct)}% das cooperativas · ${quartilNome(x.pct)}`}</title></circle>
       <circle class="ring-p" cx="${kx}" cy="${ky}" r="${(w/2-1.6).toFixed(1)}" fill="#fff" stroke="${cor}" stroke-width="2"
-        style="animation-delay:${(0.55+i*0.12).toFixed(2)}s"><title>${quartilNome(x.pct)}</title></circle>`;
+        style="animation-delay:${(0.55+i*0.12).toFixed(2)}s"><title>${x.rotulo?esc(x.rotulo):quartilNome(x.pct)}</title></circle>`;
   }).join("");
   return `<svg viewBox="0 0 ${px} ${px}" class="ring" preserveAspectRatio="xMidYMid meet"
-    role="img" aria-label="${esc(arcos.map(x=>x.nome+": "+quartilTxt(x.pct)).join(". "))}">
+    role="img" aria-label="${esc(arcos.map(x=>x.nome+": "+(x.rotulo||quartilTxt(x.pct))).join(". "))}">
     <circle cx="${c}" cy="${c}" r="${c-1}" fill="${apagado?"#F7F9F6":"#F4F8F0"}"/>${corpo}</svg>`;
 };
+function melhoraCoops(ent, reg){
+  const tp=tipoDe(ent), cen = tp==="central" ? (ehProprio(ent) ? codigoProprio() : codigoDe(ent)) : null;
+  const de = tp==="central" ? "da Central" : "do Sistema";
+  const pi=painelInd(reg); let n=0, N=0;
+  if(pi && DR.painel && (tp==="sistema" || cen)){
+    const mm = pi.menor_melhor!=null ? !!pi.menor_melhor : !!reg.m.menorMelhor;
+    Object.entries(pi.valores||{}).forEach(([cod,arr])=>{
+      const e=DR.entPorId.get(cod); if(!e || e.tipo!=="cooperativa" || !arr) return;
+      if(cen && e.central_codigo!==cen) return;
+      let i=arr.length-1; while(i>=0 && numOuNulo(arr[i])===null) i--;
+      if(i<12) return;
+      const v=numOuNulo(arr[i]), a=numOuNulo(arr[i-12]); if(a===null) return;
+      N++; if(mm ? v<a : v>a) n++;
+    });
+  }
+  if(!N) return {pct:null, rotulo:`nenhuma cooperativa ${de} com dado para comparar 12 meses`};
+  const pct=n/N*100;
+  return {pct, rotulo:`${Math.round(pct)}% das cooperativas ${de} melhoraram em 12 meses (${n} de ${N} com dado)`};
+}
 function cartaoSemDado(m){
   return `<article class="dg dr-semc"><h4>${esc(m.curto||m.nome)}</h4><p class="dg-mede">${esc(m.mede||"")}</p>${semDadosHtml(m,true)}</article>`;
 }
@@ -7370,11 +7461,14 @@ gVisao = function(ent){
   const selInd=sel.dados.find(x=>x.r.chave===g.indDash);
   const proprio = ehProprio(ent) && ENTIDADE.tipo==="cooperativa";
   const posicoes = ENTIDADE.tipo==="cooperativa" || tipoDe(ent)==="cooperativa";
+  const agregado = !posicoes && (tipoDe(ent)==="central" || tipoDe(ent)==="sistema");
+  const anelCard=ds=>{ const arcos=ds.map(y=>({...(agregado?melhoraCoops(ent, y.r):{pct:y.pct}), nome:(y.r.m.curto||y.r.m.nome)}));
+    return anelTema(arcos,{px:96,w:9,gap:3,apagado:!arcos.some(a=>ehNum(a.pct))}); };
   const card=x=>`<button class="dh-c ${g.temaDash===x.t.id?"on":""}" onclick="gTemaDash(${x.t.id})">
     <div class="dc-cab"><b>${esc(TEMA_MAPA[x.t.id]||x.t.nome)}</b>
       <span class="dc-res ${x.desce?(x.sobe>x.desce?"misto":"ruim"):"bom"}">${x.dados.some(y=>y.tem)?`${x.sobe}↑ ${x.desce?x.desce+"↓":""}`:"sem dados"}</span></div>
     <div class="dc-corpo">
-      <div class="dc-anel">${x.dados.length?anelTema(x.dados.map(y=>({pct:y.pct, nome:(y.r.m.curto||y.r.m.nome)})),{px:96,w:9,gap:3,apagado:!x.dados.some(y=>ehNum(y.pct))}):""}</div>
+      <div class="dc-anel">${x.dados.length?anelCard(x.dados):""}</div>
       <div class="dc-inds">${x.dados.map(linhaIndDash).join("")}
         ${x.dados.length?"":`<div class="dc-i vazio">sem indicador</div>`}</div>
     </div>
@@ -7420,8 +7514,10 @@ gVisao = function(ent){
     <summary>Temas fora da nossa estratégia <span>${outros.length}</span></summary>
     <div class="dh-cards fora">${outros.map(card).join("")}</div>
   </details>`:""}
-  <div class="dummy">Números da base da plataforma (último mês com dado de cada indicador). No anel, cada arco é a posição
-  ${posicoes?"da cooperativa entre as cooperativas do Sistema naquele indicador (percentil calculado no banco): quanto mais cheio, melhor; meia volta é a mediana":"entre as cooperativas: Centrais e o Sistema não têm posição, por isso os arcos ficam vazios"}.
+  <div class="dummy">Números da base da plataforma (último mês com dado de cada indicador). No anel, cada arco é
+  ${posicoes?"a posição da cooperativa entre as cooperativas do Sistema naquele indicador (percentil calculado no banco): quanto mais cheio, melhor; meia volta é a mediana"
+    :agregado?`a parcela das cooperativas ${tipoDe(ent)==="central"?"da Central":"do Sistema"} que melhoraram no indicador em 12 meses (último mês com dado de cada cooperativa contra o mesmo mês do ano anterior, respeitando o sentido do indicador; só entram as cooperativas com os dois valores): quanto mais cheio, mais cooperativas avançaram; meia volta é metade delas. Centrais e o Sistema não têm posição entre as cooperativas`
+    :"a posição entre as cooperativas: Centrais e o Sistema não têm posição, por isso os arcos ficam vazios"}.
   Indicador sem carga aparece como "sem dados".</div>`;
 };
 gAnalitica = function(ent){
@@ -7551,6 +7647,7 @@ function crJanelas(){
       return Object.assign({}, j, {st: agora<a ? "futura" : agora<f ? "aberta" : "encerrada"}); });
 }
 function crFraseJanela(){
+  if(PLANO_SRV&&PLANO_SRV.teste) return "Simulação: este é um plano de teste, liberado sem janela e que não conta no real";
   const j=PLANO_SRV&&PLANO_SRV.janela;
   if(j) return `A janela ${j.nome} está aberta até ${fmtData(j.fecha_em)}`;
   const prox=crJanelas().filter(x=>x.st==="futura").sort((a,b)=>new Date(a.abre_em)-new Date(b.abre_em))[0];
@@ -8129,6 +8226,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261001 -->
+<!-- beta 250920261030 -->
 </body>
 </html>
