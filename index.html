@@ -5844,7 +5844,8 @@ const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
   ciclo: 2027,
-  endereco: "https://sicredi-estrategia.github.io/"          
+  endereco: /^https:$/.test(location.protocol) ? location.origin + location.pathname.replace(/index\.html$/, "")
+                                               : "https://sicredi-estrategia.github.io/"
 };
 const LS_AUTH = "pe_auth_v1", LS_ULT_ENT = "pe_ult_ent", SS_SIM = "pe_simular";
 let AUTH = null, SESSAO_REAL = null, PLANO_SRV = null, CATALOGO = null, VINCULO_ATUAL = null;
@@ -8226,6 +8227,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261030 -->
+<!-- beta 250920261126 -->
 </body>
 </html>
