@@ -5859,7 +5859,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "25/09/2026 14:30";
+const PE_VERSAO = "25/09/2026 14:59";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6055,6 +6055,7 @@ async function sincronizarEntidade(){
   if(ENTIDADE.tipo!=="cas") await carregarPlano();
   pinta();
 }
+JANELAS.splice(0, JANELAS.length);
 const ROT_JANELA={preenchimento:"Montar o plano: só versões provisórias.",
   construcao:"Montar o plano: versões provisórias e a final, que vira a oficial no fechamento.",
   ajuste:"Rever as escolhas com o motivo registrado; a versão final continua no histórico."};
@@ -6224,7 +6225,8 @@ htmlPerfil = function(){
   return limparCadastro(htmlPerfilOriginal())
     .replace(/<div class="dummy">[\s\S]*?<\/div>\s*$/, `<div class="dummy">Os acessos são liberados pelos administradores da plataforma.
       Quem edita a entidade pode indicar pessoas: a indicação chega aos administradores, que enviam o convite.</div>`)
-    .replace("O calendário\n    definitivo entra depois da deliberação do CDE de 15/09.","As datas são definidas pelos administradores da plataforma.");
+    .replace("O calendário\n    definitivo entra depois da deliberação do CDE de 15/09.","As datas são definidas pelos administradores da plataforma.")
+    .replace(/<div class="pf-janelas">\s*<\/div>/, '<div class="pf-janelas"><p class="vazio">Nenhuma janela cadastrada na base ainda.</p></div>');
 };
 const htmlPessoaOriginal = htmlPessoa;
 htmlPessoa = function(){
@@ -7654,6 +7656,8 @@ htmlEvolucaoSistemica = function(){
 };
 const htmlPerfilDR = htmlPerfil;
 htmlPerfil = function(){ return htmlPerfilDR().replace("Mediana das 98 cooperativas.", "Mediana das cooperativas do Sistema."); };
+const htmlPessoaDR = htmlPessoa;
+htmlPessoa = function(){ return htmlPessoaDR().replace("Mediana das 98 cooperativas.", "Mediana das cooperativas do Sistema."); };
 const pintaDR = pinta;
 pinta = function(){
   pintaDR();
@@ -7666,6 +7670,7 @@ const CR_NIVEL_JAN = {preenchimento:"Preenchimento", construcao:"Construção", 
 const CR_NATUREZA = {provisoria:"provisória", final:"final", ajuste:"ajuste"};
 Object.assign(CENTRAL, {nome:"", sigla:"Central", declarou:false, temas:[], movimentos:[], registradoEm:null, natureza:null});
 ANALISES.splice(0, ANALISES.length);
+[SOBRE, SOBRE_CURTO, PORQUE].forEach(o => Object.keys(o).forEach(k => delete o[k]));
 (function(){   
   const css=`.nw-ic.plano{background:var(--verde-lav);color:var(--verde-escuro)}
     .nw-ic.pacto{background:#F3F0FA;color:#5B4A8A}
@@ -7905,7 +7910,7 @@ const CR_DUMMY_ED7   = /<div class="dummy">(Valores de indicador fictícios|Cont
 const CR_SALVO_LOCAL = "Dá para parar no meio. O que você preencher fica salvo neste computador e você retoma de onde parou.";
 const htmlInicioLeituraAntesConteudo = htmlInicioLeitura;
 htmlInicioLeitura = function(){
-  const ate=crRe(ATE_JANELA()), aberta=!!(PLANO_SRV&&PLANO_SRV.janela);
+  const ate=crRe(ATE_JANELA()), aberta=!!(PLANO_SRV&&(PLANO_SRV.janela||PLANO_SRV.teste));   
   return htmlInicioLeituraAntesConteudo()
     .replace(CR_AVISO_TESTE, "")
     .replace(new RegExp(`A janela do planejamento segue aberta até ${ate},\\s*então ainda pode mudar\\.`),
@@ -7914,7 +7919,7 @@ htmlInicioLeitura = function(){
 };
 const htmlInicioAntesConteudo = htmlInicio;
 htmlInicio = function(){
-  const ate=crRe(ATE_JANELA()), aberta=!!(PLANO_SRV&&PLANO_SRV.janela);
+  const ate=crRe(ATE_JANELA()), aberta=!!(PLANO_SRV&&(PLANO_SRV.janela||PLANO_SRV.teste));   
   return htmlInicioAntesConteudo()
     .replace(CR_AVISO_TESTE, "")
     .replace(CR_SALVO_LOCAL, aberta ? "Dá para parar no meio. O que você preencher fica salvo na plataforma e você retoma de onde parou, em qualquer computador."
@@ -8282,6 +8287,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261430 -->
+<!-- beta 250920261459 -->
 </body>
 </html>
