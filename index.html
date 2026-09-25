@@ -2502,6 +2502,14 @@ body.rail .nav .quem{padding:8px 0 12px}
 #pe-sim button:last-child{background:#fff;color:#5B2A86;border-color:#fff;font-weight:600}
 @media (max-width:640px){#pe-sim{flex-direction:column;align-items:stretch;gap:8px}}
 body.simulando .topbar{box-shadow:inset 0 -3px 0 #5B2A86}
+
+
+.pf-d{min-width:0} .pf-d-v{overflow-wrap:anywhere}
+.pf-id{min-width:0} .pf-id b,.pf-id span{overflow-wrap:anywhere}
+.nav .conta-t .ent,.nav .conta-t .pes{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block}
+
+.pe-versao{display:block; margin-top:12px; font-size:11px; color:#6F9179; letter-spacing:.02em}
+body.rail .pe-versao{display:none}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -5840,6 +5848,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
+const PE_VERSAO = "25/09/2026 11:43";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6217,6 +6226,9 @@ htmlPessoa = function(){
         <button class="btn-t" onclick="sair()">Sair</button>
       </div></section>`;
   return htmlPessoaOriginal()
+    .replace(/(<span class="pf-d-r">Acesso nesta entidade<\/span><span class="pf-d-v">)[^<]*(<\/span><\/div>)/,
+             (m,a,b)=>a+esc(rotuloPapelAtual())+b+(ehAdministrador()?`<div class="pf-d"><span class="pf-d-r">Na plataforma</span><span class="pf-d-v">Administrador</span></div>`:""))
+    .replace(/(<div class="pf-id"><b>[^<]*<\/b><span>)[^·<]*·/, (m,a)=>a+esc(rotuloPapelAtual())+" ·")
     .replace("vêm do login corporativo","vêm do cadastro da plataforma")
     .replace("Nome, e-mail e cargo chegam com o seu login e mudam lá. O acesso nesta entidade é definido pelo ponto focal.",
              "Nome, e-mail e cargo vêm do pré-cadastro e do cadastro de colaboradores. O acesso é liberado pelos administradores.")
@@ -6283,7 +6295,14 @@ function aplicarMenuReal(){
   const ehOwner=!!(SESSAO_REAL&&SESSAO_REAL.pessoa&&SESSAO_REAL.pessoa.owner);
   const b=$id("nav-admin"); if(b) b.hidden=!ehOwner;
   const r=$id("btn-recomecar"); if(r) r.hidden=true;
+  const bts=document.querySelector(".quem-bts");                  
+  if(bts) bts.innerHTML=`<span class="pe-versao" title="Data e hora da montagem desta versão">Beta · versão ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>`;
 }
+function rotuloPapelAtual(){                 
+  const v=VINCULO_ATUAL; if(!v) return "";
+  return v.papel==="responsavel" ? (v.tipo==="cooperativa" ? "Ponto focal" : "Responsável") : (ROT_PAPEL[v.papel]||v.papel);
+}
+const ehAdministrador = () => !!(SESSAO_REAL&&SESSAO_REAL.pessoa&&SESSAO_REAL.pessoa.owner);
 function textoJanelaTopo(){
   if(SIM) return "Simulação · plano de teste, sem janela (aberta até o fim da simulação)";
   const j=PLANO_SRV&&PLANO_SRV.janela;
@@ -6311,6 +6330,8 @@ pinta = function(){
   if(ERRO_SALVAR) mostrarSalvo(null, ERRO_SALVAR); else if(estado.status==="rascunho") mostrarSalvo(SALVAR_TIMER&&ENVIANDO?"salvando…":null);
   const ad=$id("nav-admin"); if(ad) ad.setAttribute("aria-current", estado.vista==="modulo" && estado.modulo==="admin");
   faixaSimulacao();
+  const rc=$id("rod-cra");
+  if(rc && VINCULO_ATUAL) rc.textContent=(ehAdministrador() ? "Administrador" : (ROT_TIPO[ENTIDADE.tipo]||"")) + " · " + rotuloPapelAtual();
 };
 function faixaSimulacao(){
   let f=$id("pe-sim");
@@ -8227,6 +8248,6 @@ htmlVisao = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261126 -->
+<!-- beta 250920261143 -->
 </body>
 </html>
