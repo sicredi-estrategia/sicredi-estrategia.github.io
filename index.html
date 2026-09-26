@@ -5967,7 +5967,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "25/09/2026 16:09";
+const PE_VERSAO = "25/09/2026 23:50";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -8386,168 +8386,144 @@ htmlVisao = function(){
 (function(){
 if(!document.getElementById("evo-css")){
   const css=`
-  .evo{--evo-bom:#146E37; --evo-bom-f:#E4F0E8; --evo-ruim:#B0452B; --evo-ruim-f:#F7E7E1; --evo-est:#7A877E; --evo-est-f:#EDF0EE;
-    --evo-suave:#BFDCC9; --evo-ruim-s:#E9B9AC; --evo-aviso:#8A6116; --evo-c100:#ECF1ED; --evo-c200:#DEE6E0; --evo-c300:#C5CFC8}
+  .evo{--s-bom:#7FAF7A; --s-bom-txt:#4F8A4A; --s-est:#E3B85B; --s-est-txt:#9E7318; --s-ruim:#D98E73; --s-ruim-txt:#B5603F; --s-na:#D3DAD5;
+    --evo-c100:#ECF1ED; --evo-c200:#DEE6E0}
   .evo-num{font-variant-numeric:tabular-nums}
-  .evo-abas{display:flex; gap:2px; flex-wrap:wrap; margin-left:auto}
-  .evo-aba{background:none; border:0; border-bottom:3px solid transparent; padding:6px 12px 8px; cursor:pointer; color:var(--fraco);
-    display:flex; flex-direction:column; align-items:flex-start; gap:1px; border-radius:6px 6px 0 0; font:inherit; text-align:left}
-  .evo-aba b{font-weight:700; font-size:13.5px} .evo-aba span{font-size:11.5px}
-  .evo-aba:hover{background:var(--verde-lav); color:var(--tinta)}
-  .evo-aba[aria-selected="true"]{color:var(--verde-escuro); border-bottom-color:var(--verde-escuro)}
-  .evo-ctl{background:var(--branco); border:1px solid var(--linha); border-radius:12px; padding:10px 14px 8px; margin:0 0 10px}
-  .evo-ctl-in{display:flex; flex-wrap:wrap; gap:8px 22px; align-items:flex-start}
-  .evo-grupo{display:flex; flex-direction:column; gap:4px; min-width:0}
-  .evo-rot{font-size:10.5px; color:var(--fraco); text-transform:uppercase; letter-spacing:.06em; font-weight:700}
-  .evo-chips{display:flex; flex-wrap:wrap; gap:4px}
-  .evo-chip{border:1px solid var(--evo-c300); background:var(--branco); border-radius:999px; padding:4px 11px; font:inherit; font-size:12.6px;
-    cursor:pointer; line-height:1.3; white-space:nowrap; color:var(--texto)}
-  .evo-chip:hover{border-color:var(--verde-escuro); color:var(--verde-escuro)}
-  .evo-chip[aria-pressed="true"]{background:var(--verde-escuro); border-color:var(--verde-escuro); color:#fff; font-weight:600}
-  .evo-ctl select{font:inherit; font-size:12.6px; padding:4px 8px; border:1px solid var(--evo-c300); border-radius:8px; background:var(--branco); color:var(--tinta); max-width:100%}
-  .evo-linha{display:flex; gap:6px; flex-wrap:wrap; align-items:center}
-  .evo-sw{display:inline-flex; align-items:center; gap:6px; font-size:12.6px; cursor:pointer; padding:5px 0; user-select:none; color:var(--texto)}
-  .evo-sw input{accent-color:var(--verde-escuro); width:15px; height:15px; margin:0}
-  .evo-resumo{font-size:12px; color:var(--fraco); margin:6px 0 0} .evo-resumo b{color:var(--texto); font-weight:600}
-  .evo-comoler{margin:0 0 12px} .evo-comoler details{background:var(--branco); border:1px solid var(--linha); border-radius:12px; padding:0 14px}
-  .evo-comoler summary{cursor:pointer; padding:8px 0; font-weight:600; color:var(--verde-escuro); font-size:12.6px}
-  .evo-comoler .evo-cl{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px 22px; padding:2px 0 12px; font-size:12.6px; color:var(--texto)}
-  .evo-comoler .evo-cl b{color:var(--tinta)} .evo-comoler p{margin:0}
-  .evo-leg{display:inline-flex; gap:10px; flex-wrap:wrap; margin-top:6px} .evo-leg span{display:inline-flex; align-items:center; gap:4px}
-  .evo-past{width:10px; height:10px; border-radius:50%; display:inline-block}
-  .evo-desc{font-size:12.6px; color:var(--fraco); margin:0 0 10px}
-  .evo-traco{color:#B9C3BC; font-size:14px; cursor:help; display:inline-block; min-width:12px; text-align:center}
-  .evo-refdif{font-size:11px; color:var(--evo-aviso); white-space:nowrap} .evo-reftxt{font-size:11px; color:var(--fraco); white-space:nowrap}
-  .evo-aviso{background:#FFF7E0; border:1px solid #F1DDA0; color:#6B5310; border-radius:10px; padding:9px 14px; font-size:12.6px; margin:0 0 12px}
+  .evo-traco{color:#BAC3BC; cursor:help; display:inline-block; min-width:12px; text-align:center}
+  .evo-t-bom{color:var(--s-bom-txt)} .evo-t-ruim{color:var(--s-ruim-txt)} .evo-t-est{color:var(--s-est-txt)}
+  /* filtros: uma linha de chips na linguagem original (.periodos) */
+  .evo-filtros{display:flex; flex-wrap:wrap; gap:8px 26px; align-items:center; margin:0 0 14px}
+  .evo-filtros .g-esc span{margin-right:2px}
+  .evo-filtros .periodos{margin:0; flex-wrap:wrap}
+  .evo-filtros select{border:1px solid var(--linha); border-radius:20px; padding:6px 12px; font:inherit; font-size:12.4px; color:var(--texto); background:var(--branco)}
+  .evo-resumo{font-size:12px; color:var(--tenue); margin:-6px 0 14px}
+  .evo-resumo b{color:var(--fraco); font-weight:600}
+  .evo-comoler{margin:0 0 16px; font-size:12.5px; color:var(--fraco)}
+  .evo-comoler summary{cursor:pointer; font-weight:600; color:var(--verde-escuro)}
+  .evo-comoler p{margin:6px 0 0; line-height:1.5; max-width:90ch}
+  .evo-aviso{background:#FFF7E0; border:1px solid #F1DDA0; color:#6B5310; border-radius:10px; padding:9px 14px; font-size:12.6px; margin:0 0 14px}
   .evo-aviso button{margin-left:8px}
-  /* sinaleira, pontinhos, variação */
-  .evo-sinal{width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex:none}
-  .evo-sinal svg{width:14px; height:14px; display:block; fill:#fff}
-  .evo-sinal.s-bom{background:var(--evo-bom)} .evo-sinal.s-ruim{background:var(--evo-ruim)} .evo-sinal.s-est{background:var(--evo-est)}
-  .evo-sinal.s-vazia{background:var(--evo-c100)} .evo-sinal.s-vazia svg{fill:var(--tenue)}
-  .evo-pontos{display:inline-flex; gap:4px; align-items:center; flex:none}
-  .evo-pt{width:9px; height:9px; border-radius:50%; display:inline-block}
-  .evo-pt.p-bom{background:var(--evo-bom)} .evo-pt.p-ruim{background:var(--evo-ruim)} .evo-pt.p-est{background:var(--evo-est)} .evo-pt.p-vazia{background:var(--evo-c200)}
-  .evo-var{font-size:12px; font-weight:700; white-space:nowrap} .evo-var .base{font-weight:400; color:var(--fraco); margin-left:3px}
-  .evo-var.v-bom{color:var(--evo-bom)} .evo-var.v-ruim{color:var(--evo-ruim)} .evo-var.v-est{color:var(--evo-est)}
-  /* Panorama */
-  .evo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:12px}
-  @media(max-width:420px){ .evo-grid{grid-template-columns:1fr} }
-  .evo-tcard{background:var(--branco); border:1px solid var(--linha); border-radius:12px; padding:12px 14px 6px; min-width:0}
-  .evo-tcard h2{font-size:13.5px; color:var(--verde-escuro); display:flex; gap:8px; align-items:baseline; margin:0 0 6px; font-weight:700}
-  .evo-tcard h2 .tn{font-size:11px; color:var(--tenue); font-weight:700}
-  .evo-ind{display:flex; flex-wrap:wrap; gap:4px 12px; align-items:center; width:100%; text-align:left; background:none; border:0; border-top:1px solid var(--evo-c100);
-    padding:9px 6px; cursor:pointer; border-radius:6px; font:inherit; color:var(--tinta)}
-  .evo-ind:hover{background:var(--evo-c100)}
-  .evo-ind .nome{flex:1 1 150px; min-width:0; font-weight:600; line-height:1.25; overflow-wrap:anywhere; font-size:13.4px}
-  .evo-ind .nome small{display:block; font-weight:400}
-  .evo-ind .evo-dir{display:flex; gap:10px; align-items:center; margin-left:auto; flex-wrap:nowrap}
-  .evo-ind .valor{font-family:"Exo 2",system-ui,sans-serif; font-size:20px; font-weight:600; letter-spacing:-.01em; white-space:nowrap; min-width:64px; text-align:right}
-  .evo-ind .valor.neg{color:var(--evo-ruim)}
-  .evo-ind .evo-var{min-width:118px; text-align:right}
-  .evo-ind .evo-mini{display:inline-block; width:64px; height:22px; flex:none} .evo-ind .evo-mini svg{display:block}
-  @media(max-width:480px){ .evo-ind .evo-var{min-width:0} .evo-ind .evo-dir{gap:8px} }
-  /* Lista */
-  .evo-tema{margin:0 0 16px} .evo-tema-cab{display:flex; align-items:baseline; gap:8px; margin:0 0 6px; padding:0 2px}
-  .evo-tema-cab h2{font-size:13.5px; color:var(--verde-escuro); margin:0; font-weight:700} .evo-tema-cab .tn{font-size:11px; color:var(--tenue); font-weight:700}
-  .evo-lista{background:var(--branco); border:1px solid var(--linha); border-radius:12px; overflow:hidden}
-  #evo-lista-grid{container-type:inline-size; min-width:0}
-  .evo-lin,.evo-cabcol{display:grid; grid-template-columns:minmax(150px,1.4fr) 76px minmax(90px,max-content) 128px 78px 140px; gap:8px 14px; align-items:center; padding:9px 14px}
-  .evo-lin.com-sis,.evo-cabcol.com-sis{grid-template-columns:minmax(150px,1.4fr) 76px minmax(90px,max-content) 128px 110px 78px 140px}
-  .evo-cabcol{position:sticky; top:0; z-index:2; background:var(--evo-c100); font-size:10.5px; color:var(--fraco); text-transform:uppercase; letter-spacing:.05em; font-weight:700; padding:7px 14px; border-bottom:1px solid var(--evo-c200)}
-  .evo-cabcol span{white-space:normal; line-height:1.15} .evo-cabcol .c-val,.evo-cabcol .c-var,.evo-cabcol .c-sis{text-align:right}
-  .evo-lin{border:0; border-top:1px solid var(--evo-c100); width:100%; text-align:left; background:none; cursor:pointer; font:inherit; color:var(--tinta)}
-  .evo-lin:hover{background:var(--evo-c100)} .evo-lin.ativa{background:var(--evo-bom-f)}
-  .evo-lin .rot{display:none; font-size:10px; color:var(--fraco); text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:1px}
-  .evo-lin .rot-mes{display:none; margin-left:6px}
-  .evo-lin .nome{display:block; font-weight:600; line-height:1.25; overflow-wrap:anywhere; font-size:13.4px}
-  .evo-lin .meta{display:block; font-size:11px; color:var(--fraco); margin-top:1px}
-  .evo-lin .c-val{text-align:right} .evo-lin .c-var{text-align:right} .evo-lin .c-sis{text-align:right} .evo-lin .c-mes{text-align:left} .evo-lin .c-tend{text-align:left} .evo-lin .c-graf{justify-self:end}
-  .evo-lin .valor{font-family:"Exo 2",system-ui,sans-serif; font-size:20px; font-weight:600; letter-spacing:-.01em; white-space:nowrap}
-  .evo-lin .valor.neg{color:var(--evo-ruim)}
-  .evo-spark{display:block} .evo-spark .l1{fill:none; stroke:var(--evo-bom); stroke-width:1.8; stroke-linejoin:round; stroke-linecap:round}
-  .evo-spark .l0{fill:none; stroke:var(--tenue); stroke-width:1.3; stroke-dasharray:3 3}
-  .evo-spark .ponto,.evo-spark .ponto-mini{fill:var(--evo-bom)} .evo-spark .zero{stroke:var(--evo-c300); stroke-width:1; stroke-dasharray:2 3}
-  @media(max-width:820px){
-    .evo-cabcol{display:none}
-    .evo-lin,.evo-lin.com-sis{grid-template-columns:1fr auto; grid-template-areas:"nome val" "var sis" "tend graf"; gap:8px 12px}
-    .evo-lin .rot{display:block} .evo-lin .rot-mes{display:inline} .evo-lin .c-mes{display:none}
-    .evo-lin .lnome{grid-area:nome} .evo-lin .c-val{grid-area:val} .evo-lin .c-var{grid-area:var; text-align:left} .evo-lin .c-sis{grid-area:sis} .evo-lin .c-tend{grid-area:tend} .evo-lin .c-graf{grid-area:graf}
-  }
-  @container(max-width:760px){
-    .evo-cabcol{display:none}
-    .evo-lin,.evo-lin.com-sis{grid-template-columns:1fr auto; grid-template-areas:"nome val" "var sis" "tend graf"; gap:8px 12px}
-    .evo-lin .rot{display:block} .evo-lin .rot-mes{display:inline} .evo-lin .c-mes{display:none}
-    .evo-lin .lnome{grid-area:nome} .evo-lin .c-val{grid-area:val} .evo-lin .c-var{grid-area:var; text-align:left} .evo-lin .c-sis{grid-area:sis} .evo-lin .c-tend{grid-area:tend} .evo-lin .c-graf{grid-area:graf}
-  }
-  /* detalhe expandido (faixa horizontal abaixo da linha) */
-  .evo-exp{background:#FAFCFA; border-top:1px solid var(--evo-c200); border-bottom:1px solid var(--evo-c200); padding:14px 16px 12px}
-  .evo-exp-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px 22px; align-items:start}
-  .evo-exp-anual{grid-column:span 2} @media(max-width:760px){ .evo-exp-anual{grid-column:span 1} }
-  .evo-exp h4{margin:0 0 4px; font-size:10.5px; color:var(--fraco); text-transform:uppercase; letter-spacing:.06em; font-weight:700}
-  .evo-exp svg{width:100%; height:auto; display:block; max-width:520px}
-  .evo-exp-ref .valor{font-family:"Exo 2",system-ui,sans-serif; font-size:30px; font-weight:600; letter-spacing:-.02em; line-height:1.1; white-space:nowrap}
-  .evo-exp-ref .valor.neg{color:var(--evo-ruim)}
-  .evo-exp-ref .mes{font-size:12.6px; color:var(--texto); font-weight:600}
-  .evo-exp-ref .evo-passo{font-size:12px; color:var(--fraco); line-height:1.35; margin-top:8px; display:flex; gap:8px; align-items:center}
-  .evo-exp-ref .evo-passo b{color:var(--tinta); font-weight:600}
-  .evo-exp-ref .evo-passo .evo-sinal{width:28px; height:28px} .evo-exp-ref .evo-passo .evo-sinal svg{width:16px; height:16px}
-  .evo-nota{font-size:11.8px; color:var(--fraco); margin:4px 0 0; line-height:1.45}
-  .evo-def{font-size:12px; color:var(--fraco); margin:12px 0 0; border-top:1px solid var(--evo-c100); padding-top:8px}
-  .evo-kv{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12px; color:var(--fraco); margin-top:4px}
-  .evo-kv b{display:block; color:var(--tinta); font-family:"Exo 2",system-ui,sans-serif; font-size:16px; font-weight:600}
-  .evo-barras .b-cur{fill:var(--evo-suave)} .evo-barras .b-ref{fill:var(--evo-bom)} .evo-barras .b-neg{fill:var(--evo-ruim-s)} .evo-barras .b-neg.b-ref{fill:var(--evo-ruim)}
-  .evo-barras .l-ant{fill:none; stroke:var(--tenue); stroke-width:1.4; stroke-dasharray:3 3}
-  .evo-barras .p-ant{fill:var(--branco); stroke:var(--tenue); stroke-width:1.4}
-  .evo-barras text{font-size:9.5px; fill:var(--fraco); font-family:inherit}
-  .evo-barras text.ref{fill:var(--tinta); font-weight:700} .evo-barras text.dentro{fill:var(--verde-escuro)} .evo-barras text.dentro-ref{fill:#fff}
-  .evo-barras .eixo{stroke:var(--evo-c200)} .evo-barras .zero{stroke:var(--evo-c300)}
-  .evo-hist .b-a{fill:var(--evo-suave)} .evo-hist .b-b{fill:var(--evo-bom)} .evo-hist .b-neg{fill:var(--evo-ruim-s)} .evo-hist .b-neg.b-b{fill:var(--evo-ruim)}
-  .evo-hist .b-sis{fill:#C9D3CC}
-  .evo-hist text{font-size:11px; fill:var(--fraco); font-family:inherit} .evo-hist text.evo-v{fill:var(--tinta); font-weight:600; font-size:12px}
-  .evo-hist .colchete{fill:none; stroke:var(--tenue); stroke-width:1} .evo-hist text.dif{font-weight:700; font-size:12px}
-  .evo-hist text.dif.bom{fill:var(--evo-bom)} .evo-hist text.dif.ruim{fill:var(--evo-ruim)} .evo-hist text.dif.est{fill:var(--evo-est)}
-  .evo-hist .eixo{stroke:var(--evo-c200)}
-  .evo-dleg{display:flex; gap:12px; font-size:11px; color:var(--fraco); margin-top:4px; flex-wrap:wrap}
-  .evo-dleg i{display:inline-block; width:12px; height:8px; background:var(--evo-bom); vertical-align:middle; margin-right:4px; border-radius:2px}
-  .evo-dleg i.claro{background:var(--evo-suave)} .evo-dleg i.linha-ant{height:0; border-top:2px dashed var(--tenue); background:none; width:16px}
-  .evo-dleg i.med{height:0; border-top:2px solid #77857A; background:none; width:16px} .evo-dleg i.evo-faixa-l{background:rgba(63,161,16,.14)}
-  .evo-dleg i.esc{height:0; border-top:2.5px solid var(--evo-bom); background:none; width:16px} .evo-dleg i.nesc{height:0; border-top:2.5px solid #A9B4AB; background:none; width:16px}
-  .evo-lin2 .l-med{fill:none; stroke:#77857A; stroke-width:1.8} .evo-lin2 .evo-faixa{fill:rgba(63,161,16,.12)}
-  .evo-lin2 .l-esc{fill:none; stroke:var(--evo-bom); stroke-width:2.2} .evo-lin2 .l-nesc{fill:none; stroke:#A9B4AB; stroke-width:2.2}
-  .evo-lin2 text{font-size:9.5px; fill:var(--fraco); font-family:inherit} .evo-lin2 .eixo{stroke:var(--evo-c200)}
-  .evo-lin2 .p-fim{stroke:#fff; stroke-width:1.5}
-  /* Comparar Centrais */
-  .evo-twrap{background:var(--branco); border:1px solid var(--linha); border-radius:12px; overflow-x:auto; max-width:100%}
-  table.evo-mat{border-collapse:separate; border-spacing:0; min-width:720px; width:100%}
-  .evo-mat th,.evo-mat td{padding:8px 10px; text-align:left; vertical-align:top; border-bottom:1px solid var(--evo-c100)}
-  .evo-mat thead th{position:sticky; top:0; background:var(--evo-c100); font-size:11.5px; color:var(--texto); text-transform:uppercase; letter-spacing:.04em; z-index:2; border-bottom:1px solid var(--evo-c200)}
-  .evo-mat thead th.th-ind{z-index:3; background:var(--evo-c100)}
-  .evo-mat th.th-ind{position:sticky; left:0; background:var(--branco); z-index:1; min-width:170px; max-width:220px; box-shadow:1px 0 0 var(--evo-c200); font-weight:600; overflow-wrap:anywhere; font-size:13px}
-  .evo-mat tr.tr-tema th{background:var(--branco); color:var(--fraco); font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-    padding:12px 10px 4px; border-bottom:1px solid #DCE6DF; position:sticky; left:0}
-  .evo-mat td.cel{min-width:105px}
-  .evo-mat .cv{font-family:"Exo 2",system-ui,sans-serif; font-size:16px; font-weight:600; white-space:nowrap} .evo-mat .cv.neg{color:var(--evo-ruim)}
-  .evo-mat .cvar{font-size:11px; margin-top:1px; white-space:nowrap}
-  .evo-mat td.cel-sis{background:#FAFCFA; border-right:1px solid var(--evo-c200)}
-  .evo-escala{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--fraco); margin:8px 2px 0; flex-wrap:wrap}
-  .evo-escala-b{width:120px; height:10px; border-radius:5px; background:linear-gradient(90deg,rgba(176,69,43,.24),rgba(176,69,43,0) 50%,rgba(20,110,55,.26))}
-  @media(max-width:600px){ .evo-mat th.th-ind{min-width:140px; max-width:160px} }
+  /* Panorama: frase, legenda e fileira de temas */
+  .evo-frase{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline; justify-content:space-between; margin:0 0 12px}
+  .evo-frase p{margin:0; flex:1 1 420px; font-size:13.4px; color:var(--texto); line-height:1.5}
+  .evo-frase p b{font-family:"Exo 2",system-ui,sans-serif; color:var(--tinta); font-weight:600}
+  .evo-leg{display:inline-flex; gap:12px; align-items:center; font-size:11.5px; color:var(--tenue); flex-wrap:wrap}
+  .evo-leg span{display:inline-flex; align-items:center; gap:5px} .evo-leg i{width:9px; height:9px; border-radius:50%; display:inline-block}
+  .evo-temas{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; align-items:stretch; margin-bottom:22px}
+  @media(max-width:1199px){ .evo-temas{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media(max-width:640px){ .evo-temas{grid-template-columns:1fr} }
+  .evo-tc{text-align:left; background:var(--branco); border:1.5px solid var(--linha); border-radius:14px; padding:12px 12px 8px; min-width:0; cursor:pointer;
+    display:flex; flex-direction:column; font:inherit; color:var(--tinta); transition:border-color .15s}
+  .evo-tc:hover{border-color:var(--verde-claro)}
+  .evo-tc.on{border-color:var(--verde); box-shadow:0 0 0 3px rgba(63,161,16,.12)}
+  .evo-tc h2{font-family:"Exo 2",system-ui,sans-serif; font-size:14px; font-weight:600; line-height:1.25; margin:0 0 4px; display:flex; gap:6px; align-items:baseline}
+  .evo-tc h2 .tn{font-size:11px; color:var(--tenue); font-weight:700}
+  .evo-slot{border-top:1px solid var(--evo-c100); padding:8px 0 6px; min-height:76px; display:flex; flex-direction:column; gap:5px; min-width:0}
+  .evo-slot:first-of-type{border-top:0}
+  .evo-slot .s-nome{font-size:11.5px; line-height:1.25; color:var(--texto); overflow-wrap:anywhere; min-height:2.5em}
+  .evo-slot .s-lin{display:flex; flex-wrap:wrap; gap:4px 10px; align-items:flex-start; min-width:0}
+  .evo-slot .s-val{display:flex; gap:6px; align-items:center; flex:none}
+  .evo-slot .s-val .v{font-family:"Exo 2",system-ui,sans-serif; font-size:18px; font-weight:700; letter-spacing:-.01em; line-height:1.1; white-space:nowrap; color:var(--tinta)}
+  .evo-slot .s-val .v small{font-size:10px; font-weight:500; color:var(--fraco); margin-right:2px} .evo-slot .s-val .v small.suf{margin:0 0 0 2px}
+  .evo-slot .s-val .v.neg{color:var(--s-ruim-txt)}
+  .evo-slot .s-mes{font-size:10.5px; color:var(--tenue); line-height:1.2; margin-left:18px; margin-top:-2px}
+  .evo-slot .s-vars{display:flex; flex-direction:column; gap:2px; margin-left:auto; align-items:flex-end; flex:none}
+  .evo-slot .s-var{font-family:"Exo 2",system-ui,sans-serif; font-size:12px; font-weight:700; white-space:nowrap; line-height:1.25}
+  .evo-slot .s-var small{font-family:"Nunito",system-ui,sans-serif; font-weight:400; color:var(--tenue); margin-left:4px; font-size:10.5px}
+  .evo-bola{width:12px; height:12px; border-radius:50%; flex:none; display:inline-block}
+  .evo-bola.b-bom{background:var(--s-bom)} .evo-bola.b-ruim{background:var(--s-ruim)} .evo-bola.b-est{background:var(--s-est)} .evo-bola.b-na{background:var(--s-na)}
+  .evo-fant{border:1px dashed #CBD4CC; border-radius:8px; background:rgba(255,255,255,.4); min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:3px; padding:8px; color:var(--tenue); font-size:11.5px; text-align:center}
+  .evo-fant b{font-weight:500; font-style:italic; color:var(--tenue); font-size:12px}
+  .evo-fant.vazio{border-color:var(--evo-c100); background:transparent}
+  /* Histórico (Panorama e Analítico) */
+  .evo-hist{grid-column:1 / -1; background:var(--branco); border:1.5px solid var(--verde); border-radius:14px; padding:14px 18px 14px; min-width:0}
+  .evo-hist-cab{display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px}
+  .evo-hist-cab h3{font-family:"Exo 2",system-ui,sans-serif; font-size:15px; font-weight:600; line-height:1.25; margin:0}
+  .evo-hist-cab h3 span{color:var(--fraco); font-weight:400}
+  .evo-hist-cab .sub{font-size:12px; color:var(--tenue); margin-top:2px}
+  .evo-fechar{border:0; background:var(--evo-c100); border-radius:50%; width:26px; height:26px; cursor:pointer; color:var(--texto); font-size:15px; line-height:1; flex:none}
+  .evo-fechar:hover{background:var(--evo-c200)}
+  .evo-hist-corpo{display:flex; flex-wrap:wrap; gap:16px 28px; align-items:flex-start}
+  .evo-hist-tab{flex:0 1 460px; min-width:0; overflow-x:auto}
+  .evo-hist-graf{flex:1 1 440px; min-width:0; position:relative}
+  .evo-hist h4{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; margin:0 0 8px}
+  table.evo-tri{border-collapse:separate; border-spacing:0; width:100%; min-width:400px}
+  .evo-tri th{font-size:10.5px; color:var(--fraco); font-weight:600; text-align:center; padding:2px 4px 6px; white-space:nowrap}
+  .evo-tri th.th-nome{text-align:left}
+  .evo-tri td{padding:6px 4px; vertical-align:middle; border-top:1px solid var(--evo-c100)}
+  .evo-tri tr.lin-ind{cursor:pointer} .evo-tri tr.lin-ind:hover td{background:var(--fundo)}
+  .evo-tri tr.sel td{background:var(--verde-lav)}
+  .evo-tri tr.sel td:first-child{box-shadow:inset 2px 0 0 var(--verde); border-radius:6px 0 0 6px} .evo-tri tr.sel td:last-child{border-radius:0 6px 6px 0}
+  .evo-tri td.td-nome{font-size:12px; line-height:1.25; color:var(--tinta); max-width:150px; overflow-wrap:anywhere; padding-left:8px}
+  .evo-tri td.td-cel{text-align:center; white-space:nowrap}
+  .evo-tri .tv{display:block; font-family:"Exo 2",system-ui,sans-serif; font-size:14px; font-weight:700; line-height:1.15; color:var(--tinta)}
+  .evo-tri .tv small{font-size:9.5px; font-weight:500; color:var(--fraco)}
+  .evo-tri .td3{display:inline-flex; gap:3px; margin-top:3px}
+  .evo-tri .td3 i{width:7px; height:7px; border-radius:50%; background:var(--s-na); display:inline-block}
+  .evo-tri .td3 i.b-bom{background:var(--s-bom)} .evo-tri .td3 i.b-ruim{background:var(--s-ruim)} .evo-tri .td3 i.b-est{background:var(--s-est)}
+  .evo-tri .td3 i.b-vazia{background:transparent; border:1px solid #CBD4CC}
+  .evo-tri tr.constr td{color:var(--tenue); font-size:12px; font-style:italic} .evo-tri tr.constr td.td-nome{font-style:normal}
+  .evo-hist-graf svg{width:100%; height:auto; display:block}
+  .evo-gh .cur{fill:none; stroke:var(--verde-escuro); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+  .evo-gh .ant{fill:none; stroke:#9AA6A0; stroke-width:1.5; stroke-dasharray:5 4}
+  .evo-gh .sis{fill:none; stroke:#B9C4BB; stroke-width:1.4; stroke-dasharray:2 4}
+  .evo-gh .tri-l{stroke:var(--evo-c200); stroke-width:1} .evo-gh .eixo{stroke:#CBD4CC}
+  .evo-gh text{font-size:10.5px; fill:var(--fraco); font-family:inherit}
+  .evo-gh text.vc{fill:var(--verde-escuro); font-weight:700; font-size:11px} .evo-gh text.va{fill:#6B786F; font-size:10px} .evo-gh text.ref{fill:var(--tinta); font-weight:700}
+  .evo-gh .pt{fill:var(--verde-escuro)} .evo-gh .pt-ant{fill:#fff; stroke:#9AA6A0; stroke-width:1.2}
+  .evo-gh .guia{stroke:var(--verde-escuro); stroke-width:1; stroke-dasharray:3 3; display:none} .evo-gh .guia-pt{fill:var(--verde-escuro); stroke:#fff; stroke-width:1.5; display:none}
+  .evo-tip{position:absolute; pointer-events:none; background:var(--tinta); color:#fff; font-size:11.5px; line-height:1.35; padding:6px 9px; border-radius:7px; white-space:nowrap; display:none; z-index:5; box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .evo-tip b{font-weight:600}
+  .evo-hist-leg{display:flex; gap:14px; font-size:11px; color:var(--tenue); margin-top:4px; flex-wrap:wrap}
+  .evo-hist-leg i{display:inline-block; width:16px; height:0; border-top:2px solid var(--verde-escuro); vertical-align:middle; margin-right:5px}
+  .evo-hist-leg i.ant{border-top:2px dashed #9AA6A0} .evo-hist-leg i.sis{border-top:2px dotted #B9C4BB}
+  .evo-nota{font-size:11px; color:var(--tenue); margin:6px 0 0; line-height:1.45}
+  /* Analítico: tabela simples */
+  .evo-ana{background:var(--branco); border:1px solid var(--linha); border-radius:14px; overflow-x:auto}
+  table.evo-tab{border-collapse:separate; border-spacing:0; width:100%; min-width:560px}
+  .evo-tab th{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; text-align:right; padding:12px 12px 8px; border-bottom:1px solid var(--linha); white-space:nowrap}
+  .evo-tab th:first-child{text-align:left; padding-left:18px} .evo-tab th.c-mes{text-align:left}
+  .evo-tab td{padding:9px 12px; border-top:1px solid var(--evo-c100); text-align:right; vertical-align:middle; white-space:nowrap}
+  .evo-tab td:first-child{text-align:left; padding-left:18px; white-space:normal; overflow-wrap:anywhere; color:var(--tinta); font-weight:500; min-width:180px}
+  .evo-tab td.c-mes{text-align:left; font-size:11.5px; color:var(--tenue)}
+  .evo-tab td.c-val{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:15px; color:var(--tinta)} .evo-tab td.c-val.neg{color:var(--s-ruim-txt)}
+  .evo-tab td.c-var{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:12.5px}
+  .evo-tab tr.lin{cursor:pointer} .evo-tab tr.lin:hover td{background:var(--fundo)} .evo-tab tr.lin.on td{background:var(--verde-lav)}
+  .evo-tab tr.sep td{padding:16px 12px 4px 18px; border-top:0; text-align:left; font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; white-space:normal}
+  .evo-tab tr.sep td::after{content:""; display:block; height:1px; background:var(--evo-c200); margin-top:4px}
+  .evo-tab tr.exp td{padding:12px; border-top:0; text-align:left; white-space:normal; background:var(--fundo)}
+  .evo-tab tr.exp .evo-hist{border-width:1px; border-color:var(--verde-claro)}
+  /* Comparar Centrais: matriz enxuta */
+  .evo-mat-wrap{background:var(--branco); border:1px solid var(--linha); border-radius:14px; overflow-x:auto}
+  table.evo-mat{border-collapse:separate; border-spacing:0; width:100%; min-width:640px}
+  .evo-mat th{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; text-align:right; padding:12px 12px 8px; border-bottom:1px solid var(--linha); white-space:nowrap}
+  .evo-mat th.th-ind{text-align:left; padding-left:18px; position:sticky; left:0; background:var(--branco); z-index:1}
+  .evo-mat td{padding:9px 12px; border-top:1px solid var(--evo-c100); text-align:right; vertical-align:top; white-space:nowrap}
+  .evo-mat td.td-ind{text-align:left; padding-left:18px; white-space:normal; overflow-wrap:anywhere; color:var(--tinta); font-weight:500; min-width:170px; position:sticky; left:0; background:var(--branco); box-shadow:1px 0 0 var(--evo-c200)}
+  .evo-mat td.td-sis{border-right:1px solid var(--evo-c200)}
+  .evo-mat .cv{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:15px; color:var(--tinta); display:block} .evo-mat .cv.neg{color:var(--s-ruim-txt)}
+  .evo-mat .cvar{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:11px; display:block; margin-top:1px}
+  .evo-mat .cvar small{font-family:"Nunito",system-ui,sans-serif; font-weight:400; color:var(--tenue); margin-left:3px}
+  .evo-mat tr.sep td{padding:16px 12px 4px 18px; border-top:0; text-align:left; font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; white-space:normal; position:static}
+  .evo-mat tr.sep td::after{content:""; display:block; height:1px; background:var(--evo-c200); margin-top:4px}
+  .evo-refdif{font-size:10.5px; color:#8A6116; white-space:nowrap}
   `;
   const st=document.createElement("style"); st.id="evo-css"; st.textContent=css; document.head.appendChild(st);
 }
 const EVO = {
-  aba:"pan", rec:null, coop:"todas", ano:null, mes:"ultimo", comp:"aa", setas:"mes", chart:"13m", mini:false, det:null, rolar:false,
-  p25:null, p25Carregando:false, p25Erro:null,          
+  aba:"pan", rec:null, coop:"todas", ano:null, mes:"ultimo",
+  tema:null, indSel:null,                                
+  aberto:null,                                           
+  rolar:false,
+  p25:null, p25Carregando:false, p25Erro:null,           
   cmp:{}                                                 
 };
 const MESES_ABR=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const MESES_LONGO=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-const COMP_NOME={aa:"mesmo mês do ano anterior", dez:"dezembro do ano anterior", "3m":"3 meses antes"};
-const COMP_CURTO={aa:"em 12 meses", dez:"no ano", "3m":"no trimestre"};
-const COMP_COL={aa:"vs ano anterior", dez:"vs dezembro anterior", "3m":"vs 3 meses antes"};
 const COOP_ROT={todas:"todas as cooperativas", escolheram:"mediana das cooperativas que escolheram o indicador", nao_escolheram:"mediana das cooperativas que não escolheram o indicador"};
 const evoEhNum = x => typeof x==="number" && isFinite(x);
+let HIST_G=null;                                         
 function evoYm(y,m){ return y+"-"+String(m).padStart(2,"0"); }
 function evoParse(s){ const [y,m]=String(s).split("-").map(Number); return {y,m}; }
 function evoAdd(s,n){ let {y,m}=evoParse(s); m+=n; while(m>12){ m-=12; y++; } while(m<1){ m+=12; y--; } return evoYm(y,m); }
@@ -8555,6 +8531,10 @@ function evoRot(s){ return s ? rotuloMes(s) : "—"; }
 function evoRotMes(s){ return MESES_ABR[evoParse(s).m-1]; }
 function evoFmt(m,v){ if(!evoEhNum(v)) return "—"; return fmt(v,m).replace(/^(\D*?)-/, "$1−"); }   
 function evoNum(m,v){ return Number(v).toLocaleString("pt-BR",{minimumFractionDigits:m.casas||0, maximumFractionDigits:m.casas||0}).replace(/^-/,"−"); }
+function evoValorCompacto(m,v){
+  const suf=(m.un||"").trim();
+  return (m.prefixo?`<small>${esc(m.prefixo.trim())}</small>`:"")+esc(evoNum(m,v))+(suf&&suf!=="%"?`<small class="suf">${esc(suf)}</small>`:esc(m.un||""));
+}
 function evoSinalTxt(v,casas){
   const c=casas!=null?casas:1, r=Number(v.toFixed(c));
   const s=Math.abs(v).toLocaleString("pt-BR",{minimumFractionDigits:c, maximumFractionDigits:c});
@@ -8563,6 +8543,7 @@ function evoSinalTxt(v,casas){
 function evoDifAbs(m,delta){ return (m.prefixo||"")+evoSinalTxt(delta, m.casas!=null?m.casas:1)+(m.un||""); }
 function evoMelhorou(m,delta){ return m.menorMelhor ? delta<0 : delta>0; }
 function evoClasse(m,delta){ const lim=0.5*Math.pow(10,-(m.varCasas!=null?m.varCasas:1)); if(Math.abs(delta)<lim) return "est"; return evoMelhorou(m,delta)?"bom":"ruim"; }
+function evoNomeCls(c){ return c==="bom"?"melhorou":c==="ruim"?"piorou":c==="est"?"estável":"sem leitura"; }
 function evoAcumuladoAno(m){ return m.chave==="investimento_social" || /zera em janeiro/i.test(m.janelaRot||""); }
 function evoTrimestral(m){ const f=fichaDe(m); return !!(f && /trimestral/i.test(f.frequencia||"")); }
 function evoSoma(m){ return m.varTipo==="relativa"; }      
@@ -8576,7 +8557,7 @@ function evoTextoVar(m,v,b){
   return {texto:deltaTexto(m, delta), na:false};
 }
 function evoMetricas(){ const o=[]; TEMAS.forEach(t=>(t.metricas||[]).forEach(m=>{ if(m.chave) o.push(m); })); return o; }
-function evoTemas(){ return TEMAS.map(t=>({id:t.id, nome:t.nome, inds:(t.metricas||[]).filter(m=>m.chave)})); }
+function evoTemas(){ return TEMAS.map(t=>({id:t.id, nome:t.nome, curto:(typeof TEMA_MAPA!=="undefined"&&TEMA_MAPA[t.id])||t.nome, inds:(t.metricas||[]).filter(m=>m.chave)})); }
 function evoNomeCurtoEnt(cod){
   if(cod==="SIS") return "Sistema";
   const e=DR.entPorId.get(cod); const n=e?e.nome:String(cod);
@@ -8590,6 +8571,7 @@ function evoRecortes(){
 }
 function evoPodeVer(){ return ENTIDADE.tipo!=="cooperativa" || !!ENTIDADE.teste || (typeof ehAdministrador==="function" && ehAdministrador()); }
 function evoVisivel(){ return estado.vista==="modulo" && estado.modulo==="evosis"; }
+function evoTemPainel(m){ return !!(m.chave && DR.painel && DR.painel.indicadores && DR.painel.indicadores[m.chave]); }
 function evoSerieObj(painel, chave, cod){
   const pi=painel&&painel.indicadores?painel.indicadores[chave]:null; const arr=pi&&pi.valores?pi.valores[cod]:null;
   if(!arr) return null;
@@ -8597,7 +8579,7 @@ function evoSerieObj(painel, chave, cod){
   (painel.meses||[]).forEach((am,i)=>{ const v=numOuNulo(arr[i]); if(v!==null){ o[am]=v; n++; } });
   return n?o:null;
 }
-function evoStatsCoops(painel, chave, cod){
+function evoMedianaCoops(painel, chave, cod){
   const pi=painel&&painel.indicadores?painel.indicadores[chave]:null; if(!pi) return null;
   const meses=painel.meses||[]; const porMes=meses.map(()=>[]);
   Object.entries(pi.valores||{}).forEach(([id,arr])=>{
@@ -8606,8 +8588,7 @@ function evoStatsCoops(painel, chave, cod){
     meses.forEach((am,i)=>{ const v=numOuNulo(arr[i]); if(v!==null) porMes[i].push(v); });
   });
   const out={}; let algum=false;
-  meses.forEach((am,i)=>{ const vs=porMes[i].sort((a,b)=>a-b); if(vs.length<3) return; algum=true;
-    out[am]={n:vs.length, med:quantil(vs,.5), p25:vs.length>=5?quantil(vs,.25):null, p75:vs.length>=5?quantil(vs,.75):null}; });
+  meses.forEach((am,i)=>{ const vs=porMes[i].sort((a,b)=>a-b); if(vs.length<3) return; algum=true; out[am]=quantil(vs,.5); });
   return algum?out:null;
 }
 function evoCmp(rec){ return EVO.cmp[rec] || (EVO.cmp[rec]={carregando:null, erro:null, por:{}}); }
@@ -8634,9 +8615,9 @@ function evoCarregarPainel25(){
   EVO.p25Carregando=true; EVO.p25Erro=null;
   rpc("painel_sistemico",{p_meses:25})
     .then(r=>{ EVO.p25=r; }, e=>{ EVO.p25Erro=e.message||String(e); console.warn("Painel de 25 meses não carregado", e); })
-    .finally(()=>{ EVO.p25Carregando=false; if(evoVisivel() && EVO.det) pinta(); });
+    .finally(()=>{ EVO.p25Carregando=false; if(evoVisivel() && (EVO.tema||EVO.aberto)) pinta(); });
 }
-function evoPainelDet(){ return EVO.p25 || DR.painel; }
+function evoPainelHist(){ return EVO.p25 || DR.painel; }
 function evoMesesTodos(){ return ((DR.painel&&DR.painel.meses)||[]).slice().sort(); }
 function evoAnos(){ return [...new Set(evoMesesTodos().map(am=>evoParse(am).y))].sort(); }
 function evoTeto(){ return EVO.mes==="ultimo" ? evoYm(EVO.ano,12) : EVO.mes; }
@@ -8647,14 +8628,14 @@ function evoRefGeral(cod){
   evoChavesPainel().forEach(ch=>{ const s=evoSerieObj(DR.painel, ch, cod||EVO.rec); if(!s) return; const r=evoRefDe(s); if(r && (!max || r>max)) max=r; });
   return max || evoMesesTodos().filter(am=>am<=evoTeto()).pop() || null;
 }
-function evoBaseDe(ref,comp){ if(comp==="aa") return evoAdd(ref,-12); if(comp==="dez") return evoYm(evoParse(ref).y-1,12); return evoAdd(ref,-3); }
 function evoVariacao(m,serie,ref,comp){
-  const bm=evoBaseDe(ref,comp), v=serie[ref], b=serie[bm], baseRot="vs "+evoRot(bm);
-  if(evoAcumuladoAno(m) && comp!=="aa" && evoParse(bm).y!==evoParse(ref).y)
-    return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Não se aplica: acumulado no ano (zera em janeiro), comparar "+evoRot(ref)+" com "+evoRot(bm)+" não faz sentido. Use \"Mesmo mês do ano anterior\"."};
-  if(!evoEhNum(b)) return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Sem "+COMP_NOME[comp]+" ("+evoRot(bm)+") na base para comparar."};
+  const bm=comp==="aa"?evoAdd(ref,-12):evoYm(evoParse(ref).y-1,12), v=serie[ref], b=serie[bm], baseRot="vs "+evoRot(bm);
+  const nome=comp==="aa"?"mesmo mês do ano anterior":"dezembro do ano anterior";
+  if(evoAcumuladoAno(m) && comp!=="aa")
+    return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Não se aplica: acumulado no ano (zera em janeiro), comparar "+evoRot(ref)+" com "+evoRot(bm)+" não faz sentido."};
+  if(!evoEhNum(b)) return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Sem "+nome+" ("+evoRot(bm)+") na base para comparar."};
   const delta=v-b, t=evoTextoVar(m,v,b), cls=t.na?"na":evoClasse(m,delta);
-  const titulo=evoRot(ref)+": "+evoFmt(m,v)+" · "+evoRot(bm)+": "+evoFmt(m,b)+" ("+COMP_NOME[comp]+", "+COMP_CURTO[comp]+")"+(t.na?" · "+t.motivo:"");
+  const titulo=evoRot(ref)+": "+evoFmt(m,v)+" · "+evoRot(bm)+": "+evoFmt(m,b)+" ("+nome+")"+(t.na?" · "+t.motivo:"");
   return {cls, texto:t.texto, base:baseRot, bm, b, titulo, delta};
 }
 function evoVsSistema(m, x, cod){
@@ -8667,26 +8648,10 @@ function evoVsSistema(m, x, cod){
   return {cls, texto:deltaTexto(m, delta), b, delta, titulo:quem+" "+evoFmt(m,x.v)+" · Sistema "+evoFmt(m,b)+" em "+evoRot(x.ref)+" (diferença no sentido do indicador)"};
 }
 function evoPasso(m,serie,am,p){
-  if(!am || !p || !evoEhNum(serie[am]) || !evoEhNum(serie[p])) return {cls:"vazia", m:am, p, titulo: am ? "Sem dado para "+evoRot(am)+(p?" vs "+evoRot(p):"") : "Sem dado"};
-  if(evoAcumuladoAno(m) && evoParse(am).y!==evoParse(p).y) return {cls:"vazia", m:am, p, titulo:evoRot(am)+" vs "+evoRot(p)+": acumulado no ano zera em janeiro, passo não comparável ("+evoFmt(m,serie[p])+" → "+evoFmt(m,serie[am])+")"};
+  if(!am || !p || !evoEhNum(serie[am]) || !evoEhNum(serie[p])) return {cls:"vazia", titulo: am ? "Sem dado para "+evoRot(am)+(p?" vs "+evoRot(p):"") : "Sem dado"};
+  if(evoAcumuladoAno(m) && evoParse(am).y!==evoParse(p).y) return {cls:"vazia", titulo:evoRot(am)+" vs "+evoRot(p)+": acumulado no ano zera em janeiro, passo não comparável"};
   const delta=serie[am]-serie[p], t=evoTextoVar(m,serie[am],serie[p]), txt=t.na?evoDifAbs(m,delta):t.texto;
-  return {cls:evoClasse(m,delta), m:am, p, delta, txt, titulo:evoRot(am)+" vs "+evoRot(p)+": "+txt+" ("+evoFmt(m,serie[p])+" → "+evoFmt(m,serie[am])+")"};
-}
-function evoSeq(m,serie,ref,modo){
-  let pts, nota="";
-  if(evoTrimestral(m)){ pts=Object.keys(serie).filter(am=>am<=ref).sort().slice(-4); while(pts.length<4) pts.unshift(null); nota="pesquisa trimestral"; }
-  else if(modo==="mes") pts=[-3,-2,-1,0].map(i=>evoAdd(ref,i));
-  else { let q=ref; while(evoParse(q).m%3!==0) q=evoAdd(q,-1); pts=[-9,-6,-3,0].map(i=>evoAdd(q,i)); nota="fechamentos de trimestre"; }
-  return {pts, nota};
-}
-function evoSetas(m,serie,ref,modo){ const {pts,nota}=evoSeq(m,serie,ref,modo);
-  return {setas:[1,2,3].map(i=>Object.assign(evoPasso(m,serie,pts[i],pts[i-1]),{rotulo:pts[i]?evoRotMes(pts[i]):"·"})), nota}; }
-function evoSinal(m,serie,ref){
-  let p;
-  if(evoTrimestral(m)){ const ms=Object.keys(serie).filter(am=>am<ref).sort(); p=ms.length?ms[ms.length-1]:null; } else p=evoAdd(ref,-1);
-  const s=evoPasso(m,serie,ref,p); s.rotulo=(p?evoRot(p):"—")+" → "+evoRot(ref);
-  if(evoTrimestral(m)) s.titulo+=" · pesquisa trimestral";
-  return s;
+  return {cls:evoClasse(m,delta), delta, txt, titulo:evoRot(am)+" vs "+evoRot(p)+": "+txt+" ("+evoFmt(m,serie[p])+" → "+evoFmt(m,serie[am])+")"};
 }
 function evoFonte(m, cod){
   if(EVO.coop==="todas") return {serie:evoSerieObj(DR.painel, m.chave, cod)};
@@ -8694,316 +8659,258 @@ function evoFonte(m, cod){
   if(!r) return {serie:null, titulo:c.carregando?"Calculando a mediana do grupo…":"Comparativo por escolha não disponível agora"};
   if(r.erro) return {serie:null, titulo:"Comparativo por escolha não disponível agora ("+r.erro+")"};
   const g=evoSerieGrupo(r, EVO.coop), tot=(r.grupos&&r.grupos.escolheram?Number(r.grupos.escolheram.cooperativas)||0:0)+(r.grupos&&r.grupos.nao_escolheram?Number(r.grupos.nao_escolheram.cooperativas)||0:0);
-  if(!tot) return {serie:null, titulo:"Ainda não há planos com este indicador", semPlano:true};
-  if(!g || !g.serie) return {serie:null, titulo:"Menos de 3 cooperativas com dado no grupo ("+(g?g.coops:0)+" no grupo): sem número, para ninguém ser identificado", coops:g?g.coops:0};
+  if(!tot) return {serie:null, titulo:"Ainda não há planos com este indicador"};
+  if(!g || !g.serie) return {serie:null, titulo:"Menos de 3 cooperativas com dado no grupo ("+(g?g.coops:0)+" no grupo): sem número, para ninguém ser identificado"};
   return {serie:g.serie, coops:g.coops, nUlt:g.nUlt};
 }
 function evoModelo(m, cod){
-  if(!m.chave || !(DR.painel&&DR.painel.indicadores&&DR.painel.indicadores[m.chave]))
-    return {semDado:true, titulo:SEM_DADOS+": "+motivoSemDado(m)};
+  if(!evoTemPainel(m)) return {semDado:true, construcao:true, titulo:SEM_DADOS+": "+motivoSemDado(m)};
   const f=evoFonte(m, cod);
   if(!f.serie){
-    if(f.titulo) return {semDado:true, titulo:f.titulo, semPlano:!!f.semPlano};
+    if(f.titulo) return {semDado:true, titulo:f.titulo};
     return {semDado:true, titulo:(m.chave==="sow_bbm" && cod!=="SIS") ? "Sem dado por Central: este indicador só existe para o Sistema." : "A base não tem leitura deste indicador para "+evoNomeEnt(cod)+"."};
   }
   const serie=f.serie, ref=evoRefDe(serie);
   if(!ref) return {semDado:true, titulo:"Sem dado até "+evoRot(evoTeto())+"."};
   if(evoTrimestral(m) && EVO.mes!=="ultimo" && ref!==EVO.mes)
-    return {semDado:true, titulo:"Pesquisa trimestral: sem leitura em "+evoRot(EVO.mes)+" · última em "+evoRot(ref)+" · próxima prevista em "+evoRot(evoAdd(ref,3)), ultimo:ref};
-  return {serie, ref, v:serie[ref], coops:f.coops, nUlt:f.nUlt,
-    varAA:evoVariacao(m,serie,ref,"aa"), variacao:evoVariacao(m,serie,ref,EVO.comp),
-    sinal:evoSinal(m,serie,ref), pontos:evoSetas(m,serie,ref,"mes"), setas:evoSetas(m,serie,ref,EVO.setas)};
+    return {semDado:true, titulo:"Pesquisa trimestral: sem leitura em "+evoRot(EVO.mes)+" · última em "+evoRot(ref)+" · próxima prevista em "+evoRot(evoAdd(ref,3))};
+  return {serie, ref, v:serie[ref], coops:f.coops, nUlt:f.nUlt, varAA:evoVariacao(m,serie,ref,"aa"), varDez:evoVariacao(m,serie,ref,"dez")};
 }
-const SETA_CIMA='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5 L13 8 L10.5 8 L10.5 13.5 L5.5 13.5 L5.5 8 L3 8 Z"/></svg>';
-const SETA_BAIXO='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5 L3 8 L5.5 8 L5.5 2.5 L10.5 2.5 L10.5 8 L13 8 Z"/></svg>';
-const SETA_LADO='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8 L8 13 L8 10.5 L2.5 10.5 L2.5 5.5 L8 5.5 L8 3 Z"/></svg>';
-const SETA_NADA='<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/></svg>';
-function evoSubiu(m,cls){ return m.menorMelhor ? cls==="ruim" : cls==="bom"; }
-function htmlTraco(titulo){ return `<span class="evo-traco" title="${esc(titulo||"")}" aria-label="${esc(titulo||"sem dado")}">–</span>`; }
-function htmlSinal(s,m,grande){
-  let g=SETA_NADA; if(s.cls==="est") g=SETA_LADO; else if(s.cls!=="vazia") g=evoSubiu(m,s.cls)?SETA_CIMA:SETA_BAIXO;
-  const nome=s.cls==="bom"?"melhorou":s.cls==="ruim"?"piorou":s.cls==="est"?"estável":"sem comparação";
-  return `<span class="evo-sinal s-${esc(s.cls)}${grande?" g":""}" role="img" aria-label="${esc(nome)}" title="${esc("Frente ao mês anterior ("+s.rotulo+"): "+nome+" · "+s.titulo)}">${g}</span>`;
-}
-function htmlPontos(sq){
-  const ps=sq.setas, c=ps.filter(p=>p.cls!=="vazia");
-  const b=c.filter(p=>p.cls==="bom").length, r=c.filter(p=>p.cls==="ruim").length, e=c.filter(p=>p.cls==="est").length;
-  const resumo=!c.length?"sem passos":[b?b+(b>1?" melhoras":" melhora"):"", r?r+(r>1?" pioras":" piora"):"", e?e+(e>1?" estáveis":" estável"):""].filter(Boolean).join(", ");
-  return `<span class="evo-pontos" role="img" aria-label="${esc("Últimos 3 passos: "+resumo)}" title="${esc("Últimos 3 passos ("+(sq.nota||"mês a mês")+"): "+resumo)}">${ps.map(p=>`<i class="evo-pt p-${esc(p.cls)}" title="${esc(p.titulo)}"></i>`).join("")}</span>`;
-}
-function htmlVar(vr, comBase){
-  if(vr.cls==="na") return htmlTraco(vr.titulo);
-  return `<span class="evo-var v-${esc(vr.cls)}" title="${esc(vr.titulo)}">${esc(vr.texto)}${comBase?`<span class="base">${esc(vr.base)}</span>`:""}</span>`;
+function evoTemasComModelo(cod){ return evoTemas().map(t=>Object.assign({}, t, {ms:t.inds.map(m=>({m, x:evoModelo(m,cod)}))})); }
+function evoSlots(t){ const s=t.ms.slice(0,3); while(s.length<3) s.push(null); return s; }
+function htmlTraco(titulo){ return `<span class="evo-traco" title="${esc(titulo||"")}" aria-label="${esc("Sem número: "+(titulo||""))}">–</span>`; }
+function htmlVarTxt(vr, comBase){
+  if(vr.cls==="na") return htmlTraco(vr.titulo)+(comBase?`<small>${esc(vr.base)}</small>`:"");
+  return `<span class="evo-t-${esc(vr.cls)}" title="${esc(vr.titulo)}">${esc(vr.texto)}</span>${comBase?`<small>${esc(vr.base)}</small>`:""}`;
 }
 function htmlRefDif(ref, geral){
   if(!ref || ref===geral) return "";
   const t=EVO.mes!=="ultimo" ? "Sem dado em "+evoRot(EVO.mes)+"; usando o último mês anterior com dado" : "Último mês com dado deste indicador";
   return `<span class="evo-refdif" title="${esc(t)}">dado de ${esc(evoRot(ref))}</span>`;
 }
-function htmlCoops(x){ return evoEhNum(x.nUlt)&&EVO.coop!=="todas" ? `<span class="evo-reftxt" title="mediana de ${x.nUlt} cooperativas com dado no mês de referência (${x.coops} no grupo)">${x.nUlt} coops</span>` : ""; }
-function evoCaminho(vals, X, Y){ let d="", aberto=false; vals.forEach((v,i)=>{ if(v==null) return; d+=(aberto?" L":" M")+X(i).toFixed(1)+" "+Y(v).toFixed(1); aberto=true; }); return d.trim(); }
-function svgSpark(m,x,modo,w,h){
-  const {serie,ref}=x, padX=3, padY=4, anoRef=evoParse(ref).y;
-  let sd, xs, tituloBase;
-  if(modo==="13m"){ const meses=[]; for(let i=-12;i<=0;i++) meses.push(evoAdd(ref,i));
-    sd=[{cls:"l1", vals:meses.map(am=>evoEhNum(serie[am])?serie[am]:null), meses}]; xs=13; tituloBase="Últimos 13 meses até "+evoRot(ref); }
-  else { const mc=[], ma=[]; for(let mm=1;mm<=12;mm++){ mc.push(evoYm(anoRef,mm)); ma.push(evoYm(anoRef-1,mm)); }
-    sd=[{cls:"l0", vals:ma.map(am=>evoEhNum(serie[am])?serie[am]:null), meses:ma},{cls:"l1", vals:mc.map(am=>(am<=ref&&evoEhNum(serie[am]))?serie[am]:null), meses:mc}];
-    xs=12; tituloBase=anoRef+" (cheia) × "+(anoRef-1)+" (tracejada), jan–dez"; }
-  const todos=sd.flatMap(s=>s.vals).filter(evoEhNum);
-  if(!todos.length) return `<svg class="evo-spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}"><title>Sem dado no período</title></svg>`;
-  let mn=Math.min(...todos), mx=Math.max(...todos); if(mx-mn<1e-9){ mn-=1; mx+=1; }
-  const X=i=>padX+i/(xs-1)*(w-2*padX), Y=v=>padY+(mx-v)/(mx-mn)*(h-2*padY);
-  let out="";
-  if(mn<0 && mx>0) out+=`<line class="zero" x1="${padX}" x2="${w-padX}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}"/>`;
-  const esparso=evoTrimestral(m);
-  for(const s of sd){ const d=evoCaminho(s.vals,X,Y); if(d) out+=`<path class="${s.cls}" d="${d}"/>`;
-    if(esparso && s.cls==="l1") s.vals.forEach((v,i)=>{ if(v!=null) out+=`<circle class="ponto-mini" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="1.6"/>`; }); }
-  const cur=sd[sd.length-1], iRef=cur.meses.indexOf(ref);
-  if(iRef>=0 && cur.vals[iRef]!=null) out+=`<circle class="ponto" cx="${X(iRef).toFixed(1)}" cy="${Y(cur.vals[iRef]).toFixed(1)}" r="2.4"/>`;
-  const titulo=tituloBase+" · mín "+evoFmt(m,mn)+" · máx "+evoFmt(m,mx)+" · "+evoRot(ref)+": "+evoFmt(m,serie[ref]);
-  return `<svg class="evo-spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(titulo)}"><title>${esc(titulo)}</title>${out}</svg>`;
-}
-function svgBarrasAno(m,serie,ref,w){
-  const ano=evoParse(ref).y, h=170, padL=6, padR=6, padT=18, padB=18;
-  const cur=[], ant=[];
-  for(let mm=1;mm<=12;mm++){ const k=evoYm(ano,mm); cur.push(k<=ref&&evoEhNum(serie[k])?serie[k]:null); const ka=evoYm(ano-1,mm); ant.push(evoEhNum(serie[ka])?serie[ka]:null); }
-  const todos=[...cur,...ant].filter(evoEhNum);
-  if(!todos.length) return `<p class="evo-nota">Sem dado em ${ano}.</p>`;
-  let mn=Math.min(0,...todos), mx=Math.max(0,...todos); if(mx-mn<1e-9) mx=mn+1;
-  const slot=(w-padL-padR)/12, bw=Math.min(26, slot*0.72);
-  const X=i=>padL+slot*i+slot/2, Y=v=>padT+(mx-v)/(mx-mn)*(h-padT-padB), y0=Y(0);
-  let out=`<line class="eixo" x1="${padL}" x2="${w-padR}" y1="${h-padB}" y2="${h-padB}"/>`;
-  if(mn<0) out+=`<line class="zero" x1="${padL}" x2="${w-padR}" y1="${y0.toFixed(1)}" y2="${y0.toFixed(1)}"/>`;
-  cur.forEach((v,i)=>{ const k=evoYm(ano,i+1), ehRef=k===ref;
-    if(v!=null){ const y1=Y(v), top=Math.min(y0,y1), alt=Math.max(1,Math.abs(y1-y0));
-      out+=`<rect class="b-cur${v<0?" b-neg":""}${ehRef?" b-ref":""}" x="${(X(i)-bw/2).toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${alt.toFixed(1)}"><title>${esc(evoRot(k)+": "+evoFmt(m,v)+(ant[i]!=null?" · "+evoRot(evoYm(ano-1,i+1))+": "+evoFmt(m,ant[i]):""))}</title></rect>`;
-      const dentro=alt>=16; let ly, cls=ehRef?"ref":"";
-      if(dentro){ ly=v<0?y1-4:y1+11; cls+=ehRef?" dentro-ref":" dentro"; } else ly=v<0?Math.min(h-padB-2,y1+11):y1-4;
-      out+=`<text x="${X(i).toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" class="${cls.trim()}">${esc(evoNum(m,v))}</text>`; }
-    out+=`<text x="${X(i).toFixed(1)}" y="${h-5}" text-anchor="middle"${ehRef?' class="ref"':""}>${MESES_ABR[i]}</text>`; });
-  const d=evoCaminho(ant,X,Y); if(d) out+=`<path class="l-ant" d="${d}"/>`;
-  ant.forEach((v,i)=>{ if(v!=null) out+=`<circle class="p-ant" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="2.2"><title>${esc(evoRot(evoYm(ano-1,i+1))+": "+evoFmt(m,v))}</title></circle>`; });
-  return `<svg class="evo-barras" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc("Evolução anual "+ano+" em barras, com "+(ano-1)+" em linha")}">${out}</svg>`;
-}
-function svgDuasBarras(m, a, b, w, opts){
-  const h=150, padT=34, padB=20, bw=Math.min(64,w*0.22), cx1=w*0.32, cx2=w*0.68;
-  const mn=Math.min(0,a.v,b.v), mx=Math.max(0,a.v,b.v,mn+1e-9);
-  const Y=q=>padT+(mx-q)/(mx-mn)*(h-padT-padB), y0=Y(0);
-  const barra=(cx,val,c)=>{ const y1=Y(val); return `<rect class="${c}${val<0?" b-neg":""}" x="${(cx-bw/2).toFixed(1)}" y="${Math.min(y0,y1).toFixed(1)}" width="${bw}" height="${Math.max(1,Math.abs(y1-y0)).toFixed(1)}"/><text class="evo-v" x="${cx.toFixed(1)}" y="${(val<0?Math.min(h-padB-2,y1+13):y1-5).toFixed(1)}" text-anchor="middle">${esc(evoFmt(m,val))}</text>`; };
-  const topo=Math.min(Y(Math.max(a.v,b.v,0)),y0)-20;
-  let out=`<line class="eixo" x1="${(w*0.1).toFixed(1)}" x2="${(w*0.9).toFixed(1)}" y1="${h-padB}" y2="${h-padB}"/>`+barra(cx1,a.v,a.cls||"b-a")+barra(cx2,b.v,b.cls||"b-b");
-  out+=`<path class="colchete" d="M${cx1.toFixed(1)} ${(topo+6).toFixed(1)} V${topo.toFixed(1)} H${cx2.toFixed(1)} V${(topo+6).toFixed(1)}"/>`;
-  out+=`<text class="dif ${esc(opts.cls)}" x="${((cx1+cx2)/2).toFixed(1)}" y="${(topo-4).toFixed(1)}" text-anchor="middle">${esc(opts.dif)}</text>`;
-  out+=`<text x="${cx1.toFixed(1)}" y="${h-5}" text-anchor="middle">${esc(a.rot)}</text><text x="${cx2.toFixed(1)}" y="${h-5}" text-anchor="middle">${esc(b.rot)}</text>`;
-  return `<svg class="evo-hist" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(a.rot+": "+evoFmt(m,a.v)+" · "+b.rot+": "+evoFmt(m,b.v)+" · "+opts.dif)}"><title>${esc(opts.titulo||"")}</title>${out}</svg>`;
-}
-function svgHistorico(m,x,w){
-  const {serie,ref}=x, bm=evoAdd(ref,-12), b=serie[bm], v=serie[ref];
-  if(!evoEhNum(b)) return `<p class="evo-nota">Sem ${esc(evoRot(bm))} na base para comparar com ${esc(evoRot(ref))}.</p>`;
-  const vr=x.varAA, cls=evoEhNum(vr.delta)?evoClasse(m,vr.delta):"est", dif=vr.texto==="–"?evoDifAbs(m,v-b):vr.texto;
-  return svgDuasBarras(m, {v:b, rot:evoRot(bm)}, {v, rot:evoRot(ref)}, w, {dif, cls, titulo:vr.titulo});
-}
-function svgLinhas(m, ref, series, w, opts){
-  const h=120, padL=6, padR=6, padT=10, padB=16, meses=[]; for(let i=-12;i<=0;i++) meses.push(evoAdd(ref,i));
-  const vals=s=>meses.map(am=>evoEhNum(s[am])?s[am]:null);
-  const todos=series.flatMap(s=>vals(s.serie)).concat(opts&&opts.faixa?meses.flatMap(am=>[opts.faixa.p25[am],opts.faixa.p75[am]]).filter(evoEhNum):[]).filter(evoEhNum);
-  if(!todos.length) return `<p class="evo-nota">Sem dado no período.</p>`;
-  let mn=Math.min(...todos), mx=Math.max(...todos); const folga=((mx-mn)||1)*0.12; mn-=folga; mx+=folga;
-  const X=i=>padL+i/12*(w-padL-padR), Y=v=>padT+(mx-v)/(mx-mn)*(h-padT-padB);
-  let out=`<line class="eixo" x1="${padL}" x2="${w-padR}" y1="${h-padB}" y2="${h-padB}"/>`;
-  if(opts&&opts.faixa){ const a=meses.map((am,i)=>evoEhNum(opts.faixa.p75[am])&&evoEhNum(opts.faixa.p25[am])?i:-1).filter(i=>i>=0);
-    if(a.length>=2){ const d=a.map((i,k)=>(k?"L":"M")+X(i).toFixed(1)+" "+Y(opts.faixa.p75[meses[i]]).toFixed(1)).join(" ")+" "+a.slice().reverse().map(i=>"L"+X(i).toFixed(1)+" "+Y(opts.faixa.p25[meses[i]]).toFixed(1)).join(" ")+" Z";
-      out+=`<path class="evo-faixa" d="${d}"/>`; } }
-  series.forEach(s=>{ const v=vals(s.serie), d=evoCaminho(v,X,Y);
-    if(d) out+=`<path class="${s.cls}" d="${d}"><title>${esc(s.nome)}</title></path>`;
-    const iU=v.map((q,i)=>q!=null?i:-1).filter(i=>i>=0).pop(); if(iU!=null) out+=`<circle class="p-fim" cx="${X(iU).toFixed(1)}" cy="${Y(v[iU]).toFixed(1)}" r="3" fill="${s.cor}"><title>${esc(s.nome+" · "+evoRot(meses[iU])+": "+evoFmt(m,v[iU]))}</title></circle>`; });
-  [0,6,12].forEach(i=>{ out+=`<text x="${X(i).toFixed(1)}" y="${h-4}" text-anchor="${i===0?"start":i===12?"end":"middle"}">${esc(evoRot(meses[i]))}</text>`; });
-  return `<svg class="evo-lin2" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(opts&&opts.rotulo||"Séries")}">${out}</svg>`;
-}
-function htmlExpandido(m, cod, x){
-  let h=`<div class="evo-exp" id="evo-exp-${esc(m.chave)}" role="region" aria-label="${esc("Detalhe de "+(m.curto||m.nome))}">`;
-  if(x.semDado){ h+=`<p class="evo-nota">${esc(x.titulo)}</p><p class="evo-def"><b>Como é medido:</b> ${esc(m.janelaRot||"—")}.</p></div>`; return h; }
-  const pd=evoPainelDet(); let serieDet=x.serie;
-  if(EVO.coop==="todas" && pd!==DR.painel){ const s25=evoSerieObj(pd,m.chave,cod); if(s25) serieDet=Object.assign({},s25,x.serie); }
-  const xDet=Object.assign({},x,{serie:serieDet, varAA:evoVariacao(m,serieDet,x.ref,"aa")});
-  const s=x.sinal, ano=evoParse(x.ref).y, vs=evoVsSistema(m,x,cod);
-  h+=`<div class="evo-exp-grid">`;
-  h+=`<div class="evo-exp-ref"><h4>Mês de referência</h4><div class="valor evo-num${x.v<0?" neg":""}">${esc(evoFmt(m,x.v))}</div><div class="mes">${esc(evoRot(x.ref))}${EVO.coop!=="todas"?` · ${esc(COOP_ROT[EVO.coop])}${htmlCoops(x)?" ("+htmlCoops(x)+")":""}`:` · ${esc(evoNomeCurtoEnt(cod))}`}</div>
-    <div class="evo-passo">${htmlSinal(s,m,false)}<span>${esc(s.rotulo)}${s.cls==="vazia"?" · sem comparação":`: <b>${esc(evoFmt(m,x.serie[s.p]))} → ${esc(evoFmt(m,x.v))}</b> (${esc(s.txt)})`}<br>${evoTrimestral(m)?"pesquisa anterior":"mês anterior"}</span></div></div>`;
-  h+=`<div class="evo-exp-hist"><h4>Mesmo mês do ano anterior × agora</h4>${svgHistorico(m,xDet,260)}</div>`;
-  if(vs){ h+=`<div class="evo-exp-sis"><h4>vs Sistema · ${esc(evoRot(x.ref))}</h4>`;
-    if(vs.cls==="na") h+=`<p class="evo-nota">${esc(vs.titulo)}</p>`;
-    else h+=svgDuasBarras(m, {v:vs.b, rot:"Sistema", cls:"b-sis"}, {v:x.v, rot:EVO.coop==="todas"?evoNomeCurtoEnt(cod):"mediana do grupo"}, 260, {dif:vs.texto, cls:vs.cls, titulo:vs.titulo});
-    h+=`</div>`; }
-  h+=`<div class="evo-exp-anual"><h4>Evolução anual ${ano}</h4>${EVO.p25Carregando&&!EVO.p25?`<p class="evo-nota">Carregando os 25 meses…</p>`:""}${svgBarrasAno(m,serieDet,x.ref,520)}
-    <div class="evo-dleg"><span><i></i>${esc(evoRot(x.ref))} (referência)</span><span><i class="claro"></i>${ano}</span><span><i class="linha-ant"></i>${ano-1}</span></div>`;
-  if(evoAcumuladoAno(m)) h+=`<p class="evo-nota">Acumulado no ano: as barras crescem ao longo do ano e zeram em janeiro.</p>`;
-  if(evoTrimestral(m)) h+=`<p class="evo-nota">Pesquisa trimestral: barras só nos meses com pesquisa.</p>`;
-  if(EVO.p25Erro && !EVO.p25) h+=`<p class="evo-nota">Não consegui carregar os 25 meses (${esc(EVO.p25Erro)}): mostrando os 13 meses do painel.</p>`;
-  h+=`</div>`;
-  const st=evoStatsCoops(pd, m.chave, cod);
-  h+=`<div class="evo-exp-coops"><h4>Cooperativas ${cod==="SIS"?"do Sistema":"da Central"}: mediana e faixa</h4>`;
-  if(!st) h+=`<p class="evo-nota">Sem cooperativas suficientes com dado neste indicador (mínimo de 3 por mês).</p>`;
-  else {
-    const amU=Object.keys(st).filter(am=>am<=x.ref).sort().pop(), u=amU?st[amU]:null;
-    const med={}, p25={}, p75={}; Object.entries(st).forEach(([am,q])=>{ med[am]=q.med; p25[am]=q.p25; p75[am]=q.p75; });
-    h+=svgLinhas(m, x.ref, [{serie:med, cls:"l-med", cor:"#77857A", nome:"Mediana das cooperativas"}], 300, {faixa:{p25,p75}, rotulo:"Mediana e faixa p25–p75 das cooperativas, 13 meses"});
-    h+=`<div class="evo-dleg"><span><i class="med"></i>mediana</span><span><i class="evo-faixa-l"></i>p25–p75</span></div>`;
-    if(u) h+=`<div class="evo-kv"><span>Mediana · ${esc(evoRot(amU))}<b>${esc(evoFmt(m,u.med))}</b></span><span>p25<b>${esc(evoFmt(m,u.p25))}</b></span><span>p75<b>${esc(evoFmt(m,u.p75))}</b></span><span>coops com dado<b>${u.n}</b></span></div>`;
+function htmlCoops(x){ return evoEhNum(x.nUlt)&&EVO.coop!=="todas" ? ` <span class="evo-refdif" style="color:var(--tenue)" title="mediana de ${x.nUlt} cooperativas com dado no mês de referência (${x.coops} no grupo)">${x.nUlt} coops</span>` : ""; }
+function evoFraseResumo(ts, cod, geral){
+  const xs=ts.flatMap(t=>t.ms.filter(y=>!y.x.construcao)); const n=xs.length;
+  const c={bom:0, ruim:0, est:0, sem:0}, cDez={bom:0, ruim:0};
+  for(const y of xs){
+    if(y.x.semDado || y.x.varAA.cls==="na") c.sem++; else c[y.x.varAA.cls]++;
+    if(!y.x.semDado && cDez[y.x.varDez.cls]!=null) cDez[y.x.varDez.cls]++;
   }
-  h+=`</div>`;
-  h+=`<div class="evo-exp-esc"><h4>Quem escolheu × quem não escolheu</h4>${htmlEscolhaDet(m, cod, x.ref, 300)}</div>`;
-  h+=`</div><p class="evo-def"><b>Como é medido:</b> ${esc(m.janelaRot||"—")}${m.menorMelhor?" · quanto menor, melhor":""}.${EVO.coop==="todas"?` O número é o consolidado ${cod==="SIS"?"do Sistema":"da Central"}; a mediana é a cooperativa típica do recorte.`:""}</p></div>`;
-  return h;
+  const onde = cod==="SIS" ? "No Sistema" : "Na Central "+evoNomeCurtoEnt(cod);
+  const partes=[c.bom+" dos "+n+" indicadores "+(c.bom===1?"está melhor":"estão melhores")+" que há um ano"];
+  if(c.ruim) partes.push(c.ruim+(c.ruim===1?" pior":" piores"));
+  if(c.est) partes.push(c.est+(c.est===1?" estável":" estáveis"));
+  if(c.sem) partes.push(c.sem+" sem comparação");
+  const dez="dez/"+String(evoParse(geral).y-1).slice(2);
+  const meio = partes.length>1 ? ", "+partes.slice(1,-1).join(", ")+(partes.length>2?" e ":"")+partes[partes.length-1] : "";
+  return `<b>${esc(onde)}, em ${esc(evoRot(geral))}:</b> ${esc(partes[0]+meio)}; no ano (vs ${esc(dez)}), ${cDez.bom}${cDez.bom===1?" melhorou":" melhoraram"}${cDez.ruim?" e "+cDez.ruim+(cDez.ruim===1?" piorou":" pioraram"):""}.`;
 }
-function htmlEscolhaDet(m, cod, ref, w){
-  const c=evoCmp(cod), r=c.por[m.chave];
-  if(!r){ evoCarregarComparativo(cod,[m.chave]); return `<p class="evo-nota">Carregando o comparativo por escolha…</p>`; }
-  if(r.erro) return `<p class="evo-nota">Comparativo por escolha não disponível agora (${esc(r.erro)}).</p>`;
-  const ge=evoSerieGrupo(r,"escolheram"), gn=evoSerieGrupo(r,"nao_escolheram"), gs=evoSerieGrupo(r,"sem_plano");
-  const tot=(ge?ge.coops:0)+(gn?gn.coops:0);
-  if(!tot) return `<p class="evo-nota">Ainda não há planos com este indicador${gs&&gs.coops?` (${gs.coops} cooperativas do recorte ainda sem plano)`:""}. Os grupos aparecem aqui assim que os planos forem registrados.</p>`;
-  const val=(g,am)=>g&&g.serie&&evoEhNum(g.serie[am])?g.serie[am]:null, bm=evoAdd(ref,-12);
-  const cel=(v,tit)=>evoEhNum(v)?`<b>${esc(evoFmt(m,v))}</b>`:`<b>${htmlTraco(tit)}</b>`;
-  const linha=(rot,g,cls)=>`<div class="evo-kv"><span><i class="${cls}" style="display:inline-block;width:14px;margin-right:6px;vertical-align:middle"></i>${rot} · ${g?g.coops:0} coops${cel(val(g,ref),"menos de 3 cooperativas com dado em "+evoRot(ref))}</span><span>${esc(evoRot(bm))}${cel(val(g,bm),"sem mediana em "+evoRot(bm))}</span></div>`;
-  let h=""; const series=[];
-  if(ge&&ge.serie) series.push({serie:ge.serie, cls:"l-esc", cor:"#146E37", nome:"Escolheram"}); if(gn&&gn.serie) series.push({serie:gn.serie, cls:"l-nesc", cor:"#A9B4AB", nome:"Não escolheram"});
-  if(series.length) h+=svgLinhas(m, ref, series, w, {rotulo:"Medianas dos grupos, 13 meses"})+`<div class="evo-dleg"><span><i class="esc"></i>escolheram</span><span><i class="nesc"></i>não escolheram</span></div>`;
-  h+=`<div class="evo-dleg" style="margin-top:6px"><span>Mediana em ${esc(evoRot(ref))} e no mesmo mês do ano anterior</span></div>`;
-  h+=linha("Escolheram", ge, "esc")+linha("Não escolheram", gn, "nesc");
-  if(gs&&gs.coops) h+=`<p class="evo-nota">${gs.coops} cooperativas do recorte ainda sem plano ficam fora dos dois grupos.</p>`;
+function htmlSlot(s){
+  if(!s) return `<div class="evo-slot"><div class="evo-fant vazio" aria-hidden="true"></div></div>`;
+  const {m, x}=s;
+  if(x.construcao) return `<div class="evo-slot" id="evo-slot-${esc(m.chave)}"><div class="evo-fant" title="${esc(x.titulo)}"><span>${esc(m.curto||m.nome)}</span><b>em construção</b></div></div>`;
+  let h=`<div class="evo-slot" id="evo-slot-${esc(m.chave)}"><div class="s-nome">${esc(m.curto||m.nome)}</div>`;
+  if(x.semDado){ h+=`<div class="s-lin"><span class="s-val"><i class="evo-bola b-na" title="${esc(x.titulo)}"></i><span class="v">${htmlTraco(x.titulo)}</span></span></div></div>`; return h; }
+  const bolaTit = x.varAA.cls==="na" ? x.varAA.titulo : evoNomeCls(x.varAA.cls)+" frente ao mesmo mês do ano anterior ("+x.varAA.texto+" "+x.varAA.base+")";
+  h+=`<div class="s-lin"><div><span class="s-val"><i class="evo-bola b-${esc(x.varAA.cls)}" title="${esc(bolaTit)}"></i><span class="v evo-num${x.v<0?" neg":""}" title="${esc((m.curto||m.nome)+" em "+evoRot(x.ref))}">${evoValorCompacto(m,x.v)}</span></span><div class="s-mes">${esc(evoRot(x.ref))}${htmlCoops(x)}</div></div>`;
+  h+=`<div class="s-vars"><span class="s-var">${htmlVarTxt(x.varDez,true)}</span><span class="s-var">${htmlVarTxt(x.varAA,true)}</span></div></div></div>`;
   return h;
 }
 function evoPanorama(){
-  const cod=EVO.rec, geral=evoRefGeral();
-  let h=`<p class="evo-desc" id="evo-desc-pan">Como estou hoje, qual a tendência e como estou frente ao mesmo mês do ano passado — <b>${esc(evoNomeCurtoEnt(cod))}</b>, referência <b>${esc(evoRot(geral))}</b>. Clique num indicador para abrir o detalhe na Lista.</p>`;
-  h+=htmlAvisoFiltro(cod);
-  h+=`<div class="evo-grid" id="evo-pan-grid">`;
-  for(const t of evoTemas()){
-    h+=`<section class="evo-tcard" id="evo-pan-tema-${t.id}"><h2><span class="tn">Tema ${t.id}</span>${esc(t.nome)}</h2>`;
-    if(!t.inds.length) h+=`<div class="evo-ind" style="cursor:default"><span class="nome" style="color:var(--tenue);font-weight:400">Este tema ainda não tem indicador do Sistema.</span></div>`;
-    for(const m of t.inds){
-      const x=evoModelo(m,cod);
-      h+=`<button class="evo-ind" id="evo-pan-ind-${esc(m.chave)}" onclick="evoIrLista('${esc(m.chave)}')" title="Abrir o detalhe na Lista">`;
-      h+=`<span class="nome">${esc(m.curto||m.nome)}${x.semDado?"":`<small>${htmlRefDif(x.ref,geral)}${htmlRefDif(x.ref,geral)&&htmlCoops(x)?" · ":""}${htmlCoops(x)}</small>`}</span>`;
-      if(x.semDado){ h+=`<span class="evo-dir">${htmlTraco(x.titulo)}</span></button>`; continue; }
-      h+=`<span class="evo-dir">${EVO.mini?`<span class="evo-mini">${svgSpark(m,x,"13m",64,22)}</span>`:""}<span class="valor evo-num${x.v<0?" neg":""}" title="${esc(evoRot(x.ref))}">${esc(evoFmt(m,x.v))}</span>${htmlSinal(x.sinal,m,false)}${htmlPontos(x.pontos)}${htmlVar(x.varAA,true)}</span></button>`;
-    }
-    h+=`</section>`;
+  const cod=EVO.rec, geral=evoRefGeral(), ts=evoTemasComModelo(cod);
+  let h=htmlAvisoFiltro(cod);
+  h+=`<div class="evo-frase"><p id="evo-frase">${evoFraseResumo(ts,cod,geral)} Clique num tema para ver o histórico.</p>
+    <div class="evo-leg" id="evo-legenda"><span><i style="background:var(--s-bom)"></i>melhor</span><span><i style="background:var(--s-est)"></i>estável</span><span><i style="background:var(--s-ruim)"></i>pior</span><span>· que há um ano, no sentido de cada indicador</span></div></div>`;
+  h+=`<div class="evo-temas" id="evo-temas">`;
+  for(const t of ts){
+    const on=EVO.tema===t.id;
+    h+=`<button class="evo-tc${on?" on":""}" id="evo-tc-${t.id}" onclick="evoTema(${t.id})" aria-expanded="${on}"><h2><span class="tn">T${t.id}</span>${esc(t.curto)}</h2>${evoSlots(t).map(htmlSlot).join("")}</button>`;
+  }
+  const tSel=ts.find(t=>t.id===EVO.tema);
+  if(tSel){
+    const comDado=tSel.ms.filter(y=>!y.x.semDado);
+    if(!EVO.indSel || !comDado.some(y=>y.m.chave===EVO.indSel)) EVO.indSel=comDado.length?comDado[0].m.chave:null;
+    h+=htmlHistorico(tSel, cod, geral, EVO.indSel, "pan");
   }
   return h+`</div>`;
 }
 function htmlAvisoFiltro(cod){
   if(EVO.coop==="todas") return "";
   const c=evoCmp(cod);
-  if(c.carregando) return `<p class="evo-desc">Calculando a mediana das cooperativas de cada grupo…</p>`;
+  if(c.carregando) return `<p class="evo-nota" style="margin:0 0 12px">Calculando a mediana das cooperativas de cada grupo…</p>`;
   if(c.erro && !Object.values(c.por).some(r=>r&&!r.erro)) return `<div class="evo-aviso">Comparativo por escolha não disponível agora (${esc(c.erro)}). Mostrando "–" nos indicadores.<button class="btn-t mini" onclick="evoTentarComparativo()">Tentar de novo</button></div>`;
   const semPlano=Object.values(c.por).every(r=>r&&!r.erro&&!((r.grupos&&r.grupos.escolheram&&r.grupos.escolheram.cooperativas)||(r.grupos&&r.grupos.nao_escolheram&&r.grupos.nao_escolheram.cooperativas)));
   if(semPlano && Object.keys(c.por).length) return `<div class="evo-aviso">Ainda não há planos com indicadores neste recorte: todas as cooperativas estão "sem plano". O filtro passa a separar os grupos assim que os planos forem registrados.</div>`;
   return "";
 }
-function htmlLista(){
-  const cod=EVO.rec, geral=evoRefGeral(), comSis=cod!=="SIS";
-  let h=`<p class="evo-desc" id="evo-desc-lista">Visão analítica: todos os indicadores, com a base de comparação e a tendência à sua escolha — <b>${esc(evoNomeCurtoEnt(cod))}</b>, referência <b>${esc(evoRot(geral))}</b>. Clique numa linha para abrir o detalhe.</p>`;
-  h+=htmlAvisoFiltro(cod);
-  const tend=EVO.setas==="mes"?"Tendência 3 meses":"Tendência 3 trim.", graf=EVO.chart==="13m"?"13 meses":"Ano × ano ant.";
-  const cabcol=`<div class="evo-cabcol${comSis?" com-sis":""}" aria-hidden="true"><span>Indicador</span><span title="Só aparece quando o mês do indicador é diferente da referência da tela (${esc(evoRot(geral))})">Mês de ref.</span><span class="c-val">Valor · ${esc(evoRot(geral))}</span><span class="c-var">${esc(COMP_COL[EVO.comp])}</span>${comSis?`<span class="c-sis" title="Diferença da Central para o Sistema no mesmo mês, no sentido do indicador">vs Sistema</span>`:""}<span title="Cada ponto é um passo: ${EVO.setas==="mes"?"mês contra o mês anterior":"fechamento de trimestre contra o anterior"}">${tend}</span><span title="Minigráfico: ${EVO.chart==="13m"?"últimos 13 meses até a referência":"jan–dez do ano da referência (cheia) sobre o ano anterior (tracejada)"}">${graf}</span></div>`;
-  h+=`<div id="evo-lista-grid">`;
-  for(const t of evoTemas()){
-    h+=`<section class="evo-tema" id="evo-lista-tema-${t.id}"><div class="evo-tema-cab"><span class="tn">Tema ${t.id}</span><h2>${esc(t.nome)}</h2></div><div class="evo-lista">${cabcol}`;
-    if(!t.inds.length) h+=`<div class="evo-lin" style="cursor:default;display:block"><span style="color:var(--tenue);font-size:12.6px">Este tema ainda não tem indicador do Sistema.</span></div>`;
-    for(const m of t.inds){
-      const x=evoModelo(m,cod), aberto=EVO.det===m.chave, vs=evoVsSistema(m,x,cod);
-      h+=`<button class="evo-lin${comSis?" com-sis":""}${aberto?" ativa":""}" id="evo-lista-row-${esc(m.chave)}" onclick="evoDetalhe('${esc(m.chave)}')" aria-expanded="${aberto}" aria-controls="evo-exp-${esc(m.chave)}" title="${esc(m.janelaRot||"")}">`;
-      h+=`<span class="lnome"><span class="nome">${esc(m.curto||m.nome)}</span><span class="meta">${m.menorMelhor?"menor é melhor":""}${m.menorMelhor&&htmlCoops(x)?" · ":""}${htmlCoops(x)}${x.semDado?"":(x.ref!==geral?`<span class="rot-mes">${htmlRefDif(x.ref,geral)}</span>`:"")}</span></span>`;
-      h+=`<span class="c-mes">${x.semDado?"":htmlRefDif(x.ref,geral)}</span>`;
-      if(x.semDado){
-        h+=`<span class="c-val"><span class="rot">Valor</span>${htmlTraco(x.titulo)}</span><span class="c-var"><span class="rot">${esc(COMP_COL[EVO.comp])}</span>${htmlTraco("Sem número para comparar")}</span>${comSis?`<span class="c-sis"><span class="rot">vs Sistema</span>${htmlTraco("Sem número para comparar")}</span>`:""}<span class="c-tend"><span class="rot">${esc(tend)}</span>${htmlTraco("Sem número")}</span><span class="c-graf"></span></button>`;
-      } else {
-        h+=`<span class="c-val"><span class="rot">Valor · ${esc(evoRot(x.ref))}</span><span class="valor evo-num${x.v<0?" neg":""}" title="${esc(evoRot(x.ref))}">${esc(evoFmt(m,x.v))}</span></span>`;
-        h+=`<span class="c-var"><span class="rot">${esc(COMP_COL[EVO.comp])}</span>${htmlVar(x.variacao,true)}</span>`;
-        if(comSis) h+=`<span class="c-sis"><span class="rot">vs Sistema</span>${htmlVar(vs,false)}</span>`;
-        h+=`<span class="c-tend"><span class="rot">${esc(tend)}</span>${htmlPontos(x.setas)}</span>`;
-        h+=`<span class="c-graf">${svgSpark(m,x,EVO.chart,130,34)}</span></button>`;
-      }
-      if(aberto) h+=htmlExpandido(m,cod,x);
-    }
-    h+=`</div></section>`;
-  }
-  return h+`</div>`;
+function evoTrimestres(ref){ const q=[]; for(let k=3;k>=0;k--){ const fim=evoAdd(ref,-3*k); q.push({fim, meses:[evoAdd(fim,-2), evoAdd(fim,-1), fim]}); } return q; }
+function evoRotTri(q){ return evoRotMes(q.meses[0])+"–"+evoRotMes(q.fim)+"/"+String(evoParse(q.fim).y).slice(2); }
+function evoFechamento(m,serie,q){
+  if(!evoTrimestral(m)) return evoEhNum(serie[q.fim]) ? {am:q.fim, v:serie[q.fim]} : null;
+  const ms=q.meses.filter(am=>evoEhNum(serie[am])); return ms.length ? {am:ms[ms.length-1], v:serie[ms[ms.length-1]]} : null;
 }
-function evoCorEscala(t){ if(t==null) return ""; const a=t<0.5?(0.5-t)/0.5*0.24:(t-0.5)/0.5*0.26; return t<0.5?`rgba(176,69,43,${a.toFixed(3)})`:`rgba(20,110,55,${a.toFixed(3)})`; }
+function evoSerieHist(m, x, cod){
+  if(EVO.coop!=="todas" || !EVO.p25) return x.serie;
+  const s25=evoSerieObj(EVO.p25, m.chave, cod); return s25 ? Object.assign({}, s25, x.serie) : x.serie;
+}
+function htmlHistorico(t, cod, geral, indSel, ctx){
+  const ref=geral, qs=evoTrimestres(ref);
+  const xSel=t.ms.find(y=>y.m.chave===indSel && !y.x.semDado);
+  let h=`<div class="evo-hist" id="evo-hist" data-ctx="${ctx}"><div class="evo-hist-cab"><div><h3>Histórico <span>· ${esc(t.curto)}</span></h3><div class="sub">${esc(evoNomeCurtoEnt(cod))}${EVO.coop!=="todas"?" · "+esc(COOP_ROT[EVO.coop]):""} · últimos 12 meses até ${esc(evoRot(ref))}${EVO.p25Carregando&&!EVO.p25?" · carregando os 25 meses…":""}</div></div>
+    <button class="evo-fechar" onclick="evoFecharHist()" aria-label="Fechar" title="Fechar (Esc)">×</button></div>`;
+  h+=`<div class="evo-hist-corpo"><div class="evo-hist-tab"><h4>Fechamento de cada trimestre</h4><table class="evo-tri" id="evo-tri"><thead><tr><th class="th-nome"></th>${qs.map(q=>`<th title="${esc(q.meses.map(evoRot).join(" · "))}">${esc(evoRotTri(q))}</th>`).join("")}</tr></thead><tbody>`;
+  for(const s of evoSlots(t)){
+    if(!s) continue;
+    const {m, x}=s;
+    if(x.semDado){ h+=`<tr class="constr"><td class="td-nome">${esc(m.curto||m.nome)}</td><td colspan="4" title="${esc(x.titulo)}">${x.construcao?"em construção":htmlTraco(x.titulo)}</td></tr>`; continue; }
+    const serie=evoSerieHist(m,x,cod);
+    h+=`<tr class="lin-ind${indSel===m.chave?" sel":""}" id="evo-tri-${esc(m.chave)}" onclick="evoIndHist('${esc(m.chave)}')"><td class="td-nome">${esc(m.curto||m.nome)}</td>`;
+    for(const q of qs){
+      const f=evoFechamento(m,serie,q);
+      const pontos=q.meses.map(am=>{ let p;
+        if(evoTrimestral(m)){ const ant=Object.keys(serie).filter(k=>k<am).sort(); p=evoEhNum(serie[am])&&ant.length ? evoPasso(m,serie,am,ant[ant.length-1]) : {cls:"vazia", titulo:evoRot(am)+": sem pesquisa"}; }
+        else p=evoPasso(m,serie,am,evoAdd(am,-1));
+        return `<i class="b-${esc(p.cls)}" title="${esc(p.titulo)}"></i>`; }).join("");
+      h+=`<td class="td-cel"><span class="tv" title="${esc(f?evoRot(f.am)+": "+evoFmt(m,f.v):"sem dado no trimestre")}">${f?evoValorCompacto(m,f.v):htmlTraco(evoTrimestral(m)?"Pesquisa trimestral: sem pesquisa em "+evoRotTri(q):"Sem dado em "+evoRot(q.fim))}</span><span class="td3">${pontos}</span></td>`;
+    }
+    h+=`</tr>`;
+  }
+  h+=`</tbody></table><p class="evo-nota">Bolinhas: cada mês contra o anterior. Pesquisa trimestral: só os meses com pesquisa.</p></div>`;
+  h+=`<div class="evo-hist-graf" id="evo-hist-graf"><h4>${xSel?esc(xSel.m.curto||xSel.m.nome)+" · ":""}últimos 12 meses</h4><div class="evo-svg-slot">${xSel?"":`<p class="evo-nota">Sem indicador com dado neste tema.</p>`}</div><div class="evo-tip" id="evo-tip"></div>`;
+  h+=`<div class="evo-hist-leg"><span><i></i>últimos 12 meses</span><span><i class="ant"></i>mesmos meses do ano anterior</span>${cod!=="SIS"?`<span><i class="sis"></i>Sistema</span>`:`<span><i class="sis"></i>mediana das cooperativas</span>`}</div></div></div></div>`;
+  return h;
+}
+function evoCaminhoSuave(pts){
+  if(pts.length<2) return pts.length ? "M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1) : "";
+  let d="M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1);
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    const c1=[p1[0]+(p2[0]-p0[0])/6, p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6, p2[1]-(p3[1]-p1[1])/6];
+    d+=" C"+c1[0].toFixed(1)+" "+c1[1].toFixed(1)+" "+c2[0].toFixed(1)+" "+c2[1].toFixed(1)+" "+p2[0].toFixed(1)+" "+p2[1].toFixed(1);
+  }
+  return d;
+}
+function svgHistorico12(m, serie, cod, ref, w){
+  const h=230, padL=12, padR=14, padT=26, padB=26;
+  const ams=[]; for(let i=-11;i<=0;i++) ams.push(evoAdd(ref,i));
+  const cur=ams.map(am=>evoEhNum(serie[am])?serie[am]:null), ant=ams.map(am=>{ const k=evoAdd(am,-12); return evoEhNum(serie[k])?serie[k]:null; });
+  const p=evoPainelHist(); const terc = cod!=="SIS" ? evoSerieObj(p, m.chave, "SIS") : evoMedianaCoops(p, m.chave, "SIS");
+  const sis=ams.map(am=>terc&&evoEhNum(terc[am])?terc[am]:null);
+  const todos=[...cur,...ant,...sis].filter(evoEhNum);
+  if(!todos.length) return `<p class="evo-nota">Sem dado nos últimos 12 meses.</p>`;
+  let mn=Math.min(...todos), mx=Math.max(...todos); const folga=((mx-mn)||1)*0.18; mn-=folga; mx+=folga;
+  const X=i=>padL+i/11*(w-padL-padR), Y=v=>padT+(mx-v)/(mx-mn)*(h-padT-padB);
+  const pts=vals=>vals.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
+  const completo=vals=>vals.every(v=>v!=null);
+  const linha=vals=>completo(vals)?evoCaminhoSuave(pts(vals)):pts(vals).map((q,i)=>(i?"L":"M")+q[0].toFixed(1)+" "+q[1].toFixed(1)).join(" ");
+  let out=""; const fech=[2,5,8,11];
+  for(const i of fech) out+=`<line class="tri-l" x1="${X(i).toFixed(1)}" x2="${X(i).toFixed(1)}" y1="${padT}" y2="${h-padB}"/>`;
+  out+=`<line class="eixo" x1="${padL}" x2="${w-padR}" y1="${h-padB}" y2="${h-padB}"/>`;
+  if(sis.some(v=>v!=null)) out+=`<path class="sis" d="${linha(sis)}"/>`;
+  if(ant.some(v=>v!=null)) out+=`<path class="ant" d="${linha(ant)}"/>`;
+  if(cur.some(v=>v!=null)) out+=`<path class="cur" d="${linha(cur)}"/>`;
+  if(!completo(cur)) cur.forEach((v,i)=>{ if(v!=null) out+=`<circle class="pt" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="2.6"/>`; });
+  for(const i of fech){
+    const anc=i===11?"end":"middle", dx=i===11?-6:0;
+    if(cur[i]!=null){ out+=`<circle class="pt" cx="${X(i).toFixed(1)}" cy="${Y(cur[i]).toFixed(1)}" r="3"/>`; const acima=ant[i]==null||cur[i]>=ant[i]; out+=`<text class="vc" x="${(X(i)+dx).toFixed(1)}" y="${(Y(cur[i])+(acima?-8:15)).toFixed(1)}" text-anchor="${anc}">${esc(evoFmt(m,cur[i]))}</text>`; }
+    if(ant[i]!=null){ out+=`<circle class="pt-ant" cx="${X(i).toFixed(1)}" cy="${Y(ant[i]).toFixed(1)}" r="2.6"/>`; const acima=cur[i]!=null&&ant[i]>cur[i]; out+=`<text class="va" x="${(X(i)+dx).toFixed(1)}" y="${(Y(ant[i])+(acima?-8:15)).toFixed(1)}" text-anchor="${anc}">${esc(evoFmt(m,ant[i]))}</text>`; }
+    out+=`<text x="${X(i).toFixed(1)}" y="${h-8}" text-anchor="${anc}"${i===11?' class="ref"':""}>${esc(evoRot(ams[i]))}</text>`;
+  }
+  out+=`<line class="guia" id="evo-guia" y1="${padT}" y2="${h-padB}" x1="0" x2="0"/><circle class="guia-pt" id="evo-guia-pt" r="4" cx="0" cy="0"/>`;
+  HIST_G={m, ams, cur, ant, sis, X, Y, w, h, padL, padR, terceira: cod!=="SIS"?"Sistema":"Mediana das coops"};
+  return `<svg class="evo-gh" id="evo-gh" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc((m.curto||m.nome)+": últimos 12 meses até "+evoRot(ref)+" (cheia) e mesmos meses do ano anterior (tracejada)")}">${out}</svg>`;
+}
+function evoDesenharHist(){
+  const slot=document.querySelector("#evo-hist-graf .evo-svg-slot"); if(!slot) return;
+  const chave=EVO.aba==="pan"?EVO.indSel:EVO.aberto; if(!chave) return;
+  const m=evoMetricas().find(i=>i.chave===chave); if(!m) return;
+  const x=evoModelo(m,EVO.rec); if(x.semDado) return;
+  const ref=evoRefGeral();
+  slot.innerHTML=svgHistorico12(m, evoSerieHist(m,x,EVO.rec), EVO.rec, ref, Math.max(320, Math.round(slot.clientWidth)||520));
+  const svg=document.getElementById("evo-gh"), tip=document.getElementById("evo-tip"), guia=document.getElementById("evo-guia"), gpt=document.getElementById("evo-guia-pt");
+  if(!svg) return;
+  const G=HIST_G;
+  svg.addEventListener("mousemove", ev=>{
+    const r=svg.getBoundingClientRect(); const xr=(ev.clientX-r.left)/r.width*G.w;
+    let i=Math.round((xr-G.padL)/(G.w-G.padL-G.padR)*11); i=Math.max(0,Math.min(11,i));
+    const v=G.cur[i], a=G.ant[i], s=G.sis[i];
+    guia.setAttribute("x1",G.X(i).toFixed(1)); guia.setAttribute("x2",G.X(i).toFixed(1)); guia.style.display="block";
+    if(v!=null){ gpt.setAttribute("cx",G.X(i).toFixed(1)); gpt.setAttribute("cy",G.Y(v).toFixed(1)); gpt.style.display="block"; } else gpt.style.display="none";
+    let t=`<b>${esc(evoRot(G.ams[i]))}</b>: ${esc(evoFmt(G.m,v))}`;
+    if(a!=null){ t+=`<br>${esc(evoRot(evoAdd(G.ams[i],-12)))}: ${esc(evoFmt(G.m,a))}`; if(v!=null){ const tv=evoTextoVar(G.m,v,a); t+=" · "+esc(tv.na?evoDifAbs(G.m,v-a):tv.texto); } }
+    else t+=`<br>${esc(evoRot(evoAdd(G.ams[i],-12)))}: sem dado`;
+    if(s!=null) t+=`<br>${esc(G.terceira)}: ${esc(evoFmt(G.m,s))}`;
+    tip.innerHTML=t; tip.style.display="block";
+    const px=G.X(i)/G.w*r.width, esq=px>r.width*0.6;
+    tip.style.left=esq?"auto":(px+12)+"px"; tip.style.right=esq?(r.width-px+12)+"px":"auto"; tip.style.top=(ev.clientY-r.top-10)+"px";
+  });
+  svg.addEventListener("mouseleave", ()=>{ tip.style.display="none"; guia.style.display="none"; gpt.style.display="none"; });
+}
+function htmlAnalitico(){
+  const cod=EVO.rec, geral=evoRefGeral(), comSis=cod!=="SIS", ts=evoTemasComModelo(cod);
+  let h=htmlAvisoFiltro(cod);
+  h+=`<div class="evo-ana" id="evo-ana"><table class="evo-tab" id="evo-tab"><thead><tr><th>Indicador</th><th class="c-mes" title="Só aparece quando o mês do indicador é diferente da referência da tela">Mês</th><th>Valor · ${esc(evoRot(geral))}</th><th title="Variação contra o mesmo mês do ano anterior">vs ano anterior</th><th title="Variação no ano, contra dezembro do ano anterior">vs dez</th>${comSis?`<th title="Diferença da Central para o Sistema no mesmo mês, no sentido do indicador">vs Sistema</th>`:""}</tr></thead><tbody>`;
+  const nCol=comSis?6:5;
+  for(const t of ts){
+    h+=`<tr class="sep" id="evo-ana-tema-${t.id}"><td colspan="${nCol}">Tema ${t.id} · ${esc(t.nome)}</td></tr>`;
+    for(const y of t.ms){
+      const {m, x}=y, on=EVO.aberto===m.chave, vs=evoVsSistema(m,x,cod);
+      h+=`<tr class="lin${on?" on":""}" id="evo-ana-row-${esc(m.chave)}" onclick="evoAbrirLinha('${esc(m.chave)}')" aria-expanded="${on}" title="${esc(m.janelaRot||"")}"><td>${esc(m.curto||m.nome)}${m.menorMelhor?` <small style="color:var(--tenue)">· menor é melhor</small>`:""}${x.semDado?"":htmlCoops(x)}</td>`;
+      if(x.semDado){ h+=`<td class="c-mes"></td><td class="c-val">${x.construcao?`<span class="evo-traco" title="${esc(x.titulo)}" style="font-family:Nunito,system-ui,sans-serif;font-weight:400;font-size:12px;font-style:italic">em construção</span>`:htmlTraco(x.titulo)}</td><td class="c-var">${htmlTraco("Sem número para comparar")}</td><td class="c-var">${htmlTraco("Sem número para comparar")}</td>${comSis?`<td class="c-var">${htmlTraco("Sem número para comparar")}</td>`:""}</tr>`; }
+      else {
+        h+=`<td class="c-mes">${htmlRefDif(x.ref,geral)}</td><td class="c-val evo-num${x.v<0?" neg":""}" title="${esc(evoRot(x.ref))}">${esc(evoFmt(m,x.v))}</td><td class="c-var">${htmlVarTxt(x.varAA,false)}</td><td class="c-var">${htmlVarTxt(x.varDez,false)}</td>${comSis?`<td class="c-var">${htmlVarTxt(vs,false)}</td>`:""}</tr>`;
+      }
+      if(on) h+=`<tr class="exp"><td colspan="${nCol}">${htmlHistorico(t, cod, geral, m.chave, "ana")}</td></tr>`;
+    }
+  }
+  return h+`</tbody></table></div>`;
+}
 function htmlComparar(){
-  const geral=evoRefGeral("SIS"), cols=evoRecortes(), centrais=cols.filter(c=>c!=="SIS");
-  let h=`<p class="evo-desc" id="evo-desc-comp">Em que indicador cada Central está melhor ou pior posicionada — referência <b>${esc(evoRot(geral))}</b>, variação contra o mesmo mês do ano anterior.</p>`;
-  h+=`<div class="evo-twrap" id="evo-comp-wrap"><table class="evo-mat" id="evo-comp-tabela"><thead><tr><th class="th-ind">Indicador</th>`;
+  const geral=evoRefGeral("SIS"), cols=evoRecortes();
+  let h=`<div class="evo-mat-wrap" id="evo-comp-wrap"><table class="evo-mat" id="evo-comp-tabela"><thead><tr><th class="th-ind">Indicador · ${esc(evoRot(geral))}</th>`;
   cols.forEach(c=>{ h+=`<th id="evo-comp-col-${esc(c)}" title="${esc(evoNomeEnt(c))}">${esc(evoNomeCurtoEnt(c))}</th>`; });
   h+=`</tr></thead><tbody>`;
   const coopAntes=EVO.coop; EVO.coop="todas";                 
   try{
     for(const t of evoTemas()){
-      h+=`<tr class="tr-tema" id="evo-comp-tema-${t.id}"><th colspan="${cols.length+1}">Tema ${t.id} · ${esc(t.nome)}</th></tr>`;
+      h+=`<tr class="sep" id="evo-comp-tema-${t.id}"><td colspan="${cols.length+1}">Tema ${t.id} · ${esc(t.nome)}</td></tr>`;
       for(const m of t.inds){
         const ms=cols.map(c=>({c, x:evoModelo(m,c)}));
-        const cands=ms.filter(y=>y.c!=="SIS" && !y.x.semDado); let lo=null, hi=null;
-        if(cands.length>=2){ const vs=cands.map(y=>y.x.v); lo=Math.min(...vs); hi=Math.max(...vs); }
         const refs=ms.filter(y=>!y.x.semDado).map(y=>y.x.ref);
         const refLinha=refs.length?[...refs].sort((a,b)=>refs.filter(v=>v===a).length-refs.filter(v=>v===b).length).pop():null;
-        h+=`<tr id="evo-comp-linha-${esc(m.chave)}"><th class="th-ind" title="${esc(m.janelaRot||"")}">${esc(m.curto||m.nome)}${refLinha&&refLinha!==geral?`<div>${htmlRefDif(refLinha,geral)}</div>`:""}${m.menorMelhor?`<div class="evo-reftxt">menor é melhor</div>`:""}</th>`;
+        h+=`<tr id="evo-comp-linha-${esc(m.chave)}"><td class="td-ind" title="${esc(m.janelaRot||"")}">${esc(m.curto||m.nome)}${refLinha&&refLinha!==geral?`<div>${htmlRefDif(refLinha,geral)}</div>`:""}${m.menorMelhor?`<div style="font-size:10.5px;color:var(--tenue)">menor é melhor</div>`:""}</td>`;
         for(const y of ms){
           const id=`evo-comp-cel-${esc(m.chave)}-${esc(y.c)}`, sis=y.c==="SIS";
-          if(y.x.semDado){ h+=`<td class="cel${sis?" cel-sis":""}" id="${id}">${htmlTraco(y.x.titulo)}</td>`; continue; }
-          let estilo="", tPos=null;
-          if(!sis && lo!=null && hi-lo>1e-9){ tPos=(y.x.v-lo)/(hi-lo); if(m.menorMelhor) tPos=1-tPos; estilo=` style="background:${evoCorEscala(tPos)}"`; }
-          const posTxt=tPos==null?"":" · posição entre as Centrais: "+Math.round(tPos*100)+"% (0% = pior, 100% = melhor)";
-          h+=`<td class="cel${sis?" cel-sis":""}" id="${id}"${estilo} title="${esc(evoRot(y.x.ref)+": "+evoFmt(m,y.x.v)+posTxt)}"><div class="cv evo-num${y.x.v<0?" neg":""}">${esc(evoFmt(m,y.x.v))}</div>${y.x.ref!==refLinha?`<div>${htmlRefDif(y.x.ref,refLinha)}</div>`:""}<div class="cvar">${htmlVar(y.x.varAA,true)}</div></td>`;
+          if(y.x.semDado){ h+=`<td class="${sis?"td-sis":""}" id="${id}">${y.x.construcao?`<span class="evo-traco" title="${esc(y.x.titulo)}" style="font-size:11.5px;font-style:italic">em construção</span>`:htmlTraco(y.x.titulo)}</td>`; continue; }
+          h+=`<td class="${sis?"td-sis":""}" id="${id}" title="${esc(evoRot(y.x.ref)+": "+evoFmt(m,y.x.v))}"><span class="cv evo-num${y.x.v<0?" neg":""}">${esc(evoFmt(m,y.x.v))}</span>${y.x.ref!==refLinha?`<div>${htmlRefDif(y.x.ref,refLinha)}</div>`:""}<span class="cvar">${htmlVarTxt(y.x.varAA,true)}</span></td>`;
         }
         h+=`</tr>`;
       }
     }
   } finally { EVO.coop=coopAntes; }
-  h+=`</tbody></table></div>`;
-  h+= centrais.length>=2
-    ? `<div class="evo-escala" id="evo-comp-legenda"><span>Fundo da célula = posição relativa entre as ${centrais.length} Centrais na linha:</span><span>pior</span><span class="evo-escala-b" aria-hidden="true"></span><span>melhor</span><span>· respeita o sentido do indicador · o Sistema não entra na escala · "–" = sem número (passe o mouse para ver por quê)</span></div>`
-    : `<p class="evo-nota" id="evo-comp-legenda">A escala de cor entre Centrais aparece quando há mais de uma Central no recorte.</p>`;
+  h+=`</tbody></table></div><p class="evo-nota">Valor no mês de referência e, embaixo, a variação contra o mesmo mês do ano anterior (verde = melhorou no sentido do indicador; coral = piorou; âmbar = estável). "–" = sem número: passe o mouse para ver por quê.</p>`;
   return h;
 }
-function htmlControles(){
-  const aba=EVO.aba, anos=evoAnos(), meses=evoMesesTodos().filter(am=>evoParse(am).y===EVO.ano);
-  const chip=(id,ctl,v,atual,rot,title)=>`<button class="evo-chip" id="${id}" aria-pressed="${atual===v}" onclick="evoAcao('${ctl}','${esc(v)}')"${title?` title="${esc(title)}"`:""}>${esc(rot)}</button>`;
+function htmlFiltros(){
+  const anos=evoAnos(), meses=evoMesesTodos().filter(am=>evoParse(am).y===EVO.ano);
+  const chip=(id,ctl,v,atual,rot,title)=>`<button id="${id}" aria-pressed="${atual===v}" onclick="evoAcao('${ctl}','${esc(v)}')"${title?` title="${esc(title)}"`:""}>${esc(rot)}</button>`;
   const tipCoop="Troca o número pela mediana das cooperativas do grupo, a partir dos planos registrados (grupo com menos de 3 cooperativas fica sem número)";
-  let h=`<div class="evo-ctl" id="evo-controles"><div class="evo-ctl-in">`;
-  if(aba!=="comp"){
-    h+=`<div class="evo-grupo" id="evo-grupo-recorte"><div class="evo-rot">Recorte</div><div class="evo-chips">${evoRecortes().map(c=>chip("evo-ctl-rec-"+esc(c),"rec",c,EVO.rec,c==="SIS"?"O Sistema":evoNomeCurtoEnt(c),evoNomeEnt(c))).join("")}</div></div>`;
-    h+=`<div class="evo-grupo" id="evo-grupo-coop"><div class="evo-rot">Cooperativas</div><div class="evo-chips">${chip("evo-ctl-coop-todas","coop","todas",EVO.coop,"Todas")}${chip("evo-ctl-coop-esc","coop","escolheram",EVO.coop,"Escolheram o indicador",tipCoop)}${chip("evo-ctl-coop-nao","coop","nao_escolheram",EVO.coop,"Não escolheram",tipCoop)}</div></div>`;
+  let h=`<div class="evo-filtros" id="evo-filtros">`;
+  if(EVO.aba!=="comp"){
+    h+=`<div class="g-esc" id="evo-grupo-recorte"><span>Recorte</span><div class="periodos">${evoRecortes().map(c=>chip("evo-ctl-rec-"+esc(c),"rec",c,EVO.rec,c==="SIS"?"O Sistema":evoNomeCurtoEnt(c),evoNomeEnt(c))).join("")}</div></div>`;
+    h+=`<div class="g-esc" id="evo-grupo-coop"><span>Cooperativas</span><div class="periodos">${chip("evo-ctl-coop-todas","coop","todas",EVO.coop,"Todas")}${chip("evo-ctl-coop-esc","coop","escolheram",EVO.coop,"Escolheram o indicador",tipCoop)}${chip("evo-ctl-coop-nao","coop","nao_escolheram",EVO.coop,"Não escolheram",tipCoop)}</div></div>`;
   }
-  h+=`<div class="evo-grupo" id="evo-grupo-mes"><div class="evo-rot">Mês de referência</div><div class="evo-linha">
+  h+=`<div class="g-esc" id="evo-grupo-mes"><span>Mês de referência</span>
       <select id="evo-ctl-ano" aria-label="Ano" onchange="evoSelAno(this.value)">${anos.map(a=>`<option value="${a}"${a===EVO.ano?" selected":""}>${a}</option>`).join("")}</select>
       <select id="evo-ctl-mes" aria-label="Mês de referência" onchange="evoSelMes(this.value)"><option value="ultimo"${EVO.mes==="ultimo"?" selected":""}>Último disponível</option>${meses.map(am=>`<option value="${am}"${EVO.mes===am?" selected":""}>${esc(MESES_LONGO[evoParse(am).m-1]+" ("+evoRot(am)+")")}</option>`).join("")}</select></div></div>`;
-  if(aba==="lista"){
-    h+=`<div class="evo-grupo" id="evo-grupo-comp"><div class="evo-rot">Comparar com</div><div class="evo-chips">${chip("evo-ctl-comp-aa","comp","aa",EVO.comp,"Mesmo mês do ano anterior","Variação em 12 meses")}${chip("evo-ctl-comp-dez","comp","dez",EVO.comp,"Dezembro do ano anterior","Variação no ano")}${chip("evo-ctl-comp-3m","comp","3m",EVO.comp,"3 meses antes","Variação no trimestre")}</div></div>`;
-    h+=`<div class="evo-grupo" id="evo-grupo-setas"><div class="evo-rot">Tendência</div><div class="evo-chips">${chip("evo-ctl-setas-mes","setas","mes",EVO.setas,"3 últimos meses","Cada ponto compara um mês com o mês anterior")}${chip("evo-ctl-setas-tri","setas","tri",EVO.setas,"3 últimos trimestres","Cada ponto compara um fechamento de trimestre (mar/jun/set/dez) com o anterior")}</div></div>`;
-    h+=`<div class="evo-grupo" id="evo-grupo-chart"><div class="evo-rot">Minigráfico</div><div class="evo-chips">${chip("evo-ctl-chart-13m","chart","13m",EVO.chart,"Últimos 13 meses")}${chip("evo-ctl-chart-aa","chart","aa",EVO.chart,"Ano × ano anterior","jan–dez: cheia = ano da referência; tracejada = ano anterior")}</div></div>`;
-  }
-  if(aba==="pan") h+=`<div class="evo-grupo" id="evo-grupo-mini"><div class="evo-rot">Opções</div><label class="evo-sw" for="evo-ctl-mini"><input type="checkbox" id="evo-ctl-mini"${EVO.mini?" checked":""} onchange="evoMini(this.checked)"> Minigráfico nas linhas</label></div>`;
-  h+=`</div>`;
-  const refTxt=EVO.mes==="ultimo"?"último disponível ("+evoRot(evoRefGeral(aba==="comp"?"SIS":null))+")":evoRot(EVO.mes);
-  const partes=[aba==="comp"?`<b>Sistema + ${evoRecortes().length-1===1?"a Central":"Centrais"}</b>`:`<b>${esc(evoNomeCurtoEnt(EVO.rec))}</b> · ${esc(COOP_ROT[EVO.coop])}`, `referência <b>${esc(refTxt)}</b>`];
-  if(aba==="lista") partes.push(`variação vs <b>${esc(COMP_NOME[EVO.comp])}</b>`, `tendência <b>${EVO.setas==="mes"?"mês a mês":"por trimestre"}</b>`);
-  else partes.push(`variação vs <b>mesmo mês do ano anterior</b>`);
-  h+=`<div class="evo-resumo" id="evo-resumo">Mostrando: ${partes.join(" · ")}</div></div>`;
+  const refTxt=EVO.mes==="ultimo"?"último disponível ("+evoRot(evoRefGeral(EVO.aba==="comp"?"SIS":null))+")":evoRot(EVO.mes);
+  h+=`<div class="evo-resumo" id="evo-resumo">Mostrando: ${EVO.aba==="comp"?`<b>Sistema + ${evoRecortes().length-1===1?"a Central":"Centrais"}</b>`:`<b>${esc(evoNomeCurtoEnt(EVO.rec))}</b> · ${esc(COOP_ROT[EVO.coop])}`} · referência <b>${esc(refTxt)}</b> · variações contra o mesmo mês do ano anterior e contra dezembro anterior.</div>`;
   return h;
 }
 function htmlComoLer(){
-  return `<div class="evo-comoler" id="evo-como-ler"><details><summary>Como ler esta tela</summary><div class="evo-cl">
-    <p><b>Panorama</b> responde: como estou hoje, qual a tendência e estou melhor ou pior que no mesmo período do ano passado. Por tema, cada indicador traz o número atual, a sinaleira do mês (melhorou, estável ou piorou frente ao mês anterior), três pontinhos com os três últimos passos e a variação contra o mesmo mês do ano anterior. Clicar num indicador abre o detalhe dele na Lista.</p>
-    <p><b>Lista</b> é a visão analítica: todos os indicadores de uma vez, com a base de comparação à sua escolha (mesmo mês do ano anterior, dezembro do ano anterior ou três meses antes), a tendência mês a mês ou por fechamento de trimestre e o minigráfico. Clicar numa linha abre o detalhe logo abaixo: mês de referência, mesmo mês do ano anterior × agora, a diferença para o Sistema (numa Central), barras mês a mês do ano com o ano anterior em linha, a mediana e a faixa das cooperativas do recorte e quem escolheu × quem não escolheu.</p>
-    <p><b>Comparar Centrais</b> responde: em que indicador cada Central está melhor ou pior posicionada. Valor e variação contra o mesmo mês do ano anterior; o fundo da célula mostra a posição relativa entre as Centrais, respeitando o sentido de cada indicador.</p>
-    <p><b>Cooperativas.</b> "Todas" mostra o consolidado do recorte. "Escolheram o indicador" e "Não escolheram" trocam o número pela mediana das cooperativas de cada grupo, a partir dos planos registrados (grupo com menos de 3 cooperativas fica sem número).</p>
-    <p><b>Cores e traços.</b> Verde = melhorou no sentido do indicador; terracota = piorou; cinza = praticamente estável. Em "quanto menor, melhor", cair é verde. Um traço "–" é dado que não existe (pesquisa trimestral sem leitura no mês, sem base para comparar, indicador só do Sistema): passe o mouse para ver por quê. Quando o mês de um indicador é diferente do mês de referência da tela, ele aparece ao lado do nome.
-      <span class="evo-leg"><span><i class="evo-past" style="background:var(--evo-bom)"></i>melhorou</span><span><i class="evo-past" style="background:var(--evo-ruim)"></i>piorou</span><span><i class="evo-past" style="background:var(--evo-est)"></i>estável</span></span></p>
-  </div></details></div>`;
+  return `<details class="evo-comoler" id="evo-como-ler"><summary>Como ler</summary>
+    <p><b>Panorama:</b> seis temas, três espaços de indicador em cada um, com o valor, o mês e as variações no ano (vs dezembro anterior) e em 12 meses; a bolinha resume a comparação com um ano atrás (verde-sálvia melhor, âmbar estável, coral pior, sempre no sentido do indicador). Clique num tema para ver o Histórico: o fechamento dos quatro últimos trimestres, com uma bolinha por mês, e o gráfico dos últimos 12 meses contra os mesmos meses do ano anterior (numa Central, também o Sistema; no Sistema, a mediana das cooperativas).</p>
+    <p><b>Analítico:</b> a mesma leitura em tabela; clicar na linha abre o Histórico do tema com aquele indicador no gráfico. <b>Comparar Centrais:</b> o valor de cada Central e a variação em 12 meses. <b>Cooperativas:</b> "Escolheram" e "Não escolheram" trocam o número pela mediana das cooperativas de cada grupo, a partir dos planos registrados. Um traço "–" é número que não existe: passe o mouse para ver por quê.</p></details>`;
 }
 function evoPrepararEstado(){
   const recs=evoRecortes(); if(!recs.includes(EVO.rec)) EVO.rec=recs[0];
@@ -9013,12 +8920,12 @@ function evoPrepararEstado(){
 }
 const htmlEvolucaoAntesEvo = htmlEvolucaoSistemica;
 htmlEvolucaoSistemica = function(){
-  const cab=`<div class="g-cab evo"><div><h1 class="titulo" style="margin-bottom:0">Evolução sistêmica</h1></div>
-    <nav class="evo-abas" id="evo-abas" role="tablist" aria-label="Abas">
-      <button class="evo-aba" id="evo-aba-pan" role="tab" aria-selected="${EVO.aba==="pan"}" onclick="evoAcao('aba','pan')"><b>Panorama</b><span>Como estou hoje, por tema</span></button>
-      <button class="evo-aba" id="evo-aba-lista" role="tab" aria-selected="${EVO.aba==="lista"}" onclick="evoAcao('aba','lista')"><b>Lista</b><span>Visão analítica e detalhe</span></button>
-      <button class="evo-aba" id="evo-aba-comp" role="tab" aria-selected="${EVO.aba==="comp"}" onclick="evoAcao('aba','comp')"><b>Comparar Centrais</b><span>Sistema + Centrais</span></button>
-    </nav></div>`;
+  const cab=`<div class="g-cab"><div><h1 class="titulo" style="margin-bottom:0">Evolução sistêmica</h1></div>
+    <div class="seletor" id="evo-abas" role="tablist" aria-label="Abas">
+      <button id="evo-aba-pan" role="tab" aria-pressed="${EVO.aba==="pan"}" onclick="evoAcao('aba','pan')">Panorama</button>
+      <button id="evo-aba-ana" role="tab" aria-pressed="${EVO.aba==="ana"}" onclick="evoAcao('aba','ana')">Analítico</button>
+      <button id="evo-aba-comp" role="tab" aria-pressed="${EVO.aba==="comp"}" onclick="evoAcao('aba','comp')">Comparar Centrais</button>
+    </div></div>`;
   if(!evoPodeVer())
     return `<div class="evo"><div class="g-cab"><div><h1 class="titulo" style="margin-bottom:0">Evolução sistêmica</h1></div></div>
       <div class="sis-vazio"><b>Esta visão é das Centrais, do CAS e dos administradores.</b>
@@ -9031,39 +8938,39 @@ htmlEvolucaoSistemica = function(){
   if(!evoChavesPainel().length) return `<div class="evo">${cab}<div class="sis-vazio"><b>${SEM_DADOS}.</b><span>O painel sistêmico ainda não tem indicadores com carga.</span></div></div>`;
   evoCarregarPainel25();
   evoPrepararEstado();
-  const corpo = EVO.aba==="pan" ? evoPanorama() : EVO.aba==="lista" ? htmlLista() : htmlComparar();
-  return `<div class="evo" id="evo">${cab}${htmlControles()}${htmlComoLer()}${corpo}</div>`;
+  const corpo = EVO.aba==="pan" ? evoPanorama() : EVO.aba==="ana" ? htmlAnalitico() : htmlComparar();
+  return `<div class="evo" id="evo">${cab}${htmlFiltros()}${htmlComoLer()}${corpo}</div>`;
 };
 function evoAposPintar(){
-  if(!evoVisivel() || !EVO.det || !EVO.rolar) return;
-  EVO.rolar=false;
-  const el=document.getElementById("evo-lista-row-"+EVO.det); if(!el) return;
+  if(!evoVisivel()) return;
+  evoDesenharHist();
+  if(!EVO.rolar) return; EVO.rolar=false;
+  const el=document.getElementById("evo-hist"); if(!el) return;
   const r=el.getBoundingClientRect();
-  if(r.top<60 || r.bottom>window.innerHeight-80) el.scrollIntoView({block:"start", behavior:"smooth"});
+  if(r.top<0 || r.bottom>window.innerHeight) el.scrollIntoView({block:"nearest", behavior:"smooth"});
 }
 const pintaAntesEvo = pinta;
 pinta = function(){ pintaAntesEvo.apply(this, arguments); evoAposPintar(); };
-document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && evoVisivel() && EVO.det){ EVO.det=null; pinta(); } });
+let _evoResize=null;
+window.addEventListener("resize", ()=>{ clearTimeout(_evoResize); _evoResize=setTimeout(()=>{ if(evoVisivel()) evoDesenharHist(); },120); });
+document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && evoVisivel() && (EVO.tema||EVO.aberto)){ EVO.tema=null; EVO.aberto=null; pinta(); } });
 const entrarVinculoAntesEvo = entrarVinculo;
 entrarVinculo = function(i){
-  EVO.p25=null; EVO.p25Erro=null; EVO.cmp={}; EVO.rec=null; EVO.det=null; EVO.coop="todas"; EVO.mes="ultimo"; EVO.ano=null;
+  EVO.p25=null; EVO.p25Erro=null; EVO.cmp={}; EVO.rec=null; EVO.tema=null; EVO.indSel=null; EVO.aberto=null; EVO.coop="todas"; EVO.mes="ultimo"; EVO.ano=null;
   return entrarVinculoAntesEvo.apply(this, arguments);
 };
 window.evoAcao = function(campo, valor){
-  if(campo==="aba"){ EVO.aba=valor; if(valor==="comp") EVO.det=null; ir(()=>pinta()); return; }
-  if(campo==="rec"){ EVO.rec=valor; }
-  else if(campo==="coop"){ EVO.coop=valor; }
-  else if(campo==="comp"){ EVO.comp=valor; }
-  else if(campo==="setas"){ EVO.setas=valor; }
-  else if(campo==="chart"){ EVO.chart=valor; }
+  if(campo==="aba"){ EVO.aba=valor; ir(()=>pinta()); return; }
+  if(campo==="rec") EVO.rec=valor;
+  else if(campo==="coop") EVO.coop=valor;
   pinta();
 };
 window.evoSelAno = function(v){ EVO.ano=Number(v); if(EVO.mes!=="ultimo" && evoParse(EVO.mes).y!==EVO.ano) EVO.mes="ultimo"; pinta(); };
 window.evoSelMes = function(v){ EVO.mes=v; pinta(); };
-window.evoMini = function(on){ EVO.mini=!!on; pinta(); };
-window.evoDetalhe = function(chave){ EVO.det = EVO.det===chave ? null : chave; EVO.rolar=!!EVO.det; pinta(); };
-window.evoIrLista = function(chave){ EVO.aba="lista"; EVO.det=chave; EVO.rolar=true; pinta(); };
-window.evoFecharDetalhe = function(){ EVO.det=null; pinta(); };
+window.evoTema = function(id){ EVO.tema = EVO.tema===id ? null : id; EVO.indSel=null; EVO.rolar=!!EVO.tema; pinta(); };
+window.evoIndHist = function(chave){ if(EVO.aba==="pan") EVO.indSel=chave; else EVO.aberto=chave; pinta(); };
+window.evoAbrirLinha = function(chave){ EVO.aberto = EVO.aberto===chave ? null : chave; EVO.rolar=!!EVO.aberto; pinta(); };
+window.evoFecharHist = function(){ EVO.tema=null; EVO.aberto=null; pinta(); };
 window.evoTentarComparativo = function(){ const c=evoCmp(EVO.rec); Object.keys(c.por).forEach(k=>{ if(c.por[k]&&c.por[k].erro) delete c.por[k]; }); c.erro=null; pinta(); };
 window.EVO = EVO;   
 })();
@@ -9457,12 +9364,13 @@ pinta = function(){
   if(b){
     b.disabled = !!(ENTIDADE && ENTIDADE.tipo==="cooperativa" && !ENTIDADE.teste);
     b.setAttribute("aria-current", naEscolha());
+    const li = b.closest("li"); if(li) li.hidden = true;   
   }
   if(naEscolha()) escAjustarLargura();
 };
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920261609 -->
+<!-- beta 250920262350 -->
 </body>
 </html>
