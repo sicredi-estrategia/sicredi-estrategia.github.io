@@ -2525,6 +2525,292 @@ body.rail .pe-versao{display:none}
 .adm-tab .adm-num,.adm-tab th.adm-num{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
 .adm-tab tr.adm-alerta td{background:#FFF7E0}
 .adm-tab td input[type=checkbox]{width:16px; height:16px; cursor:pointer}
+
+
+.ev6{--verde:#3FA110; --verde-escuro:#146E37; --verde-claro:#D7E6C8; --verde-lav:#F2F8ED;
+  --tinta:#16261B; --texto:#404A42; --fraco:#7C867E; --tenue:#A2ABA4;
+  --linha:#E4E8E4; --bege:#DDD6C4; --fundo:#F4F6F3; --branco:#FFFFFF; --nav:#0F2E1A;
+  --r:12px; --sombra:0 1px 2px rgba(22,38,27,.05), 0 6px 16px rgba(22,38,27,.05);
+  --exo:"Exo 2",system-ui,sans-serif; --nun:"Nunito",-apple-system,"Segoe UI",system-ui,sans-serif;}
+.ev6, .ev6 *{box-sizing:border-box}
+.ev6{margin:0; background:var(--fundo); color:var(--texto); font-family:var(--nun); font-size:14px; -webkit-font-smoothing:antialiased}
+.ev6 .tnum{font-variant-numeric:tabular-nums lining-nums}
+.ev6 .cab{display:flex; align-items:flex-start; justify-content:space-between; gap:16px}
+.ev6 h1{font-family:var(--exo); font-weight:600; font-size:28px; color:var(--tinta); margin:0; letter-spacing:-.2px}
+.ev6 .seg{display:inline-flex; background:#fff; border:1px solid var(--linha); border-radius:10px; padding:3px; gap:2px}
+.ev6 .seg button{border:0; background:none; font-family:var(--exo); font-size:13.5px; color:var(--fraco); padding:7px 16px; border-radius:7px; cursor:pointer; white-space:nowrap}
+.ev6 .seg button.on{background:var(--verde-escuro); color:#fff}
+.ev6 .seg.e6-mini button{font-size:12px; padding:4px 10px}
+.ev6 .pilulas{display:flex; justify-content:space-between; align-items:center; gap:8px 16px; flex-wrap:wrap; margin:18px 0 4px}
+.ev6 .pil-ent, .ev6 .pil-mes{display:flex; flex-wrap:wrap; gap:8px}
+.ev6 .pil-mes .pil{font-size:13px; padding:6px 13px}
+.ev6 .pil-mes .pil.outra select{max-width:120px}
+.ev6 .pil{font-family:var(--exo); font-size:13.5px; color:var(--tinta); background:#fff; border:1px solid var(--linha); border-radius:999px; padding:7px 16px; cursor:pointer; white-space:nowrap}
+.ev6 .pil.on{background:var(--verde-escuro); border-color:var(--verde-escuro); color:#fff}
+.ev6 .pil.outra{border-style:dashed; color:var(--fraco); padding-right:10px; display:inline-flex; align-items:center; gap:6px}
+.ev6 .pil.outra select{border:0; background:transparent; font:inherit; color:inherit; max-width:230px; cursor:pointer; outline:none}
+.ev6 .pil.outra.on{border-style:solid}
+.ev6 .pil.outra.on select{color:#fff}
+.ev6 .pil.outra.on select option{color:var(--tinta)}
+.ev6 .recorte{margin-top:18px; padding-bottom:18px}
+.ev6 .rec-top{display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:4px}
+.ev6 .rec-top .olho{margin-bottom:0}
+.ev6 .olho{font-family:var(--exo); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--tenue); margin-bottom:8px}
+.ev6 .frase{font-family:var(--exo); font-size:25px; line-height:1.25; color:var(--fraco); font-weight:500}
+.ev6 .frase1{display:block; white-space:nowrap}
+.ev6 .frase1.quebra{white-space:normal}
+.ev6 .frase2{display:block; font-size:16px; line-height:1.4; margin-top:4px; color:var(--fraco)}
+.ev6 .frase2 b{font-weight:600}
+.ev6 .frase b{color:var(--tinta); font-weight:600}
+.ev6 .e6-sub{font-size:13px; color:var(--tenue); margin-top:6px}
+.ev6 .e6-sub b{font-weight:600; color:var(--fraco)}
+.ev6 .selos-topo{display:flex; flex-wrap:nowrap; gap:6px; margin-top:10px; overflow:hidden}
+.ev6 .e6-chip.mais{cursor:pointer; color:var(--fraco)}
+.ev6 .mesbox{display:flex; gap:8px; align-items:center; flex:none}
+.ev6 .mesbox select{font-family:var(--exo); font-size:13px; color:var(--fraco); background:#fff; border:1px solid var(--linha); border-radius:8px; padding:8px 10px; cursor:pointer}
+.ev6 .mesbox select.on{color:#fff; background:var(--verde-escuro); border-color:var(--verde-escuro)}
+.ev6 .btn-ult{font-family:var(--exo); font-size:13px; border:1px solid var(--linha); background:#fff; color:var(--fraco); border-radius:8px; padding:8px 14px; cursor:pointer; white-space:nowrap}
+.ev6 .btn-ult.on{background:var(--verde-escuro); border-color:var(--verde-escuro); color:#fff}
+.ev6 .e6-temas{display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:10px}
+@media (max-width:1180px){
+.ev6 .e6-temas{grid-template-columns:repeat(3, minmax(0, 1fr))}
+}
+.ev6 .e6-tc{--g:10px; --fv:clamp(15px, 10cqi, 20px); --fn:clamp(10px, 6.4cqi, 11.5px); --fs:clamp(10px, 6.2cqi, 12px); --cv:2.7em; --cn:4.3em;
+    background:#fff; border:1px solid var(--bege); border-radius:var(--r); position:relative; overflow:hidden;
+    padding:15px 9px 0; display:flex; flex-direction:column; container-type:inline-size}
+.ev6 .e6-tc::before{content:""; position:absolute; inset:0 0 auto; height:5px; background:var(--verde-escuro)}
+.ev6 .e6-tc.sel{border-color:var(--verde); box-shadow:0 0 0 1px var(--verde)}
+.ev6 .tt{font-family:var(--exo); font-weight:700; font-size:clamp(12.5px, 8.3cqi, 15px); line-height:1.25; color:var(--tinta);
+    margin:0 4px; white-space:nowrap; overflow:hidden; letter-spacing:-.1px}
+.ev6 .slot{padding:var(--g) 4px; border-top:1px solid #EEE9DD; position:relative; border-radius:8px}
+.ev6 .tt + .slot{border-top-color:transparent}
+.ev6 .slot.clic{cursor:pointer}
+.ev6 .slot.clic:hover{background:#F7F8F6}
+.ev6 .slot.sel{background:#EEF1ED; border-top-color:transparent}
+.ev6 .slot.sel + .slot{border-top-color:transparent}
+.ev6 .slot .nm{font-family:var(--exo); font-weight:700; font-size:var(--fn); line-height:1.3; color:var(--tinta); white-space:nowrap; overflow:hidden; margin-bottom:6px}
+.ev6 .bloco{display:grid; grid-template-columns:var(--cv) 1fr; column-gap:clamp(4px, 3cqi, 10px); align-items:center; height:36px; font-size:var(--fv)}
+.ev6 .vcol{min-width:0}
+.ev6 .bloco .val{font-family:var(--exo); font-weight:700; font-size:var(--fv); color:var(--verde-escuro); line-height:1; white-space:nowrap; letter-spacing:-.3px}
+.ev6 .bloco .mes{font-family:var(--nun); font-size:clamp(9.5px, 6cqi, 10.5px); color:var(--fraco); margin-top:4px; white-space:nowrap; line-height:1}
+.ev6 .bloco .mes.def{color:#9A6B12}
+.ev6 .vgrid{display:grid; grid-template-columns:8px minmax(var(--cn), max-content) auto; column-gap:3px; row-gap:5px; align-items:center; font-family:var(--nun); font-size:var(--fs); min-width:0}
+.ev6 .e6-vn{font-weight:600; color:var(--texto); text-align:left; white-space:nowrap; line-height:1}
+.ev6 .e6-vn.nulo{color:var(--tenue); font-weight:400}
+.ev6 .e6-vs{font-size:clamp(9.5px, 6cqi, 10.5px); color:var(--fraco); font-style:italic; white-space:nowrap; line-height:1}
+.ev6 .e6-seta{display:block; width:0; height:0; justify-self:center; border-left:4px solid transparent; border-right:4px solid transparent}
+.ev6 .e6-seta.s{border-bottom:6px solid var(--tinta)}
+.ev6 .e6-seta.d{border-top:6px solid var(--tinta)}
+.ev6 .e6-seta.z{width:7px; height:2px; background:var(--fraco); border:0}
+.ev6 .nota1{grid-column:1 / -1; font-size:clamp(9.5px, 6cqi, 10.5px); color:var(--fraco); font-style:italic; white-space:nowrap; line-height:1.2}
+.ev6 .slot.com-anel .bloco{grid-template-columns:auto 1fr; height:clamp(42px, 27cqi, 52px)}
+.ev6 .anel{position:relative; width:clamp(42px, 27cqi, 52px); aspect-ratio:1; flex:none}
+.ev6 .anel svg{position:absolute; inset:0}
+.ev6 .anel-c{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center}
+.ev6 .anel .val{font-size:clamp(12.5px, 7.8cqi, 16px); letter-spacing:-.4px}
+.ev6 .anel .mes{font-size:8.5px; margin-top:2px}
+.ev6 .slot.espera .nm{color:var(--fraco); font-weight:600}
+.ev6 .esq{display:grid; grid-template-columns:var(--cv) 1fr; grid-template-rows:1fr 1fr; column-gap:clamp(4px, 3cqi, 10px); row-gap:6px; align-items:center; height:36px; font-size:var(--fv)}
+.ev6 .slot.com-anel .esq, .ev6 .esq.anel-esq{height:clamp(42px, 27cqi, 52px); grid-template-columns:clamp(42px, 27cqi, 52px) 1fr}
+.ev6 .e-val{grid-row:1 / 3; height:22px; border-radius:6px; background:#F0F2EF}
+.ev6 .esq.anel-esq .e-val{height:auto; aspect-ratio:1; border-radius:50%; background:none; border:3px solid #F0F2EF}
+.ev6 .e-lin{height:7px; width:78%; border-radius:4px; background:#F3F5F2}
+.ev6 .e-lin.c{width:58%}
+.ev6 .e-tag{grid-column:2; grid-row:1 / 3; justify-self:start; align-self:center; font-family:var(--nun); font-size:10.5px; font-weight:600; color:var(--fraco);
+       background:#fff; border:1px solid var(--linha); border-radius:999px; padding:3px 9px; white-space:nowrap; z-index:1}
+.ev6 .esq:has(.e-tag) .e-lin{visibility:hidden}
+.ev6 .slot.e6-vazio .e-nm{display:block; height:9px; width:62%; border-radius:4px; background:#F3F5F2; margin:3px 0 7px}
+.ev6 .slot.e6-vazio .esq{opacity:.55}
+.ev6 .rodape{background:#EEF1ED; color:var(--fraco); font-size:12px; padding:9px 16px; border-radius:8px; margin-top:14px}
+.ev6 .rodape b{color:var(--texto); font-weight:600}
+.ev6 .e6-det{background:#fff; border:1.5px solid var(--verde); border-radius:16px; margin-top:14px; padding:20px 24px 18px;
+     display:grid; grid-template-columns:minmax(310px, 32%) 1fr; gap:28px; align-items:stretch}
+.ev6 .det-esq{display:flex; flex-direction:column; gap:16px; min-width:0}
+.ev6 .e6-det h4{font-family:var(--exo); font-size:16px; font-weight:700; color:var(--tinta); margin:0}
+.ev6 .e6-det .def{font-size:12.5px; color:var(--fraco); margin-top:5px; line-height:1.45}
+.ev6 .rot-tab{font-family:var(--exo); font-size:10.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--tenue); margin-bottom:8px;
+         display:flex; align-items:center; justify-content:space-between; gap:8px}
+.ev6 .tri{display:grid; grid-template-columns:repeat(4, 1fr); gap:6px}
+.ev6 .tri > div{background:#F7F8F6; border-radius:8px; padding:6px 8px 7px; display:grid; grid-template-rows:auto auto auto; row-gap:2px}
+.ev6 .tri > div.sem{background:repeating-linear-gradient(45deg, #F7F8F6 0 6px, #F1F3F0 6px 12px)}
+.ev6 .tri .q{font-family:var(--exo); font-size:10.5px; color:var(--tenue)}
+.ev6 .tri .v{font-family:var(--exo); font-weight:700; font-size:14px; color:var(--tinta); white-space:nowrap; line-height:1.15}
+.ev6 .tri .d{font-family:var(--nun); font-size:10.5px; color:var(--fraco); white-space:nowrap; display:flex; align-items:center; gap:4px}
+.ev6 .nota-tri{font-size:10.5px; color:var(--tenue); margin-top:5px}
+.ev6 table.e6-cmp{width:100%; border-collapse:collapse; font-size:12.5px; font-family:var(--nun)}
+.ev6 table.e6-cmp th{font-family:var(--exo); font-weight:500; font-size:10.5px; color:var(--tenue); text-align:right; padding:0 0 6px 8px; white-space:nowrap}
+.ev6 table.e6-cmp th:first-child{text-align:left; padding-left:0}
+.ev6 table.e6-cmp td{padding:6px 0 6px 8px; border-top:1px solid var(--linha); text-align:right; white-space:nowrap; color:var(--texto)}
+.ev6 table.e6-cmp td:first-child{text-align:left; padding-left:0; max-width:196px; overflow:hidden; text-overflow:ellipsis}
+.ev6 table.e6-cmp td:nth-child(2){font-family:var(--exo); font-weight:600; color:var(--tinta)}
+.ev6 table.e6-cmp tr.eu td{font-weight:700; color:var(--tinta)}
+.ev6 table.e6-cmp tr.sep td{border-top:1px dashed #D5DBD5}
+.ev6 .c-v{display:inline-flex; align-items:center; gap:4px; font-weight:600}
+.ev6 .c-nulo, .ev6 .c-n{color:var(--tenue); font-size:11.5px}
+.ev6 .det-dir{min-width:0; display:flex; flex-direction:column}
+.ev6 .gcab{display:flex; flex-direction:column; gap:2px; margin-bottom:8px; min-width:0; padding-left:46px}
+.ev6 .gtit{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ev6 .gnota{font-size:11px; color:var(--tenue); font-style:italic; line-height:1.35}
+.ev6 .gtit{font-family:var(--exo); font-size:13px; font-weight:600; color:var(--tinta)}
+.ev6 .gtit span{color:var(--tenue); font-weight:400}
+.ev6 .gr-slot{flex:1; min-height:230px; display:flex; align-items:flex-end}
+.ev6 .gr-slot > .gr-wrap{width:100%}
+.ev6 .gr-wrap{position:relative}
+.ev6 svg.gr{width:100%; height:auto; display:block; overflow:visible}
+.ev6 .gr-grade{stroke:#EEF1ED}
+.ev6 .gr-grade.zero{stroke:#C9D0CA}
+.ev6 .gr-y{font-family:var(--nun); font-size:11px; fill:var(--tenue); text-anchor:end}
+.ev6 .gr-tick{stroke:#CBD2CC}
+.ev6 .gr-mes{font-family:var(--nun); font-size:11px; fill:var(--fraco); text-anchor:middle}
+.ev6 .gr-mes.fim{font-weight:700; fill:var(--tinta)}
+.ev6 .gr-hach{stroke:#E3E8E2; stroke-width:3}
+.ev6 .gr-semh{stroke:none}
+.ev6 .gr-semh-t{font-family:var(--nun); font-size:11px; font-style:italic; fill:var(--fraco); text-anchor:middle}
+.ev6 .gr-l{fill:none; stroke-linejoin:round; stroke-linecap:round}
+.ev6 .gr-l.principal{stroke:var(--tinta); stroke-width:2.4}
+.ev6 .gr-l.ligacao{stroke:var(--tinta); stroke-width:1.3; stroke-dasharray:2 4; opacity:.7}
+.ev6 .gr-l.comp1{stroke:#7F8B82; stroke-width:1.6; stroke-dasharray:6 4}
+.ev6 .gr-l.comp2{stroke:#AEB7B0; stroke-width:1.6; stroke-dasharray:1.5 4}
+.ev6 .gr-l.med{stroke:#6FAF4E; stroke-width:1.6; stroke-dasharray:6 4}
+.ev6 .gr-faixa-area{fill:#E7F1E0; stroke:none}
+.ev6 .gr-col{fill:#D7E6C8}
+.ev6 .gr-col.ult{fill:var(--verde-escuro)}
+.ev6 .gr-p{fill:#fff; stroke:var(--tinta); stroke-width:2}
+.ev6 .gr-p.ult{fill:var(--tinta)}
+.ev6 .gr-ini{font-family:var(--exo); font-size:11px; font-weight:600; fill:var(--fraco); text-anchor:middle}
+.ev6 .gr-bolha{fill:var(--tinta)}
+.ev6 .gr-bolha-t{font-family:var(--exo); font-size:12px; font-weight:700; fill:#fff}
+.ev6 .gr-fim-n{font-family:var(--nun); font-size:11px; fill:var(--fraco)}
+.ev6 .gr-fim-n.principal{font-weight:700; fill:var(--tinta)}
+.ev6 .gr-fim-v{font-family:var(--exo); font-size:11.5px; font-weight:600}
+.ev6 .gr-fim-v.comp1{fill:#6B766E}
+.ev6 .gr-fim-v.comp2{fill:#98A29A}
+.ev6 .gr-fim-v.med{fill:#4E8F30}
+.ev6 .gr-hot{fill:transparent; cursor:crosshair}
+.ev6 .gr-guia{stroke:#9AA39C; stroke-width:1; stroke-dasharray:2 3}
+.ev6 .gr-tip{position:absolute; top:8px; background:#fff; border:1px solid var(--linha); box-shadow:var(--sombra); border-radius:8px; padding:7px 10px;
+        font-size:11.5px; min-width:150px; pointer-events:none; z-index:2}
+.ev6 .gr-tip b{font-family:var(--exo); display:block; margin-bottom:3px; color:var(--tinta)}
+.ev6 .gr-tip div{display:flex; justify-content:space-between; gap:14px; color:var(--fraco)}
+.ev6 .gr-tip i{font-style:normal; font-weight:700; color:var(--tinta)}
+.ev6 .gr-tip div.f{color:#4E8F30}
+.ev6 .gr-vazio, .ev6 .det-vazio{color:var(--tenue); padding:40px 0; text-align:center}
+.ev6 .nota-rodape{font-size:11px; color:var(--tenue); margin-top:6px; line-height:1.4}
+.ev6 .estilos{opacity:.85}
+.ev6 .e6-kpis{display:grid; grid-template-columns:repeat(4, 1fr); background:#fff; border:1px solid var(--linha); border-radius:var(--r); margin:16px 0 14px}
+.ev6 .e6-kpis div{padding:16px 20px; border-left:1px solid var(--linha)}
+.ev6 .e6-kpis div:first-child{border-left:0}
+.ev6 .e6-kpis b{display:block; font-family:var(--exo); font-size:28px; font-weight:600; color:var(--tinta); line-height:1}
+.ev6 .e6-kpis span{font-size:12.5px; color:var(--fraco); display:block; margin-top:6px}
+.ev6 .tab{background:#fff; border:1px solid var(--linha); border-radius:var(--r); overflow:hidden}
+.ev6 .tab .th, .ev6 .tab .tr{display:grid; grid-template-columns:minmax(220px, 2.3fr) 90px 100px 130px minmax(170px, 1.6fr) 110px; align-items:center; column-gap:18px; padding:0 18px}
+.ev6 .tab .th{font-family:var(--exo); font-size:10.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--tenue); height:42px; border-bottom:1px solid var(--linha)}
+.ev6 .tab .th .d, .ev6 .tab .tr .d{text-align:right}
+.ev6 .tab .tr{min-height:62px; border-top:1px solid var(--linha); cursor:pointer}
+.ev6 .tab .tr:first-of-type{border-top:0}
+.ev6 .tab .tr:hover{background:#FAFBF9}
+.ev6 .tab .tr.sel{background:#EEF1ED}
+.ev6 .tab .tr .nm{font-family:var(--exo); font-size:13.5px; color:var(--tinta); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ev6 .tab .tr .tm{font-size:11.5px; color:var(--fraco); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ev6 .tab .tr .hj{font-family:var(--exo); font-size:15px; color:var(--tinta); text-align:right; white-space:nowrap}
+.ev6 .tab .tr .hj small{display:block; font-size:10.5px; color:var(--tenue); font-family:var(--nun)}
+.ev6 .tab .tr .v12{font-family:var(--exo); font-size:13px; text-align:right; white-space:nowrap; color:var(--texto)}
+.ev6 .tab .tr.fantasma{cursor:default; color:var(--tenue)}
+.ev6 .tab .tr.fantasma .nm{color:var(--fraco)}
+.ev6 .e6-tag{font-family:var(--exo); font-size:9.5px; letter-spacing:.6px; text-transform:uppercase; color:var(--fraco); border:1px solid var(--linha); border-radius:5px; padding:1px 6px; margin-left:6px; vertical-align:2px}
+.ev6 .spark{width:120px; height:28px}
+.ev6 .spark path{fill:none; stroke:#8A948C; stroke-width:1.5}
+.ev6 .spark circle{fill:var(--tinta)}
+.ev6 .pos{display:grid; grid-template-columns:1fr; gap:4px}
+.ev6 .pos .barra{height:6px; background:#EEF1ED; border-radius:4px; position:relative}
+.ev6 .pos .barra i{position:absolute; left:0; top:0; bottom:0; background:linear-gradient(90deg, #D7E6C8, #6FAF4E); border-radius:4px}
+.ev6 .pos .barra em{position:absolute; top:-3px; width:2px; height:12px; background:var(--verde-escuro)}
+.ev6 .pos .barra u{position:absolute; top:-2px; width:1px; height:10px; background:#9AA39C; left:50%}
+.ev6 .pos small{font-size:11px; color:var(--fraco)}
+.ev6 .conq{display:flex; gap:6px; color:var(--verde-escuro)}
+.ev6 .selo-ico{width:14px; height:14px; fill:currentColor; stroke:currentColor}
+.ev6 .linha-det{grid-column:1 / -1; padding:0 0 16px; cursor:default}
+.ev6 .linha-det .e6-det{margin-top:0}
+.ev6 .e6-chip{display:inline-flex; align-items:center; gap:6px; font-family:var(--exo); font-size:12px; color:var(--texto); background:#fff; border:1px solid var(--linha); border-radius:999px; padding:4px 10px 4px 8px; white-space:nowrap}
+.ev6 .e6-chip .selo-ico{color:var(--verde-escuro)}
+.ev6 .e6-chip b{font-weight:600; color:var(--tinta)}
+.ev6 .un{white-space:nowrap}
+.ev6 .m-c{display:none}
+@container (max-width: 180px){
+.ev6 .m-l{display:none}
+.ev6 .m-c{display:inline}
+}
+.ev6 .rodape .m12{white-space:nowrap}
+.ev6 .pilulas.pl-temas{justify-content:flex-start}
+.ev6 table.e6-cmp tr.ref td:first-child{color:var(--fraco)}
+.ev6 .gr-leg{display:flex; flex-wrap:wrap; gap:4px 16px; font-family:var(--nun); font-size:11.5px; color:var(--fraco); margin:0 0 2px 46px}
+.ev6 .gr-leg span{display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
+.ev6 .gr-leg span.p{color:var(--tinta); font-weight:700}
+.ev6 .gr-leg b{font-family:var(--exo); font-weight:700; color:var(--tinta)}
+.ev6 .gr-leg svg{overflow:visible}
+.ev6 .gr-leg-faixa{display:inline-block; width:18px; height:9px; background:#E7F1E0; border-radius:2px}
+.ev6 .gr-l.comp3{stroke:#C3CAC4; stroke-width:1.2}
+.ev6 .gr-fim-v.comp3{fill:#A2ABA4}
+.ev6 table.e6-cmp tr.grp td{font-family:var(--exo); font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:var(--tenue); padding:10px 0 3px; border-top:0; text-align:left}
+.ev6 table.e6-cmp tr.ctx td:first-child, .ev6 table.e6-cmp tr.ref td:first-child{color:var(--fraco)}
+.ev6 .seg.e6-mini button.off{opacity:.4; cursor:not-allowed}
+.ev6 .pil-ent .pil.outra select{max-width:170px}
+.ev6 .pilulas .pil{padding:6px 12px; font-size:13px}
+.ev6 .pil-mes{flex:none; margin-left:auto}
+.ev6 .pil-mes .pil.outra select{max-width:96px}
+.ev6 .gr-zona-boa{fill:#EAF4E3; stroke:none}
+.ev6 .gr-zona-ruim{fill:#FBEEE4; stroke:none}
+.ev6 .gr-l.q-boa{stroke:#7DB65E; stroke-width:1.2; stroke-dasharray:4 4}
+.ev6 .gr-l.q-ruim{stroke:#E0A57A; stroke-width:1.2; stroke-dasharray:4 4}
+.ev6 .gr-l.mediana{stroke:#9AA39C; stroke-width:1.3; stroke-dasharray:2 4}
+.ev6 .gr-zona-t{font-family:var(--nun); font-size:10.5px; font-weight:600; opacity:.9}
+.ev6 .gr-zona-t.boa{fill:#4E8F30}
+.ev6 .gr-zona-t.ruim{fill:#C0703D}
+.ev6 .gr-envelope{fill:#EEF1ED; stroke:none}
+.ev6 .gr-leg-z{display:inline-block; width:18px; height:9px; border-radius:2px}
+.ev6 .gr-leg-z.boa{background:#EAF4E3; box-shadow:inset 0 -1.5px 0 #7DB65E}
+.ev6 .gr-leg-z.ruim{background:#FBEEE4; box-shadow:inset 0 1.5px 0 #E0A57A}
+.ev6 .gr-leg-z.env{background:#EEF1ED}
+.ev6 .gr-leg span.ref{color:var(--tenue); font-style:italic}
+.ev6 table.e6-cmp .mk{display:inline-block; width:12px; height:8px; border-radius:2px; margin-right:7px; vertical-align:0}
+.ev6 table.e6-cmp .mk.eu{background:var(--tinta); height:3px; vertical-align:2px}
+.ev6 table.e6-cmp .mk.boa{background:#EAF4E3; box-shadow:inset 0 -1.5px 0 #7DB65E}
+.ev6 table.e6-cmp .mk.ruim{background:#FBEEE4; box-shadow:inset 0 1.5px 0 #E0A57A}
+.ev6 table.e6-cmp .mk.med{height:0; border-top:2px dotted #9AA39C; border-radius:0; vertical-align:3px}
+.ev6 table.e6-cmp .mk.sis{height:0; border-top:2px dashed #7F8B82; border-radius:0; vertical-align:3px}
+.ev6 table.e6-cmp .mk.env{background:#E4E8E3}
+.ev6 .pos-cen{font-family:var(--exo); font-size:11px; font-weight:600; color:var(--verde-escuro); background:var(--verde-lav); border-radius:999px; padding:1px 8px; margin-left:6px}
+.ev6 table.e6-cmp th.th-g{font-family:var(--nun); font-weight:400; font-style:italic; letter-spacing:0; text-transform:none; text-align:left; color:var(--tenue)}
+.ev6 .cab-dir{display:flex; align-items:center; gap:16px}
+.ev6 .cab-dir .pil-mes{margin-left:0}
+.ev6 .gr-semh-t{paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round}
+.ev6 .gr-zona-t.boa{paint-order:stroke; stroke:#EAF4E3; stroke-width:4px}
+.ev6 .gr-zona-t.ruim{paint-order:stroke; stroke:#FBEEE4; stroke-width:4px}
+.ev6 .gr-ini{paint-order:stroke; stroke:#fff; stroke-width:4px; stroke-linejoin:round}
+.ev6 table.e6-cmp th.th-g.pos{font-style:normal; font-weight:600; color:var(--verde-escuro)}
+.ev6 table.e6-cmp{table-layout:fixed}
+.ev6 table.e6-cmp col.c-val{width:50px}
+.ev6 table.e6-cmp col.c-var{width:56px}
+.ev6 table.e6-cmp td:first-child, .ev6 table.e6-cmp th:first-child{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:none}
+.ev6 table.e6-cmp tr.th-un th{font-family:var(--nun); font-size:10px; font-weight:400; font-style:italic; color:var(--tenue); padding:0 0 4px; text-align:right; letter-spacing:0; text-transform:none}
+.ev6 table.e6-cmp tr.th-un th:first-child{text-align:left}
+.ev6 table.e6-cmp.moeda col.c-var{width:70px}
+.ev6 .spark .lig{fill:none; stroke:#8A958D; stroke-width:1.2; stroke-dasharray:2 2.5}
+.ev6 .spark .pt{fill:#fff; stroke:var(--tinta); stroke-width:1.2}
+.ev6 .leg-conq{display:flex; flex-wrap:wrap; gap:6px 18px; padding:12px 18px; border-top:1px solid var(--linha, #E6EAE5); font-size:11.5px; color:var(--fraco)}
+.ev6 .leg-conq span{display:inline-flex; align-items:center; gap:6px}
+.ev6 .leg-conq .selo-ico{width:12px; height:12px}
+.ev6 .tab .pos small b{font-weight:700; color:var(--tinta)}
+.ev6 table.e6-cmp tr.eu td:first-child{white-space:normal; line-height:1.25}
+.ev6 button.e6-chip{cursor:pointer; line-height:inherit}
+.ev6 .selos-topo .e6-chip.on{border-color:var(--verde); box-shadow:0 0 0 1px var(--verde) inset}
+.ev6 .selos-topo.todos{flex-wrap:wrap}
+.ev6 .tab.sem-conq .th, .ev6 .tab.sem-conq .tr{grid-template-columns:minmax(220px, 2.3fr) 90px 100px 130px minmax(170px, 1.2fr)}
+
+
+.ev6{background:transparent; font-family:var(--nun); font-size:14px; color:var(--texto)}
+.ev6 .ev6-carregando{margin-top:28px; color:var(--fraco); font-size:14px}
+.ev6 .ev6-aviso{margin-top:18px; background:#FFF7E0; border:1px solid #F1DDA0; color:#6B5310; border-radius:10px; padding:10px 14px; font-size:13px}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -5865,7 +6151,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "27/09/2026 10:42";
+const PE_VERSAO = "27/09/2026 11:21";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6311,7 +6597,11 @@ function aplicarVisibilidadeMenu(){
   if(seps[1]) seps[1].hidden=!(grupoA || grupoB);
 }
 const irMontarIntegracao = irMontar, irMeuPlanoIntegracao = irMeuPlano, irModuloIntegracao = irModulo;
-irMontar = function(){ return podeVer("nav-montar") ? irMontarIntegracao() : irPaginaInicial(); };
+irMontar = function(){
+  if(!podeVer("nav-montar")) return irPaginaInicial();
+  if(PLANO_SRV && PLANO_SRV.status === "registrado") return irMeuPlanoIntegracao();   
+  return irMontarIntegracao();
+};
 irMeuPlano = function(){ return podeVer("nav-plano") ? irMeuPlanoIntegracao() : irPaginaInicial(); };
 irModulo = function(id){
   const b=MODULO_DO_BOTAO[id];
@@ -8247,599 +8537,747 @@ htmlVisao = function(){
   return h;
 };
 (function(){
-if(!document.getElementById("evo-css")){
-  const css=`
-  .evo{--s-bom:#7FAF7A; --s-bom-txt:#4F8A4A; --s-est:#E3B85B; --s-est-txt:#9E7318; --s-ruim:#D98E73; --s-ruim-txt:#B5603F; --s-na:#D3DAD5;
-    --evo-c100:#ECF1ED; --evo-c200:#DEE6E0}
-  .evo-num{font-variant-numeric:tabular-nums}
-  .evo-traco{color:#BAC3BC; cursor:help; display:inline-block; min-width:12px; text-align:center}
-  .evo-t-bom{color:var(--s-bom-txt)} .evo-t-ruim{color:var(--s-ruim-txt)} .evo-t-est{color:var(--s-est-txt)}
-  /* filtros: uma linha de chips na linguagem original (.periodos) */
-  .evo-filtros{display:flex; flex-wrap:wrap; gap:8px 26px; align-items:center; margin:0 0 14px}
-  .evo-filtros .g-esc span{margin-right:2px}
-  .evo-filtros .periodos{margin:0; flex-wrap:wrap}
-  .evo-filtros select{border:1px solid var(--linha); border-radius:20px; padding:6px 12px; font:inherit; font-size:12.4px; color:var(--texto); background:var(--branco)}
-  .evo-resumo{font-size:12px; color:var(--tenue); margin:-6px 0 14px}
-  .evo-resumo b{color:var(--fraco); font-weight:600}
-  .evo-comoler{margin:0 0 16px; font-size:12.5px; color:var(--fraco)}
-  .evo-comoler summary{cursor:pointer; font-weight:600; color:var(--verde-escuro)}
-  .evo-comoler p{margin:6px 0 0; line-height:1.5; max-width:90ch}
-  .evo-aviso{background:#FFF7E0; border:1px solid #F1DDA0; color:#6B5310; border-radius:10px; padding:9px 14px; font-size:12.6px; margin:0 0 14px}
-  .evo-aviso button{margin-left:8px}
-  /* Panorama: frase, legenda e fileira de temas */
-  .evo-frase{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline; justify-content:space-between; margin:0 0 12px}
-  .evo-frase p{margin:0; flex:1 1 420px; font-size:13.4px; color:var(--texto); line-height:1.5}
-  .evo-frase p b{font-family:"Exo 2",system-ui,sans-serif; color:var(--tinta); font-weight:600}
-  .evo-leg{display:inline-flex; gap:12px; align-items:center; font-size:11.5px; color:var(--tenue); flex-wrap:wrap}
-  .evo-leg span{display:inline-flex; align-items:center; gap:5px} .evo-leg i{width:9px; height:9px; border-radius:50%; display:inline-block}
-  .evo-temas{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; align-items:stretch; margin-bottom:22px}
-  @media(max-width:1199px){ .evo-temas{grid-template-columns:repeat(3,minmax(0,1fr))} }
-  @media(max-width:640px){ .evo-temas{grid-template-columns:1fr} }
-  .evo-tc{text-align:left; background:var(--branco); border:1.5px solid var(--linha); border-radius:14px; padding:12px 12px 8px; min-width:0; cursor:pointer;
-    display:flex; flex-direction:column; font:inherit; color:var(--tinta); transition:border-color .15s}
-  .evo-tc:hover{border-color:var(--verde-claro)}
-  .evo-tc.on{border-color:var(--verde); box-shadow:0 0 0 3px rgba(63,161,16,.12)}
-  .evo-tc h2{font-family:"Exo 2",system-ui,sans-serif; font-size:14px; font-weight:600; line-height:1.25; margin:0 0 4px; display:flex; gap:6px; align-items:baseline}
-  .evo-tc h2 .tn{font-size:11px; color:var(--tenue); font-weight:700}
-  .evo-slot{border-top:1px solid var(--evo-c100); padding:8px 0 6px; min-height:76px; display:flex; flex-direction:column; gap:5px; min-width:0}
-  .evo-slot:first-of-type{border-top:0}
-  .evo-slot .s-nome{font-size:11.5px; line-height:1.25; color:var(--texto); overflow-wrap:anywhere; min-height:2.5em}
-  .evo-slot .s-lin{display:flex; flex-wrap:wrap; gap:4px 10px; align-items:flex-start; min-width:0}
-  .evo-slot .s-val{display:flex; gap:6px; align-items:center; flex:none}
-  .evo-slot .s-val .v{font-family:"Exo 2",system-ui,sans-serif; font-size:18px; font-weight:700; letter-spacing:-.01em; line-height:1.1; white-space:nowrap; color:var(--tinta)}
-  .evo-slot .s-val .v small{font-size:10px; font-weight:500; color:var(--fraco); margin-right:2px} .evo-slot .s-val .v small.suf{margin:0 0 0 2px}
-  .evo-slot .s-val .v.neg{color:var(--s-ruim-txt)}
-  .evo-slot .s-mes{font-size:10.5px; color:var(--tenue); line-height:1.2; margin-left:18px; margin-top:-2px}
-  .evo-slot .s-vars{display:flex; flex-direction:column; gap:2px; margin-left:auto; align-items:flex-end; flex:none}
-  .evo-slot .s-var{font-family:"Exo 2",system-ui,sans-serif; font-size:12px; font-weight:700; white-space:nowrap; line-height:1.25}
-  .evo-slot .s-var small{font-family:"Nunito",system-ui,sans-serif; font-weight:400; color:var(--tenue); margin-left:4px; font-size:10.5px}
-  .evo-bola{width:12px; height:12px; border-radius:50%; flex:none; display:inline-block}
-  .evo-bola.b-bom{background:var(--s-bom)} .evo-bola.b-ruim{background:var(--s-ruim)} .evo-bola.b-est{background:var(--s-est)} .evo-bola.b-na{background:var(--s-na)}
-  .evo-fant{border:1px dashed #CBD4CC; border-radius:8px; background:rgba(255,255,255,.4); min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:3px; padding:8px; color:var(--tenue); font-size:11.5px; text-align:center}
-  .evo-fant b{font-weight:500; font-style:italic; color:var(--tenue); font-size:12px}
-  .evo-fant.vazio{border-color:var(--evo-c100); background:transparent}
-  /* Histórico (Panorama e Analítico) */
-  .evo-hist{grid-column:1 / -1; background:var(--branco); border:1.5px solid var(--verde); border-radius:14px; padding:14px 18px 14px; min-width:0}
-  .evo-hist-cab{display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px}
-  .evo-hist-cab h3{font-family:"Exo 2",system-ui,sans-serif; font-size:15px; font-weight:600; line-height:1.25; margin:0}
-  .evo-hist-cab h3 span{color:var(--fraco); font-weight:400}
-  .evo-hist-cab .sub{font-size:12px; color:var(--tenue); margin-top:2px}
-  .evo-fechar{border:0; background:var(--evo-c100); border-radius:50%; width:26px; height:26px; cursor:pointer; color:var(--texto); font-size:15px; line-height:1; flex:none}
-  .evo-fechar:hover{background:var(--evo-c200)}
-  .evo-hist-corpo{display:flex; flex-wrap:wrap; gap:16px 28px; align-items:flex-start}
-  .evo-hist-tab{flex:0 1 460px; min-width:0; overflow-x:auto}
-  .evo-hist-graf{flex:1 1 440px; min-width:0; position:relative}
-  .evo-hist h4{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; margin:0 0 8px}
-  table.evo-tri{border-collapse:separate; border-spacing:0; width:100%; min-width:400px}
-  .evo-tri th{font-size:10.5px; color:var(--fraco); font-weight:600; text-align:center; padding:2px 4px 6px; white-space:nowrap}
-  .evo-tri th.th-nome{text-align:left}
-  .evo-tri td{padding:6px 4px; vertical-align:middle; border-top:1px solid var(--evo-c100)}
-  .evo-tri tr.lin-ind{cursor:pointer} .evo-tri tr.lin-ind:hover td{background:var(--fundo)}
-  .evo-tri tr.sel td{background:var(--verde-lav)}
-  .evo-tri tr.sel td:first-child{box-shadow:inset 2px 0 0 var(--verde); border-radius:6px 0 0 6px} .evo-tri tr.sel td:last-child{border-radius:0 6px 6px 0}
-  .evo-tri td.td-nome{font-size:12px; line-height:1.25; color:var(--tinta); max-width:150px; overflow-wrap:anywhere; padding-left:8px}
-  .evo-tri td.td-cel{text-align:center; white-space:nowrap}
-  .evo-tri .tv{display:block; font-family:"Exo 2",system-ui,sans-serif; font-size:14px; font-weight:700; line-height:1.15; color:var(--tinta)}
-  .evo-tri .tv small{font-size:9.5px; font-weight:500; color:var(--fraco)}
-  .evo-tri .td3{display:inline-flex; gap:3px; margin-top:3px}
-  .evo-tri .td3 i{width:7px; height:7px; border-radius:50%; background:var(--s-na); display:inline-block}
-  .evo-tri .td3 i.b-bom{background:var(--s-bom)} .evo-tri .td3 i.b-ruim{background:var(--s-ruim)} .evo-tri .td3 i.b-est{background:var(--s-est)}
-  .evo-tri .td3 i.b-vazia{background:transparent; border:1px solid #CBD4CC}
-  .evo-tri tr.constr td{color:var(--tenue); font-size:12px; font-style:italic} .evo-tri tr.constr td.td-nome{font-style:normal}
-  .evo-hist-graf svg{width:100%; height:auto; display:block}
-  .evo-gh .cur{fill:none; stroke:var(--verde-escuro); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
-  .evo-gh .ant{fill:none; stroke:#9AA6A0; stroke-width:1.5; stroke-dasharray:5 4}
-  .evo-gh .sis{fill:none; stroke:#B9C4BB; stroke-width:1.4; stroke-dasharray:2 4}
-  .evo-gh .tri-l{stroke:var(--evo-c200); stroke-width:1} .evo-gh .eixo{stroke:#CBD4CC}
-  .evo-gh text{font-size:10.5px; fill:var(--fraco); font-family:inherit}
-  .evo-gh text.vc{fill:var(--verde-escuro); font-weight:700; font-size:11px} .evo-gh text.va{fill:#6B786F; font-size:10px} .evo-gh text.ref{fill:var(--tinta); font-weight:700}
-  .evo-gh .pt{fill:var(--verde-escuro)} .evo-gh .pt-ant{fill:#fff; stroke:#9AA6A0; stroke-width:1.2}
-  .evo-gh .guia{stroke:var(--verde-escuro); stroke-width:1; stroke-dasharray:3 3; display:none} .evo-gh .guia-pt{fill:var(--verde-escuro); stroke:#fff; stroke-width:1.5; display:none}
-  .evo-tip{position:absolute; pointer-events:none; background:var(--tinta); color:#fff; font-size:11.5px; line-height:1.35; padding:6px 9px; border-radius:7px; white-space:nowrap; display:none; z-index:5; box-shadow:0 2px 8px rgba(0,0,0,.2)}
-  .evo-tip b{font-weight:600}
-  .evo-hist-leg{display:flex; gap:14px; font-size:11px; color:var(--tenue); margin-top:4px; flex-wrap:wrap}
-  .evo-hist-leg i{display:inline-block; width:16px; height:0; border-top:2px solid var(--verde-escuro); vertical-align:middle; margin-right:5px}
-  .evo-hist-leg i.ant{border-top:2px dashed #9AA6A0} .evo-hist-leg i.sis{border-top:2px dotted #B9C4BB}
-  .evo-nota{font-size:11px; color:var(--tenue); margin:6px 0 0; line-height:1.45}
-  /* Analítico: tabela simples */
-  .evo-ana{background:var(--branco); border:1px solid var(--linha); border-radius:14px; overflow-x:auto}
-  table.evo-tab{border-collapse:separate; border-spacing:0; width:100%; min-width:560px}
-  .evo-tab th{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; text-align:right; padding:12px 12px 8px; border-bottom:1px solid var(--linha); white-space:nowrap}
-  .evo-tab th:first-child{text-align:left; padding-left:18px} .evo-tab th.c-mes{text-align:left}
-  .evo-tab td{padding:9px 12px; border-top:1px solid var(--evo-c100); text-align:right; vertical-align:middle; white-space:nowrap}
-  .evo-tab td:first-child{text-align:left; padding-left:18px; white-space:normal; overflow-wrap:anywhere; color:var(--tinta); font-weight:500; min-width:180px}
-  .evo-tab td.c-mes{text-align:left; font-size:11.5px; color:var(--tenue)}
-  .evo-tab td.c-val{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:15px; color:var(--tinta)} .evo-tab td.c-val.neg{color:var(--s-ruim-txt)}
-  .evo-tab td.c-var{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:12.5px}
-  .evo-tab tr.lin{cursor:pointer} .evo-tab tr.lin:hover td{background:var(--fundo)} .evo-tab tr.lin.on td{background:var(--verde-lav)}
-  .evo-tab tr.sep td{padding:16px 12px 4px 18px; border-top:0; text-align:left; font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; white-space:normal}
-  .evo-tab tr.sep td::after{content:""; display:block; height:1px; background:var(--evo-c200); margin-top:4px}
-  .evo-tab tr.exp td{padding:12px; border-top:0; text-align:left; white-space:normal; background:var(--fundo)}
-  .evo-tab tr.exp .evo-hist{border-width:1px; border-color:var(--verde-claro)}
-  /* Comparar Centrais: matriz enxuta */
-  .evo-mat-wrap{background:var(--branco); border:1px solid var(--linha); border-radius:14px; overflow-x:auto}
-  table.evo-mat{border-collapse:separate; border-spacing:0; width:100%; min-width:640px}
-  .evo-mat th{font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; text-align:right; padding:12px 12px 8px; border-bottom:1px solid var(--linha); white-space:nowrap}
-  .evo-mat th.th-ind{text-align:left; padding-left:18px; position:sticky; left:0; background:var(--branco); z-index:1}
-  .evo-mat td{padding:9px 12px; border-top:1px solid var(--evo-c100); text-align:right; vertical-align:top; white-space:nowrap}
-  .evo-mat td.td-ind{text-align:left; padding-left:18px; white-space:normal; overflow-wrap:anywhere; color:var(--tinta); font-weight:500; min-width:170px; position:sticky; left:0; background:var(--branco); box-shadow:1px 0 0 var(--evo-c200)}
-  .evo-mat td.td-sis{border-right:1px solid var(--evo-c200)}
-  .evo-mat .cv{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:15px; color:var(--tinta); display:block} .evo-mat .cv.neg{color:var(--s-ruim-txt)}
-  .evo-mat .cvar{font-family:"Exo 2",system-ui,sans-serif; font-weight:700; font-size:11px; display:block; margin-top:1px}
-  .evo-mat .cvar small{font-family:"Nunito",system-ui,sans-serif; font-weight:400; color:var(--tenue); margin-left:3px}
-  .evo-mat tr.sep td{padding:16px 12px 4px 18px; border-top:0; text-align:left; font-size:10.5px; color:var(--tenue); text-transform:uppercase; letter-spacing:.07em; font-weight:700; white-space:normal; position:static}
-  .evo-mat tr.sep td::after{content:""; display:block; height:1px; background:var(--evo-c200); margin-top:4px}
-  .evo-refdif{font-size:10.5px; color:#8A6116; white-space:nowrap}
-  `;
-  const st=document.createElement("style"); st.id="evo-css"; st.textContent=css; document.head.appendChild(st);
-}
-const EVO = {
-  aba:"pan", rec:null, coop:"todas", ano:null, mes:"ultimo",
-  tema:null, indSel:null,                                
-  aberto:null,                                           
-  rolar:false,
-  p25:null, p25Carregando:false, p25Erro:null,           
-  cmp:{}                                                 
-};
-const MESES_ABR=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-const MESES_LONGO=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-const COOP_ROT={todas:"todas as cooperativas", escolheram:"mediana das cooperativas que escolheram o indicador", nao_escolheram:"mediana das cooperativas que não escolheram o indicador"};
-const evoEhNum = x => typeof x==="number" && isFinite(x);
-let HIST_G=null;                                         
-function evoYm(y,m){ return y+"-"+String(m).padStart(2,"0"); }
-function evoParse(s){ const [y,m]=String(s).split("-").map(Number); return {y,m}; }
-function evoAdd(s,n){ let {y,m}=evoParse(s); m+=n; while(m>12){ m-=12; y++; } while(m<1){ m+=12; y--; } return evoYm(y,m); }
-function evoRot(s){ return s ? rotuloMes(s) : "—"; }
-function evoRotMes(s){ return MESES_ABR[evoParse(s).m-1]; }
-function evoFmt(m,v){ if(!evoEhNum(v)) return "—"; return fmt(v,m).replace(/^(\D*?)-/, "$1−"); }   
-function evoNum(m,v){ return Number(v).toLocaleString("pt-BR",{minimumFractionDigits:m.casas||0, maximumFractionDigits:m.casas||0}).replace(/^-/,"−"); }
-function evoValorCompacto(m,v){
-  const suf=(m.un||"").trim();
-  return (m.prefixo?`<small>${esc(m.prefixo.trim())}</small>`:"")+esc(evoNum(m,v))+(suf&&suf!=="%"?`<small class="suf">${esc(suf)}</small>`:esc(m.un||""));
-}
-function evoSinalTxt(v,casas){
-  const c=casas!=null?casas:1, r=Number(v.toFixed(c));
-  const s=Math.abs(v).toLocaleString("pt-BR",{minimumFractionDigits:c, maximumFractionDigits:c});
-  return r===0 ? (0).toLocaleString("pt-BR",{minimumFractionDigits:c, maximumFractionDigits:c}) : (v<0?"−":"+")+s;
-}
-function evoDifAbs(m,delta){ return (m.prefixo||"")+evoSinalTxt(delta, m.casas!=null?m.casas:1)+(m.un||""); }
-function evoMelhorou(m,delta){ return m.menorMelhor ? delta<0 : delta>0; }
-function evoClasse(m,delta){ const lim=0.5*Math.pow(10,-(m.varCasas!=null?m.varCasas:1)); if(Math.abs(delta)<lim) return "est"; return evoMelhorou(m,delta)?"bom":"ruim"; }
-function evoNomeCls(c){ return c==="bom"?"melhorou":c==="ruim"?"piorou":c==="est"?"estável":"sem leitura"; }
-function evoAcumuladoAno(m){ return m.chave==="investimento_social" || /zera em janeiro/i.test(m.janelaRot||""); }
-function evoTrimestral(m){ const f=fichaDe(m); return !!(f && /trimestral/i.test(f.frequencia||"")); }
-function evoSoma(m){ return m.varTipo==="relativa"; }      
-function evoTextoVar(m,v,b){
-  const delta=v-b, dif="diferença "+evoDifAbs(m,delta);
-  if(m.varTipo==="relativa"){
-    if(b<=0) return {texto:"–", na:true, motivo:"base "+(b===0?"zero":"negativa")+" ("+evoFmt(m,b)+"): variação % não se aplica · "+dif};
-    if(v<0) return {texto:"–", na:true, motivo:"o valor mudou de sinal ("+evoFmt(m,b)+" → "+evoFmt(m,v)+"): variação % não se aplica · "+dif};
-    return {texto:deltaTexto(m, (v-b)/b*100), na:false};
-  }
-  return {texto:deltaTexto(m, delta), na:false};
-}
-function evoMetricas(){ const o=[]; TEMAS.forEach(t=>(t.metricas||[]).forEach(m=>{ if(m.chave) o.push(m); })); return o; }
-function evoTemas(){ return TEMAS.map(t=>({id:t.id, nome:t.nome, curto:(typeof TEMA_MAPA!=="undefined"&&TEMA_MAPA[t.id])||t.nome, inds:(t.metricas||[]).filter(m=>m.chave)})); }
-function evoNomeCurtoEnt(cod){
-  if(cod==="SIS") return "Sistema";
-  const e=DR.entPorId.get(cod); const n=e?e.nome:String(cod);
-  return String(n).replace(/^Central\s+(Sicredi\s+)?/i,"") || n;
-}
-function evoNomeEnt(cod){ if(cod==="SIS") return "Sistema Sicredi"; const e=DR.entPorId.get(cod); return e?e.nome:String(cod); }
-function evoCentrais(){ return ((DR.painel&&DR.painel.entidades)||[]).filter(e=>e.tipo==="central").sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR")); }
-function evoRecortes(){
-  if(ENTIDADE.tipo==="central" && !ENTIDADE.teste) return ["SIS", ENTIDADE.id];
-  return ["SIS", ...evoCentrais().map(e=>e.id)];
-}
-function evoPodeVer(){ return ENTIDADE.tipo!=="cooperativa" || !!ENTIDADE.teste || (typeof ehAdministrador==="function" && ehAdministrador()); }
-function evoVisivel(){ return estado.vista==="modulo" && estado.modulo==="evosis"; }
-function evoTemPainel(m){ return !!(m.chave && DR.painel && DR.painel.indicadores && DR.painel.indicadores[m.chave]); }
-function evoSerieObj(painel, chave, cod){
-  const pi=painel&&painel.indicadores?painel.indicadores[chave]:null; const arr=pi&&pi.valores?pi.valores[cod]:null;
-  if(!arr) return null;
-  const o={}; let n=0;
-  (painel.meses||[]).forEach((am,i)=>{ const v=numOuNulo(arr[i]); if(v!==null){ o[am]=v; n++; } });
-  return n?o:null;
-}
-function evoMedianaCoops(painel, chave, cod){
-  const pi=painel&&painel.indicadores?painel.indicadores[chave]:null; if(!pi) return null;
-  const meses=painel.meses||[]; const porMes=meses.map(()=>[]);
-  Object.entries(pi.valores||{}).forEach(([id,arr])=>{
-    const e=DR.entPorId.get(id); if(!e || e.tipo!=="cooperativa") return;
-    if(cod!=="SIS" && e.central_codigo!==cod) return;
-    meses.forEach((am,i)=>{ const v=numOuNulo(arr[i]); if(v!==null) porMes[i].push(v); });
+const ROTULO = {nps_rel: "NPS Relacional", nps_jornadas: "NPS Transacional", nps_colaborador: "NPS Transacional Colaborador",
+  sow_bbm: "SoW Associados BBM (em %)", mccred: "MC de Crédito (em R$ MM)", efic1_90: "Eficiência Recuperação (em %)",
+  movimentando_mes: "Assoc. Movimentando (em %)", principalidade: "Principalidade (em %)", cobertura: "Índice de Cobertura (em %)",
+  turnover_vol: "Turnover Voluntário (em %)", aproveitamento_interno: "Aproveitamento Interno (em %)",
+  enps_carreira: "E-NPS Gestão de Carreira", crescer: "Formados no Crescer (em %)", assocedu: "Educação Financeira (em %)",
+  investimento_social: "Investimento Social (em R$ MM)"};
+const TITULO_TEMA = {T1: "Reduzir os atritos", T2: "Simplificar Operação", T3: "Crédito Eficiente", T4: "Movimentar a Base",
+  T5: "Fidelizar Pessoas", T6: "Cooperativ. Vivido"};
+const SELOS_ORDEM = ["quartil", "acima", "alta", "virada", "melhorcentral"];
+const bitsSelos = s => s ? SELOS_ORDEM.reduce((a, nome, n) => a | (s[nome] ? 1 << n : 0), 0) : 0;
+const unidadeDe = f => ["mil", "milhao", "bilhao"].includes(f.escala) ? "moeda" : String(f.sufixo || "").trim() === "%" ? "percentual" : "nps";
+function metaCatalogo(temValor){
+  const fichas = (CATALOGO && CATALOGO.fichas) || {}, ind = {};
+  Object.entries(fichas).forEach(([k, f]) => {
+    ind[k] = {nome: f.nome || k, curto: f.nome_curto || f.nome || k, rotulo: ROTULO[k] || f.nome || k, unidade: unidadeDe(f),
+      casas: f.casas != null ? f.casas : 1, vtipo: f.variacao_tipo || "pp", vcasas: f.variacao_casas != null ? f.variacao_casas : 1,
+      sentido: f.sentido, freq: String(f.frequencia_ind || f.frequencia || "").toLowerCase(), janela: f.rotulo_janela || "",
+      definicao: f.definicao || "", sem_dado: f.tem_dado === false || !temValor(k)};
   });
-  const out={}; let algum=false;
-  meses.forEach((am,i)=>{ const vs=porMes[i].sort((a,b)=>a-b); if(vs.length<3) return; algum=true; out[am]=quantil(vs,.5); });
-  return algum?out:null;
+  const temas = ((CATALOGO && CATALOGO.temas) || []).map(t => ({codigo: t.codigo, ordem: t.id, titulo: TITULO_TEMA[t.codigo] || t.nome_curto || t.nome,
+    nome: t.nome, curto: t.nome_curto || t.nome, indicadores: (t.indicadores || []).map(x => typeof x === "string" ? x : x.chave).filter(k => ind[k])}));
+  return {ind, temas};
 }
-function evoCmp(rec){ return EVO.cmp[rec] || (EVO.cmp[rec]={carregando:null, erro:null, por:{}}); }
-function evoCarregarComparativo(rec, chaves){
-  const c=evoCmp(rec);
-  const falta=chaves.filter(ch=>!(ch in c.por));
-  if(!falta.length || c.carregando) return c.carregando || Promise.resolve();
-  c.erro=null;
-  c.carregando=Promise.all(falta.map(ch=>rpc("comparativo_escolha",{p_ciclo:PE.ciclo, p_indicador:ch, p_recorte:rec, p_base:"todos", p_meses:25})
-      .then(r=>{ c.por[ch]=r; }, e=>{ c.por[ch]={erro:e.message||String(e)}; c.erro=e.message||String(e); })))
-    .finally(()=>{ c.carregando=null; if(evoVisivel()) pinta(); });
-  return c.carregando;
+function dadosSistemicos(p){
+  const meses = p.meses || [], ind = p.indicadores || {};
+  const entidades = (p.entidades || []).map(e => ({c: e.id, n: e.nome, t: e.tipo, ce: e.central_codigo || null}));
+  const valores = {}; Object.entries(ind).forEach(([k, v]) => { valores[k] = v.valores || {}; });
+  const coops = entidades.filter(e => e.t === "cooperativa").map(e => e.c), posicao = {};
+  const {ind: meta, temas} = metaCatalogo(k => !!valores[k] && Object.values(valores[k]).some(s => (s || []).some(x => x != null)));
+  Object.entries(valores).forEach(([k, porEnt]) => {
+    const menor = (meta[k] || {}).sentido === "menor_melhor"; const pk = posicao[k] = {};
+    meses.forEach((m, j) => {
+      const xs = coops.map(c => ({c, v: (porEnt[c] || [])[j]})).filter(o => o.v != null);
+      if(xs.length < 5) return;
+      xs.forEach(o => { const pior = xs.filter(x => menor ? x.v > o.v : x.v < o.v).length, igual = xs.filter(x => x.v === o.v).length - 1;
+        const pc = Math.round(100 * (pior + igual / 2) / (xs.length - 1));
+        (pk[o.c] = pk[o.c] || {})[m] = [pc, pc >= 75 ? 1 : pc >= 50 ? 2 : pc >= 25 ? 3 : 4, 0]; });
+    });
+    const pb = (ind[k] || {}).percentil || {}, sb = (ind[k] || {}).selos || {};
+    coops.forEach(c => { const s = porEnt[c] || []; let j = s.length - 1; while(j >= 0 && s[j] == null) j--; if(j < 0) return;
+      const m = meses[j], ant = ((pk[c] || {})[m]) || [null, null, 0], pc = pb[c] != null ? pb[c] : ant[0];
+      (pk[c] = pk[c] || {})[m] = [pc, pc == null ? null : pc >= 75 ? 1 : pc >= 50 ? 2 : pc >= 25 ? 3 : 4, bitsSelos(sb[c])]; });
+  });
+  return {meses, entidades, indicadores: meta, temas, valores, posicao, selos: SELOS_ORDEM};
 }
-function evoSerieGrupo(resp, grupo){
-  const g=resp&&resp.grupos&&resp.grupos[grupo]; if(!g) return null;
-  const o={}; let n=0;
-  (g.serie||[]).forEach(p=>{ const v=numOuNulo(p.mediana); if(v!==null){ o[p.mes]=v; n++; } });
-  const u=(g.serie||[]).filter(p=>numOuNulo(p.mediana)!==null).pop();
-  return {serie:n?o:null, coops:Number(g.cooperativas)||0, nUlt:u?Number(u.n)||0:0};
+function dadosCoop(rows, v){
+  const ent = v.entidade, ce = v.central || null;
+  const meses = [...new Set(rows.map(r => r.ano_mes))].sort(), J = Object.fromEntries(meses.map((m, j) => [m, j]));
+  const valores = {}, posicao = {}, dist = {}, rank = {};
+  let temCentral = false;
+  rows.forEach(r => {
+    const k = r.chave, j = J[r.ano_mes];
+    ((valores[k] = valores[k] || {})[ent] = valores[k][ent] || Array(meses.length).fill(null))[j] = r.valor;
+    if(r.percentil != null || r.selos) ((posicao[k] = posicao[k] || {})[ent] = posicao[k][ent] || {})[r.ano_mes] = [r.percentil, r.quartil, bitsSelos(r.selos)];
+    const dk = dist[k] = dist[k] || {SIS: Array(meses.length).fill(null)};
+    if(r.mediana_sistema != null) dk.SIS[j] = {n: r.n_sistema != null ? r.n_sistema : null, p25: r.p25_sistema, mediana: r.mediana_sistema, p75: r.p75_sistema};
+    if(ce && r.p25_central != null){ temCentral = true; (dk[ce] = dk[ce] || Array(meses.length).fill(null))[j] = {n: r.n_central, p25: r.p25_central, mediana: r.mediana_central, p75: r.p75_central}; }
+    if(r.pos_sistema != null || r.pos_central != null)
+      (rank[k] = rank[k] || Array(meses.length).fill(null))[j] = {SIS: r.pos_sistema != null ? {r: r.pos_sistema, n: r.pos_n_sistema} : null,
+                                                                 central: r.pos_central != null ? {r: r.pos_central, n: r.pos_n_central} : null};
+  });
+  const {ind: meta, temas} = metaCatalogo(() => true);
+  Object.keys(meta).forEach(k => { if(!meta[k].sem_dado && !valores[k]) valores[k] = {}; });
+  const entidades = [{c: ent, n: v.nome, t: "cooperativa", ce}, ...(ce ? [{c: ce, n: v.central_nome || ce, t: "central"}] : []), {c: "SIS", n: "Sistema Sicredi", t: "sistema"}];
+  return {meses, entidades, indicadores: meta, temas, valores, posicao, selos: SELOS_ORDEM, dist, rank: Object.keys(rank).length ? rank : null, temCentral};
 }
-function evoChavesPainel(){ return Object.keys((DR.painel&&DR.painel.indicadores)||{}); }
-function evoCarregarPainel25(){
-  if(EVO.p25 || EVO.p25Carregando || !AUTH || !evoPodeVer()) return;
-  EVO.p25Carregando=true; EVO.p25Erro=null;
-  rpc("painel_sistemico",{p_meses:25})
-    .then(r=>{ EVO.p25=r; }, e=>{ EVO.p25Erro=e.message||String(e); console.warn("Painel de 25 meses não carregado", e); })
-    .finally(()=>{ EVO.p25Carregando=false; if(evoVisivel() && (EVO.tema||EVO.aberto)) pinta(); });
-}
-function evoPainelHist(){ return EVO.p25 || DR.painel; }
-function evoMesesTodos(){ return ((DR.painel&&DR.painel.meses)||[]).slice().sort(); }
-function evoAnos(){ return [...new Set(evoMesesTodos().map(am=>evoParse(am).y))].sort(); }
-function evoTeto(){ return EVO.mes==="ultimo" ? evoYm(EVO.ano,12) : EVO.mes; }
-function evoRefDe(serie){ const c=Object.keys(serie).filter(am=>am<=evoTeto()).sort(); return c.length?c[c.length-1]:null; }
-function evoRefGeral(cod){
-  if(EVO.mes!=="ultimo") return EVO.mes;
-  let max=null;
-  evoChavesPainel().forEach(ch=>{ const s=evoSerieObj(DR.painel, ch, cod||EVO.rec); if(!s) return; const r=evoRefDe(s); if(r && (!max || r>max)) max=r; });
-  return max || evoMesesTodos().filter(am=>am<=evoTeto()).pop() || null;
-}
-function evoVariacao(m,serie,ref,comp){
-  const bm=comp==="aa"?evoAdd(ref,-12):evoYm(evoParse(ref).y-1,12), v=serie[ref], b=serie[bm], baseRot="vs "+evoRot(bm);
-  const nome=comp==="aa"?"mesmo mês do ano anterior":"dezembro do ano anterior";
-  if(evoAcumuladoAno(m) && comp!=="aa")
-    return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Não se aplica: acumulado no ano (zera em janeiro), comparar "+evoRot(ref)+" com "+evoRot(bm)+" não faz sentido."};
-  if(!evoEhNum(b)) return {cls:"na", texto:"–", base:baseRot, bm, titulo:"Sem "+nome+" ("+evoRot(bm)+") na base para comparar."};
-  const delta=v-b, t=evoTextoVar(m,v,b), cls=t.na?"na":evoClasse(m,delta);
-  const titulo=evoRot(ref)+": "+evoFmt(m,v)+" · "+evoRot(bm)+": "+evoFmt(m,b)+" ("+nome+")"+(t.na?" · "+t.motivo:"");
-  return {cls, texto:t.texto, base:baseRot, bm, b, titulo, delta};
-}
-function evoVsSistema(m, x, cod){
-  if(cod==="SIS" || x.semDado) return null;
-  if(evoSoma(m)) return {cls:"na", texto:"–", titulo:"Indicador de soma: a Central é parte do Sistema, a diferença não se compara."};
-  const s=evoSerieObj(DR.painel, m.chave, "SIS"), b=s?s[x.ref]:null;
-  if(!evoEhNum(b)) return {cls:"na", texto:"–", titulo:"Sem o Sistema em "+evoRot(x.ref)+" para comparar."};
-  const delta=x.v-b, cls=evoClasse(m,delta);
-  const quem = EVO.coop==="todas" ? evoNomeCurtoEnt(cod) : "mediana do grupo";
-  return {cls, texto:deltaTexto(m, delta), b, delta, titulo:quem+" "+evoFmt(m,x.v)+" · Sistema "+evoFmt(m,b)+" em "+evoRot(x.ref)+" (diferença no sentido do indicador)"};
-}
-function evoPasso(m,serie,am,p){
-  if(!am || !p || !evoEhNum(serie[am]) || !evoEhNum(serie[p])) return {cls:"vazia", titulo: am ? "Sem dado para "+evoRot(am)+(p?" vs "+evoRot(p):"") : "Sem dado"};
-  if(evoAcumuladoAno(m) && evoParse(am).y!==evoParse(p).y) return {cls:"vazia", titulo:evoRot(am)+" vs "+evoRot(p)+": acumulado no ano zera em janeiro, passo não comparável"};
-  const delta=serie[am]-serie[p], t=evoTextoVar(m,serie[am],serie[p]), txt=t.na?evoDifAbs(m,delta):t.texto;
-  return {cls:evoClasse(m,delta), delta, txt, titulo:evoRot(am)+" vs "+evoRot(p)+": "+txt+" ("+evoFmt(m,serie[p])+" → "+evoFmt(m,serie[am])+")"};
-}
-function evoFonte(m, cod){
-  if(EVO.coop==="todas") return {serie:evoSerieObj(DR.painel, m.chave, cod)};
-  const c=evoCmp(cod), r=c.por[m.chave];
-  if(!r) return {serie:null, titulo:c.carregando?"Calculando a mediana do grupo…":"Comparativo por escolha não disponível agora"};
-  if(r.erro) return {serie:null, titulo:"Comparativo por escolha não disponível agora ("+r.erro+")"};
-  const g=evoSerieGrupo(r, EVO.coop), tot=(r.grupos&&r.grupos.escolheram?Number(r.grupos.escolheram.cooperativas)||0:0)+(r.grupos&&r.grupos.nao_escolheram?Number(r.grupos.nao_escolheram.cooperativas)||0:0);
-  if(!tot) return {serie:null, titulo:"Ainda não há planos com este indicador"};
-  if(!g || !g.serie) return {serie:null, titulo:"Menos de 3 cooperativas com dado no grupo ("+(g?g.coops:0)+" no grupo): sem número, para ninguém ser identificado"};
-  return {serie:g.serie, coops:g.coops, nUlt:g.nUlt};
-}
-function evoModelo(m, cod){
-  if(!evoTemPainel(m)) return {semDado:true, construcao:true, titulo:SEM_DADOS+": "+motivoSemDado(m)};
-  const f=evoFonte(m, cod);
-  if(!f.serie){
-    if(f.titulo) return {semDado:true, titulo:f.titulo};
-    return {semDado:true, titulo:(m.chave==="sow_bbm" && cod!=="SIS") ? "Sem dado por Central: este indicador só existe para o Sistema." : "A base não tem leitura deste indicador para "+evoNomeEnt(cod)+"."};
+function criarEvo(D, S, R){
+  const MES = "jan fev mar abr mai jun jul ago set out nov dez".split(" ");
+  const IDX = Object.fromEntries(D.meses.map((m, i) => [m, i]));
+  const ENT = Object.fromEntries(D.entidades.map(e => [e.c, e]));
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const rotMes = m => { if(!m) return "—"; const [a, mm] = m.split("-"); return MES[+mm - 1] + "/" + a.slice(2); };
+  const mesDe = (ano, m) => `${ano}-${String(m).padStart(2, "0")}`;
+  function num(v, casas){
+    if(v == null || !isFinite(v)) return "—";
+    const s = Math.abs(v).toLocaleString("pt-BR", {minimumFractionDigits: casas, maximumFractionDigits: casas});
+    return (v < 0 && s.replace(/[0,.]/g, "") !== "" ? "−" : "") + s;
   }
-  const serie=f.serie, ref=evoRefDe(serie);
-  if(!ref) return {semDado:true, titulo:"Sem dado até "+evoRot(evoTeto())+"."};
-  if(evoTrimestral(m) && EVO.mes!=="ultimo" && ref!==EVO.mes)
-    return {semDado:true, titulo:"Pesquisa trimestral: sem leitura em "+evoRot(EVO.mes)+" · última em "+evoRot(ref)+" · próxima prevista em "+evoRot(evoAdd(ref,3))};
-  return {serie, ref, v:serie[ref], coops:f.coops, nUlt:f.nUlt, varAA:evoVariacao(m,serie,ref,"aa"), varDez:evoVariacao(m,serie,ref,"dez")};
-}
-function evoTemasComModelo(cod){ return evoTemas().map(t=>Object.assign({}, t, {ms:t.inds.map(m=>({m, x:evoModelo(m,cod)}))})); }
-function evoSlots(t){ const s=t.ms.slice(0,3); while(s.length<3) s.push(null); return s; }
-function htmlTraco(titulo){ return `<span class="evo-traco" title="${esc(titulo||"")}" aria-label="${esc("Sem número: "+(titulo||""))}">–</span>`; }
-function htmlVarTxt(vr, comBase){
-  if(vr.cls==="na") return htmlTraco(vr.titulo)+(comBase?`<small>${esc(vr.base)}</small>`:"");
-  return `<span class="evo-t-${esc(vr.cls)}" title="${esc(vr.titulo)}">${esc(vr.texto)}</span>${comBase?`<small>${esc(vr.base)}</small>`:""}`;
-}
-function htmlRefDif(ref, geral){
-  if(!ref || ref===geral) return "";
-  const t=EVO.mes!=="ultimo" ? "Sem dado em "+evoRot(EVO.mes)+"; usando o último mês anterior com dado" : "Último mês com dado deste indicador";
-  return `<span class="evo-refdif" title="${esc(t)}">dado de ${esc(evoRot(ref))}</span>`;
-}
-function htmlCoops(x){ return evoEhNum(x.nUlt)&&EVO.coop!=="todas" ? ` <span class="evo-refdif" style="color:var(--tenue)" title="mediana de ${x.nUlt} cooperativas com dado no mês de referência (${x.coops} no grupo)">${x.nUlt} coops</span>` : ""; }
-function evoFraseResumo(ts, cod, geral){
-  const xs=ts.flatMap(t=>t.ms.filter(y=>!y.x.construcao)); const n=xs.length;
-  const c={bom:0, ruim:0, est:0, sem:0}, cDez={bom:0, ruim:0};
-  for(const y of xs){
-    if(y.x.semDado || y.x.varAA.cls==="na") c.sem++; else c[y.x.varAA.cls]++;
-    if(!y.x.semDado && cDez[y.x.varDez.cls]!=null) cDez[y.x.varDez.cls]++;
+  function percentil(arr, p){                       
+    const a = arr.filter(x => x != null && isFinite(x)).sort((x, y) => x - y);
+    if(!a.length) return null;
+    const pos = (a.length - 1) * p, lo = Math.floor(pos), hi = Math.ceil(pos);
+    return a[lo] + (a[hi] - a[lo]) * (pos - lo);
   }
-  const onde = cod==="SIS" ? "No Sistema" : "Na Central "+evoNomeCurtoEnt(cod);
-  const partes=[c.bom+" dos "+n+" indicadores "+(c.bom===1?"está melhor":"estão melhores")+" que há um ano"];
-  if(c.ruim) partes.push(c.ruim+(c.ruim===1?" pior":" piores"));
-  if(c.est) partes.push(c.est+(c.est===1?" estável":" estáveis"));
-  if(c.sem) partes.push(c.sem+" sem comparação");
-  const dez="dez/"+String(evoParse(geral).y-1).slice(2);
-  const meio = partes.length>1 ? ", "+partes.slice(1,-1).join(", ")+(partes.length>2?" e ":"")+partes[partes.length-1] : "";
-  return `<b>${esc(onde)}, em ${esc(evoRot(geral))}:</b> ${esc(partes[0]+meio)}; no ano (vs ${esc(dez)}), ${cDez.bom}${cDez.bom===1?" melhorou":" melhoraram"}${cDez.ruim?" e "+cDez.ruim+(cDez.ruim===1?" piorou":" pioraram"):""}.`;
-}
-function htmlSlot(s){
-  if(!s) return `<div class="evo-slot"><div class="evo-fant vazio" aria-hidden="true"></div></div>`;
-  const {m, x}=s;
-  if(x.construcao) return `<div class="evo-slot" id="evo-slot-${esc(m.chave)}"><div class="evo-fant" title="${esc(x.titulo)}"><span>${esc(m.curto||m.nome)}</span><b>em construção</b></div></div>`;
-  let h=`<div class="evo-slot" id="evo-slot-${esc(m.chave)}"><div class="s-nome">${esc(m.curto||m.nome)}</div>`;
-  if(x.semDado){ h+=`<div class="s-lin"><span class="s-val"><i class="evo-bola b-na" title="${esc(x.titulo)}"></i><span class="v">${htmlTraco(x.titulo)}</span></span></div></div>`; return h; }
-  const bolaTit = x.varAA.cls==="na" ? x.varAA.titulo : evoNomeCls(x.varAA.cls)+" frente ao mesmo mês do ano anterior ("+x.varAA.texto+" "+x.varAA.base+")";
-  h+=`<div class="s-lin"><div><span class="s-val"><i class="evo-bola b-${esc(x.varAA.cls)}" title="${esc(bolaTit)}"></i><span class="v evo-num${x.v<0?" neg":""}" title="${esc((m.curto||m.nome)+" em "+evoRot(x.ref))}">${evoValorCompacto(m,x.v)}</span></span><div class="s-mes">${esc(evoRot(x.ref))}${htmlCoops(x)}</div></div>`;
-  h+=`<div class="s-vars"><span class="s-var">${htmlVarTxt(x.varDez,true)}</span><span class="s-var">${htmlVarTxt(x.varAA,true)}</span></div></div></div>`;
-  return h;
-}
-function evoPanorama(){
-  const cod=EVO.rec, geral=evoRefGeral(), ts=evoTemasComModelo(cod);
-  let h=htmlAvisoFiltro(cod);
-  h+=`<div class="evo-frase"><p id="evo-frase">${evoFraseResumo(ts,cod,geral)} Clique num tema para ver o histórico.</p>
-    <div class="evo-leg" id="evo-legenda"><span><i style="background:var(--s-bom)"></i>melhor</span><span><i style="background:var(--s-est)"></i>estável</span><span><i style="background:var(--s-ruim)"></i>pior</span><span>· que há um ano, no sentido de cada indicador</span></div></div>`;
-  h+=`<div class="evo-temas" id="evo-temas">`;
-  for(const t of ts){
-    const on=EVO.tema===t.id;
-    h+=`<button class="evo-tc${on?" on":""}" id="evo-tc-${t.id}" onclick="evoTema(${t.id})" aria-expanded="${on}"><h2><span class="tn">T${t.id}</span>${esc(t.curto)}</h2>${evoSlots(t).map(htmlSlot).join("")}</button>`;
+  const coopsDe = central => D.entidades.filter(e => e.t === "cooperativa" && (!central || e.ce === central)).map(e => e.c);
+  function escala(k, ent){
+    const i = D.indicadores[k];
+    if(i.unidade !== "moeda") return {fator: 1, casas: i.casas, sufixo: "", rotulo: i.rotulo};
+    const s = (D.valores[k] || {})[ent] || [];
+    const max = Math.max(0, ...s.filter(x => x != null).map(Math.abs));
+    if(max > 0 && max < 1) return {fator: 1000, casas: 0, sufixo: " mil", rotulo: i.rotulo.replace("R$ MM", "R$ mil"), mil: true};
+    return {fator: 1, casas: i.casas, sufixo: " MM", rotulo: i.rotulo};
   }
-  const tSel=ts.find(t=>t.id===EVO.tema);
-  if(tSel){
-    const comDado=tSel.ms.filter(y=>!y.x.semDado);
-    if(!EVO.indSel || !comDado.some(y=>y.m.chave===EVO.indSel)) EVO.indSel=comDado.length?comDado[0].m.chave:null;
-    h+=htmlHistorico(tSel, cod, geral, EVO.indSel, "pan");
-  }
-  return h+`</div>`;
-}
-function htmlAvisoFiltro(cod){
-  if(EVO.coop==="todas") return "";
-  const c=evoCmp(cod);
-  if(c.carregando) return `<p class="evo-nota" style="margin:0 0 12px">Calculando a mediana das cooperativas de cada grupo…</p>`;
-  if(c.erro && !Object.values(c.por).some(r=>r&&!r.erro)) return `<div class="evo-aviso">Comparativo por escolha não disponível agora (${esc(c.erro)}). Mostrando "–" nos indicadores.<button class="btn-t mini" onclick="evoTentarComparativo()">Tentar de novo</button></div>`;
-  const semPlano=Object.values(c.por).every(r=>r&&!r.erro&&!((r.grupos&&r.grupos.escolheram&&r.grupos.escolheram.cooperativas)||(r.grupos&&r.grupos.nao_escolheram&&r.grupos.nao_escolheram.cooperativas)));
-  if(semPlano && Object.keys(c.por).length) return `<div class="evo-aviso">Ainda não há planos com indicadores neste recorte: todas as cooperativas estão "sem plano". O filtro passa a separar os grupos assim que os planos forem registrados.</div>`;
-  return "";
-}
-function evoTrimestres(ref){ const q=[]; for(let k=3;k>=0;k--){ const fim=evoAdd(ref,-3*k); q.push({fim, meses:[evoAdd(fim,-2), evoAdd(fim,-1), fim]}); } return q; }
-function evoRotTri(q){ return evoRotMes(q.meses[0])+"–"+evoRotMes(q.fim)+"/"+String(evoParse(q.fim).y).slice(2); }
-function evoFechamento(m,serie,q){
-  if(!evoTrimestral(m)) return evoEhNum(serie[q.fim]) ? {am:q.fim, v:serie[q.fim]} : null;
-  const ms=q.meses.filter(am=>evoEhNum(serie[am])); return ms.length ? {am:ms[ms.length-1], v:serie[ms[ms.length-1]]} : null;
-}
-function evoSerieHist(m, x, cod){
-  if(EVO.coop!=="todas" || !EVO.p25) return x.serie;
-  const s25=evoSerieObj(EVO.p25, m.chave, cod); return s25 ? Object.assign({}, s25, x.serie) : x.serie;
-}
-function htmlHistorico(t, cod, geral, indSel, ctx){
-  const ref=geral, qs=evoTrimestres(ref);
-  const xSel=t.ms.find(y=>y.m.chave===indSel && !y.x.semDado);
-  let h=`<div class="evo-hist" id="evo-hist" data-ctx="${ctx}"><div class="evo-hist-cab"><div><h3>Histórico <span>· ${esc(t.curto)}</span></h3><div class="sub">${esc(evoNomeCurtoEnt(cod))}${EVO.coop!=="todas"?" · "+esc(COOP_ROT[EVO.coop]):""} · últimos 12 meses até ${esc(evoRot(ref))}${EVO.p25Carregando&&!EVO.p25?" · carregando os 25 meses…":""}</div></div>
-    <button class="evo-fechar" onclick="evoFecharHist()" aria-label="Fechar" title="Fechar (Esc)">×</button></div>`;
-  h+=`<div class="evo-hist-corpo"><div class="evo-hist-tab"><h4>Fechamento de cada trimestre</h4><table class="evo-tri" id="evo-tri"><thead><tr><th class="th-nome"></th>${qs.map(q=>`<th title="${esc(q.meses.map(evoRot).join(" · "))}">${esc(evoRotTri(q))}</th>`).join("")}</tr></thead><tbody>`;
-  for(const s of evoSlots(t)){
-    if(!s) continue;
-    const {m, x}=s;
-    if(x.semDado){ h+=`<tr class="constr"><td class="td-nome">${esc(m.curto||m.nome)}</td><td colspan="4" title="${esc(x.titulo)}">${x.construcao?"em construção":htmlTraco(x.titulo)}</td></tr>`; continue; }
-    const serie=evoSerieHist(m,x,cod);
-    h+=`<tr class="lin-ind${indSel===m.chave?" sel":""}" id="evo-tri-${esc(m.chave)}" onclick="evoIndHist('${esc(m.chave)}')"><td class="td-nome">${esc(m.curto||m.nome)}</td>`;
-    for(const q of qs){
-      const f=evoFechamento(m,serie,q);
-      const pontos=q.meses.map(am=>{ let p;
-        if(evoTrimestral(m)){ const ant=Object.keys(serie).filter(k=>k<am).sort(); p=evoEhNum(serie[am])&&ant.length ? evoPasso(m,serie,am,ant[ant.length-1]) : {cls:"vazia", titulo:evoRot(am)+": sem pesquisa"}; }
-        else p=evoPasso(m,serie,am,evoAdd(am,-1));
-        return `<i class="b-${esc(p.cls)}" title="${esc(p.titulo)}"></i>`; }).join("");
-      h+=`<td class="td-cel"><span class="tv" title="${esc(f?evoRot(f.am)+": "+evoFmt(m,f.v):"sem dado no trimestre")}">${f?evoValorCompacto(m,f.v):htmlTraco(evoTrimestral(m)?"Pesquisa trimestral: sem pesquisa em "+evoRotTri(q):"Sem dado em "+evoRot(q.fim))}</span><span class="td3">${pontos}</span></td>`;
+  function leitura(k, ent, mesPedido){
+    const i = D.indicadores[k];
+    const out = {k, ind: i, ent, esc: escala(k, ent)};
+    if(i.sem_dado || !D.valores[k]){ out.estado = "construcao"; return out; }            
+    const s = D.valores[k][ent];
+    if(!s || s.every(x => x == null)){ out.estado = "sem_dado"; return out; }             
+    let j = mesPedido ? IDX[mesPedido] : s.length - 1;
+    if(j == null) j = s.length - 1;
+    while(j >= 0 && s[j] == null) j--;
+    if(j < 0){ out.estado = "sem_dado"; return out; }
+    out.estado = "ok"; out.j = j; out.mes = D.meses[j]; out.valor = s[j];
+    out.defasado = !!mesPedido && out.mes !== mesPedido;                                   
+    const [a, mm] = out.mes.split("-");
+    out.m12 = mesDe(+a - 1, +mm); out.mdez = mesDe(+a - 1, 12);
+    const b12 = IDX[out.m12] != null ? s[IDX[out.m12]] : null;
+    const bdz = IDX[out.mdez] != null ? s[IDX[out.mdez]] : null;
+    const acumAno = /acumulado no ano/i.test(i.janela || "");
+    out.v12 = variacao(i, out.valor, b12, out.esc);
+    out.vdez = acumAno ? {nula: "acum"} : (+mm === 12 ? {nula: "dez"} : variacao(i, out.valor, bdz, out.esc));   
+    if(out.v12.nula === "base" && (out.vdez.nula === "base" || out.vdez.nula === "acum")){                           
+      const prim = s.findIndex(x => x != null);
+      out.serieDesde = D.meses[prim];
     }
-    h+=`</tr>`;
+    const d = out.v12.delta;
+    out.melhorou = d == null ? null : (d === 0 ? 0 : ((d > 0) === (i.sentido !== "menor_melhor") ? 1 : -1));      
+    const p = ((D.posicao[k] || {})[ent] || {})[out.mes];
+    if(p){ out.percentil = p[0]; out.quartil = p[1]; out.selos = D.selos.filter((_, n) => p[2] & (1 << n)); }
+    return out;
   }
-  h+=`</tbody></table><p class="evo-nota">Bolinhas: cada mês contra o anterior. Pesquisa trimestral: só os meses com pesquisa.</p></div>`;
-  h+=`<div class="evo-hist-graf" id="evo-hist-graf"><h4>${xSel?esc(xSel.m.curto||xSel.m.nome)+" · ":""}últimos 12 meses</h4><div class="evo-svg-slot">${xSel?"":`<p class="evo-nota">Sem indicador com dado neste tema.</p>`}</div><div class="evo-tip" id="evo-tip"></div>`;
-  h+=`<div class="evo-hist-leg"><span><i></i>últimos 12 meses</span><span><i class="ant"></i>mesmos meses do ano anterior</span>${cod!=="SIS"?`<span><i class="sis"></i>Sistema</span>`:`<span><i class="sis"></i>mediana das cooperativas</span>`}</div></div></div></div>`;
-  return h;
-}
-function evoCaminhoSuave(pts){
-  if(pts.length<2) return pts.length ? "M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1) : "";
-  let d="M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1);
-  for(let i=0;i<pts.length-1;i++){
-    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
-    const c1=[p1[0]+(p2[0]-p0[0])/6, p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6, p2[1]-(p3[1]-p1[1])/6];
-    d+=" C"+c1[0].toFixed(1)+" "+c1[1].toFixed(1)+" "+c2[0].toFixed(1)+" "+c2[1].toFixed(1)+" "+p2[0].toFixed(1)+" "+p2[1].toFixed(1);
-  }
-  return d;
-}
-function svgHistorico12(m, serie, cod, ref, w){
-  const h=230, padL=12, padR=14, padT=26, padB=26;
-  const ams=[]; for(let i=-11;i<=0;i++) ams.push(evoAdd(ref,i));
-  const cur=ams.map(am=>evoEhNum(serie[am])?serie[am]:null), ant=ams.map(am=>{ const k=evoAdd(am,-12); return evoEhNum(serie[k])?serie[k]:null; });
-  const p=evoPainelHist(); const terc = cod!=="SIS" ? evoSerieObj(p, m.chave, "SIS") : evoMedianaCoops(p, m.chave, "SIS");
-  const sis=ams.map(am=>terc&&evoEhNum(terc[am])?terc[am]:null);
-  const todos=[...cur,...ant,...sis].filter(evoEhNum);
-  if(!todos.length) return `<p class="evo-nota">Sem dado nos últimos 12 meses.</p>`;
-  let mn=Math.min(...todos), mx=Math.max(...todos); const folga=((mx-mn)||1)*0.18; mn-=folga; mx+=folga;
-  const X=i=>padL+i/11*(w-padL-padR), Y=v=>padT+(mx-v)/(mx-mn)*(h-padT-padB);
-  const pts=vals=>vals.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
-  const completo=vals=>vals.every(v=>v!=null);
-  const linha=vals=>completo(vals)?evoCaminhoSuave(pts(vals)):pts(vals).map((q,i)=>(i?"L":"M")+q[0].toFixed(1)+" "+q[1].toFixed(1)).join(" ");
-  let out=""; const fech=[2,5,8,11];
-  for(const i of fech) out+=`<line class="tri-l" x1="${X(i).toFixed(1)}" x2="${X(i).toFixed(1)}" y1="${padT}" y2="${h-padB}"/>`;
-  out+=`<line class="eixo" x1="${padL}" x2="${w-padR}" y1="${h-padB}" y2="${h-padB}"/>`;
-  if(sis.some(v=>v!=null)) out+=`<path class="sis" d="${linha(sis)}"/>`;
-  if(ant.some(v=>v!=null)) out+=`<path class="ant" d="${linha(ant)}"/>`;
-  if(cur.some(v=>v!=null)) out+=`<path class="cur" d="${linha(cur)}"/>`;
-  if(!completo(cur)) cur.forEach((v,i)=>{ if(v!=null) out+=`<circle class="pt" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="2.6"/>`; });
-  for(const i of fech){
-    const anc=i===11?"end":"middle", dx=i===11?-6:0;
-    if(cur[i]!=null){ out+=`<circle class="pt" cx="${X(i).toFixed(1)}" cy="${Y(cur[i]).toFixed(1)}" r="3"/>`; const acima=ant[i]==null||cur[i]>=ant[i]; out+=`<text class="vc" x="${(X(i)+dx).toFixed(1)}" y="${(Y(cur[i])+(acima?-8:15)).toFixed(1)}" text-anchor="${anc}">${esc(evoFmt(m,cur[i]))}</text>`; }
-    if(ant[i]!=null){ out+=`<circle class="pt-ant" cx="${X(i).toFixed(1)}" cy="${Y(ant[i]).toFixed(1)}" r="2.6"/>`; const acima=cur[i]!=null&&ant[i]>cur[i]; out+=`<text class="va" x="${(X(i)+dx).toFixed(1)}" y="${(Y(ant[i])+(acima?-8:15)).toFixed(1)}" text-anchor="${anc}">${esc(evoFmt(m,ant[i]))}</text>`; }
-    out+=`<text x="${X(i).toFixed(1)}" y="${h-8}" text-anchor="${anc}"${i===11?' class="ref"':""}>${esc(evoRot(ams[i]))}</text>`;
-  }
-  out+=`<line class="guia" id="evo-guia" y1="${padT}" y2="${h-padB}" x1="0" x2="0"/><circle class="guia-pt" id="evo-guia-pt" r="4" cx="0" cy="0"/>`;
-  HIST_G={m, ams, cur, ant, sis, X, Y, w, h, padL, padR, terceira: cod!=="SIS"?"Sistema":"Mediana das coops"};
-  return `<svg class="evo-gh" id="evo-gh" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc((m.curto||m.nome)+": últimos 12 meses até "+evoRot(ref)+" (cheia) e mesmos meses do ano anterior (tracejada)")}">${out}</svg>`;
-}
-function evoDesenharHist(){
-  const slot=document.querySelector("#evo-hist-graf .evo-svg-slot"); if(!slot) return;
-  const chave=EVO.aba==="pan"?EVO.indSel:EVO.aberto; if(!chave) return;
-  const m=evoMetricas().find(i=>i.chave===chave); if(!m) return;
-  const x=evoModelo(m,EVO.rec); if(x.semDado) return;
-  const ref=evoRefGeral();
-  slot.innerHTML=svgHistorico12(m, evoSerieHist(m,x,EVO.rec), EVO.rec, ref, Math.max(320, Math.round(slot.clientWidth)||520));
-  const svg=document.getElementById("evo-gh"), tip=document.getElementById("evo-tip"), guia=document.getElementById("evo-guia"), gpt=document.getElementById("evo-guia-pt");
-  if(!svg) return;
-  const G=HIST_G;
-  svg.addEventListener("mousemove", ev=>{
-    const r=svg.getBoundingClientRect(); const xr=(ev.clientX-r.left)/r.width*G.w;
-    let i=Math.round((xr-G.padL)/(G.w-G.padL-G.padR)*11); i=Math.max(0,Math.min(11,i));
-    const v=G.cur[i], a=G.ant[i], s=G.sis[i];
-    guia.setAttribute("x1",G.X(i).toFixed(1)); guia.setAttribute("x2",G.X(i).toFixed(1)); guia.style.display="block";
-    if(v!=null){ gpt.setAttribute("cx",G.X(i).toFixed(1)); gpt.setAttribute("cy",G.Y(v).toFixed(1)); gpt.style.display="block"; } else gpt.style.display="none";
-    let t=`<b>${esc(evoRot(G.ams[i]))}</b>: ${esc(evoFmt(G.m,v))}`;
-    if(a!=null){ t+=`<br>${esc(evoRot(evoAdd(G.ams[i],-12)))}: ${esc(evoFmt(G.m,a))}`; if(v!=null){ const tv=evoTextoVar(G.m,v,a); t+=" · "+esc(tv.na?evoDifAbs(G.m,v-a):tv.texto); } }
-    else t+=`<br>${esc(evoRot(evoAdd(G.ams[i],-12)))}: sem dado`;
-    if(s!=null) t+=`<br>${esc(G.terceira)}: ${esc(evoFmt(G.m,s))}`;
-    tip.innerHTML=t; tip.style.display="block";
-    const px=G.X(i)/G.w*r.width, esq=px>r.width*0.6;
-    tip.style.left=esq?"auto":(px+12)+"px"; tip.style.right=esq?(r.width-px+12)+"px":"auto"; tip.style.top=(ev.clientY-r.top-10)+"px";
-  });
-  svg.addEventListener("mouseleave", ()=>{ tip.style.display="none"; guia.style.display="none"; gpt.style.display="none"; });
-}
-function htmlAnalitico(){
-  const cod=EVO.rec, geral=evoRefGeral(), comSis=cod!=="SIS", ts=evoTemasComModelo(cod);
-  let h=htmlAvisoFiltro(cod);
-  h+=`<div class="evo-ana" id="evo-ana"><table class="evo-tab" id="evo-tab"><thead><tr><th>Indicador</th><th class="c-mes" title="Só aparece quando o mês do indicador é diferente da referência da tela">Mês</th><th>Valor · ${esc(evoRot(geral))}</th><th title="Variação contra o mesmo mês do ano anterior">vs ano anterior</th><th title="Variação no ano, contra dezembro do ano anterior">vs dez</th>${comSis?`<th title="Diferença da Central para o Sistema no mesmo mês, no sentido do indicador">vs Sistema</th>`:""}</tr></thead><tbody>`;
-  const nCol=comSis?6:5;
-  for(const t of ts){
-    h+=`<tr class="sep" id="evo-ana-tema-${t.id}"><td colspan="${nCol}">Tema ${t.id} · ${esc(t.nome)}</td></tr>`;
-    for(const y of t.ms){
-      const {m, x}=y, on=EVO.aberto===m.chave, vs=evoVsSistema(m,x,cod);
-      h+=`<tr class="lin${on?" on":""}" id="evo-ana-row-${esc(m.chave)}" onclick="evoAbrirLinha('${esc(m.chave)}')" aria-expanded="${on}" title="${esc(m.janelaRot||"")}"><td>${esc(m.curto||m.nome)}${m.menorMelhor?` <small style="color:var(--tenue)">· menor é melhor</small>`:""}${x.semDado?"":htmlCoops(x)}</td>`;
-      if(x.semDado){ h+=`<td class="c-mes"></td><td class="c-val">${x.construcao?`<span class="evo-traco" title="${esc(x.titulo)}" style="font-family:Nunito,system-ui,sans-serif;font-weight:400;font-size:12px;font-style:italic">em construção</span>`:htmlTraco(x.titulo)}</td><td class="c-var">${htmlTraco("Sem número para comparar")}</td><td class="c-var">${htmlTraco("Sem número para comparar")}</td>${comSis?`<td class="c-var">${htmlTraco("Sem número para comparar")}</td>`:""}</tr>`; }
-      else {
-        h+=`<td class="c-mes">${htmlRefDif(x.ref,geral)}</td><td class="c-val evo-num${x.v<0?" neg":""}" title="${esc(evoRot(x.ref))}">${esc(evoFmt(m,x.v))}</td><td class="c-var">${htmlVarTxt(x.varAA,false)}</td><td class="c-var">${htmlVarTxt(x.varDez,false)}</td>${comSis?`<td class="c-var">${htmlVarTxt(vs,false)}</td>`:""}</tr>`;
+  function variacao(i, atual, base, esc){
+    if(base == null) return {nula: "base"};                                               
+    if(i.vtipo === "relativa"){
+      if(base <= 0 || atual < 0 || Math.abs(atual / base - 1) >= 1){                      
+        const d = (atual - base) * esc.fator;
+        if(esc.mil && Math.abs(d) >= 1000){ const mm = Math.abs(d) / 1000;               
+          return {delta: atual - base, txt: (d >= 0 ? "+" : "−") + num(mm, mm >= 10 ? 0 : 1) + " MM", abs: true}; }
+        return {delta: atual - base, txt: (d >= 0 ? "+" : "−") + num(Math.abs(d), Math.abs(d) >= 10 ? 0 : esc.casas) + (esc.mil ? " mil" : " MM"), abs: true};   
       }
-      if(on) h+=`<tr class="exp"><td colspan="${nCol}">${htmlHistorico(t, cod, geral, m.chave, "ana")}</td></tr>`;
+      const d = (atual / base - 1) * 100;
+      return {delta: atual - base, txt: (d >= 0 ? "+" : "−") + num(Math.abs(d), Math.abs(d) >= 10 ? 0 : i.vcasas) + "%"};                  
     }
+    const d = atual - base;
+    return {delta: d, txt: (d >= 0 ? "+" : "−") + num(Math.abs(d), Math.abs(d) >= 10 ? 0 : i.vcasas) + (i.vtipo === "pp" ? " p.p." : " pts")};   
   }
-  return h+`</tbody></table></div>`;
+  const valorTxt = l => {                                                                   
+    const v = l.valor * l.esc.fator;
+    return num(v, l.ind.unidade === "percentual" && Math.abs(v) >= 99.95 ? 0 : l.esc.casas);
+  };
+  function distribuicao(k, mes, central){
+    if(D.dist){                                          
+      const x = ((D.dist[k] || {})[central || "SIS"] || [])[IDX[mes]];
+      if(!x) return null;
+      return x.n != null && x.n < 5 ? {n: x.n} : x;
+    }
+    const j = IDX[mes]; if(j == null || !D.valores[k]) return null;
+    const xs = coopsDe(central).map(c => (D.valores[k][c] || [])[j]).filter(x => x != null);
+    if(xs.length < 5) return {n: xs.length};
+    return {n: xs.length, p25: percentil(xs, .25), mediana: percentil(xs, .5), p75: percentil(xs, .75)};
+  }
+  function mesReferencia(ent){
+    let m = null;
+    for(const k in D.indicadores){ const l = leitura(k, ent); if(l.estado === "ok" && (!m || l.mes > m)) m = l.mes; }
+    return m;
+  }
+  function mesesDisponiveis(){
+    const tem = new Set();
+    for(const k in D.valores) for(const c in D.valores[k]) D.valores[k][c].forEach((x, j) => { if(x != null) tem.add(D.meses[j]); });
+    return D.meses.filter(m => tem.has(m)).reverse();
+  }
+  function trimestres(k, ent, mesAte, n = 4){
+    const s = (D.valores[k] || {})[ent] || []; const j0 = IDX[mesAte];
+    const out = [];
+    for(let j = j0; j >= 0 && out.length < n + 1; j--){
+      const [a, mm] = D.meses[j].split("-");
+      if(+mm % 3 !== 0 && j !== j0) continue;
+      if(out.some(q => q.tri === `${Math.ceil(+mm / 3)}T${a.slice(2)}`)) continue;
+      let jj = j; while(jj >= 0 && s[jj] == null && D.meses[jj].slice(0, 4) === a && Math.ceil(+D.meses[jj].slice(5) / 3) === Math.ceil(+mm / 3)) jj--;
+      out.push({tri: `${Math.ceil(+mm / 3)}T${a.slice(2)}`, mes: D.meses[j], valor: s[jj] ?? null, parcial: j === j0 && +mm % 3 !== 0});
+    }
+    out.reverse();
+    return out.slice(-n).map((q, i, arr) => {
+      const ant = i === 0 ? out[out.length - n - 1] : arr[i - 1];
+      return {...q, delta: q.valor != null && ant && ant.valor != null ? q.valor - ant.valor : null};
+    });
+  }
+  const SELO = {
+    quartil:       {nome: "Entre as 25% melhores do Sistema", curto: "Top 25%", ico: '<path d="M6 1.2l1.5 3 3.3.5-2.4 2.3.6 3.3L6 8.8 3 10.3l.6-3.3L1.2 4.7l3.3-.5z"/>'},
+    acima:         {nome: "Acima da mediana do Sistema",      curto: "Acima da mediana", ico: '<path d="M1.5 9.5h9M6 7.5V2.2M3.8 4.4L6 2.2l2.2 2.2" fill="none" stroke-width="1.4"/>'},
+    alta:          {nome: "Alta sustentada (5 de 6 meses)",   curto: "Alta sustentada", ico: '<path d="M1.2 9l3-3 2 2 4.3-4.6M8 3.2h2.6v2.6" fill="none" stroke-width="1.4"/>'},
+    virada:        {nome: "Virada: saiu da metade de baixo em 12 meses", curto: "Virada", ico: '<path d="M2.2 6a3.8 3.8 0 1 0 1.2-2.8M2.2 1.8v2.4h2.4" fill="none" stroke-width="1.4"/>'},
+    melhorcentral: {nome: "A melhor da sua Central",          curto: "Melhor da Central", ico: '<path d="M2 10.4h8M3 10.4V6.8h2v3.6M5 10.4V4h2v6.4M7 10.4V7.8h2v2.6" fill="none" stroke-width="1.2"/>'}
+  };
+  const seloIco = (s, cls = "") => `<svg class="selo-ico ${cls}" viewBox="0 0 12 12" aria-hidden="true">${SELO[s].ico}</svg>`;
+  function passoBonito(bruto){ const e = Math.pow(10, Math.floor(Math.log10(bruto))), f = bruto / e; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * e; }
+  function grafico({principal, comparacoes = [], faixa = null, meses, casas = 1, fator = 1, modo = "A", trimestral = false, larg = 760, alt = 250, rotulos = "leg"}){
+    const LEG = rotulos === "leg";
+    const M = {e: 46, d: LEG ? 30 : 118, t: LEG ? 22 : 16, b: 28}, W = larg - M.e - M.d, H = alt - M.t - M.b;
+    const vals = [principal.valores, ...comparacoes.map(c => c.valores), ...((modo === "B" || modo === "Q" || modo === "E") && faixa ? [faixa.p25, faixa.p75] : [])]
+      .flat().filter(v => v != null).map(v => v * fator);
+    if(!vals.length) return `<div class="gr-vazio">Sem histórico para este recorte.</div>`;
+    let lo = Math.min(...vals), hi = Math.max(...vals);
+    if(modo === "C") lo = Math.min(0, lo);
+    const passo = passoBonito(((hi - lo) || Math.abs(hi) || 1) / 3);
+    lo = Math.floor(lo / passo) * passo; hi = Math.ceil(hi / passo) * passo; if(hi === lo) hi = lo + passo;
+    const n = meses.length, dx = W / Math.max(1, n - (modo === "C" ? 0 : 1));
+    const x = i => M.e + (modo === "C" ? (i + .5) * dx : i * dx);
+    const y = v => M.t + H - (v * fator - lo) / (hi - lo) * H;
+    const f = v => num(v * fator, casas);
+    let g = `<defs><pattern id="hach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="gr-hach"/></pattern></defs>`;
+    for(let v = lo; v <= hi + passo / 2; v += passo){ const yy = M.t + H - (v - lo) / (hi - lo) * H;
+      g += `<line x1="${M.e}" x2="${M.e + W}" y1="${yy}" y2="${yy}" class="gr-grade ${Math.abs(v) < passo / 1e6 ? "zero" : ""}"/><text x="${M.e - 8}" y="${yy + 4}" class="gr-y">${num(v, passo < 1 ? 1 : 0)}</text>`; }
+    meses.forEach((m, i) => { const ult = i === n - 1, rot = ult || (n - 1 - i) % 2 === 0;
+      g += `<line x1="${x(i)}" x2="${x(i)}" y1="${M.t + H}" y2="${M.t + H + 4}" class="gr-tick"/>` +
+           (rot ? `<text x="${x(i)}" y="${alt - 8}" class="gr-mes ${ult ? "fim" : ""}">${rotMes(m)}</text>` : ""); });
+    const pv = principal.valores, idx = pv.map((v, i) => v != null ? i : -1).filter(i => i >= 0);
+    const meio = i => modo === "C" ? M.e + i * dx : x(i) - dx / 2;
+    if(idx.length && idx[0] > 0){ const x0 = M.e, x1 = Math.max(M.e, meio(idx[0]));
+      g += `<rect x="${x0}" y="${M.t}" width="${x1 - x0}" height="${H}" fill="url(#hach)" class="gr-semh"/>` +
+           (x1 - x0 > 70 ? `<text x="${(x0 + x1) / 2}" y="${M.t + H / 2 + 4}" class="gr-semh-t">sem histórico</text>` : ""); }
+    if(!trimestral) for(let k = 1; k < idx.length; k++) if(idx[k] - idx[k - 1] > 1){
+      const x0 = meio(idx[k - 1] + 1), x1 = meio(idx[k]);
+      g += `<rect x="${x0}" y="${M.t}" width="${x1 - x0}" height="${H}" fill="url(#hach)" class="gr-semh"/>`; }
+    const caminho = (vs, ligar) => { let d = "", on = false; vs.forEach((v, i) => { if(v == null){ if(!ligar) on = false; return; } d += (on ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1); on = true; }); return d; };
+    if(modo === "Q" && faixa){
+      const ok = meses.map((_, i) => faixa.p25[i] != null && faixa.p75[i] != null ? i : -1).filter(i => i >= 0);
+      if(ok.length > 1){
+        const topo = M.t, base = M.t + H, xs = ok.map(i => x(i));
+        const linha = arr => ok.map((i, n) => `${xs[n].toFixed(1)} ${y(arr[i]).toFixed(1)}`).join("L");
+        const cimaCls = faixa.menor ? "gr-zona-ruim" : "gr-zona-boa", baixoCls = faixa.menor ? "gr-zona-boa" : "gr-zona-ruim";
+        g += `<path d="M${xs[0].toFixed(1)} ${topo}L${xs[xs.length - 1].toFixed(1)} ${topo}L${ok.slice().reverse().map(i => `${x(i).toFixed(1)} ${y(faixa.p75[i]).toFixed(1)}`).join("L")}Z" class="${cimaCls}"/>`;
+        g += `<path d="M${xs[0].toFixed(1)} ${base}L${xs[xs.length - 1].toFixed(1)} ${base}L${ok.slice().reverse().map(i => `${x(i).toFixed(1)} ${y(faixa.p25[i]).toFixed(1)}`).join("L")}Z" class="${baixoCls}"/>`;
+        g += `<path d="M${linha(faixa.p75)}" class="gr-l ${faixa.menor ? "q-ruim" : "q-boa"}"/><path d="M${linha(faixa.p25)}" class="gr-l ${faixa.menor ? "q-boa" : "q-ruim"}"/>`;
+        g += `<path d="${caminho(faixa.mediana, trimestral)}" class="gr-l mediana"/>`;
+        const xz = M.e + W / 2;
+        g += `<text x="${xz}" y="${topo + 13}" class="gr-zona-t ${faixa.menor ? "ruim" : "boa"}" text-anchor="middle">${faixa.menor ? "zona dos 25% piores" : "zona dos 25% melhores"}</text>`;
+        g += `<text x="${xz}" y="${base - 6}" class="gr-zona-t ${faixa.menor ? "boa" : "ruim"}" text-anchor="middle">${faixa.menor ? "zona dos 25% melhores" : "zona dos 25% piores"}</text>`;
+      }
+    }
+    if(modo === "E" && faixa){
+      const ok = meses.map((_, i) => faixa.p25[i] != null && faixa.p75[i] != null ? i : -1).filter(i => i >= 0);
+      if(ok.length > 1) g += `<path d="M${ok.map(i => `${x(i).toFixed(1)} ${y(faixa.p75[i]).toFixed(1)}`).join("L")}L${ok.slice().reverse().map(i => `${x(i).toFixed(1)} ${y(faixa.p25[i]).toFixed(1)}`).join("L")}Z" class="gr-envelope"/>`;
+    }
+    if(modo === "B" && faixa){
+      const ok = meses.map((_, i) => faixa.p25[i] != null && faixa.p75[i] != null ? i : -1).filter(i => i >= 0);
+      if(ok.length > 1) g += `<path d="M${ok.map(i => `${x(i).toFixed(1)} ${y(faixa.p75[i]).toFixed(1)}`).join("L")}L${ok.slice().reverse().map(i => `${x(i).toFixed(1)} ${y(faixa.p25[i]).toFixed(1)}`).join("L")}Z" class="gr-faixa-area"/>`;
+      g += `<path d="${caminho(faixa.mediana)}" class="gr-l med"/>`;
+    }
+    if(modo === "C") pv.forEach((v, i) => { if(v == null) return; const y0 = y(Math.max(lo / fator, Math.min(0, hi / fator))), yy = y(v);
+      g += `<rect x="${x(i) - dx * .32}" y="${Math.min(yy, y0)}" width="${dx * .64}" height="${Math.max(1, Math.abs(y0 - yy))}" rx="2" class="gr-col ${i === idx[idx.length - 1] ? "ult" : ""}"/>`; });
+    comparacoes.forEach(c => { g += `<path d="${caminho(c.valores, trimestral)}" class="gr-l ${c.estilo}"/>`; });
+    if(modo !== "C"){
+      if(trimestral || idx.some((v, k) => k && v - idx[k - 1] > 1)) g += `<path d="${caminho(pv, true)}" class="gr-l ligacao"/>`;
+      g += `<path d="${caminho(pv, false)}" class="gr-l principal"/>`;
+      const marcar = trimestral || idx.length <= 6;
+      idx.forEach(i => { if(marcar || i === idx[idx.length - 1] || i === idx[0]) g += `<circle cx="${x(i)}" cy="${y(pv[i])}" r="${i === idx[idx.length - 1] ? 4 : 2.8}" class="gr-p ${i === idx[idx.length - 1] ? "ult" : ""}"/>`; });
+      const livre = (xx, yy) => !(modo === "Q" && faixa && Math.abs(xx - (M.e + W / 2)) < 115 && (yy < M.t + 26 || yy > M.t + H - 18));
+      const rot = i => { let yy = y(pv[i]) - 9; if(yy < M.t + 4) yy = y(pv[i]) + 18;
+        const borda = x(i) < M.e + 24;                                    
+        return livre(x(i), yy) ? `<text x="${borda ? x(i) + 5 : x(i)}" y="${yy}" class="gr-ini" ${borda ? `text-anchor="start"` : ""}>${f(pv[i])}</text>` : ""; };
+      if(idx.length > 1 && !marcar) g += rot(idx[0]);
+      if(marcar) idx.slice(0, -1).forEach(i => { g += rot(i); });
+    }
+    const fim = [];
+    const ultimo = vs => { for(let i = vs.length - 1; i >= 0; i--) if(vs[i] != null) return i; return -1; };
+    const up = ultimo(pv); if(up >= 0) fim.push({y: y(pv[up]), nome: principal.nome, v: f(pv[up]), cls: "principal"});
+    comparacoes.forEach(c => { const u = ultimo(c.valores); if(u >= 0) fim.push({y: y(c.valores[u]), nome: c.nome, v: f(c.valores[u]), cls: c.estilo}); });
+    if(modo === "B" && faixa){ const u = ultimo(faixa.mediana); if(u >= 0) fim.push({y: y(faixa.mediana[u]), nome: faixa.nome || "mediana", v: f(faixa.mediana[u]), cls: "med"}); }
+    fim.sort((a, b) => a.y - b.y); for(let k = 1; k < fim.length; k++) if(fim[k].y - fim[k - 1].y < 26) fim[k].y = fim[k - 1].y + 26;
+    const deslocar = Math.max(0, (fim.length ? fim[fim.length - 1].y : 0) - (M.t + H + 6)); fim.forEach(r => r.y -= deslocar);
+    const xr = M.e + W + 12;
+    if(!LEG) fim.forEach(r => { g += r.cls === "principal"
+      ? `<rect x="${xr}" y="${r.y - 10}" width="${10 + r.v.length * 7.4}" height="20" rx="4" class="gr-bolha"/><text x="${xr + 5}" y="${r.y + 4}" class="gr-bolha-t">${r.v}</text><text x="${xr}" y="${r.y + 21}" class="gr-fim-n principal">${esc(r.nome)}</text>`
+      : `<text x="${xr}" y="${r.y + 3}" class="gr-fim-v ${r.cls}">${r.v}</text><text x="${xr + r.v.length * 6.6 + 6}" y="${r.y + 3}" class="gr-fim-n">${esc(r.nome)}</text>`; });
+    let legenda = "";
+    if(LEG){
+      if(up >= 0){                                                            
+        const t = f(pv[up]), wv = 12 + t.length * 7.4, cx = x(up), cy = y(pv[up]);
+        const yy = cy - 30 < M.t - 18 ? cy + 10 : cy - 30;
+        g += `<rect x="${cx - wv + 6}" y="${yy}" width="${wv}" height="20" rx="4" class="gr-bolha"/><text x="${cx - wv + 12}" y="${yy + 14}" class="gr-bolha-t">${t}</text>`;
+      }
+      const sw = cls => `<svg width="22" height="8" aria-hidden="true"><line x1="1" x2="21" y1="4" y2="4" class="gr-l ${cls}"/></svg>`;
+      const itens = fim.filter(r => r.cls !== "comp3").sort((a, b) => (a.cls === "principal" ? -1 : b.cls === "principal" ? 1 : 0));
+      const demais = fim.filter(r => r.cls === "comp3").length;
+      legenda = `<div class="gr-leg">${itens.map(r =>
+        `<span class="${r.cls === "principal" ? "p" : ""}">${sw(r.cls)}${esc(r.nome)} <b>${r.v}</b></span>`).join("")}
+        ${demais ? `<span>${sw("comp3")}demais Centrais (${demais})</span>` : ""}
+        ${modo === "B" && faixa ? `<span><i class="gr-leg-faixa"></i>50% do meio</span>` : ""}
+        ${modo === "Q" && faixa ? `<span><i class="gr-leg-z boa"></i>25% melhores</span><span>${sw("mediana")}mediana</span><span><i class="gr-leg-z ruim"></i>25% piores</span><span class="ref">${esc(faixa.nome || "")}</span>` : ""}
+        ${modo === "E" && faixa ? `<span><i class="gr-leg-z env"></i>${esc(faixa.nome || "faixa")}</span>` : ""}</div>`;
+    }
+    const dados = meses.map((m, i) => ({m: rotMes(m), p: pv[i], c: comparacoes.map(c => c.valores[i]), f: faixa && modo === "B" ? [faixa.p25[i], faixa.mediana[i], faixa.p75[i]] : null}));
+    g += meses.map((m, i) => `<rect x="${(modo === "C" ? M.e + i * dx : x(i) - dx / 2).toFixed(1)}" y="${M.t}" width="${dx.toFixed(1)}" height="${H}" class="gr-hot" data-i="${i}"/>`).join("");
+    const info = esc(JSON.stringify({dados, nomes: [principal.nome, ...comparacoes.map(c => c.nome)], fator, casas, faixa: !!(faixa && modo === "B")}));
+    return `<div class="gr-wrap" data-info="${info}">${legenda}<svg class="gr" viewBox="0 0 ${larg} ${alt}" role="img">${g}<line class="gr-guia" x1="0" x2="0" y1="${M.t}" y2="${M.t + H}" style="display:none"/></svg><div class="gr-tip" hidden></div></div>`;
+  }
+  function resumo(ent, mesPedido, chaves){
+    const ls = chaves.map(k => leitura(k, ent, mesPedido));
+    const ok = ls.filter(l => l.estado === "ok");
+    const comp = ok.filter(l => l.melhorou != null);
+    return {ls, ok, comp, melhor: comp.filter(l => l.melhorou > 0), pior: comp.filter(l => l.melhorou < 0),
+            construcao: ls.filter(l => l.estado === "construcao"), semDado: ls.filter(l => l.estado === "sem_dado"),
+            semBase: ok.filter(l => l.melhorou == null), top: ok.filter(l => l.quartil === 1),
+            acima: ok.filter(l => (l.selos || []).includes("acima"))};
+  }
+  const UFS = "AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO".split(" ");
+  function curtoBruto(nome){                                                                 
+    const uf = t => t.split("/").every(x => UFS.includes(x));
+    const tk = nome.split(" "); const out = [];
+    tk.forEach((t, i) => { const limpo = t.replace(/^\/|\/$/g, "");
+      if(i > 0 && limpo && uf(limpo) && !/^(da|de|do|das|dos)$/.test(tk[i - 1])) return;   
+      out.push(t.replace(/\/[A-Z]{2}$/, m => UFS.includes(m.slice(1)) ? "" : m)); });
+    let n = out.join(" ").replace(/\s{2,}/g, " ").trim();
+    if(n.length > 28 && n.includes(" e ")) n = n.split(" e ")[0];
+    return n;
+  }
+  const CURTO = (() => {                                                                     
+    const coops = D.entidades.filter(e => e.t === "cooperativa"), m = {}, cont = {};
+    coops.forEach(e => { m[e.c] = e.nc || curtoBruto(e.n); cont[m[e.c]] = (cont[m[e.c]] || 0) + 1; });
+    coops.forEach(e => { if(cont[m[e.c]] > 1) m[e.c] = e.n; });
+    return m;
+  })();
+  const nomeCurtoCoop = e => CURTO[e.c] || e.n;
+  function nomeEnt(c, curto){
+    const e = ENT[c]; if(!e) return c;
+    if(e.t === "sistema") return "o Sistema";
+    if(e.t === "central") return (curto ? e.n.replace("Central Sicredi ", "") : e.n);
+    return curto ? nomeCurtoCoop(e) : e.n;
+  }
+  const MES_INICIAL = "2026-07";                                   
+  const NOSSA = () => S.tela === "nossa";
+  const TEMAS = D.temas.slice().sort((a, b) => a.ordem - b.ordem);
+  const CHAVES = TEMAS.flatMap(t => t.indicadores);
+  const temaDe = k => TEMAS.find(t => t.indicadores.includes(k));
+  const seta = d => d == null ? "" : d > 0 ? "▲" : d < 0 ? "▼" : "=";
+  const centralDe = c => (ENT[c] || {}).ce;
+  function htmlCab(){
+    const ents = NOSSA() ? "" : `${["SIS", ...D.entidades.filter(e => e.t === "central").sort((a, b) => a.n.localeCompare(b.n)).map(e => e.c)].map(c =>
+        `<button class="pil ${S.ent === c ? "on" : ""}" data-ent="${c}">${c === "SIS" ? "O Sistema" : esc(nomeEnt(c, true))}</button>`).join("")}
+      <label class="pil outra ${ENT[S.ent] && ENT[S.ent].t === "cooperativa" ? "on" : ""}">
+        <select data-acao="coop" aria-label="Outra entidade">
+          <option value="">outra entidade</option>
+          ${D.entidades.filter(e => e.t === "central").sort((a, b) => a.n.localeCompare(b.n)).map(ce => `<optgroup label="${esc(ce.n)}">
+            ${D.entidades.filter(e => e.t === "cooperativa" && e.ce === ce.c).sort((a, b) => a.n.localeCompare(b.n))
+              .map(e => `<option value="${e.c}" ${S.ent === e.c ? "selected" : ""}>${esc(e.n)}</option>`).join("")}</optgroup>`).join("")}
+        </select></label>`;
+    const meses = mesesDisponiveis().filter(mm => mm >= MES_INICIAL);
+    const opt = mm => `<option value="${mm}" ${S.mes === mm ? "selected" : ""}>${rotMes(mm)}</option>`;
+    const mes = `<div class="pil-mes"><button class="pil ${S.mes ? "" : "on"}" data-acao="ultimo">Último mês</button>
+      <label class="pil outra ${S.mes ? "on" : ""}" title="Meses disponíveis desde ${rotMes(MES_INICIAL)}">
+        <select data-acao="mes" aria-label="Outro mês"><option value="">outro mês</option>${meses.map(opt).join("")}</select></label></div>`;
+    const seg = `<div class="seg"><button class="${S.aba === "visao" ? "on" : ""}" data-aba="visao">Visão</button><button class="${S.aba === "analitica" ? "on" : ""}" data-aba="analitica">Analítica</button></div>`;
+    if(NOSSA()) return `<div class="cab"><h1>Nossa evolução</h1><div class="cab-dir">${mes}${seg}</div></div>`;
+    return `<div class="cab"><h1>Evolução sistêmica</h1>${seg}</div>
+      <div class="pilulas"><div class="pil-ent">${ents}</div>${mes}</div>`;
+  }
+  function htmlRecorte(){
+    const r = resumo(S.ent, S.mes, CHAVES), e = ENT[S.ent];
+    const ref = S.mes || mesReferencia(S.ent);
+    const tot = r.comp.length, m = r.melhor.length, verbo = m === 1 ? "melhorou" : "melhoraram";
+    const semHist = r.ok.length - tot;                                   
+    const qtd = m === tot && tot > 1 ? `Todos os <b>${tot}</b> indicadores` : `<b>${m} de ${tot}</b> indicadores`;
+    const quando = S.mes ? `Em ${rotMes(S.mes)}, ` : "";
+    let frase, olho;
+    if(e.t === "sistema"){ olho = "O Sistema · últimos 12 meses"; frase = `${quando}${S.mes ? qtd.replace("Todos", "todos") : qtd} ${verbo} em 12 meses no Sistema.`; }
+    else if(e.t === "central"){ olho = "A Central · últimos 12 meses"; frase = `${quando || ""}${S.mes ? "na" : "Na"} <b title="${esc(e.n)}">${esc(e.n.replace("Central Sicredi ", "Central "))}</b>, ${qtd.replace("Todos", "todos")} ${verbo} em 12 meses.`; }
+    else {
+      olho = NOSSA() ? "A nossa cooperativa · últimos 12 meses" : "A cooperativa · últimos 12 meses";
+      frase = `${quando}${S.mes ? "a" : "A"} <b title="${esc(e.n)}">${esc(nomeCurtoCoop(e))}</b> melhorou em <b>${m} de ${tot}</b> indicadores em 12 meses.`;
+      const dest = destaque(r);
+      if(dest) frase += `<span class="frase2">Destaque em <b>${esc(dest.l.ind.curto)}</b>: ${dest.txt}.</span>`;
+    }
+    const extras = [];
+    if(semHist) extras.push(`<b>${semHist}</b> sem histórico de 12 meses${S.mes ? " nesse mês" : ""} (fora da conta)`);
+    if(r.construcao.length) extras.push(`${r.construcao.length} em construção`);
+    if(r.semDado.length) extras.push(`${r.semDado.length} sem dado ${e.t === "central" ? "na Central" : "para esta entidade"}`);
+    const chips = NOSSA() ? htmlSelosTopo(r) : "";
+    const f1 = frase.replace(/^(.*?)(<span class="frase2">|$)/s, (m, a, b) => `<span class="frase1" data-fit="1">${a}</span>${b}`);
+    return `<div class="recorte">
+        <div class="olho">${olho}</div>
+        <div class="frase">${f1}</div>
+        <div class="e6-sub">${S.mes ? `leitura de <b>${rotMes(S.mes)}</b> (mês escolhido)` : `leitura de ${rotMes(ref)}`} · ${esc(nomeEnt(S.ent))}${extras.length ? " · " + extras.join(" · ") : ""}</div>
+        ${chips}</div>`;
+  }
+  function destaque(r){
+    const ordem = ["melhorcentral", "quartil", "virada", "alta", "acima"];
+    const txt = {melhorcentral: "a melhor da sua Central", quartil: "entre as 25% melhores do Sistema", virada: "saiu da metade de baixo em 12 meses",
+                 alta: "alta sustentada nos últimos meses", acima: "acima da mediana do Sistema"};
+    for(const s of ordem){
+      const c = r.ok.filter(l => (l.selos || []).includes(s)).sort((a, b) => (b.percentil ?? 0) - (a.percentil ?? 0));
+      if(c.length) return {l: c[0], txt: txt[s]};
+    }
+    return null;
+  }
+  function htmlSelosTopo(r){
+    const itens = [];                                           
+    const ordem = ["melhorcentral", "quartil", "virada", "alta"];
+    r.ok.forEach(l => { const s = ordem.find(x => (l.selos || []).includes(x)); if(s) itens.push({s, l}); });   
+    if(!itens.length) return "";
+    itens.sort((a, b) => ordem.indexOf(a.s) - ordem.indexOf(b.s) || (b.l.percentil ?? 0) - (a.l.percentil ?? 0));
+    const mostra = S.selosTodos ? itens : itens.slice(0, 3), resto = itens.length - 3;
+    return `<div class="selos-topo ${S.selosTodos ? "todos" : ""}">${mostra.map(({s, l}) => `<button class="e6-chip ${S.sel === l.k ? "on" : ""}" data-sel="${l.k}" title="${esc(SELO[s].nome)} · ${esc(l.ind.nome)}">${seloIco(s)}<b>${esc(SELO[s].curto)}</b> ${esc(l.ind.curto)}</button>`).join("")}
+      ${resto > 0 ? `<button class="e6-chip mais" data-acao="selos">${S.selosTodos ? "mostrar menos" : `+${resto} ${resto === 1 ? "conquista" : "conquistas"}`}</button>` : ""}</div>`;
+  }
+  const ALT_IND = {
+    nps_colaborador: ["NPS Transacional Colaborador", "NPS Transac. Colaborador", "NPS Colaborador"],
+    sow_bbm: ["SoW Associados BBM (em %)", "SoW Assoc. BBM (em %)"], mccred: ["MC de Crédito (em R$ MM)", "MC Crédito (em R$ MM)"],
+    efic1_90: ["Eficiência Recuperação (em %)", "Efic. Recuperação (em %)"], movimentando_mes: ["Assoc. Movimentando (em %)", "Movimentando (em %)"],
+    cobertura: ["Índice de Cobertura (em %)", "Cobertura (em %)"], turnover_vol: ["Turnover Voluntário (em %)", "Turnover Vol. (em %)"],
+    aproveitamento_interno: ["Aproveitamento Interno (em %)", "Aproveit. Interno (em %)"], enps_carreira: ["E-NPS Gestão de Carreira", "E-NPS Carreira"],
+    crescer: ["Formados no Crescer (em %)", "Formados Crescer (em %)"], assocedu: ["Educação Financeira (em %)", "Educ. Financeira (em %)"],
+    investimento_social: ["Investimento Social (em R$ MM)", "Invest. Social (em R$ MM)"]};
+  const ALT_TEMA = {T1: ["Reduzir os atritos", "Reduzir atritos"], T2: ["Simplificar Operação", "Simplificar"], T3: ["Crédito Eficiente"],
+    T4: ["Movimentar a Base", "Movimentar"], T5: ["Fidelizar Pessoas"], T6: ["Cooperativismo Vivido", "Cooperativ. Vivido", "Cooperativismo"]};
+  const altsInd = (k, l) => (ALT_IND[k] || [l.esc.rotulo]).map(x => l.esc.mil ? x.replace("R$ MM", "R$ mil") : x);
+  const htmlNome = (alts, cls) => `<div class="${cls}" data-alt="${esc(JSON.stringify(alts))}">${rotuloHtml(alts[0])}</div>`;
+  function ordemDoTema(t){
+    const ls = t.indicadores.map(k => ({k, l: leitura(k, S.ent, S.mes)}));
+    return [...ls.filter(x => x.l.estado === "ok"), ...ls.filter(x => x.l.estado !== "ok")];
+  }
+  function htmlSlot(x){
+    if(!x) return `<div class="slot e6-vazio"><span class="e-nm"></span><div class="bloco">${esqueleto()}</div></div>`;
+    const {k, l} = x;
+    if(l.estado !== "ok") return `<div class="slot espera" title="${esc(l.ind.nome)}">${htmlNome(altsInd(k, l), "nm")}
+        <div class="bloco">${esqueleto(l.estado === "construcao" ? "em construção" : "sem dado")}</div></div>`;
+    const vv = `<div class="val tnum">${valorTxt(l)}</div><div class="mes ${l.defasado ? "def" : ""}">${rotMes(l.mes)}${l.defasado ? " •" : ""}</div>`;
+    return `<div class="slot clic ${NOSSA() ? "com-anel" : ""} ${S.sel === k ? "sel" : ""}" data-sel="${k}" title="${esc(l.ind.nome)}">
+      ${htmlNome(altsInd(k, l), "nm")}
+      <div class="bloco">${NOSSA() ? htmlAnel(l, vv) : `<div class="vcol">${vv}</div>`}<div class="vgrid">${htmlVars(l)}</div></div></div>`;
+  }
+  const setaHtml = d => d == null ? `<span class="e6-seta"></span>` : `<span class="e6-seta ${d > 0 ? "s" : d < 0 ? "d" : "z"}"></span>`;
+  function htmlVars(l){
+    if(l.serieDesde) return `<span class="nota1">série desde ${rotMes(l.serieDesde)}</span>`;
+    const r12 = `vs <span class="m-l">${rotMes(l.m12)}</span><span class="m-c">12m</span>`;
+    const lin = (v, rot) => v.nula === "base"
+      ? `<span class="e6-seta"></span><span class="e6-vn nulo" title="Sem base de comparação">—</span><span class="e6-vs" title="Sem base de comparação">${rot}</span>`
+      : `${setaHtml(v.delta)}<span class="e6-vn tnum">${v.txt}</span><span class="e6-vs">${rot}</span>`;
+    if(l.vdez.nula === "acum") return lin(l.v12, r12) + `<span class="nota1">acumulado no ano</span>`;          
+    if(l.vdez.nula === "dez") return lin(l.v12, r12) + `<span class="nota1">dezembro fecha o ano</span>`;
+    return lin(l.vdez, "vs ano") + lin(l.v12, r12);
+  }
+  function htmlAnel(l, vv){
+    const r = 23, C = 2 * Math.PI * r, p = l.percentil;
+    const arco = p == null ? "" : `<circle cx="26" cy="26" r="${r}" fill="none" stroke="var(--verde-escuro)" stroke-width="3.2" stroke-linecap="round"
+        stroke-dasharray="${(C * p / 100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/>`;
+    return `<div class="anel" title="${p == null ? "Sem posição calculada" : `Posição ${p} de 100 entre as cooperativas (100 = melhor)`}">
+      <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="${r}" fill="none" stroke="#E7ECE6" stroke-width="3.2"/>${arco}</svg><div class="anel-c">${vv}</div></div>`;
+  }
+  function esqueleto(rot){                                 
+    return `<div class="esq ${NOSSA() ? "anel-esq" : ""}"><span class="e-val"></span><span class="e-lin"></span><span class="e-lin c"></span>${rot ? `<span class="e-tag">${rot}</span>` : ""}</div>`;
+  }
+  function htmlVisao(){
+    const cards = TEMAS.map(t => {
+      const xs = ordemDoTema(t).slice(0, 3); while(xs.length < 3) xs.push(null);
+      const sel = S.sel && t.indicadores.includes(S.sel);
+      return `<div class="e6-tc ${sel ? "sel" : ""}">${htmlNome((ALT_TEMA[t.codigo] || [t.titulo]).map(x => t.codigo + " " + x), "tt")}${xs.map(htmlSlot).join("")}</div>`;
+    }).join("");
+    return `<div class="e6-temas">${cards}</div>${htmlRodape()}${S.sel ? htmlDetalhe(S.sel) : ""}`;
+  }
+  function encaixarTextos(){
+    R().querySelectorAll("[data-fit]").forEach(el => {             
+      el.classList.remove("quebra"); el.style.fontSize = "";
+      let f = parseFloat(getComputedStyle(el.parentNode).fontSize);
+      while(el.scrollWidth > el.clientWidth + 0.5 && f > 19){ f -= 0.5; el.style.fontSize = f + "px"; }
+      if(el.scrollWidth > el.clientWidth + 0.5) el.classList.add("quebra");
+    });
+    R().querySelectorAll("[data-alt]").forEach(el => {
+      const alts = JSON.parse(el.dataset.alt); el.style.fontSize = "";
+      for(const a of alts){ el.innerHTML = rotuloHtml(a); if(el.scrollWidth <= el.clientWidth + 0.5) return; }
+      let f = parseFloat(getComputedStyle(el).fontSize);
+      while(el.scrollWidth > el.clientWidth + 0.5 && f > 9){ f -= 0.25; el.style.fontSize = f + "px"; }
+    });
+  }
+  function htmlRodape(){
+    const e = ENT[S.ent];
+    const quem = e.t === "sistema" ? "Sistema · todas as cooperativas" : e.t === "central" ? `${esc(e.n)} · as cooperativas da Central` : esc(e.n);
+    return `<div class="rodape">Mostrando: <b>${quem}</b> · referência <b>${S.mes ? rotMes(S.mes) : "último disponível"}</b> ·
+      <span class="m12">vs ano</span> = contra dezembro do ano anterior · <span class="m12">vs 12m</span> = contra o mesmo mês do ano anterior${NOSSA() ? " · o anel é a posição entre as cooperativas do Sistema: mais cheio, melhor" : ""}.</div>`;
+  }
+  function htmlDetalhe(k){
+    const l = leitura(k, S.ent, S.mes), i = D.indicadores[k], e = ENT[S.ent];
+    if(l.estado !== "ok") return `<div class="e6-det"><div class="det-esq"><h4>${esc(i.nome)}</h4><div class="def">${esc(primeiraFrase(i.definicao))}</div></div>
+      <div class="det-vazio">${l.estado === "construcao" ? "Indicador em construção: ainda sem dados na plataforma." : "Sem dado deste indicador para esta entidade."}</div></div>`;
+    const fat = l.esc.fator, cs = l.esc.casas, menor = i.sentido === "menor_melhor";
+    const j = IDX[l.mes], js = Array.from({length: 13}, (_, n) => j - 12 + n).filter(x => x >= 0);
+    const meses = js.map(x => D.meses[x]);
+    const serie = c => js.map(x => ((D.valores[k] || {})[c] || [])[x] ?? null);
+    const ce = centralDe(S.ent), total = i.unidade === "moeda";                                   
+    const nomeCe = c => ENT[c].n.replace("Central Sicredi ", "Central ");
+    const nomeEu = e.t === "sistema" ? "Sistema" : e.t === "central" ? nomeCe(S.ent) : nomeCurtoCoop(e);
+    const acum = /acumulado no ano/i.test(i.janela || "");
+    const leituraDist = (central, campo) => {
+      const d = m => { const x = distribuicao(k, m, central); return x ? x[campo] : null; };
+      const v = d(l.mes); if(v == null) return null;
+      return {estado: "ok", valor: v, vdez: acum ? {nula: "acum"} : (l.mes.endsWith("-12") ? {nula: "dez"} : variacao(i, v, d(l.mdez), l.esc)),
+              v12: variacao(i, v, d(l.m12), l.esc)};
+    };
+    const serieDist = (central, campo) => meses.map(m => { const x = distribuicao(k, m, central); return x ? x[campo] ?? null : null; });
+    const linhas = [];
+    const add = (rot, x, mk, extra = "") => { if(x) linhas.push({rot, x, mk, extra}); };
+    let comparacoes = [], faixa = null, modo = "Q", tog = "", nota = "", thGrupo = "";
+    const topo = menor ? "p25" : "p75", fundo = menor ? "p75" : "p25";
+    if(e.t === "central" && !total){
+      const cs = D.entidades.filter(x => x.t === "central").map(x => ({c: x.c, l: leitura(k, x.c, l.mes)})).filter(x => x.l.estado === "ok")
+        .sort((a, b) => menor ? a.l.valor - b.l.valor : b.l.valor - a.l.valor);
+      const pos = cs.findIndex(x => x.c === S.ent) + 1, melhor = cs[0], pior = cs[cs.length - 1];
+      add(nomeCe(S.ent).replace("Central ", ""), leitura(k, S.ent, l.mes), "eu");
+      add("Sistema", leitura(k, "SIS", l.mes), "sis");
+      if(melhor && melhor.c !== S.ent) add("1ª Central", melhor.l, "env");                
+      if(pior && pior.c !== S.ent) add(`${cs.length}ª Central`, pior.l, "env");
+      thGrupo = pos ? `${pos}ª de ${cs.length} Centrais` : "Entre as Centrais";
+      modo = "E";
+      const envs = meses.map((m, n) => { const vs = D.entidades.filter(x => x.t === "central").map(x => ((D.valores[k] || {})[x.c] || [])[js[n]]).filter(v => v != null);
+                                         return vs.length ? [Math.min(...vs), Math.max(...vs)] : [null, null]; });
+      faixa = {p25: envs.map(v => v[0]), p75: envs.map(v => v[1]), nome: "entre a menor e a maior Central"};
+      comparacoes = [{nome: "Sistema", valores: serie("SIS"), estilo: "comp1"}];
+    } else if(total && e.t !== "cooperativa"){
+      add(e.t === "sistema" ? "Sistema (total)" : nomeEu, leitura(k, S.ent, l.mes), "eu");
+      modo = "A";
+      nota = e.t === "central" ? "Em reais, o total de cada Central depende do porte: não se compara com outras Centrais." : "Em reais, o total do Sistema não se compara com o valor de cada coop.";
+    } else {
+      const refCentral = e.t === "cooperativa" && S.ref === "central" && ce && (!D.dist || D.temCentral) ? ce : null;   
+      const grupo = e.t === "central" ? S.ent : refCentral;
+      const nG = (distribuicao(k, l.mes, grupo) || {}).n || 0;
+      const de = grupo ? "da Central" : "do Sistema";
+      add(e.t === "sistema" ? "Sistema (total)" : nomeEu, leitura(k, S.ent, l.mes), "eu");
+      add("25% melhores", leituraDist(grupo, topo), "boa");
+      add("Mediana", leituraDist(grupo, "mediana"), "med");
+      add("25% piores", leituraDist(grupo, fundo), "ruim");
+      const rk = e.t === "cooperativa" ? ranking(k, l, refCentral ? "central" : "SIS") : null;
+      thGrupo = rk ? `${rk.r}ª de ${rk.n} ${grupo ? "na Central" : "no Sistema"}` : (nG ? `Coops ${de} · ${nG}` : `Coops ${de}`);
+      faixa = {p25: serieDist(grupo, "p25"), p75: serieDist(grupo, "p75"), mediana: serieDist(grupo, "mediana"), menor, nome: nG ? `${nG} coops ${de}` : `coops ${de}`};
+      if(nG && nG < 10) nota = `Grupo pequeno (${nG} coops): as faixas de 25% são indicativas.`;
+      if(e.t === "cooperativa" && ce && (!D.dist || D.temCentral)) tog = `<div class="seg e6-mini" title="Faixas calculadas sobre as coops de"><button class="${S.ref === "SIS" ? "on" : ""}" data-ref="SIS">Sistema</button><button class="${S.ref === "central" ? "on" : ""}" data-ref="central">Minha Central</button></div>`;
+    }
+    const unPad = i.vtipo === "pp" ? " p.p." : i.vtipo === "pontos" ? " pts" : "%";
+    const vtd = v => { if(!(v && v.txt)) return `<span class="c-nulo">—</span>`;
+      const t = !v.abs && v.txt.endsWith(unPad) ? v.txt.slice(0, -unPad.length) : v.txt;
+      return `<span class="c-v">${setaHtml(v.delta)}${t}</span>`; };
+    const nomeTab = r => r.replace(/^Sicredi /, "");
+    const tab = `<table class="e6-cmp tnum ${i.unidade === "moeda" ? "moeda" : ""}"><colgroup><col><col class="c-val"><col class="c-var"><col class="c-var"></colgroup>
+      <thead><tr><th class="th-g ${/ª de/.test(thGrupo) ? "pos" : ""}" title="${esc(thGrupo)}">${esc(thGrupo)}</th><th>${rotMes(l.mes)}</th><th>vs ano</th><th>vs ${rotMes(l.m12)}</th></tr>
+      <tr class="th-un"><th colspan="2">${menor ? "menor é melhor" : ""}</th><th colspan="2">variação em ${unPad.trim()}</th></tr></thead><tbody>
+      ${linhas.map(({rot, x, mk, extra}) => x.estado !== "ok" ? `<tr><td><i class="mk ${mk}"></i>${esc(nomeTab(rot))}</td><td colspan="3" class="c-n">sem dado</td></tr>` :
+        `<tr class="${mk === "eu" ? "eu" : ""}"><td title="${esc(rot)}"><i class="mk ${mk}"></i>${esc(nomeTab(rot))}${extra}</td><td>${num(x.valor * fat, cs)}</td><td>${vtd(x.vdez)}</td><td>${vtd(x.v12)}</td></tr>`).join("")}
+      </tbody></table>${nota ? `<div class="nota-tri">${esc(nota)}</div>` : ""}`;
+    const tri = trimestres(k, S.ent, l.mes);
+    const htri = `<div class="tri tnum">${tri.map(q => `<div class="${q.valor == null ? "sem" : ""}"><span class="q">${q.tri}${q.parcial ? "*" : ""}</span>
+        <span class="v">${q.valor == null ? "—" : num(q.valor * fat, cs)}</span>
+        <span class="d">${q.delta == null ? "&nbsp;" : setaHtml(q.delta) + fmtDelta(i, q.delta, fat, cs)}</span></div>`).join("")}</div>`;
+    const graf = `<div class="gr-slot" data-g="${esc(JSON.stringify({principal: {nome: nomeEu, valores: serie(S.ent)}, comparacoes, faixa, meses, casas: cs, fator: fat, modo,
+                   trimestral: i.freq === "trimestral", rotulos: "leg"}))}"></div>`;
+    const jan = String(i.janela || "").replace(/^mês \((.*)\)$/, "$1").replace(/^mês$/, "").replace(" (zera em janeiro)", "").replace("acumulado (formados até o mês)", "acumulado até o mês");
+    const notas = [];
+    if(i.brutos_desde && i.brutos_desde > meses[0]) notas.push(`calculado pelos dados brutos desde ${rotMes(i.brutos_desde)} (antes, valor do Power BI)`);
+    if(l.defasado) notas.push(`último dado desta entidade: ${rotMes(l.mes)}`);
+    if(i.freq === "trimestral") notas.push("pontos só nos meses com pesquisa");
+    return `<div class="e6-det">
+      <div class="det-esq">
+        <div class="e6-det-cab"><h4>${esc(l.esc.rotulo)}</h4><div class="def">${esc(primeiraFrase(i.definicao))}</div></div>
+        <div class="bloco-det"><div class="rot-tab">Por trimestre</div>${htri}${tri.some(q => q.parcial) ? `<div class="nota-tri">* em andamento, até ${rotMes(l.mes)}</div>` : ""}</div>
+        <div class="bloco-det"><div class="rot-tab">Comparativo ${tog}</div>${tab}</div>
+      </div>
+      <div class="det-dir">
+        <div class="gcab"><div class="gtit" title="${esc(i.nome)}">${esc(i.nome)} <span>· últimos 12 meses até ${rotMes(l.mes)}${jan ? " · " + esc(jan) : ""}</span></div>
+          ${notas.length ? `<div class="gnota">${esc(notas.join(" · "))}</div>` : ""}</div>
+        ${graf}</div></div>`;
+  }
+  function desenharGraficos(){
+    R().querySelectorAll(".gr-slot").forEach(el => {
+      const o = JSON.parse(el.dataset.g), w = Math.max(420, Math.round(el.clientWidth));
+      el.innerHTML = ""; el.style.height = "0px";
+      const det = el.closest(".e6-det"), esq = det && det.querySelector(".det-esq"), dir = el.closest(".det-dir");
+      const lim = x => Math.max(250, Math.min(Math.round(x), Math.round(w * .75)));
+      let h = 300, nat = 0;
+      if(esq && dir){ const gap = parseFloat(getComputedStyle(esq).rowGap) || 0;
+        nat = [...esq.children].reduce((a, c) => a + c.getBoundingClientRect().height, 0) + gap * (esq.children.length - 1);
+        const outros = [...dir.children].filter(c => c !== el).reduce((a, c) => a + c.getBoundingClientRect().height, 0);
+        h = nat - outros; }
+      el.style.height = "";
+      el.innerHTML = grafico({...o, larg: w, alt: lim(h)});
+      if(nat){ const sobra = dir.getBoundingClientRect().height - nat; if(Math.abs(sobra) > 3){ const h2 = lim(lim(h) - sobra); if(h2 !== lim(h)) el.innerHTML = grafico({...o, larg: w, alt: h2}); } }
+    });
+  }
+  const rotuloHtml = r => esc(r).replace(/\s(\(em [^)]*\))$/, ' <span class="un">$1</span>');
+  const primeiraFrase = t => { const s = String(t || "").split(/(?<=\.)\s/)[0]; return s.length > 220 ? s.slice(0, 217) + "…" : s; };
+  function fmtDelta(i, d, fat, cs){
+    if(i.vtipo === "relativa") return (d >= 0 ? "+" : "−") + num(Math.abs(d * fat), Math.abs(d * fat) >= 10 ? 0 : cs) + (fat === 1000 ? " mil" : " MM");
+    return (d >= 0 ? "+" : "−") + num(Math.abs(d), i.vcasas) + (i.vtipo === "pp" ? " p.p." : " pts");
+  }
+  function htmlAnalitica(){
+    const e = ENT[S.ent], coop = e.t === "cooperativa";
+    const ks = CHAVES.filter(k => !S.tema || temaDe(k).codigo === S.tema);
+    const r = resumo(S.ent, S.mes, ks);
+    const kpi = coop
+      ? [[ks.length, "indicadores no recorte"], [r.melhor.length, "melhoraram em 12 meses"], [r.top.length, "entre as 25% melhores do Sistema"], [r.ok.filter(l => l.percentil != null && l.percentil >= 50).length, "acima da mediana do Sistema"]]
+      : [[ks.length, "indicadores no recorte"], [r.melhor.length, "melhoraram em 12 meses"], [r.pior.length, "pioraram em 12 meses"], [r.construcao.length + r.semDado.length, "em construção ou sem dado"]];
+    const pilT = `<div class="pilulas pl-temas" style="margin-top:14px"><button class="pil ${!S.tema ? "on" : ""}" data-tema="">Todos os temas</button>
+      ${TEMAS.map(t => `<button class="pil ${S.tema === t.codigo ? "on" : ""}" data-tema="${t.codigo}">${esc(t.curto)}</button>`).join("")}</div>`;
+    const posRef = S.ref === "central" && centralDe(S.ent) && (!D.dist || D.temCentral) ? "central" : "SIS";
+    const rows = ks.map(k => {
+      const l = leitura(k, S.ent, S.mes), t = temaDe(k);
+      if(l.estado !== "ok") return `<div class="tr fantasma"><div><div class="nm">${esc(l.esc.rotulo)}<span class="e6-tag">${l.estado === "construcao" ? "em construção" : "sem dado"}</span></div><div class="tm">${esc(t.nome)}</div></div>
+        <div class="hj">—</div><div class="v12">—</div><div></div><div></div>${coop ? "<div></div>" : ""}</div>`;
+      const j = IDX[l.mes], sp = Array.from({length: 13}, (_, n) => ((D.valores[k] || {})[S.ent] || [])[j - 12 + n] ?? null);
+      const pos = coop ? posicao(k, l, posRef) : null;
+      return `<div class="tr ${S.sel === k ? "sel" : ""}" data-sel="${k}"><div><div class="nm" title="${esc(l.ind.nome)}">${esc(l.esc.rotulo)}</div><div class="tm">${esc(t.nome)}</div></div>
+        <div class="hj tnum">${valorTxt(l)}<small class="${l.defasado ? "def" : ""}">${rotMes(l.mes)}${l.defasado ? " •" : ""}</small></div>
+        <div class="v12 tnum">${l.v12.txt ? `${seta(l.v12.delta)} ${l.v12.txt}` : (l.serieDesde ? `<span style="color:var(--tenue)">desde ${rotMes(l.serieDesde)}</span>` : "—")}</div>
+        <div>${sparkline(sp)}</div>
+        <div>${coop ? (pos ? `<div class="pos"><div class="barra"><i style="width:${pos.p}%"></i><u></u><em style="left:calc(${pos.p}% - 1px)"></em></div><small>${faixaTxt(pos.p)}${(rk => rk ? ` · <b>${rk.r}ª</b> de ${rk.n}` : "")(ranking(k, l, posRef))}</small></div>` : `<small style="color:var(--tenue)">sem posição</small>`)
+                   : medianaTxt(k, l)}</div>
+        ${coop ? `<div class="conq">${(l.selos || []).map(s => `<span title="${esc(SELO[s].nome)}">${seloIco(s)}</span>`).join("") || `<span style="color:var(--tenue)">—</span>`}</div>` : ""}</div>
+        ${S.sel === k ? `<div class="linha-det">${htmlDetalhe(k)}</div>` : ""}`;
+    }).join("");
+    const posHead = coop && D.dist && !D.temCentral ? "Posição no Sistema" : coop ? `Posição <span class="seg e6-mini" style="margin-left:6px; vertical-align:middle"><button class="${posRef === "SIS" ? "on" : ""}" data-ref="SIS">Sistema</button><button class="${posRef === "central" ? "on" : ""}" data-ref="central">Central</button></span>` : "Mediana das coops";
+    return `${pilT}<div class="e6-kpis">${kpi.map(([n, t]) => `<div><b class="tnum">${n}</b><span>${t}</span></div>`).join("")}</div>
+      <div class="tab ${coop ? "" : "sem-conq"}"><div class="th"><div>Indicador</div><div class="d">Valor</div><div class="d">12 meses</div><div>Andamento</div><div>${posHead}</div>${coop ? "<div>Conquistas</div>" : ""}</div>${rows}
+      ${coop ? `<div class="leg-conq">${Object.keys(SELO).map(s => `<span>${seloIco(s)}${esc(SELO[s].nome)}</span>`).join("")}</div>` : ""}</div>
+      ${htmlRodape()}`;
+  }
+  function ranking(k, l, ref){
+    if(D.rank){ const x = ((D.rank[k] || [])[IDX[l.mes]] || {})[ref === "central" ? "central" : "SIS"]; return x && x.r != null && x.n >= 5 ? x : null; }
+    const j = IDX[l.mes], menor = D.indicadores[k].sentido === "menor_melhor";
+    const cs = ref === "central" ? coopsDe(centralDe(S.ent)) : D.entidades.filter(x => x.t === "cooperativa").map(x => x.c);
+    const xs = cs.map(c => ((D.valores[k] || {})[c] || [])[j]).filter(x => x != null);
+    if(xs.length < 5 || l.valor == null) return null;
+    return {r: 1 + xs.filter(x => menor ? x < l.valor : x > l.valor).length, n: xs.length};
+  }
+  const faixaTxt = p => p >= 75 ? "25% melhores" : p >= 50 ? "acima da mediana" : p >= 25 ? "abaixo da mediana" : "25% piores";
+  function posicao(k, l, ref){
+    if(ref === "SIS") return l.percentil == null ? null : {p: l.percentil, q: l.quartil};
+    if(D.rank){ const x = ranking(k, l, "central"); if(!x) return null;            
+      const p = Math.round(100 * (x.n - x.r) / Math.max(1, x.n - 1)); return {p, q: p >= 75 ? 1 : p >= 50 ? 2 : p >= 25 ? 3 : 4}; }
+    const ce = centralDe(S.ent), j = IDX[l.mes];                   
+    const xs = coopsDe(ce).map(c => ((D.valores[k] || {})[c] || [])[j]).filter(x => x != null);
+    if(xs.length < 5) return null;
+    const menor = D.indicadores[k].sentido === "menor_melhor";
+    const pior = xs.filter(x => menor ? x > l.valor : x < l.valor).length, igual = xs.filter(x => x === l.valor).length - 1;
+    const p = Math.round(100 * (pior + igual / 2) / (xs.length - 1));
+    return {p, q: p >= 75 ? 1 : p >= 50 ? 2 : p >= 25 ? 3 : 4};
+  }
+  function medianaTxt(k, l){
+    const d = distribuicao(k, l.mes, ENT[S.ent].t === "central" ? S.ent : null);
+    return d && d.mediana != null ? `<span class="tnum" style="font-family:var(--exo)">${num(d.mediana * l.esc.fator, l.esc.casas)}</span> <small style="color:var(--tenue)">${d.n} coops</small>` : `<small style="color:var(--tenue)">—</small>`;
+  }
+  function sparkline(v){
+    const xs = v.map((y, i) => y == null ? null : [i, y]).filter(Boolean);
+    if(xs.length < 2) return `<small style="color:var(--tenue)">—</small>`;
+    const lo = Math.min(...xs.map(p => p[1])), hi = Math.max(...xs.map(p => p[1])), W = 120, H = 28;
+    const X = i => 3 + i * (W - 6) / 12, Y = y => H - 4 - (hi === lo ? .5 : (y - lo) / (hi - lo)) * (H - 8);
+    let d = "", on = false; v.forEach((y, i) => { if(y == null){ on = false; return; } d += (on ? "L" : "M") + X(i).toFixed(1) + " " + Y(y).toFixed(1); on = true; });
+    const u = xs[xs.length - 1], lac = xs.length < v.filter((y, i) => i >= xs[0][0]).length;
+    const lig = lac ? `<path class="lig" d="${xs.map((p, n) => (n ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("")}"/>` : "";
+    const pts = xs.length <= 6 ? xs.slice(0, -1).map(p => `<circle class="pt" cx="${X(p[0])}" cy="${Y(p[1])}" r="1.6"/>`).join("") : "";
+    return `<svg class="spark" viewBox="0 0 ${W} ${H}">${lig}<path d="${d}"/>${pts}<circle cx="${X(u[0])}" cy="${Y(u[1])}" r="2.4"/></svg>`;
+  }
+  return {html: () => htmlCab() + htmlRecorte() + (S.aba === "visao" ? htmlVisao() : htmlAnalitica()),
+          depois: () => { encaixarTextos(); desenharGraficos(); }, ENT};
 }
-function htmlComparar(){
-  const geral=evoRefGeral("SIS"), cols=evoRecortes();
-  let h=`<div class="evo-mat-wrap" id="evo-comp-wrap"><table class="evo-mat" id="evo-comp-tabela"><thead><tr><th class="th-ind">Indicador · ${esc(evoRot(geral))}</th>`;
-  cols.forEach(c=>{ h+=`<th id="evo-comp-col-${esc(c)}" title="${esc(evoNomeEnt(c))}">${esc(evoNomeCurtoEnt(c))}</th>`; });
-  h+=`</tr></thead><tbody>`;
-  const coopAntes=EVO.coop; EVO.coop="todas";                 
+const novoEstado = tela => ({tela, ent: null, mes: null, aba: "visao", sel: null, tema: null, ref: "SIS", refPor: {}, selosTodos: false});
+const EV6 = {estado: {nossa: novoEstado("nossa"), sistemica: novoEstado("sistemica")}, cache: {}, carregando: {}, erro: {}, inst: null, tela: null};
+const raiz = () => document.getElementById("ev6");
+function telaVisivel(){ return estado.vista === "modulo" && (estado.modulo === "acomp" || estado.modulo === "evosis"); }
+function chaveDe(tela){ return tela === "nossa" ? "nossa:" + (ENTIDADE && ENTIDADE.id) : "sistemica"; }
+async function carregar(tela){
+  const ch = chaveDe(tela); if(EV6.carregando[ch]) return;
+  EV6.carregando[ch] = true; EV6.erro[ch] = null;
   try{
-    for(const t of evoTemas()){
-      h+=`<tr class="sep" id="evo-comp-tema-${t.id}"><td colspan="${cols.length+1}">Tema ${t.id} · ${esc(t.nome)}</td></tr>`;
-      for(const m of t.inds){
-        const ms=cols.map(c=>({c, x:evoModelo(m,c)}));
-        const refs=ms.filter(y=>!y.x.semDado).map(y=>y.x.ref);
-        const refLinha=refs.length?[...refs].sort((a,b)=>refs.filter(v=>v===a).length-refs.filter(v=>v===b).length).pop():null;
-        h+=`<tr id="evo-comp-linha-${esc(m.chave)}"><td class="td-ind" title="${esc(m.janelaRot||"")}">${esc(m.curto||m.nome)}${refLinha&&refLinha!==geral?`<div>${htmlRefDif(refLinha,geral)}</div>`:""}${m.menorMelhor?`<div style="font-size:10.5px;color:var(--tenue)">menor é melhor</div>`:""}</td>`;
-        for(const y of ms){
-          const id=`evo-comp-cel-${esc(m.chave)}-${esc(y.c)}`, sis=y.c==="SIS";
-          if(y.x.semDado){ h+=`<td class="${sis?"td-sis":""}" id="${id}">${y.x.construcao?`<span class="evo-traco" title="${esc(y.x.titulo)}" style="font-size:11.5px;font-style:italic">em construção</span>`:htmlTraco(y.x.titulo)}</td>`; continue; }
-          h+=`<td class="${sis?"td-sis":""}" id="${id}" title="${esc(evoRot(y.x.ref)+": "+evoFmt(m,y.x.v))}"><span class="cv evo-num${y.x.v<0?" neg":""}">${esc(evoFmt(m,y.x.v))}</span>${y.x.ref!==refLinha?`<div>${htmlRefDif(y.x.ref,refLinha)}</div>`:""}<span class="cvar">${htmlVarTxt(y.x.varAA,true)}</span></td>`;
-        }
-        h+=`</tr>`;
-      }
-    }
-  } finally { EVO.coop=coopAntes; }
-  h+=`</tbody></table></div><p class="evo-nota">Valor no mês de referência e, embaixo, a variação contra o mesmo mês do ano anterior (verde = melhorou no sentido do indicador; coral = piorou; âmbar = estável). "–" = sem número: passe o mouse para ver por quê.</p>`;
-  return h;
+    if(tela === "nossa"){
+      const v = VINCULO_ATUAL || {};
+      const rows = await rpc("serie_entidade", {p_entidade: ENTIDADE.id, p_meses: 25});
+      EV6.cache[ch] = dadosCoop(rows || [], {entidade: ENTIDADE.id, nome: ENTIDADE.nome || v.nome || ENTIDADE.id,
+        central: v.central || null, central_nome: v.central_nome || ENTIDADE.central || null});
+    } else EV6.cache[ch] = dadosSistemicos(await rpc("painel_sistemico", {p_meses: 25}));
+  }catch(e){ EV6.erro[ch] = e.message || String(e); }
+  finally{ EV6.carregando[ch] = false; if(telaVisivel()) pinta(); }
 }
-function htmlFiltros(){
-  const anos=evoAnos(), meses=evoMesesTodos().filter(am=>evoParse(am).y===EVO.ano);
-  const chip=(id,ctl,v,atual,rot,title)=>`<button id="${id}" aria-pressed="${atual===v}" onclick="evoAcao('${ctl}','${esc(v)}')"${title?` title="${esc(title)}"`:""}>${esc(rot)}</button>`;
-  const tipCoop="Troca o número pela mediana das cooperativas do grupo, a partir dos planos registrados (grupo com menos de 3 cooperativas fica sem número)";
-  let h=`<div class="evo-filtros" id="evo-filtros">`;
-  if(EVO.aba!=="comp"){
-    h+=`<div class="g-esc" id="evo-grupo-recorte"><span>Recorte</span><div class="periodos">${evoRecortes().map(c=>chip("evo-ctl-rec-"+esc(c),"rec",c,EVO.rec,c==="SIS"?"O Sistema":evoNomeCurtoEnt(c),evoNomeEnt(c))).join("")}</div></div>`;
-    h+=`<div class="g-esc" id="evo-grupo-coop"><span>Cooperativas</span><div class="periodos">${chip("evo-ctl-coop-todas","coop","todas",EVO.coop,"Todas")}${chip("evo-ctl-coop-esc","coop","escolheram",EVO.coop,"Escolheram o indicador",tipCoop)}${chip("evo-ctl-coop-nao","coop","nao_escolheram",EVO.coop,"Não escolheram",tipCoop)}</div></div>`;
+function podeVerSistemica(){ return ENTIDADE.tipo !== "cooperativa" || !!ENTIDADE.teste || (typeof ehAdministrador === "function" && ehAdministrador()); }
+function htmlTela(tela){
+  const titulo = tela === "nossa" ? "Nossa evolução" : "Evolução sistêmica";
+  const casca = corpo => `<div class="ev6" id="ev6" data-tela="${tela}"><div class="cab"><h1>${titulo}</h1></div>${corpo}</div>`;
+  if(tela === "sistemica" && !podeVerSistemica())
+    return casca(`<div class="ev6-aviso"><b>Esta visão é das Centrais, do CAS e dos administradores.</b> A cooperativa acompanha a sua estratégia em "Nossa evolução".</div>`);
+  const ch = chaveDe(tela), D = EV6.cache[ch];
+  if(!D){
+    if(EV6.erro[ch]) return casca(`<div class="ev6-aviso">Não consegui carregar os indicadores: ${esc(String(EV6.erro[ch]).replace(/\.$/, ""))}. <button class="btn-t e6-mini" onclick="ev6TentarDeNovo()">Tentar de novo</button></div>`);
+    carregar(tela);
+    return casca(`<p class="ev6-carregando">Carregando os indicadores… leva alguns segundos.</p>`);
   }
-  h+=`<div class="g-esc" id="evo-grupo-mes"><span>Mês de referência</span>
-      <select id="evo-ctl-ano" aria-label="Ano" onchange="evoSelAno(this.value)">${anos.map(a=>`<option value="${a}"${a===EVO.ano?" selected":""}>${a}</option>`).join("")}</select>
-      <select id="evo-ctl-mes" aria-label="Mês de referência" onchange="evoSelMes(this.value)"><option value="ultimo"${EVO.mes==="ultimo"?" selected":""}>Último disponível</option>${meses.map(am=>`<option value="${am}"${EVO.mes===am?" selected":""}>${esc(MESES_LONGO[evoParse(am).m-1]+" ("+evoRot(am)+")")}</option>`).join("")}</select></div></div>`;
-  const refTxt=EVO.mes==="ultimo"?"último disponível ("+evoRot(evoRefGeral(EVO.aba==="comp"?"SIS":null))+")":evoRot(EVO.mes);
-  h+=`<div class="evo-resumo" id="evo-resumo">Mostrando: ${EVO.aba==="comp"?`<b>Sistema + ${evoRecortes().length-1===1?"a Central":"Centrais"}</b>`:`<b>${esc(evoNomeCurtoEnt(EVO.rec))}</b> · ${esc(COOP_ROT[EVO.coop])}`} · referência <b>${esc(refTxt)}</b> · variações contra o mesmo mês do ano anterior e contra dezembro anterior.</div>`;
-  return h;
+  if(!D.temas.length || !Object.keys(D.valores).length) return casca(`<div class="ev6-aviso">${typeof SEM_DADOS === "string" ? SEM_DADOS : "Sem dados na base ainda"}.</div>`);
+  const S = EV6.estado[tela], ents = new Set(D.entidades.map(e => e.c));
+  if(!S.ent || !ents.has(S.ent)) S.ent = tela === "nossa" ? ENTIDADE.id : (ENTIDADE.tipo === "central" && ents.has(ENTIDADE.id) ? ENTIDADE.id : "SIS");
+  EV6.inst = criarEvo(D, S, raiz); EV6.tela = tela;
+  return `<div class="ev6" id="ev6" data-tela="${tela}">${EV6.inst.html()}</div>`;
 }
-function htmlComoLer(){
-  return `<details class="evo-comoler" id="evo-como-ler"><summary>Como ler</summary>
-    <p><b>Panorama:</b> seis temas, três espaços de indicador em cada um, com o valor, o mês e as variações no ano (vs dezembro anterior) e em 12 meses; a bolinha resume a comparação com um ano atrás (verde-sálvia melhor, âmbar estável, coral pior, sempre no sentido do indicador). Clique num tema para ver o Histórico: o fechamento dos quatro últimos trimestres, com uma bolinha por mês, e o gráfico dos últimos 12 meses contra os mesmos meses do ano anterior (numa Central, também o Sistema; no Sistema, a mediana das cooperativas).</p>
-    <p><b>Analítico:</b> a mesma leitura em tabela; clicar na linha abre o Histórico do tema com aquele indicador no gráfico. <b>Comparar Centrais:</b> o valor de cada Central e a variação em 12 meses. <b>Cooperativas:</b> "Escolheram" e "Não escolheram" trocam o número pela mediana das cooperativas de cada grupo, a partir dos planos registrados. Um traço "–" é número que não existe: passe o mouse para ver por quê.</p></details>`;
+window.ev6TentarDeNovo = function(){ const t = EV6.tela || (estado.modulo === "acomp" ? "nossa" : "sistemica"); delete EV6.erro[chaveDe(t)]; pinta(); };
+function repintar(){
+  const el = raiz(); if(!el || !EV6.inst) return;
+  const y = window.scrollY;                                                  
+  el.innerHTML = EV6.inst.html(); EV6.inst.depois(); window.scrollTo(0, y);
 }
-function evoPrepararEstado(){
-  const recs=evoRecortes(); if(!recs.includes(EVO.rec)) EVO.rec=recs[0];
-  const anos=evoAnos(); if(!anos.includes(EVO.ano)) EVO.ano=anos[anos.length-1];
-  if(EVO.mes!=="ultimo" && evoParse(EVO.mes).y!==EVO.ano) EVO.mes="ultimo";
-  if(EVO.coop!=="todas" && EVO.aba!=="comp") evoCarregarComparativo(EVO.rec, evoChavesPainel());
-}
-const htmlEvolucaoAntesEvo = htmlEvolucaoSistemica;
-htmlEvolucaoSistemica = function(){
-  const cab=`<div class="g-cab"><div><h1 class="titulo" style="margin-bottom:0">Evolução sistêmica</h1></div>
-    <div class="seletor" id="evo-abas" role="tablist" aria-label="Abas">
-      <button id="evo-aba-pan" role="tab" aria-pressed="${EVO.aba==="pan"}" onclick="evoAcao('aba','pan')">Panorama</button>
-      <button id="evo-aba-ana" role="tab" aria-pressed="${EVO.aba==="ana"}" onclick="evoAcao('aba','ana')">Analítico</button>
-      <button id="evo-aba-comp" role="tab" aria-pressed="${EVO.aba==="comp"}" onclick="evoAcao('aba','comp')">Comparar Centrais</button>
-    </div></div>`;
-  if(!evoPodeVer())
-    return `<div class="evo"><div class="g-cab"><div><h1 class="titulo" style="margin-bottom:0">Evolução sistêmica</h1></div></div>
-      <div class="sis-vazio"><b>Esta visão é das Centrais, do CAS e dos administradores.</b>
-      <span>A cooperativa acompanha a sua estratégia em "Nossa estratégia" e "Nossa evolução".</span></div></div>`;
-  if(!DR.painel){
-    if(!DR.painelErro && !DR.painelCarregando) carregarPainel();
-    if(DR.painelErro) return `<div class="evo">${cab}<div class="evo-aviso">Não consegui carregar o painel com as entidades do Sistema: ${esc(DR.painelErro)}.<button class="btn-t mini" onclick="tentarPainelDeNovo()">Tentar de novo</button></div></div>`;
-    return `<div class="evo">${cab}<p class="vazio dr-carregando">Carregando os indicadores do Sistema e das Centrais… leva alguns segundos.</p></div>`;
-  }
-  if(!evoChavesPainel().length) return `<div class="evo">${cab}<div class="sis-vazio"><b>${SEM_DADOS}.</b><span>O painel sistêmico ainda não tem indicadores com carga.</span></div></div>`;
-  evoCarregarPainel25();
-  evoPrepararEstado();
-  const corpo = EVO.aba==="pan" ? evoPanorama() : EVO.aba==="ana" ? htmlAnalitico() : htmlComparar();
-  return `<div class="evo" id="evo">${cab}${htmlFiltros()}${htmlComoLer()}${corpo}</div>`;
-};
-function evoAposPintar(){
-  if(!evoVisivel()) return;
-  evoDesenharHist();
-  if(!EVO.rolar) return; EVO.rolar=false;
-  const el=document.getElementById("evo-hist"); if(!el) return;
-  const r=el.getBoundingClientRect();
-  if(r.top<0 || r.bottom>window.innerHeight) el.scrollIntoView({block:"nearest", behavior:"smooth"});
-}
-const pintaAntesEvo = pinta;
-pinta = function(){ pintaAntesEvo.apply(this, arguments); evoAposPintar(); };
-let _evoResize=null;
-window.addEventListener("resize", ()=>{ clearTimeout(_evoResize); _evoResize=setTimeout(()=>{ if(evoVisivel()) evoDesenharHist(); },120); });
-document.addEventListener("keydown", ev=>{ if(ev.key==="Escape" && evoVisivel() && (EVO.tema||EVO.aberto)){ EVO.tema=null; EVO.aberto=null; pinta(); } });
-const entrarVinculoAntesEvo = entrarVinculo;
-entrarVinculo = function(i){
-  EVO.p25=null; EVO.p25Erro=null; EVO.cmp={}; EVO.rec=null; EVO.tema=null; EVO.indSel=null; EVO.aberto=null; EVO.coop="todas"; EVO.mes="ultimo"; EVO.ano=null;
-  return entrarVinculoAntesEvo.apply(this, arguments);
-};
-window.evoAcao = function(campo, valor){
-  if(campo==="aba"){ EVO.aba=valor; ir(()=>pinta()); return; }
-  if(campo==="rec") EVO.rec=valor;
-  else if(campo==="coop") EVO.coop=valor;
-  pinta();
-};
-window.evoSelAno = function(v){ EVO.ano=Number(v); if(EVO.mes!=="ultimo" && evoParse(EVO.mes).y!==EVO.ano) EVO.mes="ultimo"; pinta(); };
-window.evoSelMes = function(v){ EVO.mes=v; pinta(); };
-window.evoTema = function(id){ EVO.tema = EVO.tema===id ? null : id; EVO.indSel=null; EVO.rolar=!!EVO.tema; pinta(); };
-window.evoIndHist = function(chave){ if(EVO.aba==="pan") EVO.indSel=chave; else EVO.aberto=chave; pinta(); };
-window.evoAbrirLinha = function(chave){ EVO.aberto = EVO.aberto===chave ? null : chave; EVO.rolar=!!EVO.aberto; pinta(); };
-window.evoFecharHist = function(){ EVO.tema=null; EVO.aberto=null; pinta(); };
-window.evoTentarComparativo = function(){ const c=evoCmp(EVO.rec); Object.keys(c.por).forEach(k=>{ if(c.por[k]&&c.por[k].erro) delete c.por[k]; }); c.erro=null; pinta(); };
-window.EVO = EVO;   
+htmlGestao = function(){ return htmlTela("nossa"); };
+htmlEvolucaoSistemica = function(){ return htmlTela("sistemica"); };
+const pintaAntesEv6 = pinta;
+pinta = function(){ const r = pintaAntesEv6.apply(this, arguments); if(telaVisivel() && raiz() && EV6.inst) EV6.inst.depois(); return r; };
+const entrarVinculoAntesEv6 = entrarVinculo;
+entrarVinculo = function(){ EV6.estado = {nossa: novoEstado("nossa"), sistemica: novoEstado("sistemica")}; EV6.inst = null; return entrarVinculoAntesEv6.apply(this, arguments); };
+document.addEventListener("click", ev => {
+  const b = ev.target.closest && ev.target.closest("[data-ent],[data-aba],[data-sel],[data-acao='ultimo'],[data-acao='selos'],[data-tema],[data-ref]");
+  if(!b || !b.closest("#ev6") || !EV6.inst) return;
+  const S = EV6.estado[EV6.tela];
+  if(b.dataset.ent){ S.ent = b.dataset.ent; }
+  else if(b.dataset.aba){ S.aba = b.dataset.aba; }
+  else if(b.dataset.sel){ S.sel = S.sel === b.dataset.sel ? null : b.dataset.sel; }
+  else if(b.dataset.acao === "ultimo"){ S.mes = null; }
+  else if(b.dataset.acao === "selos"){ S.selosTodos = !S.selosTodos; }
+  else if(b.dataset.tema != null){ S.tema = b.dataset.tema || null; }
+  else if(b.dataset.ref){ S.ref = b.dataset.ref === "central" ? "central" : "SIS"; }
+  repintar();
+  if(b.dataset.sel && S.sel){ const d = raiz().querySelector(".e6-det"); if(d) d.scrollIntoView({behavior: "smooth", block: "nearest"}); }
+});
+document.addEventListener("change", ev => {
+  const t = ev.target; if(!t.closest || !t.closest("#ev6") || !EV6.inst) return;
+  const S = EV6.estado[EV6.tela];
+  if(t.dataset.acao === "mes"){ S.mes = t.value || null; repintar(); }
+  if(t.dataset.acao === "coop" && t.value){ S.ent = t.value; repintar(); }
+});
+document.addEventListener("mousemove", ev => {
+  const r0 = raiz(); if(!r0) return;
+  const hot = ev.target.closest && ev.target.closest(".gr-hot"), wrap = ev.target.closest && ev.target.closest("#ev6 .gr-wrap");
+  r0.querySelectorAll(".gr-wrap").forEach(w => { if(w !== wrap){ const t = w.querySelector(".gr-tip"); if(t) t.hidden = true; const l = w.querySelector(".gr-guia"); if(l) l.style.display = "none"; } });
+  if(!hot || !wrap) return;
+  const info = JSON.parse(wrap.dataset.info), d = info.dados[+hot.dataset.i], svg = wrap.querySelector("svg");
+  const bb = hot.getBBox(), cx = bb.x + bb.width / 2, guia = wrap.querySelector(".gr-guia");
+  guia.setAttribute("x1", cx); guia.setAttribute("x2", cx); guia.style.display = "";
+  const nf = (v, c) => v == null || !isFinite(v) ? "—" : (v < 0 ? "−" : "") + Math.abs(v).toLocaleString("pt-BR", {minimumFractionDigits: c, maximumFractionDigits: c});
+  const fm = v => v == null ? "—" : nf(v * info.fator, info.casas);
+  const tip = wrap.querySelector(".gr-tip");
+  tip.innerHTML = `<b>${d.m}</b>` + info.nomes.map((nm, k) => `<div><span>${esc(nm)}</span><i>${fm(k ? d.c[k - 1] : d.p)}</i></div>`).join("");
+  const e2 = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
+  tip.hidden = false; tip.style.left = Math.min(cx * e2 + 12, wrap.clientWidth - tip.offsetWidth - 4) + "px";
+});
+let _ev6rz; window.addEventListener("resize", () => { clearTimeout(_ev6rz); _ev6rz = setTimeout(() => { if(telaVisivel() && raiz() && EV6.inst){ const y = window.scrollY; EV6.inst.depois(); window.scrollTo(0, y); } }, 100); });
+window.EV6 = EV6;   
 })();
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 270920261042 -->
+<!-- beta 270920261121 -->
 </body>
 </html>
