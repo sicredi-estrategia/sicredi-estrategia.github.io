@@ -2477,19 +2477,12 @@ body.rail .nav .quem{padding:8px 0 12px}
 .adm-caixa h3{font-size:17px; margin-bottom:6px}
 .adm-caixa p{font-size:13px; color:var(--fraco); margin-bottom:10px}
 .adm-caixa textarea{width:100%; font:inherit; font-size:13px; border:1px solid var(--linha); border-radius:9px; padding:10px; margin-bottom:12px; color:var(--tinta)}
-.adm-decs{display:flex; flex-direction:column; gap:10px; margin-top:14px}
-.adm-dec{border:1px solid var(--linha); border-radius:10px; padding:11px 14px; background:#fff}
-.adm-dec.subst{opacity:.6}
-.adm-dec-cab{display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; margin-bottom:5px}
-.adm-dec-cab b{color:var(--tinta)}
-.adm-dec-cab small{color:var(--tenue); font-size:11.6px}
-.adm-dec p{font-size:13px; color:var(--texto); line-height:1.5}
-.adm-dec .adm-motivo{color:var(--fraco); font-size:12.4px; margin-top:4px}
-.adm-area{font-size:11px; color:var(--fraco); border:1px solid var(--linha); border-radius:6px; padding:1px 7px}
 .fk-entregas .fk-frente{display:block; font-size:11.6px; color:var(--fraco); margin-top:3px; line-height:1.45}
 .fk-entregas .fk-frente span{display:block; margin-top:2px; color:var(--texto)}
 
+
 #nav-admin[hidden], li:has(> #nav-admin[hidden]){display:none !important}
+.nav menu li[hidden], .nav menu li > button[hidden], .nav menu > .sep[hidden]{display:none !important}
 
 
 #pe-sim{position:fixed;left:0;right:0;margin:0 auto;width:fit-content;bottom:14px;z-index:3000;display:flex;gap:14px;align-items:center;
@@ -2517,116 +2510,21 @@ body.rail .pe-versao{display:none}
 @media (min-width:760px){ .pf-d-largo{grid-column:span 2} }
 
 
-.pe-legenda{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px}
-.pe-legenda h4{margin:0 0 6px; font-size:14px}
-.pe-legenda dl{margin:0} .pe-legenda dt{font-weight:700; font-size:13.5px; margin-top:8px}
-.pe-legenda dd{margin:2px 0 0; font-size:13.5px; color:var(--tenue, #5D6F62)}
-
-
 .fw-cols.sem-tese .fw-i{white-space:normal; overflow:visible; align-items:flex-start}
 .fw-cols.sem-tese .fw-i > :nth-child(2){white-space:normal; overflow:visible; text-overflow:clip}
 .fw-cols.sem-tese .fw-i i{margin-top:4px}
 
 
-.esc-sub{margin-bottom:14px}
-.esc-ctrl{display:flex; flex-wrap:wrap; gap:10px 28px; margin:0 0 16px}
-.esc-ctrl-g{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.esc-ctrl-r{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--tenue); font-weight:700}
-.esc-ctx{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 16px; font-size:13px; color:var(--texto); margin:0 0 10px; line-height:1.5}
-.esc-ctx b{color:var(--tinta)}
-.esc-ctx-mes{color:var(--fraco); font-size:12.4px}
-.esc-ctx-sim{color:#5B2A86; font-size:12.4px}
-.esc-aviso{background:var(--branco); border:1px dashed var(--verde-claro); border-radius:12px; padding:14px 18px;
-  font-size:13.4px; line-height:1.6; color:var(--texto); margin:0 0 14px}
-.esc-aviso b{color:var(--tinta)}
-.esc-aviso .btn-t{margin-left:6px}
-.esc-aviso.erro{border:1px solid #F1C2C9; background:#FFF5F6}
-.esc-aviso.erro b{color:#9E2A3C}
-.esc-aviso.fino{padding:8px 12px; font-size:12.4px}
-.esc-carregando{color:var(--fraco); font-size:13.4px; padding:18px 2px; margin:0}
-.esc-carregando.fino{padding:0 0 8px; font-size:12px}
-
-.esc-tab-wrap{overflow-x:auto; border:1px solid var(--linha); border-radius:12px; background:var(--branco); margin:4px 0 18px}
-.esc-tab{width:100%; min-width:660px; border-collapse:collapse; font-size:13px}
-.esc-tab thead th{text-align:left; vertical-align:bottom; font-size:11px; letter-spacing:.05em; text-transform:uppercase;
-  color:var(--fraco); font-weight:700; padding:10px 12px; border-bottom:1px solid var(--linha); background:var(--fundo); white-space:nowrap}
-.esc-tab thead th small{display:block; text-transform:none; letter-spacing:0; font-weight:500; color:var(--tenue); font-size:11px; margin-top:2px}
-.esc-sw{display:inline-block; width:14px; height:0; border-top:2.5px solid; vertical-align:middle; margin:-2px 6px 0 0}
-.esc-sw.g-esc{border-color:#146E37} .esc-sw.g-nao{border-top-style:dashed; border-color:#6B7F95} .esc-sw.g-sem{border-top-style:dotted; border-color:#A9B2AC}
-.esc-tema th{text-align:left; padding:16px 12px 7px; font-size:12.8px; font-weight:700; color:var(--verde-escuro);
-  background:var(--branco); border-bottom:1px solid var(--linha)}
-.esc-tema-t{position:sticky; left:12px; display:inline-flex; align-items:center}
-.esc-tema-n{display:inline-grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--verde-lav);
-  color:var(--verde-escuro); font-size:11px; margin-right:8px; flex:none}
-.esc-lin{cursor:pointer}
-.esc-lin > th,.esc-lin > td{padding:10px 12px; border-bottom:1px solid var(--linha); vertical-align:top; text-align:left; background:var(--branco)}
-.esc-lin:hover > th,.esc-lin:hover > td{background:#FAFBF9}
-.esc-lin.aberta > th,.esc-lin.aberta > td{background:var(--verde-lav); border-bottom-color:transparent}
-.esc-tab .esc-ind{width:27%; min-width:170px}
-.esc-nome{display:flex; gap:8px; align-items:flex-start; justify-content:space-between; width:100%; background:none; border:0; padding:0;
-  font:inherit; font-size:13.2px; font-weight:600; color:var(--tinta); text-align:left; cursor:pointer; white-space:normal; line-height:1.35}
-.esc-nome span{min-width:0; overflow-wrap:anywhere}
-.esc-nome i{font-style:normal; flex:none; width:18px; height:18px; border:1px solid var(--linha); border-radius:50%; display:grid;
-  place-items:center; font-size:12px; line-height:1; color:var(--fraco); background:var(--branco)}
-.esc-nome:focus-visible{outline:2px solid var(--verde); outline-offset:3px; border-radius:4px}
-.esc-mes{display:block; font-size:11px; color:var(--tenue); font-weight:400; margin-top:3px}
-.esc-med{display:block; font-size:14px; color:var(--tinta); font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap}
-.esc-var{display:block; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; margin-top:1px; white-space:nowrap}
-.esc-var.melhor{color:#146E37} .esc-var.pior{color:#B4532A} .esc-var.estavel,.esc-var.neutro{color:var(--fraco); font-weight:500}
-.esc-n{display:block; font-size:11px; color:var(--tenue); margin-top:2px}
-.esc-sem{display:block; color:var(--tenue); font-size:14px; cursor:help}
-.esc-dif small{display:block; font-size:11px; color:var(--fraco); margin-top:1px}
-
-.esc-det-lin > td{padding:0; border-bottom:1px solid var(--linha); background:var(--verde-lav)}
-.esc-det{position:sticky; left:0; width:var(--esc-larg, auto); max-width:100%; box-sizing:border-box; padding:4px 16px 16px}
-.esc-det-cab{display:flex; align-items:baseline; gap:6px 10px; flex-wrap:wrap; margin-bottom:4px}
-.esc-det-cab b{font-size:14.5px; color:var(--tinta)}
-.esc-det-cab span{font-size:12px; color:var(--fraco)}
-.esc-fechar{margin-left:auto}
-.esc-leitura{font-size:13px; color:var(--texto); margin:0 0 12px; line-height:1.5}
-.esc-graf{display:grid; grid-template-columns:auto minmax(0,1fr); grid-template-rows:200px auto; column-gap:10px;
-  background:var(--branco); border:1px solid var(--linha); border-radius:10px; padding:14px 22px 8px 10px}
-.esc-y{position:relative; min-width:40px}
-.esc-y span{position:absolute; right:0; transform:translateY(-50%); font-size:11px; color:var(--fraco); white-space:nowrap; font-variant-numeric:tabular-nums}
-.esc-plot{position:relative; cursor:crosshair}
-.esc-plot svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
-.esc-ln{fill:none; stroke-width:2; vector-effect:non-scaling-stroke; stroke-linejoin:round; stroke-linecap:round}
-.esc-ln.g-esc{stroke:#146E37; stroke-width:2.6}
-.esc-ln.g-nao{stroke:#6B7F95; stroke-dasharray:6 4; stroke-linecap:butt}
-.esc-ln.g-sem{stroke:#A9B2AC; stroke-dasharray:0.1 4.5}
-.esc-faixa{fill:#146E37; fill-opacity:.12; stroke:none}
-.esc-grade{stroke:#E4E8E4; stroke-width:1; vector-effect:non-scaling-stroke; stroke-dasharray:3 3}
-.esc-x{grid-column:2; position:relative; height:18px; margin-top:6px}
-.esc-x span{position:absolute; top:0; transform:translateX(-50%); font-size:11px; color:var(--fraco); white-space:nowrap}
-.esc-fim,.esc-ponto{position:absolute; width:9px; height:9px; border-radius:50%; transform:translate(-50%,-50%); border:2px solid var(--branco);
-  box-sizing:border-box; pointer-events:none}
-.esc-fim{width:8px; height:8px; border-width:1.5px}
-.esc-fim.g-esc,.esc-ponto.g-esc{background:#146E37} .esc-fim.g-nao,.esc-ponto.g-nao{background:#6B7F95} .esc-fim.g-sem,.esc-ponto.g-sem{background:#A9B2AC}
-.esc-guia{position:absolute; top:0; bottom:0; width:1px; background:#C9D1CB; pointer-events:none}
-.esc-dica{position:absolute; top:0; background:var(--branco); border:1px solid var(--linha); border-radius:8px;
-  padding:8px 10px; font-size:12px; line-height:1.55; color:var(--texto); box-shadow:0 6px 18px rgba(22,38,27,.1); white-space:nowrap; z-index:2; pointer-events:none}
-.esc-dica > b{display:block; color:var(--tinta); margin-bottom:2px}
-.esc-dica span{display:block}
-.esc-dica small{color:var(--tenue)}
-.esc-guia[hidden],.esc-ponto[hidden],.esc-dica[hidden]{display:none}
-.esc-leg{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12px; color:var(--texto); margin-top:10px}
-.esc-leg span{display:inline-flex; align-items:center; gap:6px}
-.esc-leg small{color:var(--tenue)}
-.esc-sw-faixa{display:inline-block; width:18px; height:10px; background:rgba(20,110,55,.14); border-radius:2px}
-
-.esc-como{margin-top:6px; border-top:1px solid var(--linha); padding-top:12px; font-size:13px; color:var(--texto)}
-.esc-como summary{cursor:pointer; font-weight:600; color:var(--verde-escuro); width:fit-content}
-.esc-como ul{margin:8px 0 0 18px; line-height:1.6}
-.esc-como li{margin-bottom:4px}
-@media (max-width:700px){
-  .esc-ctrl{gap:10px}
-  .esc-tab .esc-ind{position:sticky; left:0; z-index:1; min-width:148px; width:148px; box-shadow:1px 0 0 var(--linha)}
-  .esc-nome i{display:none}
-  .esc-nome span{overflow-wrap:break-word}
-  .esc-tab thead .esc-ind{background:var(--fundo)}
-  .esc-graf{grid-template-rows:170px auto; padding:12px 18px 6px 6px}
-  .esc-fechar{margin-left:0}
-}
+.pe-perfil{flex:none; font-size:11.5px; font-weight:700; color:var(--verde-escuro); background:var(--verde-lav);
+  border:1px solid var(--verde-claro); border-radius:20px; padding:4px 11px; white-space:nowrap}
+.pf-pessoa.pe-inativo{opacity:.55}
+.pf-pessoa.pe-inativo .pe-perfil{color:var(--fraco); background:var(--fundo); border-color:var(--linha)}
+.adm-check{display:inline-flex; align-items:center; gap:6px; font-size:12.8px; color:var(--tinta); cursor:pointer}
+.adm-form > b{font-size:13.5px; color:var(--tinta)}
+.adm-form input[readonly]{background:var(--fundo); color:var(--fraco)}
+.adm-tab .adm-num,.adm-tab th.adm-num{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+.adm-tab tr.adm-alerta td{background:#FFF7E0}
+.adm-tab td input[type=checkbox]{width:16px; height:16px; cursor:pointer}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#146E37">
@@ -2660,7 +2558,7 @@ body.rail .pe-versao{display:none}
       <div class="txt"><div class="n1">Plataforma</div><div class="n2">da Estratégia</div></div>
     </div>
     <menu>
-      <button class="ent-topo" id="nav-entidade" onclick="irEntidade()" title="A entidade: cadastro, acessos e configurações">
+      <button class="ent-topo" id="nav-entidade" onclick="irEntidade()" title="A entidade: cadastro e quem tem acesso">
         <span class="ent-ico" id="nav-ent-ico" aria-hidden="true"></span>
         <span class="ent-txt">
           <span class="ent-nome" id="nav-ent-nome"></span>
@@ -2674,12 +2572,12 @@ body.rail .pe-versao{display:none}
       <li><button id="nav-acomp" onclick="irModulo('acomp')" title="Nossa evolução">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V12M10 20V6M16 20v-9M22 20H2"/></svg></span><span class="rot">Nossa evolução</span><span class="st" id="nav-acomp-st"></span></button></li>
       <div class="sep"></div>
+      <li><button id="nav-situacao" onclick="irModulo('situacao')" title="Situação dos planos">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5"/><path d="M3.5 12l1.2 1.2L7 11"/><circle cx="5" cy="18" r="1.4"/></svg></span><span class="rot">Situação dos planos</span></button></li>
       <li><button id="nav-visao" onclick="irModulo('visao')" title="Estratégia Sistêmica">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="rot">Estratégia Sistêmica</span></button></li>
       <li><button id="nav-evosis" onclick="irModulo('evosis')" title="Evolução sistêmica">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><span class="rot">Evolução sistêmica</span></button></li>
-      <li><button id="nav-escolha" onclick="irModulo('escolha')" title="Escolha × resultado">
-        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 15l5-5 4 3 7-7"/><path d="M4 17l5-2 4 1 7-3" stroke-dasharray="2 2.6"/></svg></span><span class="rot">Escolha × resultado</span></button></li>
       <div class="sep"></div>
       <li><button id="nav-guia" onclick="irModulo('guia')" title="Ajuda">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5"/><path d="M12 17h.01"/></svg></span><span class="rot">Ajuda</span></button></li>
@@ -2687,7 +2585,7 @@ body.rail .pe-versao{display:none}
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></span><span class="rot">Administração</span></button></li>
     </menu>
     <div class="quem">
-      <button class="conta" id="nav-perfil" onclick="irPessoa()" title="Meu perfil e minhas preferências">
+      <button class="conta" id="nav-perfil" onclick="irPessoa()" title="Meu perfil">
         <span class="conta-av" id="rod-av"></span>
         <span class="conta-t">
           <span class="ent" id="rod-pes"></span>
@@ -2697,7 +2595,7 @@ body.rail .pe-versao{display:none}
       </button>
       <span id="rod-ent" hidden></span>
       <div class="quem-bts">
-        <button class="recomecar" id="btn-recomecar" onclick="recomecar()" title="Apagar a estratégia desta entidade e voltar ao início (só no protótipo)">recomeçar o teste</button>
+        
         <button class="recomecar" onclick="sair()" title="Voltar para a tela de entrada">sair</button>
       </div>
     </div>
@@ -5967,7 +5865,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "25/09/2026 23:50";
+const PE_VERSAO = "27/09/2026 10:42";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -5975,7 +5873,7 @@ const PE = {
   endereco: /^https:$/.test(location.protocol) ? location.origin + location.pathname.replace(/index\.html$/, "")
                                                : "https://sicredi-estrategia.github.io/"
 };
-const LS_AUTH = "pe_auth_v1", LS_ULT_ENT = "pe_ult_ent", SS_SIM = "pe_simular";
+const LS_AUTH = "pe_auth_v1", SS_SIM = "pe_simular";
 let AUTH = null, SESSAO_REAL = null, PLANO_SRV = null, CATALOGO = null, VINCULO_ATUAL = null;
 let PODE_EDITAR_SRV = false;
 const $id = id => document.getElementById(id);
@@ -5983,6 +5881,8 @@ const enc = encodeURIComponent;
 function fmtData(iso){ if(!iso) return ""; const d=new Date(iso); return d.toLocaleDateString("pt-BR"); }
 function fmtDataHora(iso){ if(!iso) return ""; const d=new Date(iso);
   return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})+" às "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}); }
+function fmtMes(iso){ if(!iso) return "—"; const [a,m]=String(iso).split("-");
+  return (["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"][(+m||1)-1]||"")+"/"+String(a).slice(-2); }
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ v==null ? localStorage.removeItem(k) : localStorage.setItem(k,v); }catch(e){} }
 function aviso(txt, erro){ if(typeof avisoExport==="function") avisoExport(txt, erro); else if(erro) alert(txt); }
@@ -6045,6 +5945,13 @@ const rest = (caminho, {method="GET", body=null, prefer=null}={}) =>
   chamar(PE.url+"/rest/v1/"+caminho, {method, body:body?JSON.stringify(body):undefined, headers:prefer?{Prefer:prefer}:{}});
 const funcao = (nome, corpo) => chamar(PE.url+"/functions/v1/"+nome, {method:"POST", body:JSON.stringify(corpo)});
 function sessaoExpirada(){ gravarAuth(null); document.body.classList.remove("dentro"); telaLogin("entrar","Sua sessão expirou. Entre de novo."); }
+const ROT_PERFIL = {visualizador:"Visualizador", editor:"Editor", sistemico:"Sistêmico (Central/CAS)"};
+const PERFIS_DO_TIPO = {cooperativa:["visualizador","editor"], central:["sistemico"], cas:["sistemico"]};
+const pessoaSessao = () => (SESSAO_REAL && SESSAO_REAL.pessoa) || {};
+const ehAdministrador = () => !!pessoaSessao().owner;
+const ehAdminReal = () => { const p=pessoaSessao(); return !!(p.administrador || p.owner_real || p.owner); };
+const perfilSessao = () => (VINCULO_ATUAL && VINCULO_ATUAL.papel) || "";
+function rotuloPapelAtual(){ return ROT_PERFIL[perfilSessao()] || (ehAdminReal() ? "Administrador" : ""); }
 function telaLogin(modo, msg, erro){
   const cx=$id("lg-caixa-real"); if(!cx) return;
   const m = msg ? `<p class="lg-msg ${erro?"erro":""}">${esc(msg)}</p>` : "";
@@ -6070,17 +5977,6 @@ function telaLogin(modo, msg, erro){
         <button class="lg-entrar" type="submit" id="lg-btn">Salvar e entrar</button>
       </form>${m}`;
     setTimeout(()=>$id("lg-nova")?.focus(),50);
-  } else if(modo==="entidade"){
-    const vs=(SESSAO_REAL&&SESSAO_REAL.vinculos)||[];
-    cx.innerHTML=`<h2>Com qual entidade você vai trabalhar?</h2>
-      <p class="lg-sub">Você tem acesso a mais de uma. Dá para trocar depois, no seu perfil.</p>
-      <div class="lg-contas">${vs.map((v,i)=>`
-        <button class="lg-c" onclick="entrarVinculo(${i})">
-          <span class="lg-av">${esc(iniciais(v.nome||"?"))}</span>
-          <span><b>${esc(v.nome)}</b><small>${esc(ROT_TIPO[v.tipo]||v.tipo)}${v.central_nome?" · "+esc(v.central_nome):""}</small></span>
-          <span class="lg-tag ${v.papel!=="visualizador"?"ed":""}">${v.papel==="responsavel"?"Ponto focal":v.papel==="editor"?"Editor":"Visualizador"}</span>
-        </button>`).join("")}</div>${m}
-      <p class="lg-ajuda"><a href="#" onclick="sair();return false">Sair</a></p>`;
   } else if(modo==="sem_acesso"){
     cx.innerHTML=`<h2>Seu acesso ainda não foi liberado</h2>
       <p class="lg-sub">A sua conta existe, mas ainda não está ligada a nenhuma entidade. Os administradores da plataforma
@@ -6113,6 +6009,11 @@ async function trocarSenha(ev){
     await posLogin();
   }catch(e){ telaLogin("trocar", e.message, true); }
 }
+async function vinculoAdministrador(){
+  let nome="Centro Administrativo Sicredi";
+  try{ const r=await rest("entidade?codigo=eq.CAS&select=codigo,nome"); if(r&&r[0]&&r[0].nome) nome=r[0].nome; }catch(e){}
+  return {entidade:"CAS", nome, tipo:"cas", papel:"sistemico", central:null, central_nome:null};
+}
 async function posLogin(){
   if(AUTH.user && AUTH.user.user_metadata && AUTH.user.user_metadata.trocar_senha) return telaLogin("trocar");
   telaLogin("carregando");
@@ -6120,19 +6021,11 @@ async function posLogin(){
   catch(e){ return telaLogin("entrar","Não consegui carregar o seu cadastro: "+e.message,true); }
   if(!SESSAO_REAL || !SESSAO_REAL.pessoa) return telaLogin("sem_acesso");
   if(SIM && !SESSAO_REAL.simulacao){ gravarSim(null); SIM=null; return posLogin(); }   
-  const vs=SESSAO_REAL.vinculos||[];
-  if(!vs.length) return telaLogin("sem_acesso");
+  let v=(SESSAO_REAL.vinculos||[])[0];                   
+  if(!v && ehAdminReal()) v=await vinculoAdministrador();
+  if(!v) return telaLogin("sem_acesso");
   await carregarCatalogo();
-  const ult=lsGet(LS_ULT_ENT);
-  const i=vs.findIndex(v=>v.entidade===ult);
-  if(i>=0) return entrarVinculo(i);
-  if(vs.length===1) return entrarVinculo(0);
-  telaLogin("entidade");
-}
-function trocarEntidade(){
-  document.body.classList.remove("dentro");
-  lsSet(LS_ULT_ENT,null);
-  telaLogin("entidade");
+  entrarVinculo(v);
 }
 const entrarOriginal = entrar;
 function garantirNoCadastro(v){
@@ -6141,32 +6034,30 @@ function garantirNoCadastro(v){
     associados:null, agencias:null, colaboradores:null, fundacao:"", cnpj:"", coops:null, real:true};
   if(e) Object.assign(e,dados); else CADASTRO.push(dados);
 }
-function entrarVinculo(i){
-  const v=(SESSAO_REAL.vinculos||[])[i]; if(!v) return;
-  VINCULO_ATUAL=v; lsSet(LS_ULT_ENT, v.entidade);
+function entrarVinculo(v){
+  if(!v) return;
+  VINCULO_ATUAL=v;
   garantirNoCadastro(v);
   const p=SESSAO_REAL.pessoa;
   PODE_EDITAR_SRV=false; PLANO_SRV=null; ULTIMO_ENVIADO=null;
   estado.janelaAberta=false;
   entrarOriginal({id:p.id, nome:p.nome||p.email, email:p.email, cargo:p.cargo||"", ent:v.entidade,
-                  papel:v.papel==="visualizador"?"visualizador":"editor", focal:v.papel==="responsavel"});
+                  papel:v.papel==="editor"?"editor":"visualizador", focal:false});
   try{ localStorage.removeItem(LS_SESSAO); }catch(e){}
   aplicarMenuReal();
+  irPaginaInicial();
   sincronizarEntidade();
   abrirSimularSePedido();
 }
 async function sincronizarEntidade(){
   const ent=ENTIDADE.id;
   try{ ENTIDADE.pessoas=await rpc("pessoas_entidade",{p_entidade:ent}); }catch(e){ ENTIDADE.pessoas=[]; }
-  try{ const pr=await rest(`entidade_preferencia?entidade_codigo=eq.${enc(ent)}&select=visibilidade`);
-       if(pr&&pr[0]&&pr[0].visibilidade) ENTIDADE.prefs.visibilidade=pr[0].visibilidade; }catch(e){}
-  if(ENTIDADE.tipo!=="cas") await carregarPlano();
+  if(ENTIDADE.tipo==="cooperativa") await carregarPlano();   
   pinta();
 }
 JANELAS.splice(0, JANELAS.length);
-const ROT_JANELA={preenchimento:"Montar o plano: só versões provisórias.",
-  construcao:"Montar o plano: versões provisórias e a final, que vira a oficial no fechamento.",
-  ajuste:"Rever as escolhas com o motivo registrado; a versão final continua no histórico."};
+const ROT_JANELA={construcao:"Montar e registrar a estratégia. Enquanto a janela estiver aberta, dá para ajustar e registrar de novo.",
+  ajuste:"Rever as escolhas: cada novo registro vira uma nova versão, com o motivo, e todas ficam guardadas."};
 async function carregarCatalogo(){
   TEMAS.forEach(t=>(t.movimentos||[]).forEach(mv=>{ mv.cas=[]; mv.frentes=null; }));
   try{
@@ -6188,7 +6079,7 @@ async function carregarCatalogo(){
       });
     });
     const agora=Date.now();
-    const js=(c.janelas||[]).filter(j=>!j.central);
+    const js=c.janelas||[];
     if(js.length) JANELAS.splice(0, JANELAS.length, ...js.map(j=>({n:j.nome, d:fmtData(j.abre_em)+" a "+fmtData(j.fecha_em),
       st: agora<new Date(j.abre_em) ? "à frente" : agora<new Date(j.fecha_em) ? "aberta" : "encerrada", txt:ROT_JANELA[j.tipo]||""})));
   }catch(e){ console.warn("Catálogo não carregado; mantendo o conteúdo do arquivo.", e); }
@@ -6212,7 +6103,7 @@ async function carregarPlano(){
   const p=PLANO_SRV, e=p.estado||{};
   Object.assign(estado,{escolhidos:e.escolhidos||[], temasLocais:e.temasLocais||[], nivel:e.nivel||{}, locais:e.locais||{},
                         indSel:e.indSel||{}, indLocais:e.indLocais||{}, marcados:{}});
-  estado.status=p.status||"vazio";
+  estado.status=/^em.ajuste$/.test(p.status||"") ? "rascunho" : (p.status||"vazio");
   estado.registradoEm=p.registrado_em?fmtDataHora(p.registrado_em):null;
   estado.salvoEm=p.atualizado_em?fmtDataHora(p.atualizado_em):null;
   estado.janelaAberta=!!p.janela || !!p.teste;
@@ -6253,39 +6144,33 @@ async function salvarAgora(){
   if(ERRO_SALVAR) throw new Error(ERRO_SALVAR);
 }
 carregar = function(){};                 
+const SEM_EDICAO = "A janela está fechada ou o seu perfil nesta entidade não é de editor.";
 comecarPlano = function(){
-  if(!PODE_EDITAR_SRV) return aviso("A janela está fechada ou você não tem papel de edição nesta entidade.", true);
+  if(!PODE_EDITAR_SRV) return aviso(SEM_EDICAO, true);
   estado.status="rascunho"; salvar(); irPasso(1);
 };
 registrar = async function(){
-  if(!PODE_EDITAR_SRV) return aviso("A janela está fechada ou você não tem papel de edição nesta entidade.", true);
-  const tipo=PLANO_SRV&&PLANO_SRV.janela&&PLANO_SRV.janela.tipo;
-  let motivo=null, natureza=null;
-  if(tipo==="ajuste"){
-    motivo=prompt("Motivo do ajuste (fica registrado junto com a nova versão):");
-    if(!motivo||!motivo.trim()) return;
-  } else if(tipo==="preenchimento"){
-    natureza="provisoria";
-    if(!confirm("Registrar uma versão PROVISÓRIA da estratégia? A versão final é registrada na janela de construção.")) return;
-  } else if(!confirm("Registrar a versão FINAL da estratégia?\n\nEla vira a oficial quando a janela fechar. Enquanto a janela estiver aberta, dá para editar e registrar de novo: todas as versões ficam guardadas.")) return;
+  if(!PODE_EDITAR_SRV) return aviso(SEM_EDICAO, true);
+  const atual=(PLANO_SRV&&PLANO_SRV.versao_atual)||0;
+  let motivo=null;
+  if(atual>0){
+    motivo=prompt(`O que mudou nesta nova versão? (opcional)\n\nO motivo fica registrado junto com a versão ${atual+1}. Pode deixar em branco.`, "");
+    if(motivo===null) return;                            
+    motivo=motivo.trim()||null;
+    if(!confirm(`Registrar a versão ${atual+1} da estratégia?\n\nAs versões anteriores continuam guardadas.`)) return;
+  } else if(!confirm("Registrar a estratégia?\n\nEla pode ser ajustada enquanto a janela estiver aberta, e todas as versões ficam guardadas.")) return;
   try{
     await salvarAgora();
-    const v=await rpc("registrar_plano",{p_plano:PLANO_SRV.plano_id, p_motivo:motivo, p_natureza:natureza});
+    const v=await rpc("registrar_plano",{p_plano:PLANO_SRV.plano_id, p_motivo:motivo});
     await carregarPlano();
     irMeuPlano();
-    aviso(`Versão ${v.versao} registrada (${v.natureza==="final"?"final":v.natureza==="ajuste"?"ajuste":"provisória"}).`);
+    aviso(`Versão ${v&&v.versao||atual+1} da estratégia registrada${v&&v.tipo==="ajuste"?" (ajuste)":""}.`);
   }catch(e){ aviso("Não foi possível registrar: "+e.message, true); }
 };
 editarPlano = async function(){
-  if(!PODE_EDITAR_SRV) return aviso("A janela está fechada ou você não tem papel de edição nesta entidade.", true);
+  if(!PODE_EDITAR_SRV) return aviso(SEM_EDICAO, true);
   try{ await rpc("editar_plano",{p_plano:PLANO_SRV.plano_id}); await carregarPlano(); irPasso(1); }
   catch(e){ aviso("Não foi possível reabrir: "+e.message, true); }
-};
-recomecar = function(){
-  if(!PODE_EDITAR_SRV || estado.status!=="rascunho") return;
-  if(!confirm("Apagar as escolhas do rascunho atual? As versões já registradas continuam guardadas.")) return;
-  Object.assign(estado,{nivel:{}, locais:{}, escolhidos:[], marcados:{}, temasLocais:[], indSel:{}, indLocais:{}});
-  salvar(); irInicio();
 };
 sair = function(){
   const tk=AUTH&&AUTH.access_token;
@@ -6324,36 +6209,61 @@ serieDe = function(entId, reg){
   if((entId==="central-propria"||String(entId).startsWith("central:")) && m.sCen && m.sCen.length===m.s.length) return m.sCen;
   return serieDeOriginal(entId, reg);
 };
-function limparCadastro(html){
-  return html.replace(/<span class="pf-d-v">(null|undefined|NaN|0|)<\/span>/g,'<span class="pf-d-v">—</span>');
-}
-const htmlPerfilOriginal = htmlPerfil;
 htmlPerfil = function(){
-  if(!Array.isArray(ENTIDADE.pessoas)) ENTIDADE.pessoas=[];
-  return limparCadastro(htmlPerfilOriginal())
-    .replace(/<div class="dummy">[\s\S]*?<\/div>\s*$/, `<div class="dummy">Os acessos são liberados pelos administradores da plataforma.
-      Quem edita a entidade pode indicar pessoas: a indicação chega aos administradores, que enviam o convite.</div>`)
-    .replace("O calendário\n    definitivo entra depois da deliberação do CDE de 15/09.","As datas são definidas pelos administradores da plataforma.")
-    .replace(/<div class="pf-janelas">\s*<\/div>/, '<div class="pf-janelas"><p class="vazio">Nenhuma janela cadastrada na base ainda.</p></div>');
+  const e=ENTIDADE, ps=Array.isArray(e.pessoas)?e.pessoas:[];
+  const dados=[["Tipo de entidade", ROT_TIPO[e.tipo]||e.tipo], ["Código", e.id],
+    e.tipo==="cooperativa"?["Central vinculada", e.central]:null].filter(Boolean);
+  const ordem=p=>(p.perfil==="editor"?0:p.perfil==="sistemico"?0:1);
+  const lista=ps.slice().sort((a,b)=>(a.ativo===false)-(b.ativo===false) || ordem(a)-ordem(b) || String(a.nome||"").localeCompare(String(b.nome||""),"pt-BR"));
+  const desc = e.tipo==="cooperativa"
+    ? "Editores montam e registram a estratégia; visualizadores acompanham sem editar."
+    : "O perfil sistêmico acompanha a estratégia e a evolução das cooperativas. Central e CAS não montam plano.";
+  return `
+  <h1 class="titulo">${esc(e.nome)}</h1>
+  <p class="sub">O cadastro da entidade e quem tem acesso a ela na plataforma.</p>
+  <section class="secao">
+    <div class="secao-cab"><h3>Cadastro</h3><span class="cnt">vem do cadastro da plataforma</span></div>
+    <div class="pf-cartao"><div class="pf-dados">${dados.map(([r,v])=>`
+      <div class="pf-d"><span class="pf-d-r">${r}</span><span class="pf-d-v">${esc(String(v||"—"))}</span></div>`).join("")}</div></div>
+  </section>
+  <section class="secao">
+    <div class="secao-cab"><h3>Quem tem acesso</h3>
+      <span class="cnt">${lista.length} ${lista.length===1?"pessoa":"pessoas"}</span></div>
+    <p class="secao-desc">${desc} Os acessos são liberados e ajustados pelos administradores da plataforma.</p>
+    <div class="lista">
+      ${lista.length ? lista.map(p=>`<div class="pf-pessoa ${p.ativo===false?"pe-inativo":""}">
+        <div class="pf-av">${esc(iniciais(p.nome||p.email||"?"))}</div>
+        <div class="pf-id"><b>${esc(p.nome||p.email||"—")}${p.administrador?` <span class="pf-fx">administrador</span>`:""}</b>
+          <span>${p.cargo?esc(p.cargo)+" · ":""}${esc(p.email||"")}${p.ultimo_acesso_em?` · último acesso em ${fmtData(p.ultimo_acesso_em)}`:""}</span></div>
+        <span class="pe-perfil">${esc(p.ativo===false?"Inativo":(ROT_PERFIL[p.perfil]||p.perfil||"—"))}</span>
+      </div>`).join("") : `<p class="vazio">Ninguém com acesso cadastrado nesta entidade ainda.</p>`}
+    </div>
+  </section>`;
 };
-const htmlPessoaOriginal = htmlPessoa;
 htmlPessoa = function(){
-  const vs=(SESSAO_REAL&&SESSAO_REAL.vinculos)||[];
-  const botoes=`<div class="pe-acoes-conta">
-        ${vs.length>1?`<button class="btn-t" onclick="trocarEntidade()">Trocar de entidade (${vs.length} com acesso)</button>`:""}
+  const p=pessoaSessao(), v=VINCULO_ATUAL||{};
+  const nome=p.nome||p.email||"";
+  const dados=[["Nome",nome], ["E-mail",p.email], p.cargo?["Cargo",p.cargo]:null, ["Entidade",v.nome||ENTIDADE.nome],
+    ["Perfil",ROT_PERFIL[v.papel]||"—"], ehAdminReal()?["Na plataforma","Administrador"]:null].filter(Boolean);
+  return `
+  <h1 class="titulo">${esc(nome)}</h1>
+  <p class="sub">Quem você é na plataforma. O cadastro e o perfil de acesso são definidos pelos administradores.</p>
+  <section class="secao">
+    <div class="secao-cab"><h3>Perfil e acesso</h3><span class="cnt">vêm do cadastro da plataforma</span></div>
+    <p class="secao-desc">Para corrigir nome, cargo, entidade ou perfil, fale com os administradores da plataforma (time de Estratégia do CAS).</p>
+    <div class="pf-cartao">
+      <div class="pf-focal" style="margin-bottom:14px">
+        <div class="pf-av grande">${esc(iniciais(nome||"?"))}</div>
+        <div class="pf-id"><b>${esc(nome)}</b><span>${esc(rotuloPapelAtual())} · ${esc(v.nome||ENTIDADE.nome||"")}</span></div>
+      </div>
+      <div class="pf-dados">${dados.map(([r,x])=>`
+        <div class="pf-d${r==="E-mail"?" pf-d-largo":""}"><span class="pf-d-r">${r}</span><span class="pf-d-v">${esc(String(x||"—"))}</span></div>`).join("")}</div>
+      <div class="pe-acoes-conta">
         <button class="btn-t" onclick="abrirTrocaSenha()">Trocar a minha senha</button>
         <button class="btn-t" onclick="sair()">Sair</button>
-      </div>`;
-  return htmlPessoaOriginal()
-    .replace(/(<span class="pf-d-r">Acesso nesta entidade<\/span><span class="pf-d-v">)[^<]*(<\/span><\/div>)/,
-             (m,a,b)=>a+esc(rotuloPapelAtual())+b+(ehAdministrador()?`<div class="pf-d"><span class="pf-d-r">Na plataforma</span><span class="pf-d-v">Administrador</span></div>`:""))
-    .replace(/(<div class="pf-id"><b>[^<]*<\/b><span>)[^·<]*·/, (m,a)=>a+esc(rotuloPapelAtual())+" ·")
-    .replace('<div class="pf-d"><span class="pf-d-r">E-mail</span>','<div class="pf-d pf-d-largo"><span class="pf-d-r">E-mail</span>')
-    .replace(/<h3>Meus dados<\/h3><span class="cnt">[^<]*<\/span>/, '<h3>Perfil e acessos</h3><span class="cnt">vêm do cadastro da plataforma</span>')
-    .replace("Nome, e-mail e cargo chegam com o seu login e mudam lá. O acesso nesta entidade é definido pelo ponto focal.",
-             "Nome, e-mail e cargo vêm do pré-cadastro e do cadastro de colaboradores. O acesso é liberado pelos administradores.")
-    .replace(/(\s*<\/div>\s*<\/section>\s*<section class="secao">\s*<div class="secao-cab"><h3>Minhas preferências)/, botoes+"$1")
-    .replace(/<div class="dummy">[\s\S]*?<\/div>\s*$/, "");
+      </div>
+    </div>
+  </section>`;
 };
 function abrirTrocaSenha(){
   document.body.classList.remove("dentro");
@@ -6361,49 +6271,8 @@ function abrirTrocaSenha(){
   telaLogin("trocar");
   cx.insertAdjacentHTML("beforeend",`<p class="lg-ajuda"><a href="#" onclick="document.body.classList.add('dentro');return false">Voltar sem trocar</a></p>`);
 }
-async function recarregarPessoas(){ try{ ENTIDADE.pessoas=await rpc("pessoas_entidade",{p_entidade:ENTIDADE.id}); }catch(e){} pinta(); }
-setPapel = async function(i,papel){
-  const p=ENTIDADE.pessoas[i]; if(!p||p.focal||p.papel===papel) return;
-  try{ await rpc("alterar_papel",{p_vinculo:p.vinculo, p_papel:papel}); await recarregarPessoas(); }
-  catch(e){ aviso("Não foi possível mudar o papel: "+e.message, true); }
-};
-removerPessoa = async function(i){
-  const p=ENTIDADE.pessoas[i]; if(!p||p.focal) return;
-  if(!confirm(`Remover o acesso de ${p.nome} a esta entidade?`)) return;
-  try{ await rpc("revogar_vinculo",{p_vinculo:p.vinculo, p_motivo:"Removido pela entidade"}); await recarregarPessoas(); }
-  catch(e){ aviso("Não foi possível remover: "+e.message, true); }
-};
-transferirFocal = async function(i){
-  const p=ENTIDADE.pessoas[i]; if(!p) return;
-  if(!confirm(`Transferir o ponto focal para ${p.nome}? Você continua como editor.`)) return;
-  try{ await rpc("transferir_responsavel",{p_entidade:ENTIDADE.id, p_pessoa_destino:p.pessoa}); fecharDrawer(); await recarregarPessoas(); }
-  catch(e){ aviso("Não foi possível transferir: "+e.message, true); }
-};
-salvarPessoa = async function(){
-  guardarFormPessoa();
-  const f=estado.form;
-  if(!f.nome.trim()){ $id("f-pnome")?.focus(); return; }
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((f.email||"").trim())){ $id("f-pmail")?.focus(); return aviso("Informe o e-mail Sicredi da pessoa.", true); }
-  try{
-    await rpc("sugerir_acesso",{p_entidade:ENTIDADE.id, p_email:f.email.trim(), p_nome:f.nome.trim(), p_papel:f.papel||"visualizador"});
-    fecharDrawer(); aviso(`Indicação enviada: os administradores vão convidar ${f.nome.trim()}.`);
-  }catch(e){ aviso("Não foi possível indicar: "+e.message, true); }
-};
-const pintaFormPessoaOriginal = pintaFormPessoa;
-pintaFormPessoa = function(){
-  pintaFormPessoaOriginal();
-  const d=elDrawer.querySelector(".mede");
-  if(d) d.textContent="A pessoa recebe o convite dos administradores da plataforma, com uma senha temporária. Informe o e-mail Sicredi dela.";
-  const b=elDrawer.querySelector(".d-pe-acoes .btn-p"); if(b) b.textContent="Enviar indicação";
-  const h=elDrawer.querySelector(".d-cab h3"); if(h) h.textContent="Indicar acesso";
-};
-const setPrefOriginal = setPref;
-setPref = function(campo, valor){
-  setPrefOriginal(campo, valor);
-  if(campo==="visibilidade")
-    rest("entidade_preferencia?on_conflict=entidade_codigo",{method:"POST", prefer:"resolution=merge-duplicates,return=minimal",
-      body:{entidade_codigo:ENTIDADE.id, visibilidade:valor}}).catch(e=>aviso("Não foi possível salvar a preferência: "+e.message, true));
-};
+const htmlPlanoIntegracao = htmlPlano;
+htmlPlano = function(){ return htmlPlanoIntegracao().replace("quando o ponto focal montar e registrar a estratégia", "quando um editor da entidade montar e registrar a estratégia"); };
 const AVISO_DEMO = `<div class="pe-demo"><b>Base de demonstração.</b> Esta visão ainda usa cooperativas fictícias para mostrar como vai ficar.
   Os números reais do Sistema entram na próxima etapa. Os indicadores da sua entidade já são reais.</div>`;
 const htmlVisaoOriginal = htmlVisao;               htmlVisao = () => AVISO_DEMO + htmlVisaoOriginal();
@@ -6412,33 +6281,70 @@ htmlEvolucaoSistemica = () => AVISO_DEMO + htmlEvolucaoSistemicaOriginal();
 const htmlGestaoOriginal = htmlGestao;
 htmlGestao = () => `<div class="pe-demo leve">Série, medianas da Central e do Sistema e percentil vêm da base real.
   As comparações com outras cooperativas e as conquistas entre pares ainda são ilustrativas.</div>` + htmlGestaoOriginal();
+const MENU_ITENS = [
+  ["nav-montar","montar","coop"], ["nav-plano","nossa_estrategia","coop"], ["nav-acomp","nossa_evolucao","coop"],
+  ["nav-situacao","situacao_planos","sis"], ["nav-visao","estrategia_sistemica","sis"], ["nav-evosis","evolucao_sistemica","sis"]];
+const MODULO_DO_BOTAO = {acomp:"nav-acomp", situacao:"nav-situacao", visao:"nav-visao", evosis:"nav-evosis", admin:"nav-admin"};
+function moduloLiberado(chave){
+  const m=SESSAO_REAL && SESSAO_REAL.modulos && SESSAO_REAL.modulos[chave];
+  return !!(m && m.liberado===true);
+}
+function podeVer(botao){
+  if(botao==="nav-guia") return true;
+  if(botao==="nav-admin") return ehAdministrador();
+  const it=MENU_ITENS.find(x=>x[0]===botao); if(!it) return true;
+  const coop=ENTIDADE.tipo==="cooperativa";
+  if(it[2]==="coop" ? !coop : coop) return false;       
+  return moduloLiberado(it[1]);
+}
+function aplicarVisibilidadeMenu(){
+  const vis={};
+  [...MENU_ITENS.map(x=>x[0]), "nav-guia", "nav-admin"].forEach(id=>{
+    const b=$id(id); if(!b) return;
+    vis[id]=podeVer(id);
+    b.hidden=!vis[id]; const li=b.closest("li"); if(li) li.hidden=!vis[id];
+  });
+  const grupoA=["nav-montar","nav-plano","nav-acomp"].some(id=>vis[id]);
+  const grupoB=["nav-situacao","nav-visao","nav-evosis"].some(id=>vis[id]);
+  const seps=document.querySelectorAll(".nav menu > .sep");
+  if(seps[0]) seps[0].hidden=!(grupoA && grupoB);
+  if(seps[1]) seps[1].hidden=!(grupoA || grupoB);
+}
+const irMontarIntegracao = irMontar, irMeuPlanoIntegracao = irMeuPlano, irModuloIntegracao = irModulo;
+irMontar = function(){ return podeVer("nav-montar") ? irMontarIntegracao() : irPaginaInicial(); };
+irMeuPlano = function(){ return podeVer("nav-plano") ? irMeuPlanoIntegracao() : irPaginaInicial(); };
+irModulo = function(id){
+  const b=MODULO_DO_BOTAO[id];
+  if(b && !podeVer(b)) return irPaginaInicial();
+  return irModuloIntegracao.apply(this, arguments);
+};
+function irPaginaInicial(){
+  const abrir=(vista,modulo)=>ir(()=>{ estado.vista=vista; estado.modulo=modulo; pinta(); fecharNav(); });
+  if(podeVer("nav-montar")) return abrir("inicio", null);                      
+  if(podeVer("nav-plano")) return estado.perfil==="editor" ? irMeuPlanoIntegracao() : abrir("inicio", null);  
+  const alvo=["acomp","situacao","visao","evosis"].find(id=>podeVer(MODULO_DO_BOTAO[id]));
+  return alvo ? irModuloIntegracao(alvo) : abrir("modulo", "guia");
+}
 function aplicarMenuReal(){
-  const ehOwner=!!(SESSAO_REAL&&SESSAO_REAL.pessoa&&SESSAO_REAL.pessoa.owner);
-  const b=$id("nav-admin"); if(b) b.hidden=!ehOwner;
-  const r=$id("btn-recomecar"); if(r) r.hidden=true;
+  const b=$id("nav-admin"); if(b) b.hidden=!ehAdministrador();
   const bts=document.querySelector(".quem-bts");                  
   if(bts) bts.innerHTML=`<span class="pe-versao" title="Data e hora da montagem desta versão">Beta · versão ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>`;
+  aplicarVisibilidadeMenu();
 }
-function rotuloPapelAtual(){                 
-  const v=VINCULO_ATUAL; if(!v) return "";
-  return v.papel==="responsavel" ? (v.tipo==="cooperativa" ? "Ponto focal" : "Responsável") : (ROT_PAPEL[v.papel]||v.papel);
-}
-const ehAdministrador = () => !!(SESSAO_REAL&&SESSAO_REAL.pessoa&&SESSAO_REAL.pessoa.owner);
 function textoJanelaTopo(){
   if(SIM) return "Simulação · plano de teste, sem janela (aberta até o fim da simulação)";
   const j=PLANO_SRV&&PLANO_SRV.janela;
   if(j) return `${j.nome} · aberta até ${fmtData(j.fecha_em)}`;
-  const agora=Date.now();
-  const aberta=((CATALOGO&&CATALOGO.janelas)||[]).find(x=>!x.central && new Date(x.abre_em)<=agora && agora<new Date(x.fecha_em));
+  const agora=Date.now(), js=(CATALOGO&&CATALOGO.janelas)||[];
+  const aberta=js.find(x=>new Date(x.abre_em)<=agora && agora<new Date(x.fecha_em));
   if(aberta) return `${aberta.nome} · aberta até ${fmtData(aberta.fecha_em)}`;   
-  const prox=((CATALOGO&&CATALOGO.janelas)||[]).filter(x=>!x.central && new Date(x.abre_em)>Date.now())
-    .sort((a,b)=>new Date(a.abre_em)-new Date(b.abre_em))[0];
+  const prox=js.filter(x=>new Date(x.abre_em)>agora).sort((a,b)=>new Date(a.abre_em)-new Date(b.abre_em))[0];
   return prox ? `Janela fechada · ${prox.nome} abre em ${fmtData(prox.abre_em)}` : "Janela fechada";
 }
 function ATE_JANELA(){
   const j=PLANO_SRV&&PLANO_SRV.janela;
   if(j) return fmtData(j.fecha_em);
-  const c=((CATALOGO&&CATALOGO.janelas)||[]).filter(x=>!x.central && x.tipo!=="ajuste").sort((a,b)=>new Date(b.fecha_em)-new Date(a.fecha_em))[0];
+  const c=((CATALOGO&&CATALOGO.janelas)||[]).filter(x=>x.tipo!=="ajuste").sort((a,b)=>new Date(b.fecha_em)-new Date(a.fecha_em))[0];
   return c ? fmtData(c.fecha_em) : "o fechamento da janela";
 }
 const pintaOriginal = pinta;
@@ -6449,172 +6355,269 @@ pinta = function(){
   if(jt) jt.innerHTML=`<span class="pt ${estado.janelaAberta||/aberta até/.test(txtJan)?"":"off"}"></span> ${esc(txtJan)}`;
   const st=$id("nav-montar-st"); if(st) st.title = estado.janelaAberta ? textoJanelaTopo() : "Janela fechada";
   if(ERRO_SALVAR) mostrarSalvo(null, ERRO_SALVAR); else if(estado.status==="rascunho") mostrarSalvo(SALVAR_TIMER&&ENVIANDO?"salvando…":null);
-  const ad=$id("nav-admin"); if(ad) ad.setAttribute("aria-current", estado.vista==="modulo" && estado.modulo==="admin");
+  if(document.body.classList.contains("dentro")) aplicarVisibilidadeMenu();
+  const noModulo=id=>estado.vista==="modulo" && estado.modulo===id;
+  const ad=$id("nav-admin"); if(ad) ad.setAttribute("aria-current", noModulo("admin"));
+  const si=$id("nav-situacao"); if(si) si.setAttribute("aria-current", noModulo("situacao"));
+  const np=$id("nav-plano"); if(np && estado.vista==="inicio" && estado.perfil!=="editor") np.setAttribute("aria-current", true);
   faixaSimulacao();
   const rc=$id("rod-cra");
-  if(rc && VINCULO_ATUAL) rc.textContent=(ehAdministrador() ? "Administrador" : (ROT_TIPO[ENTIDADE.tipo]||"")) + " · " + rotuloPapelAtual();
+  if(rc && VINCULO_ATUAL) rc.textContent=(ehAdminReal() && !SIM ? "Administrador" : (ROT_TIPO[ENTIDADE.tipo]||"")) + " · " + rotuloPapelAtual();
 };
 function faixaSimulacao(){
   let f=$id("pe-sim");
   if(!SIM || !document.body.classList.contains("dentro")){ if(f) f.remove(); document.body.classList.remove("simulando"); return; }
   if(!f){ f=document.createElement("div"); f.id="pe-sim"; document.body.prepend(f); }
   document.body.classList.add("simulando");
-  f.innerHTML=`<span><b>Simulação</b> · ${esc(SIM.nome||SIM.entidade)} · ${esc(ROT_PAPEL[SIM.papel]||SIM.papel)}
+  f.innerHTML=`<span><b>Simulação</b> · ${esc(SIM.nome||SIM.entidade)} · ${esc(ROT_PERFIL[SIM.papel]||SIM.papel)}
     <small>Você vê e age como essa pessoa. O plano é de teste: não conta no real e nada real é gravado.</small></span>
     <span class="pe-sim-bt"><button onclick="encerrarSimulacao(true)">Trocar perfil</button>
     <button onclick="encerrarSimulacao(false)">Encerrar simulação</button></span>`;
 }
 function iniciarSimulacao(entidade, papel){
-  const e=ADM.ents.find(x=>x.codigo===entidade) || (entidade==="CAS" ? {codigo:"CAS", nome:"Centro Administrativo Sicredi"} : null);
+  const e=ADM.ents.find(x=>x.codigo===entidade) || (entidade==="CAS" ? {codigo:"CAS", nome:"Centro Administrativo Sicredi", tipo:"cas"} : null);
   if(!e) return aviso("Escolha a entidade.", true);
-  gravarSim({entidade, papel, nome:e.nome, voltar:(SIM&&SIM.voltar)||(ENTIDADE&&ENTIDADE.id)||null}); lsSet(LS_ULT_ENT, entidade); location.reload();
+  if(!(PERFIS_DO_TIPO[e.tipo]||[]).includes(papel)) return aviso("Este perfil não existe para este tipo de entidade.", true);
+  gravarSim({entidade, papel, nome:e.nome}); location.reload();
 }
 function encerrarSimulacao(voltarParaEscolha){
-  lsSet(LS_ULT_ENT, (SIM&&SIM.voltar)||null); gravarSim(null);
+  gravarSim(null);
   try{ voltarParaEscolha ? sessionStorage.setItem("pe_abrir_simular","1") : sessionStorage.removeItem("pe_abrir_simular"); }catch(e){}
   location.reload();
 }
 const htmlModuloOriginal = htmlModulo;
-htmlModulo = function(){ return estado.modulo==="admin" ? htmlAdmin() : htmlModuloOriginal(); };
-function irAdmin(){ ir(()=>{ estado.vista="modulo"; estado.modulo="admin"; pinta(); fecharNav(); }); if(!ADM.carregado) admCarregar(); }
-const ADM = {aba:"pessoas", carregado:false, carregando:false, pre:[], ents:[], pedidos:[], janelas:[], ciclo:null, decisoes:[],
-             filtro:{grupo:"", situacao:"", busca:""}, edit:{}, novo:null, convite:null, novaDec:null, novaJan:null};
-const ROT_GRUPO={administrador:"Administrador", time_cas:"Time de estratégia CAS", cas:"CAS", central:"Central",
-  ponto_focal_coop:"Ponto focal coop", gt_cooperativa:"GT (coop)", agenda:"Agendas", indicado_entidade:"Indicado pela entidade", a_classificar:"A classificar"};
-const ROT_SIT={sugerido:"Sugerido", confirmado:"Confirmado", convidado:"Convidado", ativo:"Ativo", descartado:"Descartado"};
-const ROT_PAPEL={visualizador:"Visualizador", editor:"Editor", responsavel:"Responsável"};
+htmlModulo = function(){
+  return estado.modulo==="admin" ? htmlAdmin() : estado.modulo==="situacao" ? htmlSituacaoPagina() : htmlModuloOriginal();
+};
+function irAdmin(){ if(!ehAdministrador()) return irPaginaInicial();
+  ir(()=>{ estado.vista="modulo"; estado.modulo="admin"; pinta(); fecharNav(); }); if(!ADM.carregado) admCarregar(); }
+const ROT_SIT_PLANO={nao_iniciou:"Não iniciou", em_preenchimento:"Em preenchimento", registrado:"Registrado", em_ajuste:"Em ajuste"};
+const COR_SIT_PLANO={nao_iniciou:"", em_preenchimento:"convidado", registrado:"ativo", em_ajuste:"confirmado"};
+const SIT = {linhas:null, em:null, erro:null, carregando:false, filtro:{central:"", sit:"", busca:""}};
+const naSituacao = () => estado.vista==="modulo" && (estado.modulo==="situacao" || (estado.modulo==="admin" && ADM.aba==="situacao"));
+async function carregarSituacao(){
+  if(SIT.carregando) return; SIT.carregando=true;
+  try{ SIT.linhas=(await rpc("situacao_planos",{p_ciclo:PE.ciclo}))||[]; SIT.erro=null; SIT.em=new Date().toISOString(); }
+  catch(e){ SIT.erro=e.message; if(!SIT.linhas) SIT.linhas=[]; }
+  finally{ SIT.carregando=false; }
+  if(naSituacao()) pinta();
+}
+function sitFiltro(campo, v){ SIT.filtro[campo]=v; pinta();
+  if(campo==="busca"){ const el=$id("sit-busca"); if(el){ el.focus(); el.setSelectionRange(v.length,v.length); } } }
+function htmlTabelaSituacao(){
+  if(SIT.linhas===null){ carregarSituacao(); return `<p class="vazio">Carregando a situação dos planos…</p>`; }
+  const f=SIT.filtro, q=semAcento(f.busca||"");
+  const centrais=[...new Map(SIT.linhas.filter(x=>x.central).map(x=>[x.central, x.central_nome||x.central])).entries()]
+    .sort((a,b)=>String(a[1]).localeCompare(String(b[1]),"pt-BR"));
+  if(f.central && !centrais.some(([c])=>c===f.central)) f.central="";
+  const base=SIT.linhas.filter(x=>!f.central || x.central===f.central);
+  const lista=base.filter(x=>(!f.sit||x.situacao===f.sit) && (!q||semAcento((x.nome||"")+" "+(x.entidade||"")).includes(q)))
+    .sort((a,b)=>String(a.nome||"").localeCompare(String(b.nome||""),"pt-BR"));
+  const cont=s=>base.filter(x=>x.situacao===s).length;
+  const reg=cont("registrado")+cont("em_ajuste");
+  return `${SIT.erro?`<div class="pe-demo">Não consegui atualizar a situação dos planos: ${esc(SIT.erro)}</div>`:""}
+    <div class="adm-resumo">
+      <span><b>${reg}</b> de ${base.length} registraram (${base.length?Math.round(reg/base.length*100):0}%)</span>
+      ${Object.keys(ROT_SIT_PLANO).map(s=>`<span><b>${cont(s)}</b> ${ROT_SIT_PLANO[s].toLowerCase()}</span>`).join("")}</div>
+    <p class="secao-desc">Onde cada cooperativa está na estratégia de ${PE.ciclo}. "Registraram" = já têm ao menos uma versão registrada
+      (inclui quem reabriu para ajuste). ${SIT.em?`Atualizado às ${fmtDataHora(SIT.em)}.`:""}
+      <a href="#" onclick="SIT.linhas=null;pinta();return false">atualizar</a></p>
+    <div class="adm-filtros">
+      <input id="sit-busca" type="search" placeholder="Buscar cooperativa" value="${esc(f.busca||"")}" oninput="sitFiltro('busca',this.value)">
+      ${centrais.length>1?`<select onchange="sitFiltro('central',this.value)"><option value="">Todas as Centrais</option>${centrais.map(([c,n])=>
+        `<option value="${esc(c)}" ${c===f.central?"selected":""}>${esc(n)}</option>`).join("")}</select>`:""}
+      <select onchange="sitFiltro('sit',this.value)">${optsLista(ROT_SIT_PLANO,f.sit,"Todas as situações")}</select>
+    </div>
+    <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Cooperativa</th><th>Central</th><th>Situação</th><th>Versão</th>
+      <th>Registrado em</th><th>Última alteração</th></tr></thead><tbody>
+      ${lista.map(x=>`<tr><td><b>${esc(x.nome||x.entidade)}</b><small>${esc(x.entidade||"")}</small></td>
+        <td><small>${esc(x.central_nome||x.central||"—")}</small></td>
+        <td><span class="adm-sit ${COR_SIT_PLANO[x.situacao]||""}">${esc(ROT_SIT_PLANO[x.situacao]||x.situacao||"—")}</span></td>
+        <td><small>${x.versao?"v"+esc(String(x.versao)):"—"}</small></td>
+        <td><small>${x.registrado_em?fmtDataHora(x.registrado_em):"—"}</small></td>
+        <td><small>${x.atualizado_em?fmtDataHora(x.atualizado_em):"—"}</small></td></tr>`).join("")
+        ||`<tr><td colspan="6" class="vazio">Nenhuma cooperativa com esses filtros.</td></tr>`}
+    </tbody></table></div><p class="adm-nota">${lista.length} de ${base.length} cooperativas.</p>`;
+}
+function htmlSituacaoPagina(){
+  return `<h1 class="titulo">Situação dos planos</h1>
+    <p class="sub">Quem ainda não começou, quem está preenchendo e quem já registrou a estratégia de ${PE.ciclo}.</p>
+    ${htmlTabelaSituacao()}`;
+}
+const ADM = {aba:"usuarios", carregado:false, carregando:false, usuarios:[], ents:[], janelas:[], modulos:[], dados:null,
+             filtro:{busca:"", perfil:"", situacao:""}, form:null, convite:null, testes:null, sim:null,
+             filtroDados:{nivel:"", busca:""}};
+const ROT_CICLO={preparacao:"Em preparação", publicado:"Publicado", encerrado:"Encerrado"};
+const ROT_TIPO_JAN={construcao:"Construção", ajuste:"Ajuste"};
+const ROT_MODULO={montar:"Montar estratégia", nossa_estrategia:"Nossa estratégia", nossa_evolucao:"Nossa evolução",
+  situacao_planos:"Situação dos planos", estrategia_sistemica:"Estratégia Sistêmica", evolucao_sistemica:"Evolução sistêmica"};
 async function admCarregar(){
   if(ADM.carregando) return; ADM.carregando=true;
+  const erros=[], tentar=(p,padrao)=>p.catch(e=>{ erros.push(e.message); return padrao; });
   try{
-    const [pre, ents, peds, jans, cic, decs]=await Promise.all([
-      rest("pre_acesso?select=*&order=grupo,nome"),
-      rest("entidade?select=codigo,nome,tipo,central_codigo&ativa=eq.true&tipo=neq.sistema&order=tipo,nome"),
-      rest("solicitacao_acesso?status=eq.pendente&select=id,entidade_codigo,papel_pedido,cargo_declarado,justificativa,criada_em,pessoa:pessoa_id(nome,email)&order=criada_em"),
-      rest(`janela?ciclo_id=eq.${PE.ciclo}&select=*&order=abre_em`),
-      rest(`ciclo?id=eq.${PE.ciclo}&select=*`),
-      rest("vw_decisao?select=*&order=decidido_em.desc,id.desc")]);
-    Object.assign(ADM,{pre, ents, pedidos:peds, janelas:jans, ciclo:cic&&cic[0], decisoes:decs, carregado:true});
-  }catch(e){ aviso("Não consegui carregar a administração: "+e.message, true); }
-  finally{ ADM.carregando=false; if(estado.modulo==="admin") pinta(); }
+    const [us, ents, jans, mods, cic]=await Promise.all([
+      tentar(rpc("admin_usuarios"), []),
+      tentar(rest("entidade?select=codigo,nome,tipo,central_codigo&ativa=eq.true&tipo=neq.sistema&order=tipo,nome"), []),
+      tentar(rpc("admin_janelas",{p_ciclo:PE.ciclo}), []),
+      tentar(rpc("admin_modulos"), []),
+      tentar(rest(`ciclo?id=eq.${PE.ciclo}&select=*`), [])]);
+    Object.assign(ADM,{usuarios:us||[], ents:ents||[], janelas:jans||[], modulos:mods||[],
+                       ciclo:(cic&&cic[0])||(SESSAO_REAL&&SESSAO_REAL.ciclo)||null, carregado:true});
+    if(erros.length) aviso("Parte da administração não carregou: "+erros[0], true);
+  }finally{ ADM.carregando=false; if(estado.modulo==="admin") pinta(); }
 }
 function admAba(a){ ADM.aba=a; pinta(); if(a==="simular") admCarregarTestes(); }
-async function admCarregarTestes(){
-  try{ ADM.testes=await rpc("planos_teste"); }catch(e){ ADM.testes=[]; aviso("Não consegui ler os planos de teste: "+e.message, true); }
-  if(estado.modulo==="admin" && ADM.aba==="simular") pinta();
-}
-function admSimular(){
-  const t=ADM.testes||[], sim=ADM.sim||{entidade:"", papel:"responsavel"};
-  return `<section class="secao"><h2>Ver a plataforma como outra pessoa</h2>
-    <p class="secao-desc">Escolha a entidade e o papel. A plataforma passa a se comportar exatamente como para essa pessoa, com as regras de acesso do banco:
-    o que ela vê, o que pode editar, indicadores e recortes da entidade. Dá para montar e registrar o plano: ele fica marcado como <b>teste</b>,
-    não depende da janela, não aparece fora da simulação e pode ser apagado aqui. Nada real é gravado durante a simulação.</p>
-    <div class="adm-form">
-      <select onchange="ADM.sim=Object.assign(ADM.sim||{papel:'responsavel'},{entidade:this.value})">${optsEnt(sim.entidade)}</select>
-      <select onchange="ADM.sim=Object.assign(ADM.sim||{entidade:''},{papel:this.value})">${optsLista(ROT_PAPEL, sim.papel)}</select>
-      <button class="btn-p mini" onclick="iniciarSimulacao((ADM.sim||{}).entidade, (ADM.sim||{}).papel||'responsavel')">Entrar na simulação</button>
-    </div>
-    <p class="secao-desc">Dica: para testar a visão de uma Central com os planos das suas cooperativas, monte antes os planos de teste de algumas coops dela.</p></section>
-    <section class="secao"><h2>Planos de teste</h2>
-    ${t.length?`<table class="adm-tab"><thead><tr><th>Entidade</th><th>Situação</th><th>Versões</th><th>Atualizado</th><th></th></tr></thead><tbody>
-      ${t.map(x=>`<tr><td>${esc(x.nome)} (${esc(x.entidade)})</td><td>${x.status==="registrado"?"Registrado":"Em preenchimento"}</td><td>${x.versoes||0}</td>
-        <td>${fmtDataHora(x.atualizado_em)}</td><td><button class="btn-t mini" onclick="admApagarTeste('${esc(x.entidade)}')">Apagar</button></td></tr>`).join("")}
-      </tbody></table><div class="adm-linha"><button class="btn-t" onclick="admApagarTeste(null)">Apagar todos os planos de teste</button></div>`
-      :`<p class="vazio">Nenhum plano de teste.</p>`}</section>`;
-}
-async function admApagarTeste(ent){
-  if(!confirm(ent?`Apagar o plano de teste de ${nomeEnt(ent)}?`:"Apagar TODOS os planos de teste?")) return;
-  try{ const n=await rpc("apagar_planos_teste",{p_entidade:ent}); aviso(`${n} plano(s) de teste apagado(s).`); admCarregarTestes(); }
-  catch(e){ aviso("Não consegui apagar: "+e.message, true); }
-}
+function admAtualizar(){ ADM.carregado=false; ADM.dados=null; SIT.linhas=null; ADM.testes=null; admCarregar(); if(ADM.aba==="simular") admCarregarTestes(); pinta(); }
 function nomeEnt(cod){ const e=ADM.ents.find(x=>x.codigo===cod); return e?e.nome:(cod||"—"); }
-function optsEnt(sel){
+function tipoEnt(cod){ const e=ADM.ents.find(x=>x.codigo===cod); return e?e.tipo:null; }
+function optsEnt(sel, vazio){
   const g={cas:"CAS", central:"Centrais", cooperativa:"Cooperativas"};
-  return `<option value="">— escolher —</option>`+["cas","central","cooperativa"].map(t=>`<optgroup label="${g[t]}">${
-    ADM.ents.filter(e=>e.tipo===t).map(e=>`<option value="${e.codigo}" ${e.codigo===sel?"selected":""}>${esc(e.nome)} (${e.codigo})</option>`).join("")}</optgroup>`).join("");
+  return `<option value="">${vazio||"— escolher —"}</option>`+["cas","central","cooperativa"].map(t=>`<optgroup label="${g[t]}">${
+    ADM.ents.filter(e=>e.tipo===t).map(e=>`<option value="${esc(e.codigo)}" ${e.codigo===sel?"selected":""}>${esc(e.nome)} (${esc(e.codigo)})</option>`).join("")}</optgroup>`).join("");
 }
 function optsLista(obj, sel, vazio){ return (vazio?`<option value="">${vazio}</option>`:"")+Object.entries(obj).map(([k,v])=>`<option value="${k}" ${k===sel?"selected":""}>${v}</option>`).join(""); }
 function htmlAdmin(){
-  const abas=[["pessoas","Pessoas e convites"],["pedidos",`Pedidos de acesso${ADM.pedidos.length?` (${ADM.pedidos.length})`:""}`],
-              ["situacao","Situação dos planos"],["janelas","Janelas e ciclo"],["decisoes","Registro de decisões"],["simular","Simular perfil"]];
+  const abas=[["usuarios","Usuários e convites"],["situacao","Situação dos planos"],["janelas","Janelas, ciclo e módulos"],
+              ["dados","Dados"],["simular","Simular perfil"]];
   const corpo = !ADM.carregado ? `<p class="vazio">Carregando…</p>`
-    : ADM.aba==="pessoas" ? admPessoas() : ADM.aba==="pedidos" ? admPedidos() : ADM.aba==="situacao" ? admSituacaoPlanos()
-    : ADM.aba==="janelas" ? admJanelas() : ADM.aba==="simular" ? admSimular() : admDecisoes();
+    : ADM.aba==="usuarios" ? admUsuarios() : ADM.aba==="situacao" ? htmlTabelaSituacao()
+    : ADM.aba==="janelas" ? admJanelas() : ADM.aba==="dados" ? admDados() : admSimular();
   return `<h1 class="titulo">Administração</h1>
-    <p class="sub">Quem entra e com que papel, as janelas do ciclo e o registro das decisões. Só os administradores veem esta área.</p>
+    <p class="sub">Quem entra e com que perfil, a situação dos planos, as janelas e os módulos liberados, a saúde dos dados e a simulação de perfis.
+    Só os administradores veem esta área.</p>
     <div class="adm-abas">${abas.map(([id,rot])=>`<button class="${ADM.aba===id?"on":""}" onclick="admAba('${id}')">${rot}</button>`).join("")}
-      <button class="adm-rec" onclick="ADM.carregado=false;admCarregar();pinta()" title="Buscar de novo no banco">↻ atualizar</button></div>
+      <button class="adm-rec" onclick="admAtualizar()" title="Buscar de novo no banco">↻ atualizar</button></div>
     ${corpo}${ADM.convite?admModalConvite():""}`;
 }
+const ROT_SIT_USU={ativo:"Com acesso", convidado:"Convidado", cadastrado:"Sem convite", inativo:"Inativo"};
+const COR_SIT_USU={ativo:"ativo", convidado:"convidado", cadastrado:"", inativo:""};
+function sitUsuario(u){
+  if(!u.ativo) return "inativo";
+  if(u.primeiro_acesso_em || u.ultimo_acesso_em) return "ativo";
+  if(u.convidado_em || u.tem_login) return "convidado";
+  return "cadastrado";
+}
 function admFiltro(campo, v){ ADM.filtro[campo]=v; pinta(); if(campo==="busca"){ const el=$id("adm-busca"); if(el){ el.focus(); el.setSelectionRange(v.length,v.length);} } }
-function admPessoas(){
+function admUsuarios(){
   const f=ADM.filtro, q=semAcento(f.busca||"");
-  const lista=ADM.pre.filter(p=>(!f.grupo||p.grupo===f.grupo)&&(!f.situacao||p.situacao===f.situacao)
-    &&(!q||semAcento([p.nome,p.email,p.cargo,nomeEnt(p.entidade_codigo)].join(" ")).includes(q)));
-  const cont=s=>ADM.pre.filter(p=>p.situacao===s).length;
-  return `<div class="adm-resumo">${Object.keys(ROT_SIT).map(s=>`<span><b>${cont(s)}</b> ${ROT_SIT[s].toLowerCase()}</span>`).join("")}</div>
-    <p class="secao-desc">Revise a entidade e o papel e clique em <b>Convidar</b>: a plataforma cria o acesso e mostra uma senha temporária
-    para você mandar à pessoa (Teams ou e-mail). No 1º acesso ela troca a senha e já entra na entidade certa.</p>
+  const lista=ADM.usuarios.filter(u=>(!f.perfil || (f.perfil==="administrador" ? u.administrador : u.perfil===f.perfil))
+    && (!f.situacao || sitUsuario(u)===f.situacao)
+    && (!q || semAcento([u.nome,u.email,u.cargo,u.entidade,u.entidade_nome||nomeEnt(u.entidade)].join(" ")).includes(q)))
+    .sort((a,b)=>String(a.nome||a.email).localeCompare(String(b.nome||b.email),"pt-BR"));
+  const cont=s=>ADM.usuarios.filter(u=>sitUsuario(u)===s).length;
+  return `<div class="adm-resumo"><span><b>${ADM.usuarios.length}</b> cadastrados</span>
+      ${Object.keys(ROT_SIT_USU).map(s=>`<span><b>${cont(s)}</b> ${ROT_SIT_USU[s].toLowerCase()}</span>`).join("")}
+      <span><b>${ADM.usuarios.filter(u=>u.administrador).length}</b> administradores</span></div>
+    <p class="secao-desc">Cadastre a pessoa (e-mail, entidade e perfil) e clique em <b>Convidar</b>: a plataforma cria o acesso e mostra uma senha
+    temporária para você mandar à pessoa (Teams ou e-mail). No 1º acesso ela troca a senha e já entra na entidade certa.
+    Para tirar o acesso, desmarque <b>Ativo</b>: ninguém é apagado.</p>
     <div class="adm-filtros">
       <input id="adm-busca" type="search" placeholder="Buscar nome, e-mail, cargo ou entidade" value="${esc(f.busca||"")}" oninput="admFiltro('busca',this.value)">
-      <select onchange="admFiltro('grupo',this.value)">${optsLista(ROT_GRUPO,f.grupo,"Todos os grupos")}</select>
-      <select onchange="admFiltro('situacao',this.value)">${optsLista(ROT_SIT,f.situacao,"Todas as situações")}</select>
-      <button class="btn-t" onclick="ADM.novo={email:'',nome:'',entidade_codigo:'',papel:'visualizador',grupo:'a_classificar'};pinta()">+ Novo pré-cadastro</button>
+      <select onchange="admFiltro('perfil',this.value)">${optsLista(Object.assign({}, ROT_PERFIL, {administrador:"Administradores"}), f.perfil, "Todos os perfis")}</select>
+      <select onchange="admFiltro('situacao',this.value)">${optsLista(ROT_SIT_USU, f.situacao, "Todas as situações")}</select>
+      <button class="btn-t" onclick="admNovoUsuario()">+ Cadastrar pessoa</button>
     </div>
-    ${ADM.novo?admFormNovo():""}
+    ${ADM.form?admFormUsuario():""}
     <div class="adm-tab-wrap"><table class="adm-tab">
-      <thead><tr><th>Pessoa</th><th>Entidade</th><th>Papel</th><th>Grupo</th><th>Situação</th><th></th></tr></thead>
-      <tbody>${lista.map(p=>admLinhaPessoa(p)).join("")||`<tr><td colspan="6" class="vazio">Ninguém com esses filtros.</td></tr>`}</tbody>
-    </table></div><p class="adm-nota">${lista.length} de ${ADM.pre.length} pessoas.</p>`;
+      <thead><tr><th>Pessoa</th><th>Entidade</th><th>Perfil</th><th>Situação</th><th></th></tr></thead>
+      <tbody>${lista.map(admLinhaUsuario).join("")||`<tr><td colspan="5" class="vazio">Ninguém com esses filtros.</td></tr>`}</tbody>
+    </table></div><p class="adm-nota">${lista.length} de ${ADM.usuarios.length} pessoas.</p>`;
 }
-function admLinhaPessoa(p){
-  const e=ADM.edit[p.id]||{}, ent=e.entidade_codigo??p.entidade_codigo, papel=e.papel??p.papel;
-  const mudou=Object.keys(e).length>0, podeConvidar=["sugerido","confirmado"].includes(p.situacao);
-  return `<tr class="${p.situacao}">
-    <td><b>${esc(p.nome||"—")}</b><small>${esc(p.email)}${p.cargo?" · "+esc(p.cargo):""}</small>
-      ${p.pendencia?`<small class="adm-pend" title="${esc(p.pendencia)}">⚠ ${esc(p.pendencia.slice(0,90))}${p.pendencia.length>90?"…":""}</small>`:""}</td>
-    <td><select onchange="admEditar(${p.id},'entidade_codigo',this.value)" ${p.situacao==="ativo"?"disabled":""}>${optsEnt(ent)}</select></td>
-    <td><select onchange="admEditar(${p.id},'papel',this.value)" ${p.situacao==="ativo"?"disabled":""}>${optsLista(ROT_PAPEL,papel,"—")}</select></td>
-    <td><small>${esc(ROT_GRUPO[p.grupo]||p.grupo)}${p.owner?" · <b>admin</b>":""}</small></td>
-    <td><span class="adm-sit ${p.situacao}">${ROT_SIT[p.situacao]||p.situacao}</span></td>
+function admLinhaUsuario(u){
+  const s=sitUsuario(u), em=esc(JSON.stringify(u.email));
+  const acesso = u.ultimo_acesso_em ? `último acesso em ${fmtData(u.ultimo_acesso_em)}`
+    : u.convidado_em ? `convidado em ${fmtData(u.convidado_em)}` : "";
+  return `<tr class="${s==="inativo"?"descartado":""}">
+    <td><b>${esc(u.nome||"—")}</b><small>${esc(u.email)}${u.cargo?" · "+esc(u.cargo):""}</small>
+      ${u.observacao?`<small class="adm-pend" title="${esc(u.observacao)}">${esc(String(u.observacao).slice(0,90))}${String(u.observacao).length>90?"…":""}</small>`:""}</td>
+    <td>${u.entidade?`${esc(u.entidade_nome||nomeEnt(u.entidade))}<small>${esc(u.entidade)}</small>`:`<small>sem entidade</small>`}</td>
+    <td>${esc(ROT_PERFIL[u.perfil]||"—")}${u.administrador?`<small><b>administrador</b></small>`:""}</td>
+    <td><span class="adm-sit ${COR_SIT_USU[s]}">${ROT_SIT_USU[s]}</span>${acesso?`<small>${acesso}</small>`:""}</td>
     <td class="adm-acoes">
-      ${mudou?`<button class="btn-p mini" onclick="admSalvarPre(${p.id})">Salvar</button>`:""}
-      ${podeConvidar&&!mudou?`<button class="btn-p mini" onclick="admConvidar(${p.id})">Convidar</button>`:""}
-      ${["convidado","ativo"].includes(p.situacao)?`<button class="btn-t mini" onclick="admRedefinir(${p.id})">Nova senha</button>`:""}
-      ${p.situacao!=="ativo"&&p.situacao!=="descartado"?`<button class="btn-t mini" onclick="admSituacao(${p.id},'descartado')" title="Descartar">✕</button>`:""}
-      ${p.situacao==="descartado"?`<button class="btn-t mini" onclick="admSituacao(${p.id},'sugerido')">Reativar</button>`:""}
+      <button class="btn-t mini" onclick="admEditarUsuario(${em})">Editar</button>
+      ${u.ativo ? (s==="cadastrado" ? `<button class="btn-p mini" onclick="admConvidar(${em})">Convidar</button>`
+                                    : `<button class="btn-t mini" onclick="admRedefinir(${em})">Redefinir senha</button>`) : ""}
     </td></tr>`;
 }
-function admEditar(id,campo,v){ const p=ADM.pre.find(x=>x.id===id); ADM.edit[id]=ADM.edit[id]||{};
-  if((p[campo]||"")===v) delete ADM.edit[id][campo]; else ADM.edit[id][campo]=v||null;
-  if(!Object.keys(ADM.edit[id]).length) delete ADM.edit[id]; pinta(); }
-async function admSalvarPre(id){
-  try{ const r=await rest(`pre_acesso?id=eq.${id}`,{method:"PATCH", body:ADM.edit[id], prefer:"return=representation"});
-       Object.assign(ADM.pre.find(x=>x.id===id), r[0]); delete ADM.edit[id]; pinta(); }
-  catch(e){ aviso("Não salvou: "+e.message, true); }
+function admNovoUsuario(){ ADM.form={novo:true, email:"", nome:"", cargo:"", entidade:"", perfil:"", administrador:false, ativo:true, observacao:""}; pinta(); }
+function admEditarUsuario(email){
+  const u=ADM.usuarios.find(x=>x.email===email); if(!u) return;
+  ADM.form={novo:false, email:u.email, nome:u.nome||"", cargo:u.cargo||"", entidade:u.entidade||"", perfil:u.perfil||"",
+            administrador:!!u.administrador, ativo:!!u.ativo, observacao:u.observacao||""};
+  pinta(); window.scrollTo({top:0, behavior:"smooth"});
 }
-async function admSituacao(id,sit){
-  try{ const r=await rest(`pre_acesso?id=eq.${id}`,{method:"PATCH", body:{situacao:sit}, prefer:"return=representation"});
-       Object.assign(ADM.pre.find(x=>x.id===id), r[0]); pinta(); }
-  catch(e){ aviso("Não salvou: "+e.message, true); }
+function admLerForm(){
+  const f=ADM.form; if(!f) return;
+  const v=id=>{ const el=$id(id); return el?el.value:null; }, c=id=>{ const el=$id(id); return el?el.checked:null; };
+  if(v("au-email")!==null) f.email=v("au-email"); if(v("au-nome")!==null) f.nome=v("au-nome");
+  if(v("au-cargo")!==null) f.cargo=v("au-cargo"); if(v("au-perfil")!==null) f.perfil=v("au-perfil");
+  if(v("au-obs")!==null) f.observacao=v("au-obs");
+  if(c("au-admin")!==null) f.administrador=c("au-admin"); if(c("au-ativo")!==null) f.ativo=c("au-ativo");
 }
-async function admConvidar(id){
-  const p=ADM.pre.find(x=>x.id===id);
-  if(!p.entidade_codigo||!p.papel) return aviso("Defina a entidade e o papel antes de convidar.", true);
-  if(!confirm(`Convidar ${p.nome||p.email} como ${ROT_PAPEL[p.papel]} em ${nomeEnt(p.entidade_codigo)}?`)) return;
-  try{ const r=await funcao("convites",{acao:"convidar", email:p.email});
-       ADM.convite={nome:p.nome||p.email, email:r.email, senha:r.senha_temporaria, ent:nomeEnt(p.entidade_codigo), papel:ROT_PAPEL[p.papel]};
-       p.situacao="convidado"; pinta(); }
+function admFormEntidade(cod){
+  admLerForm(); const f=ADM.form; f.entidade=cod;
+  const ps=PERFIS_DO_TIPO[tipoEnt(cod)]||[];
+  if(!ps.includes(f.perfil)) f.perfil=ps[0]||"";                  
+  pinta();
+}
+function admFormUsuario(){
+  const f=ADM.form, ps=PERFIS_DO_TIPO[tipoEnt(f.entidade)]||[];
+  const perfis=Object.fromEntries(ps.map(p=>[p, ROT_PERFIL[p]]));
+  return `<div class="adm-form col">
+    <b>${f.novo?"Cadastrar pessoa":"Editar "+esc(f.nome||f.email)}</b>
+    <div class="adm-linha">
+      <input id="au-email" type="email" placeholder="e-mail @sicredi.com.br" value="${esc(f.email)}" ${f.novo?"":"readonly title='O e-mail é a chave do cadastro'"}>
+      <input id="au-nome" placeholder="Nome" value="${esc(f.nome)}">
+      <input id="au-cargo" placeholder="Cargo" value="${esc(f.cargo)}"></div>
+    <div class="adm-linha">
+      <select id="au-ent" onchange="admFormEntidade(this.value)">${optsEnt(f.entidade, "— sem entidade (só administrador) —")}</select>
+      <select id="au-perfil" ${ps.length?"":"disabled"}>${ps.length?optsLista(perfis, f.perfil):`<option value="">— sem perfil —</option>`}</select>
+      <label class="adm-check"><input id="au-admin" type="checkbox" ${f.administrador?"checked":""}> Administrador</label>
+      <label class="adm-check"><input id="au-ativo" type="checkbox" ${f.ativo?"checked":""}> Ativo</label></div>
+    <textarea id="au-obs" rows="2" placeholder="Observação (opcional)">${esc(f.observacao)}</textarea>
+    <p class="adm-nota">Cooperativa: visualizador ou editor. Central e CAS: sistêmico. Administrador é um atributo à parte e pode ficar sem entidade.</p>
+    <div class="adm-linha"><button class="btn-p mini" onclick="admSalvarUsuario()">Salvar</button>
+      <button class="btn-t mini" onclick="ADM.form=null;pinta()">Cancelar</button></div></div>`;
+}
+async function admSalvarUsuario(){
+  admLerForm(); const f=ADM.form;
+  const email=(f.email||"").trim().toLowerCase();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return aviso("E-mail inválido.", true);
+  if(!f.nome.trim()) return aviso("Informe o nome.", true);
+  if(f.entidade && !f.perfil) return aviso("Escolha o perfil.", true);
+  if(!f.entidade && !f.administrador && f.ativo) return aviso("Sem entidade, só um administrador pode ficar ativo.", true);
+  try{
+    const r=await rpc("admin_salvar_usuario",{p_email:email, p_nome:f.nome.trim(), p_cargo:f.cargo.trim()||null,
+      p_entidade:f.entidade||null, p_perfil:f.entidade?f.perfil:null, p_administrador:!!f.administrador, p_ativo:!!f.ativo,
+      p_observacao:(f.observacao||"").trim()||null});
+    const linha=Object.assign({}, r||{}, {entidade_nome:(r&&r.entidade_nome)||(r&&r.entidade?nomeEnt(r.entidade):null)});
+    const i=ADM.usuarios.findIndex(x=>x.email===linha.email);
+    if(i>=0) ADM.usuarios[i]=Object.assign({}, ADM.usuarios[i], linha); else ADM.usuarios.unshift(linha);
+    const novo=f.novo; ADM.form=null; pinta();
+    aviso(`${linha.nome||email} salvo.`);
+    if(novo && linha.ativo && sitUsuario(linha)==="cadastrado" && confirm(`Convidar ${linha.nome||email} agora?`)) admConvidar(linha.email);
+  }catch(e){ aviso("Não salvou: "+e.message, true); }
+}
+function rotuloAcesso(u){ return [ROT_PERFIL[u.perfil], u.administrador?"administrador":null].filter(Boolean).join(", ") || "administrador"; }
+async function admConvidar(email){
+  const u=ADM.usuarios.find(x=>x.email===email); if(!u) return;
+  if(!u.ativo) return aviso("Ative o cadastro antes de convidar.", true);
+  if(!u.entidade && !u.administrador) return aviso("Defina a entidade e o perfil antes de convidar.", true);
+  if(!confirm(`Convidar ${u.nome||u.email} (${rotuloAcesso(u)}${u.entidade?" em "+(u.entidade_nome||nomeEnt(u.entidade)):""})?`)) return;
+  try{ const r=await funcao("convites",{acao:"convidar", email:u.email});
+       ADM.convite={nome:u.nome||u.email, email:r.email||u.email, senha:r.senha_temporaria, ent:u.entidade_nome||nomeEnt(u.entidade), papel:rotuloAcesso(u)};
+       u.convidado_em=new Date().toISOString(); u.tem_login=true; pinta(); }
   catch(e){ aviso(e.message, true); }
 }
-async function admRedefinir(id){
-  const p=ADM.pre.find(x=>x.id===id);
-  if(!confirm(`Gerar uma nova senha temporária para ${p.nome||p.email}? A senha atual deixa de funcionar.`)) return;
-  try{ const r=await funcao("convites",{acao:"redefinir", email:p.email});
-       ADM.convite={nome:p.nome||p.email, email:r.email, senha:r.senha_temporaria, ent:nomeEnt(p.entidade_codigo), papel:ROT_PAPEL[p.papel], nova:true}; pinta(); }
+async function admRedefinir(email){
+  const u=ADM.usuarios.find(x=>x.email===email); if(!u) return;
+  if(!confirm(`Gerar uma nova senha temporária para ${u.nome||u.email}? A senha atual deixa de funcionar.`)) return;
+  try{ const r=await funcao("convites",{acao:"redefinir", email:u.email});
+       ADM.convite={nome:u.nome||u.email, email:r.email||u.email, senha:r.senha_temporaria, ent:u.entidade_nome||nomeEnt(u.entidade), papel:rotuloAcesso(u), nova:true}; pinta(); }
   catch(e){ aviso(e.message, true); }
 }
 function textoConvite(c){
-  return `Olá, ${c.nome.split(" ")[0]}! ${c.nova?"Sua senha da Plataforma da Estratégia foi redefinida.":"Seu acesso à Plataforma da Estratégia foi liberado ("+c.ent+", "+c.papel+")."}\n\n`
+  return `Olá, ${c.nome.split(" ")[0]}! ${c.nova?"Sua senha da Plataforma da Estratégia foi redefinida.":"Seu acesso à Plataforma da Estratégia foi liberado ("+[c.ent,c.papel].filter(x=>x&&x!=="—").join(", ")+")."}\n\n`
    +`1. Abra a plataforma: ${PE.endereco}\n2. Entre com o e-mail ${c.email} e a senha temporária: ${c.senha}\n3. No primeiro acesso, crie a sua senha.\n\n`
    +`Dica: no Edge ou no Chrome dá para instalar a plataforma como aplicativo (ícone "Instalar" na barra de endereço).\n\nQualquer dúvida, fale com o time de Estratégia do CAS.`;
 }
@@ -6628,7 +6631,7 @@ function admModalConvite(){
   return `<div class="adm-modal" onclick="if(event.target===this){ADM.convite=null;pinta()}"><div class="adm-caixa">
     <h3>${c.nova?"Nova senha gerada":"Acesso criado"}</h3>
     <p>Mande a mensagem abaixo para <b>${esc(c.nome)}</b> pelo Teams ou por e-mail. A senha só aparece agora: ela não fica guardada.
-      Se fechar sem enviar, use <b>Nova senha</b> na linha da pessoa.</p>
+      Se fechar sem enviar, use <b>Redefinir senha</b> na linha da pessoa.</p>
     <textarea id="adm-msg" readonly rows="9">${esc(textoConvite(c))}</textarea>
     <div class="adm-linha"><button class="btn-p" onclick="admCopiar()">Copiar mensagem</button>
       <button class="btn-p" onclick="admEmailConvite()">Enviar por e-mail</button>
@@ -6639,187 +6642,190 @@ function admCopiar(){
   (navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).then(()=>aviso("Mensagem copiada."))
     .catch(()=>{ try{ document.execCommand("copy"); aviso("Mensagem copiada."); }catch(e){ aviso("Selecione o texto e copie com Ctrl+C.", true); } });
 }
-function admFormNovo(){
-  const n=ADM.novo;
-  return `<div class="adm-form">
-    <input placeholder="e-mail @sicredi.com.br" value="${esc(n.email)}" oninput="ADM.novo.email=this.value">
-    <input placeholder="Nome" value="${esc(n.nome)}" oninput="ADM.novo.nome=this.value">
-    <select onchange="ADM.novo.entidade_codigo=this.value">${optsEnt(n.entidade_codigo)}</select>
-    <select onchange="ADM.novo.papel=this.value">${optsLista(ROT_PAPEL,n.papel)}</select>
-    <select onchange="ADM.novo.grupo=this.value">${optsLista(ROT_GRUPO,n.grupo)}</select>
-    <button class="btn-p mini" onclick="admCriarPre()">Adicionar</button><button class="btn-t mini" onclick="ADM.novo=null;pinta()">Cancelar</button></div>`;
-}
-async function admCriarPre(){
-  const n=ADM.novo;
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(n.email.trim())) return aviso("E-mail inválido.", true);
-  try{ const r=await rest("pre_acesso",{method:"POST", prefer:"return=representation",
-         body:{email:n.email.trim().toLowerCase(), nome:n.nome.trim()||null, entidade_codigo:n.entidade_codigo||null, papel:n.papel||null,
-               grupo:n.grupo, entidade_fonte:"manual", origem:"administração", motivo:"Incluído pela administração"}});
-       ADM.pre.unshift(r[0]); ADM.novo=null; pinta(); }
-  catch(e){ aviso("Não incluiu: "+e.message, true); }
-}
-const ROT_SIT_PLANO={nao_iniciou:"Não iniciou", em_preenchimento:"Em preenchimento", provisorio:"Versão provisória",
-  final_registrado:"Final registrada", ajustado:"Ajustada", nao_registrou:"Não registrou (janela fechada)"};
-const COR_SIT_PLANO={nao_iniciou:"", em_preenchimento:"convidado", provisorio:"convidado", final_registrado:"ativo", ajustado:"ativo", nao_registrou:"descartado"};
-async function admCarregarSituacao(){
-  try{ ADM.situacao=await rest(`vw_plano_situacao?ciclo_id=eq.${PE.ciclo}&select=entidade_codigo,nome,tipo,central_codigo,situacao,ultima_versao,versao_oficial,fim_construcao&order=nome`);
-       ADM.situacaoEm=new Date().toISOString(); }
-  catch(e){ ADM.situacao=[]; aviso("Não consegui ler a situação dos planos: "+e.message, true); }
-  pinta();
-}
-function admSituacaoPlanos(){
-  if(!ADM.situacao){ admCarregarSituacao(); return `<p class="vazio">Carregando…</p>`; }
-  const f=ADM.filtroSit||(ADM.filtroSit={sit:"", central:"", tipo:"cooperativa", busca:""});
-  const q=semAcento(f.busca||"");
-  const base=ADM.situacao.filter(x=>(!f.tipo||x.tipo===f.tipo)&&(!f.central||x.central_codigo===f.central||x.entidade_codigo===f.central));
-  const lista=base.filter(x=>(!f.sit||x.situacao===f.sit)&&(!q||semAcento(x.nome+" "+x.entidade_codigo).includes(q)));
-  const cont=s=>base.filter(x=>x.situacao===s).length;
-  const concl=cont("final_registrado")+cont("ajustado");
-  const centrais=ADM.ents.filter(e=>e.tipo==="central");
-  return `<div class="adm-resumo">
-      <span><b>${concl}</b> de ${base.length} concluíram (${base.length?Math.round(concl/base.length*100):0}%)</span>
-      ${Object.keys(ROT_SIT_PLANO).map(s=>`<span><b>${cont(s)}</b> ${ROT_SIT_PLANO[s].toLowerCase()}</span>`).join("")}</div>
-    <p class="secao-desc">Onde cada entidade está no ciclo ${PE.ciclo}, agora. "Concluíram" = versão final (ou ajuste) registrada.
-      Atualizado às ${fmtDataHora(ADM.situacaoEm)}. <a href="#" onclick="ADM.situacao=null;pinta();return false">atualizar</a></p>
-    <div class="adm-filtros">
-      <input type="search" placeholder="Buscar entidade" value="${esc(f.busca||"")}" oninput="ADM.filtroSit.busca=this.value;pinta()">
-      <select onchange="ADM.filtroSit.tipo=this.value;pinta()"><option value="cooperativa" ${f.tipo==="cooperativa"?"selected":""}>Cooperativas</option>
-        <option value="central" ${f.tipo==="central"?"selected":""}>Centrais</option><option value="" ${!f.tipo?"selected":""}>Todas</option></select>
-      <select onchange="ADM.filtroSit.central=this.value;pinta()"><option value="">Todas as Centrais</option>${centrais.map(c=>`<option value="${c.codigo}" ${c.codigo===f.central?"selected":""}>${esc(c.nome)}</option>`).join("")}</select>
-      <select onchange="ADM.filtroSit.sit=this.value;pinta()">${optsLista(ROT_SIT_PLANO,f.sit,"Todas as situações")}</select>
-    </div>
-    <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Entidade</th><th>Central</th><th>Situação</th><th>Versões</th></tr></thead><tbody>
-      ${lista.map(x=>`<tr><td><b>${esc(x.nome)}</b><small>${esc(x.entidade_codigo)}</small></td>
-        <td><small>${esc(nomeEnt(x.central_codigo||x.entidade_codigo))}</small></td>
-        <td><span class="adm-sit ${COR_SIT_PLANO[x.situacao]||""}">${ROT_SIT_PLANO[x.situacao]||x.situacao}</span></td>
-        <td><small>${x.ultima_versao?`${x.ultima_versao} registrada(s)${x.versao_oficial?` · oficial: v${x.versao_oficial}`:""}`:"—"}</small></td></tr>`).join("")
-        ||`<tr><td colspan="4" class="vazio">Nenhuma entidade com esses filtros.</td></tr>`}
-    </tbody></table></div><p class="adm-nota">${lista.length} de ${base.length} entidades.</p>`;
-}
-function admPedidos(){
-  if(!ADM.pedidos.length) return `<p class="vazio">Nenhum pedido pendente. Indicações feitas pelas entidades aparecem em Pessoas e convites, no grupo "Indicado pela entidade".</p>`;
-  return `<div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Pessoa</th><th>Entidade</th><th>Pediu</th><th>Justificativa</th><th></th></tr></thead><tbody>
-    ${ADM.pedidos.map(s=>`<tr><td><b>${esc(s.pessoa?.nome||"—")}</b><small>${esc(s.pessoa?.email||"")}</small></td>
-      <td>${esc(nomeEnt(s.entidade_codigo))}</td>
-      <td><select id="ped-${s.id}">${optsLista(ROT_PAPEL,s.papel_pedido)}</select></td>
-      <td><small>${esc(s.justificativa||"")}</small></td>
-      <td class="adm-acoes"><button class="btn-p mini" onclick="admDecidir('${s.id}',true)">Aprovar</button>
-        <button class="btn-t mini" onclick="admDecidir('${s.id}',false)">Recusar</button></td></tr>`).join("")}
-  </tbody></table></div>`;
-}
-async function admDecidir(id, aprovar){
-  const motivo=aprovar?null:prompt("Motivo da recusa (a pessoa recebe o aviso):"); if(!aprovar&&motivo===null) return;
-  try{ await rpc("decidir_solicitacao",{p_id:id, p_aprovar:aprovar, p_papel:aprovar?$id("ped-"+id).value:null, p_motivo:motivo});
-       ADM.pedidos=ADM.pedidos.filter(x=>x.id!==id); pinta(); }
-  catch(e){ aviso(e.message, true); }
-}
-const ROT_TIPO_JAN={preenchimento:"Preenchimento (só provisória)", construcao:"Construção (provisória e final)", ajuste:"Ajuste (com motivo)"};
-const ROT_CICLO={preparacao:"Em preparação (só administradores e CAS veem)", publicado:"Publicado (entidades montam nas janelas)", encerrado:"Encerrado (só leitura)"};
 const paraLocal=iso=>{ if(!iso) return ""; const d=new Date(iso); const z=n=>String(n).padStart(2,"0");
   return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`; };
+function sitJanela(j){ const a=Date.now(); return a<new Date(j.abre_em) ? "à frente" : a<new Date(j.fecha_em) ? "aberta" : "encerrada"; }
 function admJanelas(){
-  const c=ADM.ciclo;
-  return `<section class="secao"><div class="secao-cab"><h3>Ciclo ${PE.ciclo}</h3></div>
-      <p class="secao-desc">Enquanto o ciclo está em preparação, nenhuma entidade monta plano, mesmo com a janela aberta.
-      Publicar libera o catálogo e as janelas para todos que têm acesso.</p>
-      <div class="adm-form"><select id="adm-ciclo">${optsLista(ROT_CICLO,c&&c.status)}</select>
-        <button class="btn-p mini" onclick="admSalvarCiclo()">Salvar status</button></div></section>
+  const c=ADM.ciclo||(SESSAO_REAL&&SESSAO_REAL.ciclo)||null, st=c&&c.status;
+  const hoje=new Date().toISOString().slice(0,10);
+  const perfis=["visualizador","editor","sistemico"];
+  const idj=j=>esc(String(j.id));
+  const botaoCiclo = st==="preparacao" ? `<button class="btn-p mini" onclick="admMudarCiclo('publicado')">Publicar ciclo</button>`
+    : st==="publicado" ? `<button class="btn-t mini" onclick="admMudarCiclo('preparacao')">Voltar para preparação</button>` : "";
+  return `<section class="secao"><div class="secao-cab"><h3>Ciclo ${PE.ciclo}</h3><span class="cnt">${esc(c&&c.nome||"")}</span></div>
+      <p class="secao-desc">Com o ciclo <b>em preparação</b>, as cooperativas não enxergam o catálogo nem montam plano, mesmo com a janela aberta.
+      <b>Publicado</b>: o catálogo aparece e o plano pode ser montado dentro das janelas. <b>Encerrado</b>: só leitura.</p>
+      <div class="adm-form"><span>Situação atual: <span class="adm-sit ${st==="publicado"?"ativo":st==="preparacao"?"convidado":""}">${esc(ROT_CICLO[st]||st||"—")}</span></span></div></section>
     <section class="secao"><div class="secao-cab"><h3>Janelas</h3><span class="cnt">horário de Brasília</span></div>
-      <p class="secao-desc">A oficial de cada entidade é a última versão final (ou ajuste) registrada numa janela já fechada.
-      Uma janela com Central só vale para ela e as suas cooperativas (prorrogação). Toda mudança pede um motivo, que vai para o registro de decisões.</p>
-      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Nome</th><th>Tipo</th><th>Abre</th><th>Fecha</th><th>Só para a Central</th><th></th></tr></thead><tbody>
-      ${ADM.janelas.map(j=>`<tr><td><input id="jn-${j.id}" value="${esc(j.nome)}"></td>
-        <td><select id="jt-${j.id}">${optsLista(ROT_TIPO_JAN,j.tipo)}</select></td>
-        <td><input type="datetime-local" id="ja-${j.id}" value="${paraLocal(j.abre_em)}"></td>
-        <td><input type="datetime-local" id="jf-${j.id}" value="${paraLocal(j.fecha_em)}"></td>
-        <td><select id="jc-${j.id}"><option value="">Todas</option>${ADM.ents.filter(e=>e.tipo==="central").map(e=>`<option value="${e.codigo}" ${e.codigo===j.central_codigo?"selected":""}>${esc(e.nome)}</option>`).join("")}</select></td>
-        <td class="adm-acoes"><button class="btn-p mini" onclick="admSalvarJanela('${j.id}')">Salvar</button></td></tr>`).join("")}
+      <p class="secao-desc">Qualquer janela aberta permite montar, registrar e ajustar a estratégia; o tipo é só um rótulo.
+      Para reabrir, crie outra janela ou prorrogue o fechamento. A versão oficial de cada cooperativa é a última registrada com a janela já fechada.
+      Toda mudança fica na auditoria do banco (quem e quando).</p>
+      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Nome</th><th>Tipo</th><th>Abre</th><th>Fecha</th><th>Observação</th><th>Situação</th><th></th></tr></thead><tbody>
+      ${ADM.janelas.map(j=>`<tr><td><input id="jn-${idj(j)}" value="${esc(j.nome||"")}"></td>
+        <td><select id="jt-${idj(j)}">${optsLista(ROT_TIPO_JAN,j.tipo)}</select></td>
+        <td><input type="datetime-local" id="ja-${idj(j)}" value="${paraLocal(j.abre_em)}"></td>
+        <td><input type="datetime-local" id="jf-${idj(j)}" value="${paraLocal(j.fecha_em)}"></td>
+        <td><input id="jo-${idj(j)}" value="${esc(j.observacao||"")}" placeholder="—"></td>
+        <td><span class="adm-sit ${sitJanela(j)==="aberta"?"ativo":""}">${sitJanela(j)}</span></td>
+        <td class="adm-acoes"><button class="btn-p mini" onclick="admSalvarJanela('${idj(j)}')">Salvar</button>
+          <button class="btn-t mini" onclick="admExcluirJanela('${idj(j)}')" title="Só se nenhuma versão de plano foi registrada nela">Excluir</button></td></tr>`).join("")}
       <tr class="novo"><td><input id="jn-novo" placeholder="Nova janela"></td><td><select id="jt-novo">${optsLista(ROT_TIPO_JAN,"construcao")}</select></td>
         <td><input type="datetime-local" id="ja-novo"></td><td><input type="datetime-local" id="jf-novo"></td>
-        <td><select id="jc-novo"><option value="">Todas</option>${ADM.ents.filter(e=>e.tipo==="central").map(e=>`<option value="${e.codigo}">${esc(e.nome)}</option>`).join("")}</select></td>
+        <td><input id="jo-novo" placeholder="Observação"></td><td></td>
         <td class="adm-acoes"><button class="btn-p mini" onclick="admSalvarJanela('novo')">Criar</button></td></tr>
       </tbody></table></div></section>
-    <section class="secao"><div class="secao-cab"><h3>O que significa cada opção</h3></div>
-      <div class="pe-legenda">
-        <div><h4>Situação do ciclo</h4><dl>
-          <dt>Em preparação</dt><dd>Só administradores e o CAS veem o catálogo. Nenhuma entidade monta plano, mesmo com janela aberta.</dd>
-          <dt>Publicado</dt><dd>Todos com acesso veem o catálogo (temas, movimentos, indicadores, entregas). Montar e registrar só dentro de uma janela aberta.</dd>
-          <dt>Encerrado</dt><dd>Só leitura: os planos oficiais ficam guardados para o histórico e para o ciclo seguinte.</dd></dl></div>
-        <div><h4>Tipo de janela</h4><dl>
-          <dt>Preenchimento</dt><dd>Para rascunhar: só registra versões provisórias, que não valem como plano.</dd>
-          <dt>Construção</dt><dd>A janela principal: registra provisórias e a final. A última final vira a oficial quando a janela fecha. Sem final no fechamento, a entidade fica como "não registrou".</dd>
-          <dt>Ajuste</dt><dd>Revisão durante o ano: a nova versão exige um motivo e só existe para quem já tem a final.</dd>
-          <dt>Só para a Central</dt><dd>A janela vale só para a Central escolhida e as suas cooperativas (ex.: prorrogação). "Todas" vale para o Sistema.</dd></dl></div>
-      </div></section>`;
+    <section class="secao"><div class="secao-cab"><h3>Módulos</h3><span class="cnt">o que cada perfil vê e a partir de quando</span></div>
+      <p class="secao-desc">Um módulo aparece no menu de quem tem um dos perfis marcados, a partir da data de liberação.
+      Administradores veem tudo. A mudança vale no próximo acesso de cada pessoa.</p>
+      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Módulo</th>${perfis.map(p=>`<th>${esc(ROT_PERFIL[p])}</th>`).join("")}
+        <th>Liberado a partir de</th><th>Hoje</th><th></th></tr></thead><tbody>
+      ${ADM.modulos.map(m=>{ const ch=esc(m.chave), lib=!!m.liberado_em && String(m.liberado_em).slice(0,10)<=hoje;
+        return `<tr><td><b>${esc(ROT_MODULO[m.chave]||m.chave)}</b><small>${esc(m.descricao||m.chave)}</small></td>
+        ${perfis.map(p=>`<td><input type="checkbox" id="md-${ch}-${p}" ${(m.perfis||[]).includes(p)?"checked":""} aria-label="${esc(ROT_PERFIL[p])}"></td>`).join("")}
+        <td><input type="date" id="md-${ch}-data" value="${esc(String(m.liberado_em||"").slice(0,10))}"></td>
+        <td><span class="adm-sit ${lib&&(m.perfis||[]).length?"ativo":""}">${lib?((m.perfis||[]).length?"liberado":"sem perfil"):"ainda não"}</span></td>
+        <td class="adm-acoes"><button class="btn-p mini" onclick="admSalvarModulo('${ch}')">Salvar</button></td></tr>`; }).join("")
+        ||`<tr><td colspan="7" class="vazio">Nenhum módulo configurado.</td></tr>`}
+      </tbody></table></div></section>`;
 }
-async function registrarDecisao(area, titulo, descricao, motivo){
-  return rest("decisao",{method:"POST", prefer:"return=minimal", body:{ciclo_id:PE.ciclo, area, titulo:titulo.slice(0,140), descricao, motivo,
-    situacao:"final", decidido_por:(SESSAO_REAL.pessoa.nome||SESSAO_REAL.pessoa.email), registrado_por:SESSAO_REAL.pessoa.id}});
-}
-async function admSalvarCiclo(){
-  const st=$id("adm-ciclo").value; if(!ADM.ciclo||st===ADM.ciclo.status) return;
-  const motivo=prompt(`Motivo para mudar o ciclo ${PE.ciclo} para "${st}" (vai para o registro de decisões):`); if(!motivo) return;
-  try{ await rest(`ciclo?id=eq.${PE.ciclo}`,{method:"PATCH", body:{status:st, ...(st==="publicado"?{publicado_em:new Date().toISOString()}:{})}});
-       await registrarDecisao("janelas", `Ciclo ${PE.ciclo}: ${ADM.ciclo.status} → ${st}`, `Status do ciclo alterado para ${st}.`, motivo);
-       ADM.carregado=false; await admCarregar(); await carregarCatalogo(); }
-  catch(e){ aviso("Não salvou: "+e.message, true); }
+async function admRecarregarJanelas(){
+  ADM.janelas=(await rpc("admin_janelas",{p_ciclo:PE.ciclo}))||[];
+  await carregarCatalogo();
+  if(ENTIDADE.tipo==="cooperativa") await carregarPlano();
+  pinta();
 }
 async function admSalvarJanela(id){
-  const v=k=>$id(k+"-"+id).value;
-  const corpo={nome:v("jn").trim(), tipo:v("jt"), abre_em:v("ja")?new Date(v("ja")).toISOString():null,
-               fecha_em:v("jf")?new Date(v("jf")).toISOString():null, central_codigo:v("jc")||null};
-  if(!corpo.nome||!corpo.abre_em||!corpo.fecha_em) return aviso("Preencha nome, abertura e fechamento.", true);
-  const motivo=prompt("Motivo da mudança na janela (vai para o registro de decisões):"); if(!motivo) return;
+  const v=k=>{ const el=$id(k+"-"+id); return el?el.value:""; };
+  const nome=v("jn").trim(), abre=v("ja"), fecha=v("jf");
+  if(!nome||!abre||!fecha) return aviso("Preencha nome, abertura e fechamento.", true);
+  if(new Date(fecha)<=new Date(abre)) return aviso("O fechamento precisa ser depois da abertura.", true);
   try{
-    if(id==="novo") await rest("janela",{method:"POST", prefer:"return=minimal", body:{...corpo, ciclo_id:PE.ciclo, criada_por:SESSAO_REAL.pessoa.id}});
-    else await rest(`janela?id=eq.${id}`,{method:"PATCH", body:corpo});
-    await registrarDecisao("janelas", `Janela "${corpo.nome}" ${id==="novo"?"criada":"alterada"}`,
-      `${ROT_TIPO_JAN[corpo.tipo]} · ${fmtDataHora(corpo.abre_em)} a ${fmtDataHora(corpo.fecha_em)}${corpo.central_codigo?" · só "+nomeEnt(corpo.central_codigo):""}`, motivo);
-    ADM.carregado=false; await admCarregar(); await carregarCatalogo();
-    if(ENTIDADE.tipo!=="cas") await carregarPlano();
-    pinta();
+    await rpc("admin_salvar_janela",{p_id:id==="novo"?null:id, p_ciclo:PE.ciclo, p_tipo:v("jt")||"construcao", p_nome:nome,
+      p_abre_em:new Date(abre).toISOString(), p_fecha_em:new Date(fecha).toISOString(), p_observacao:v("jo").trim()||null});
+    await admRecarregarJanelas();
+    aviso(id==="novo"?"Janela criada.":"Janela salva.");
   }catch(e){ aviso("Não salvou: "+e.message, true); }
 }
-const ROT_AREA={dados:"Dados", indicadores:"Indicadores", acesso:"Acesso", janelas:"Janelas", plano:"Plano", visibilidade:"Visibilidade", catalogo:"Catálogo", plataforma:"Plataforma"};
-function admDecisoes(){
-  const n=ADM.novaDec;
-  return `<p class="secao-desc">Por que a plataforma é como é. Decisão provisória pode ser editada; a final não muda mais:
-    para mudar, registre outra que a substitui. Nada é apagado.</p>
-    ${n?`<div class="adm-form col">
-      <div class="adm-linha"><select onchange="ADM.novaDec.area=this.value">${optsLista(ROT_AREA,n.area)}</select>
-        <select onchange="ADM.novaDec.situacao=this.value"><option value="provisoria" ${n.situacao==="provisoria"?"selected":""}>Provisória</option><option value="final" ${n.situacao==="final"?"selected":""}>Final</option></select>
-        <select onchange="ADM.novaDec.substitui_id=this.value||null"><option value="">Não substitui nenhuma</option>${ADM.decisoes.filter(d=>d.vigente).map(d=>`<option value="${d.id}">Substitui: ${esc(d.titulo)}</option>`).join("")}</select></div>
-      <input placeholder="Título" maxlength="140" value="${esc(n.titulo)}" oninput="ADM.novaDec.titulo=this.value">
-      <textarea placeholder="O que foi decidido" rows="3" oninput="ADM.novaDec.descricao=this.value">${esc(n.descricao)}</textarea>
-      <textarea placeholder="Por quê (motivo)" rows="2" oninput="ADM.novaDec.motivo=this.value">${esc(n.motivo)}</textarea>
-      <div class="adm-linha"><input placeholder="Quem decidiu" value="${esc(n.decidido_por)}" oninput="ADM.novaDec.decidido_por=this.value">
-        <button class="btn-p mini" onclick="admCriarDecisao()">Registrar decisão</button><button class="btn-t mini" onclick="ADM.novaDec=null;pinta()">Cancelar</button></div></div>`
-      :`<button class="btn-t" onclick="ADM.novaDec={area:'plataforma',situacao:'provisoria',titulo:'',descricao:'',motivo:'',decidido_por:SESSAO_REAL.pessoa.nome||'',substitui_id:null};pinta()">+ Registrar decisão</button>`}
-    <div class="adm-decs">${ADM.decisoes.map(d=>`<div class="adm-dec ${d.vigente?"":"subst"}">
-      <div class="adm-dec-cab"><span class="adm-sit ${d.situacao==="final"?"ativo":"sugerido"}">${d.situacao==="final"?"Final":"Provisória"}</span>
-        <span class="adm-area">${esc(ROT_AREA[d.area]||d.area)}</span><b>${esc(d.titulo)}</b>
-        <small>${fmtData(d.decidido_em)} · ${esc(d.decidido_por)}${d.vigente?"":" · substituída por: "+esc(d.substituida_por)}</small></div>
-      <p>${esc(d.descricao)}</p>${d.motivo?`<p class="adm-motivo">Por quê: ${esc(d.motivo)}</p>`:""}
-      ${d.situacao==="provisoria"?`<button class="btn-t mini" onclick="admFinalizarDecisao(${d.id})">Tornar final</button>`:""}</div>`).join("")}</div>`;
+async function admExcluirJanela(id){
+  const j=ADM.janelas.find(x=>String(x.id)===String(id));
+  if(!confirm(`Excluir a janela "${j?j.nome:id}"? Só é possível se nenhuma versão de plano foi registrada nela.`)) return;
+  try{ await rpc("admin_excluir_janela",{p_id:id}); await admRecarregarJanelas(); aviso("Janela excluída."); }
+  catch(e){ aviso("Não excluiu: "+e.message, true); }
 }
-async function admCriarDecisao(){
-  const n=ADM.novaDec;
-  if(!n.titulo.trim()||!n.descricao.trim()||!n.decidido_por.trim()) return aviso("Preencha título, descrição e quem decidiu.", true);
-  try{ await rest("decisao",{method:"POST", prefer:"return=minimal", body:{area:n.area, situacao:n.situacao, titulo:n.titulo.trim(), descricao:n.descricao.trim(),
-         motivo:n.motivo.trim()||null, decidido_por:n.decidido_por.trim(), substitui_id:n.substitui_id?Number(n.substitui_id):null,
-         ciclo_id:PE.ciclo, registrado_por:SESSAO_REAL.pessoa.id}});
-       ADM.novaDec=null; ADM.decisoes=await rest("vw_decisao?select=*&order=decidido_em.desc,id.desc"); pinta(); }
-  catch(e){ aviso("Não registrou: "+e.message, true); }
+async function admSalvarModulo(chave){
+  const perfis=["visualizador","editor","sistemico"].filter(p=>{ const el=$id(`md-${chave}-${p}`); return el&&el.checked; });
+  const data=($id(`md-${chave}-data`)||{}).value||null;
+  try{
+    const r=await rpc("admin_salvar_modulo",{p_chave:chave, p_perfis:perfis, p_liberado_em:data});
+    const i=ADM.modulos.findIndex(m=>m.chave===chave);
+    const linha=Object.assign({}, ADM.modulos[i]||{chave}, r&&typeof r==="object"?r:{perfis, liberado_em:data});
+    if(i>=0) ADM.modulos[i]=linha; else ADM.modulos.push(linha);
+    pinta(); aviso(`Módulo "${ROT_MODULO[chave]||chave}" salvo.`);
+  }catch(e){ aviso("Não salvou: "+e.message, true); }
 }
-async function admFinalizarDecisao(id){
-  if(!confirm("Tornar esta decisão final? Depois disso ela não muda mais (só pode ser substituída).")) return;
-  try{ await rest(`decisao?id=eq.${id}`,{method:"PATCH", body:{situacao:"final"}});
-       ADM.decisoes=await rest("vw_decisao?select=*&order=decidido_em.desc,id.desc"); pinta(); }
-  catch(e){ aviso(e.message, true); }
+async function admCarregarDados(){
+  try{ ADM.dados=(await rpc("admin_dados"))||{}; }catch(e){ ADM.dados={erro:e.message}; }
+  if(estado.modulo==="admin" && ADM.aba==="dados") pinta();
+}
+const fmtNum = (x, casas) => x==null || x==="" || !isFinite(Number(x)) ? "—" : Number(x).toLocaleString("pt-BR",{maximumFractionDigits:casas==null?2:casas});
+function coberturaPct(d){
+  if(Number(d.entidades_ativas)>0) return Math.round(100*Number(d.entidades_ultimo_mes||0)/Number(d.entidades_ativas));
+  const c=Number(d.cobertura_ultimo_mes); if(!isFinite(c)) return null;
+  return Math.round(c<=1.0001 ? c*100 : c);               
+}
+function admDados(){
+  if(!ADM.dados){ admCarregarDados(); return `<p class="vazio">Carregando os dados…</p>`; }
+  if(ADM.dados.erro) return `<div class="pe-demo">Não consegui ler os dados: ${esc(ADM.dados.erro)}
+    <button class="btn-t mini" onclick="ADM.dados=null;pinta()">Tentar de novo</button></div>`;
+  const cargas=ADM.dados.cargas||[], disp=ADM.dados.disponibilidade||[], conc=ADM.dados.conciliacao||[];
+  const fd=ADM.filtroDados, q=semAcento(fd.busca||"");
+  const nomeInd=x=>x.nome||x.indicador_nome||x.indicador||x.indicador_chave||"—";
+  const chaveInd=x=>x.indicador_chave||x.indicador||x.chave||"";
+  const dispF=disp.filter(d=>(!fd.nivel||d.nivel===fd.nivel) && (!q||semAcento(nomeInd(d)+" "+chaveInd(d)).includes(q)));
+  const concF=conc.filter(d=>!q||semAcento(nomeInd(d)+" "+chaveInd(d)).includes(q))
+    .sort((a,b)=>(Number(b.divergentes)||0)-(Number(a.divergentes)||0) || String(nomeInd(a)).localeCompare(String(nomeInd(b)),"pt-BR"));
+  const nErros=c=>Array.isArray(c.erros)?c.erros.length:(Number(c.erros)||0);
+  const niveis={cooperativa:"Cooperativa", central:"Central", sistema:"Sistema"};
+  return `<p class="secao-desc">Leitura do banco: nada aqui se edita. As cargas chegam pelo formato único de valores e, ao fechar cada uma,
+    a disponibilidade e a conciliação são recalculadas.</p>
+    <section class="secao"><div class="secao-cab"><h3>Últimas cargas</h3><span class="cnt">${cargas.length}</span></div>
+      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Carga</th><th>Recebida</th><th>Situação</th>
+        <th class="adm-num">Lidas</th><th class="adm-num">Aceitas</th><th class="adm-num">Rejeitadas</th><th class="adm-num">Alteradas</th><th class="adm-num">Erros</th><th>Quem enviou</th></tr></thead><tbody>
+      ${cargas.map(c=>`<tr><td><b>#${esc(String(c.id??"—"))}</b><small>${esc([c.tipo,c.canal].filter(Boolean).join(" · "))}</small></td>
+        <td><small>${c.recebida_em?fmtDataHora(c.recebida_em):"—"}${c.processada_em?`<br>processada ${fmtDataHora(c.processada_em)}`:""}</small></td>
+        <td><span class="adm-sit ${/erro|rejeit/.test(c.status||"")?"convidado":c.status==="processada"?"ativo":""}">${esc(String(c.status||"—").replace(/_/g," "))}</span></td>
+        <td class="adm-num">${fmtNum(c.linhas_lidas,0)}</td><td class="adm-num">${fmtNum(c.linhas_aceitas,0)}</td>
+        <td class="adm-num">${fmtNum(c.linhas_rejeitadas,0)}</td><td class="adm-num">${fmtNum(c.linhas_alteradas,0)}</td>
+        <td class="adm-num" ${nErros(c)&&Array.isArray(c.erros)?`title="${esc(c.erros.slice(0,5).map(x=>typeof x==="string"?x:JSON.stringify(x)).join("\n"))}"`:""}>${nErros(c)||"—"}</td>
+        <td><small>${esc(c.enviada_por||"—")}</small></td></tr>`).join("")||`<tr><td colspan="9" class="vazio">Nenhuma carga registrada.</td></tr>`}
+      </tbody></table></div></section>
+    <div class="adm-filtros">
+      <input type="search" placeholder="Buscar indicador" value="${esc(fd.busca||"")}" oninput="ADM.filtroDados.busca=this.value;pinta();const e=this;setTimeout(()=>{const n=document.querySelector('.adm-filtros input[type=search]');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length);}},0)">
+      <select onchange="ADM.filtroDados.nivel=this.value;pinta()">${optsLista(niveis, fd.nivel, "Todos os níveis")}</select>
+    </div>
+    <section class="secao"><div class="secao-cab"><h3>Disponibilidade por indicador</h3><span class="cnt">${dispF.length} de ${disp.length}</span></div>
+      <p class="secao-desc">Quanto histórico cada indicador tem em cada nível. Mês de referência = último mês com cobertura mínima.
+      "Por brutos desde" = a partir de quando o número é calculado pelas medidas brutas (antes, valor informado pelo Power BI).</p>
+      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Indicador</th><th>Nível</th><th>Primeiro mês</th><th>Último mês</th>
+        <th class="adm-num">Meses</th><th class="adm-num">Cobertura</th><th>Mês de referência</th><th>Por brutos desde</th></tr></thead><tbody>
+      ${dispF.map(d=>{ const cob=coberturaPct(d);
+        return `<tr><td><b>${esc(nomeInd(d))}</b><small>${esc(chaveInd(d))}</small></td><td><small>${esc(niveis[d.nivel]||d.nivel||"—")}</small></td>
+        <td>${fmtMes(d.primeiro_mes)}</td><td>${fmtMes(d.ultimo_mes)}</td>
+        <td class="adm-num">${fmtNum(d.meses,0)}${d.meses_esperados?`<small>de ${fmtNum(d.meses_esperados,0)}</small>`:""}</td>
+        <td class="adm-num">${cob==null?"—":cob+"%"}${d.entidades_ativas?`<small>${fmtNum(d.entidades_ultimo_mes,0)} de ${fmtNum(d.entidades_ativas,0)}</small>`:""}</td>
+        <td>${fmtMes(d.mes_referencia)}</td><td>${d.vigencia_brutos_desde?fmtMes(d.vigencia_brutos_desde):"—"}</td></tr>`; }).join("")
+        ||`<tr><td colspan="8" class="vazio">Nenhum indicador com esses filtros.</td></tr>`}
+      </tbody></table></div></section>
+    <section class="secao"><div class="secao-cab"><h3>Conciliação com o Power BI</h3><span class="cnt">calculado × valor do Power BI</span></div>
+      <p class="secao-desc">Por indicador: quantos pares entidade × mês foram comparados, quantos divergem e a maior diferença encontrada.</p>
+      <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Indicador</th><th class="adm-num">Comparados</th><th class="adm-num">Divergentes</th>
+        <th class="adm-num">Maior diferença</th><th>Último mês</th></tr></thead><tbody>
+      ${concF.map(d=>`<tr class="${Number(d.divergentes)>0?"adm-alerta":""}"><td><b>${esc(nomeInd(d))}</b><small>${esc(chaveInd(d))}</small></td>
+        <td class="adm-num">${fmtNum(d.comparados,0)}</td><td class="adm-num">${fmtNum(d.divergentes,0)}</td>
+        <td class="adm-num">${fmtNum(d.maior_diferenca,4)}</td><td>${fmtMes(d.ultimo_mes)}</td></tr>`).join("")
+        ||`<tr><td colspan="5" class="vazio">Sem conciliação calculada.</td></tr>`}
+      </tbody></table></div></section>`;
+}
+async function admCarregarTestes(){
+  try{ ADM.testes=(await rpc("planos_teste"))||[]; }catch(e){ ADM.testes=[]; aviso("Não consegui ler os planos de teste: "+e.message, true); }
+  if(estado.modulo==="admin" && ADM.aba==="simular") pinta();
+}
+function admSimEntidade(cod){
+  const sim=ADM.sim||(ADM.sim={entidade:"", papel:""});
+  sim.entidade=cod; const ps=PERFIS_DO_TIPO[tipoEnt(cod)]||[];
+  if(!ps.includes(sim.papel)) sim.papel=ps[0]||"";
+  pinta();
+}
+const ROT_ST_PLANO={rascunho:"Em preenchimento", registrado:"Registrado", em_ajuste:"Em ajuste"};
+function admSimular(){
+  const t=ADM.testes||[], sim=ADM.sim||(ADM.sim={entidade:"", papel:""});
+  const ps=PERFIS_DO_TIPO[tipoEnt(sim.entidade)]||[];
+  return `<section class="secao"><h2>Ver a plataforma como outra pessoa</h2>
+    <p class="secao-desc">Escolha a entidade e o perfil. A plataforma passa a se comportar exatamente como para essa pessoa, com as regras de acesso do banco:
+    o que ela vê, o que pode editar e os indicadores da entidade. Dá para montar e registrar o plano: ele fica marcado como <b>teste</b>,
+    não depende da janela, não aparece fora da simulação e pode ser apagado aqui. Nada real é gravado durante a simulação.</p>
+    <div class="adm-form">
+      <select onchange="admSimEntidade(this.value)">${optsEnt(sim.entidade)}</select>
+      <select onchange="ADM.sim.papel=this.value" ${ps.length?"":"disabled"}>${ps.length?optsLista(Object.fromEntries(ps.map(p=>[p,ROT_PERFIL[p]])), sim.papel):`<option value="">— escolha a entidade —</option>`}</select>
+      <button class="btn-p mini" onclick="iniciarSimulacao(ADM.sim.entidade, ADM.sim.papel)" ${sim.entidade&&sim.papel?"":"disabled"}>Entrar na simulação</button>
+    </div>
+    <p class="secao-desc">Cooperativa: visualizador ou editor. Central e CAS: sistêmico. Dica: para testar a visão de uma Central com os planos das suas
+    cooperativas, monte antes os planos de teste de algumas coops dela.</p></section>
+    <section class="secao"><h2>Planos de teste</h2>
+    ${ADM.testes===null?`<p class="vazio">Carregando…</p>`:t.length?`<table class="adm-tab"><thead><tr><th>Entidade</th><th>Situação</th><th>Versões</th><th>Atualizado</th><th></th></tr></thead><tbody>
+      ${t.map(x=>`<tr><td>${esc(x.nome)} (${esc(x.entidade)})</td><td>${esc(ROT_ST_PLANO[x.status]||x.status||"—")}</td><td>${x.versoes||0}</td>
+        <td>${fmtDataHora(x.atualizado_em)}</td><td><button class="btn-t mini" onclick="admApagarTeste(${esc(JSON.stringify(x.entidade))})">Apagar</button></td></tr>`).join("")}
+      </tbody></table><div class="adm-linha"><button class="btn-t" onclick="admApagarTeste(null)">Apagar todos os planos de teste</button></div>`
+      :`<p class="vazio">Nenhum plano de teste.</p>`}</section>`;
+}
+async function admApagarTeste(ent){
+  if(!confirm(ent?`Apagar o plano de teste de ${nomeEnt(ent)}?`:"Apagar TODOS os planos de teste?")) return;
+  try{ const n=await rpc("apagar_planos_teste",{p_entidade:ent}); aviso(`${n} plano(s) de teste apagado(s).`); admCarregarTestes(); }
+  catch(e){ aviso("Não consegui apagar: "+e.message, true); }
 }
 function abrirSimularSePedido(){        
   let pedir=false; try{ pedir=sessionStorage.getItem("pe_abrir_simular")==="1"; sessionStorage.removeItem("pe_abrir_simular"); }catch(e){}
-  if(pedir && SESSAO_REAL && SESSAO_REAL.pessoa && SESSAO_REAL.pessoa.owner && document.body.classList.contains("dentro")){
+  if(pedir && ehAdministrador() && document.body.classList.contains("dentro")){
     ADM.aba="simular"; irAdmin(); admCarregarTestes(); }
 }
 async function iniciarReal(){
@@ -6835,11 +6841,9 @@ const DR = {
   linhasSerie:null, entSerie:null,   
   eixo:[],                           
   entCarregada:null,
-  cortesLinhas:[], cortesErro:null,
   painel:null, painelCarregando:false, painelErro:null, entPorId:new Map()
 };
 const SEM_DADOS = "Sem dados na base ainda";
-const COM_RECORTES = false, COM_ANALISES = false;
 const numOuNulo = x => (x===null || x===undefined || x==="" || !isFinite(Number(x))) ? null : Number(x);
 const ehNum = x => typeof x==="number" && isFinite(x);
 (function(){
@@ -6850,7 +6854,14 @@ const ehNum = x => typeof x==="number" && isFinite(x);
   .dr-sem-v{font-size:13px!important; color:var(--fraco)!important; font-family:inherit!important; font-weight:600!important;
     letter-spacing:0!important; white-space:normal!important}
   .dr-semc .fk-r, .dr-semc h4{opacity:.85}
-  .dr-mes{font-size:11px; color:var(--tenue); font-weight:400}
+  .dr-mes{font-size:11px; color:var(--tenue); font-weight:400; white-space:nowrap}
+  .fi-corpo .fk-c .fk-r{white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    line-height:1.35; min-height:2.7em}
+  .fk-fant.dr-semc{opacity:1}
+  .fk-fant.dr-semc .fk-r{color:var(--tenue)}
+  .fk-fant.dr-semc .ft{opacity:.7}
+  .dr-tag{align-self:flex-start; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--fraco);
+    background:#fff; border:1px solid #DDE3DC; border-radius:999px; padding:2px 9px; margin:-2px 0 2px}
   .dr-nota{font-size:11.8px; color:var(--tenue); margin-top:10px; line-height:1.5}
   .rg.rg-sem{background:repeating-linear-gradient(90deg,#E3E8E2 0 4px,transparent 4px 8px)}
   .dr-carregando{margin-top:22px}
@@ -6919,7 +6930,7 @@ function zerarMetricas(){
   metricasTodas().forEach(m=>Object.assign(m,{
     s:[], sReal:[], porMes:{}, amUlt:null, semDado:true, fonte:null,
     central:null, sistema:null, percentil:null, quartil:null, p25:null, p75:null, selos:null,
-    cortes:{}, cortesMes:null, sSis:null, sCen:null}));
+    cortes:{}, cortesMes:null, sSis:null, sCen:null}));     
   MESES.splice(0, MESES.length);
   DR.eixo=[]; DR.entCarregada=null;
 }
@@ -6929,7 +6940,6 @@ Object.entries(CHAVE_METRICA).forEach(([ch,[tid,i]])=>{
 });
 zerarMetricas();
 MEDALHAS.forEach(md=>{ if(md.id==="acima") md.diz="O número está melhor que a mediana das cooperativas do Sistema no último mês."; });
-CORTES_PADRAO.splice(0, CORTES_PADRAO.length, {id:"seg",rot:"Segmento"}, {id:"mov",rot:"Movimentação"}, {id:"pri",rot:"Principalidade"});
 const entrarVinculoIntegracao = entrarVinculo;
 entrarVinculo = function(i){ zerarMetricas(); return entrarVinculoIntegracao(i); };
 const chamarIntegracao = chamar;
@@ -6993,38 +7003,15 @@ function aplicarSerieReal(linhas){
     if(u.casas!=null) m.casas=Number(u.casas); m.prefixo=u.prefixo||""; m.un=u.sufixo||"";
   });
 }
-async function carregarCortes(alvo){
-  DR.cortesErro=null; DR.cortesLinhas=[];
-  try{ const r=await rpc("cortes_entidade",{p_entidade:alvo}); DR.cortesLinhas=Array.isArray(r)?r:[]; }
-  catch(e){ DR.cortesErro=e.message; console.warn("Recortes não carregados", e); }
-}
-function aplicarCortes(){
-  metricasTodas().forEach(m=>{ m.cortes={}; m.cortesMes=null; });
-  const porChave={};
-  DR.cortesLinhas.forEach(l=>{ (porChave[l.chave]=porChave[l.chave]||[]).push(l); });
-  Object.entries(porChave).forEach(([ch,rows])=>{
-    const m=metricaPorChave(ch); if(!m) return;
-    const c={};
-    rows.slice().sort((a,b)=>(a.ordem||0)-(b.ordem||0)).forEach(r=>{
-      const v=numOuNulo(r.valor); if(v===null) return;
-      (c[r.dimensao]=c[r.dimensao]||[]).push([r.nome, v, numOuNulo(r.base)]);
-    });
-    m.cortes=c;
-    m.cortesMes=rows.map(r=>r.competencia).sort().pop()||null;
-  });
-}
 const carregarRealizadosIntegracao = carregarRealizados;
 carregarRealizados = async function(){
   const alvo=codigoProprio();
   if(DR.entCarregada && DR.entCarregada!==alvo) zerarMetricas();
   DR.linhasSerie=null; DR.entSerie=null;
-  const pCortes = COM_RECORTES && AUTH && ENTIDADE.id ? carregarCortes(alvo) : Promise.resolve();   
   const r=await carregarRealizadosIntegracao.apply(this, arguments);
-  await pCortes;
   if(r && r.ok && DR.entSerie===alvo && DR.linhasSerie) aplicarSerieReal(DR.linhasSerie);
-  else { const cortes=DR.cortesLinhas; zerarMetricas(); DR.cortesLinhas=cortes;
+  else { zerarMetricas();
          if(r && r.motivo && r.motivo!=="sem dados") aviso("Não consegui carregar os indicadores: "+r.motivo, true); }
-  aplicarCortes();
   DR.entCarregada=alvo;
   if(!(r&&r.ok)){ pinta(); if(estado.drawer) pintaDrawer(); }
   else if(estado.drawer && estado.drawer.tipo==="metrica") pintaDrawer();
@@ -7233,7 +7220,8 @@ grafico = function(s,{h=46,cor="var(--verde)",fill=true,pontos=false}={}){
   return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
     ${fill&&area?`<path d="${area}" fill="rgba(63,161,16,.10)"/>`:""}
     ${pathSe(d,`fill="none" stroke="${cor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"`)}
-    ${pontos?iU.map(i=>`<circle cx="${px(i).toFixed(1)}" cy="${py(v[i]).toFixed(1)}" r="1.6" fill="${cor}"/>`).join(""):""}
+    ${!contiguo&&iU.length>1?`<path d="${iU.map((i,k)=>(k?"L":"M")+px(i).toFixed(1)+" "+py(v[i]).toFixed(1)).join(" ")}" fill="none" stroke="${cor}" stroke-width="1.4" stroke-dasharray="3 3" opacity=".7" vector-effect="non-scaling-stroke"/>`:""}
+    ${pontos||!contiguo?iU.map(i=>`<circle cx="${px(i).toFixed(1)}" cy="${py(v[i]).toFixed(1)}" r="2" fill="${cor}" vector-effect="non-scaling-stroke"/>`).join(""):""}
     <circle cx="${px(iN).toFixed(1)}" cy="${py(v[iN]).toFixed(1)}" r="3" fill="${cor}" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>`;
 };
 const deltaTextoOriginal = deltaTexto;
@@ -7258,7 +7246,7 @@ limiares = function(m){
   return {q1:m.p25, q3:m.p75, melhores: m.menorMelhor ? m.p25 : m.p75, piores: m.menorMelhor ? m.p75 : m.p25};
 };
 refsAtivas = function(m){
-  const L=limiares(m), sel=(ENTIDADE.prefs&&ENTIDADE.prefs.referencias)||["central","sistema","melhores"];
+  const L=limiares(m), sel=["central","sistema","melhores"];     
   const rotCen = ENTIDADE.tipo==="central" ? "Coops da Central" : "Central";
   const todas=[["central",rotCen,m.central],["sistema","Sistema",m.sistema],["melhores","Melhores",L.melhores],["piores","Piores",L.piores]];
   return todas.filter(([id,,v])=>sel.includes(id) && ehNum(v)).map(([id,rot,v])=>({id,rot,v}));
@@ -7378,8 +7366,14 @@ htmlPasso1 = function(){
     .replace(/entre as 98 cooperativas naquele número:/, "entre as cooperativas do Sistema naquele número (percentil do último mês na base; cinza: sem dado ou sem posição calculada):");
 };
 function cartaoFicha(m){
-  if(!temDado(m)) return `<article class="fk-c dr-semc">
-      <span class="fk-r">${esc(m.curto||m.nome)}</span>${semDadosHtml(m,true)}</article>`;
+  if(!temDado(m)){                         
+    const f=fichaDe(m), construcao=!!(f && f.tem_dado===false);
+    return `<article class="fk-c fk-fant dr-semc" title="${esc(motivoSemDado(m))}">
+      <span class="fk-r">${esc(m.curto||m.nome)}</span>
+      <span class="ft ft-v"></span><span class="ft ft-sp"></span>
+      <span class="dr-tag">${construcao?"em construção":"sem dado"}</span>
+      <span class="ft ft-b"></span><span class="ft ft-g"></span></article>`;
+  }
   const v=valorUlt(m), s=mesesAte(m.amUlt,12).map(am=>m.porMes[am]?m.porMes[am].v:null);
   return `<article class="fk-c">
       <span class="fk-r">${esc(m.curto||m.nome)} <span class="dr-mes">· ${esc(rotAm(m.amUlt))}</span></span>
@@ -7497,34 +7491,15 @@ abaHist = function(m){
       <span><i style="background:#77857A"></i>Mediana do Sistema · ${fmtV(ult(sis),m)}</span></div>
     ${s.some(x=>!ehNum(x))?`<p class="dr-nota">Meses sem leitura na base ficam em branco no gráfico: nada é preenchido.</p>`:""}`;
 };
-abaSeg = function(m){
-  if(DR.cortesErro) return `<div class="vazio">Não consegui carregar os recortes: ${esc(DR.cortesErro)}</div>`;
-  const disp=CORTES_PADRAO.filter(c=>(m.cortes||{})[c.id] && m.cortes[c.id].length);
-  if(!disp.length) return `<div class="vazio">Sem recorte disponível para este indicador.</div>`;
-  const at=(m.cortes[estado.corte]&&m.cortes[estado.corte].length)?estado.corte:disp[0].id;
-  const linhas=m.cortes[at], vs=linhas.map(l=>l[1]);
-  const lo=Math.min(0,...vs), hi0=Math.max(...vs), hi=hi0>lo ? hi0+(hi0-lo)*0.08 : lo+1;
-  return `<div class="chips">${CORTES_PADRAO.map(c=>{const tem=!!(m.cortes[c.id]&&m.cortes[c.id].length);
-      return `<button class="chip" aria-pressed="${tem&&at===c.id}" ${tem?"":"disabled"} onclick="setCorte('${c.id}')">${c.rot}</button>`;}).join("")}</div>
-    <div class="d-rot">${esc(rotuloEnt())} · ${esc(rotAm(m.cortesMes))}</div>
-    <div class="cl">${linhas.map(l=>`<div class="l"><span>${esc(l[0])}</span>
-      <div class="trilho"><div class="fill" style="width:${Math.max(1,((l[1]-lo)/(hi-lo))*100).toFixed(1)}%"></div></div>
-      <span class="v" ${ehNum(l[2])?`title="Base: ${Number(l[2]).toLocaleString("pt-BR")}"`:""}>${fmt(l[1],m)}</span></div>`).join("")}</div>
-    <p class="dr-nota">Recorte do mês de referência ${esc(rotAm(m.cortesMes))}, na mesma escala do indicador.</p>`;
-};
 const pintaDrawerOriginalDR = pintaDrawer;
 pintaDrawer = function(){
   if(!estado.drawer || estado.drawer.tipo!=="metrica") return pintaDrawerOriginalDR();
   const t=acharTema(estado.drawer.temaId); if(!t) return fecharDrawer();
   const m=(t.metricas||[])[estado.drawer.i]; if(!m) return fecharDrawer();
   const tag=m.principal?`<span class="tag principal">Principal</span>`:m.estudo?`<span class="tag estudo">Em estudo</span>`:"";
-  const chave=estado.drawer.temaId+"|"+estado.drawer.i;
   const abas=[["comp","Comparativo"],["hist","Histórico"]];     
-  if(COM_RECORTES) abas.push(["seg","Segmentos"]);
-  if(COM_ANALISES){ const nAn=analisesDe(chave).length; abas.push(["analise","Análises"+(nAn?" ("+nAn+")":"")]); }
   if(!abas.some(([id])=>id===estado.aba)) estado.aba="comp";
-  const corpo = estado.aba==="hist"?abaHist(m) : estado.aba==="seg"?abaSeg(m)
-    : estado.aba==="analise"?abaAnalises(chave,m) : abaComp(m);
+  const corpo = estado.aba==="hist" ? abaHist(m) : abaComp(m);
   const tem=temDado(m);
   const ficha=[["Cálculo",m.calculo],["Base",m.base],["Frequência",m.freq],["Janela do número",m.janelaRot],["Nível",m.nivel],["Responsável",m.dono],["Em curso",m.emcurso]]
     .filter(x=>x[1]).map(([r,v])=>`<dt>${r}</dt><dd>${esc(v)}</dd>`).join("")
@@ -7744,33 +7719,25 @@ htmlEvolucaoSistemica = function(){
     Mostrando só ${esc(nomeEntSessao())}.<button class="btn-t mini" onclick="tentarPainelDeNovo()">Tentar de novo</button></div>` : "";
   return erro + htmlEvolucaoSistemicaOriginal();
 };
-const htmlPerfilDR = htmlPerfil;
-htmlPerfil = function(){ return htmlPerfilDR().replace("Mediana das 98 cooperativas.", "Mediana das cooperativas do Sistema."); };
-const htmlPessoaDR = htmlPessoa;
-htmlPessoa = function(){ return htmlPessoaDR().replace("Mediana das 98 cooperativas.", "Mediana das cooperativas do Sistema."); };
 const pintaDR = pinta;
 pinta = function(){
   pintaDR();
   const stA=document.getElementById("nav-acomp-st");
   if(stA && !MESES.length){ stA.textContent=""; stA.title="Sem leitura de indicadores ainda"; }
 };
-const CR = { conteudo:null, analises:null, analisesErro:null, central:"—", mesReal:null, carregando:false };
+const CR = { conteudo:null, cicloCarregado:false, mesReal:null, carregando:false };
 const CR_MESES_INICIAIS = MESES.join("|");          
-const CR_NIVEL_JAN = {preenchimento:"Preenchimento", construcao:"Construção", ajuste:"Ajuste"};
-const CR_NATUREZA = {provisoria:"provisória", final:"final", ajuste:"ajuste"};
-Object.assign(CENTRAL, {nome:"", sigla:"Central", declarou:false, temas:[], movimentos:[], registradoEm:null, natureza:null});
-ANALISES.splice(0, ANALISES.length);
+const CR_NIVEL_JAN = {construcao:"Construção", ajuste:"Ajuste"};
+Object.assign(CENTRAL, {nome:"", sigla:"Central", declarou:false, temas:[], movimentos:[], registradoEm:null});
+ANALISES.splice(0, ANALISES.length);                 
 [SOBRE, SOBRE_CURTO, PORQUE].forEach(o => Object.keys(o).forEach(k => delete o[k]));
 (function(){   
   const css=`.nw-ic.plano{background:var(--verde-lav);color:var(--verde-escuro)}
     .nw-ic.pacto{background:#F3F0FA;color:#5B4A8A}
-    .nw-ic.central{background:#EEF6F1;color:#146E37}
-    .nota-central.sem{font-style:italic}
     .cr-jan{display:flex;flex-direction:column;gap:8px;margin-top:10px}
     .cr-jan-i{display:flex;gap:12px;align-items:baseline;background:var(--branco);border:1px solid var(--linha);border-radius:10px;padding:10px 14px;font-size:13px}
     .cr-jan-i b{color:var(--tinta)} .cr-jan-i small{color:var(--fraco)}
     .cr-jan-st{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:20px;padding:2px 9px;border:1px solid var(--linha);color:var(--fraco);white-space:nowrap}
-    #nav-admin[hidden]{display:none!important}
     .cr-jan-st.aberta{background:var(--verde-lav);border-color:var(--verde-claro);color:var(--verde-escuro)}`;
   const st=document.createElement("style"); st.id="cr-estilo"; st.textContent=css; document.head.appendChild(st);
 })();
@@ -7778,12 +7745,8 @@ const crRe = s => String(s).replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
 const crSoData = iso => /^\d{4}-\d{2}-\d{2}$/.test(String(iso||""));
 const crFmtData = iso => !iso ? "" : crSoData(iso) ? String(iso).split("-").reverse().join("/") : fmtData(iso);
 const crTempo = iso => !iso ? -Infinity : new Date(crSoData(iso) ? iso+"T12:00:00" : iso).getTime();
-const crMes = iso => { if(!iso) return ""; const [a,m]=String(iso).split("-"); return (NOMES_MES[(+m||1)-1]||"")+"/"+String(a).slice(-2); };
-const crTemaPorCodigo = cod => ((CATALOGO&&CATALOGO.temas)||[]).find(t=>t.codigo===cod);
-const crCentralCodigo = () => ENTIDADE.tipo==="cooperativa" ? (VINCULO_ATUAL&&VINCULO_ATUAL.central) : ENTIDADE.tipo==="central" ? ENTIDADE.id : null;
-function crJanelas(){
-  const cen=crCentralCodigo();
-  return ((CATALOGO&&CATALOGO.janelas)||[]).filter(j=>!j.central || (cen && j.central===cen))
+function crJanelas(){                               
+  return ((CATALOGO&&CATALOGO.janelas)||[])
     .map(j=>{ const agora=Date.now(), a=new Date(j.abre_em), f=new Date(j.fecha_em);
       return Object.assign({}, j, {st: agora<a ? "futura" : agora<f ? "aberta" : "encerrada"}); });
 }
@@ -7806,43 +7769,6 @@ function crRepinta(){
   pinta();
   const fi=document.getElementById("ficha"); if(fi && fi.classList.contains("on") && estado.ficha) pintaFicha();
 }
-async function crCarregarCentral(){
-  Object.assign(CENTRAL, {nome:"", declarou:false, temas:[], movimentos:[], registradoEm:null, natureza:null});
-  CR.central="—";
-  if(ENTIDADE.tipo!=="cooperativa" || !VINCULO_ATUAL || !VINCULO_ATUAL.central) return;   
-  const cod=VINCULO_ATUAL.central, ent=ENTIDADE.id;
-  CENTRAL.nome=VINCULO_ATUAL.central_nome||"sua Central";
-  CR.central="carregando";
-  try{
-    const r=await rest(`vw_plano_vigente?entidade_codigo=eq.${enc(cod)}&ciclo_id=eq.${PE.ciclo}&select=conteudo,natureza,registrado_em,versao&order=versao.desc&limit=1`);
-    if(ENTIDADE.id!==ent) return;                   
-    const v=r&&r[0];
-    if(!v || !v.conteudo){ CR.central="sem_versao"; return; }
-    const temas=[], movs=[];
-    ((v.conteudo.temas)||[]).forEach(t=>{
-      if(t.proprio || !t.codigo) return;             
-      const tc=crTemaPorCodigo(t.codigo); if(!tc) return;
-      temas.push(tc.id);
-      (t.movimentos||[]).forEach(mv=>{ if(!mv.proprio && mv.codigo) movs.push(k(tc.id, mv.codigo)); });
-    });
-    Object.assign(CENTRAL, {declarou:true, temas, movimentos:movs, registradoEm:v.registrado_em, natureza:v.natureza});
-    CR.central="ok";
-  }catch(e){ console.warn("Estratégia da Central não carregada", e); if(ENTIDADE.id===ent) CR.central="erro"; }
-}
-const htmlPasso2AntesConteudo = htmlPasso2;
-htmlPasso2 = function(){
-  let h=htmlPasso2AntesConteudo();
-  if(CENTRAL.declarou){
-    h=h.replace(/também priorizou aparecem marcados\.<\/p>/,
-      `também priorizou na estratégia dela (versão ${CR_NATUREZA[CENTRAL.natureza]||"registrada"} de ${fmtData(CENTRAL.registradoEm)}) aparecem marcados.</p>`);
-  } else if(ENTIDADE.tipo==="cooperativa" && (CR.central==="sem_versao" || CR.central==="erro")){
-    const txt = CR.central==="sem_versao"
-      ? `A ${esc(CENTRAL.nome)} ainda não registrou a versão final da estratégia dela. Quando registrar, os movimentos que ela priorizou aparecem marcados aqui.`
-      : `Não consegui ler agora a estratégia da ${esc(CENTRAL.nome)}; por isso nenhum movimento aparece marcado como prioridade dela.`;
-    h=h.replace(/<section class="p2-tema"/, `<p class="nota-central sem">${txt}</p><section class="p2-tema"`);
-  }
-  return h;
-};
 async function crCarregarConteudoTemas(){
   let linhas;
   try{ linhas=await rest("conteudo_tema?select=*,tema:tema_id(codigo,ordem,ciclo_id)&order=ordem"); }
@@ -7866,64 +7792,12 @@ async function crCarregarConteudoTemas(){
   });
   CR.conteudo=linhas.length;
 }
-const CR_TIPO_AN={mergulho:"Mergulho", estudo:"Estudo", painel:"Painel", escuta:"Escuta"};
-function crIndDe(chave){                              
-  if(!chave) return null;
-  const f=(CATALOGO&&CATALOGO.fichas&&CATALOGO.fichas[chave])||{};
-  const m=metricaPorChave(chave, f.nome); if(!m) return null;
-  for(const t of TEMAS){ const i=(t.metricas||[]).indexOf(m); if(i>=0) return t.id+"|"+i; }
-  return null;
-}
-async function crCarregarAnalises(){
-  CR.analisesErro=null;
-  let rs;
-  try{ rs=await rest("analise?publicada=eq.true&select=*,tema:tema_id(ordem,ciclo_id)&order=data_ref.desc"); }
-  catch(e){ console.warn("Estudos não carregados", e); CR.analisesErro=e.message; CR.analises=[]; ANALISES.splice(0,ANALISES.length); return; }
-  rs=(rs||[]).filter(a=>a.publicada && a.tema && a.tema.ordem!=null && (a.tema.ciclo_id==null || a.tema.ciclo_id===PE.ciclo));
-  let movs=[];
-  if(rs.length){
-    try{ movs=await rest(`analise_movimento?analise_id=in.(${rs.map(a=>a.id).join(",")})&select=analise_id,texto,movimento:movimento_id(codigo,tema:tema_id(ordem))`)||[]; }
-    catch(e){ console.warn("Movimentos dos estudos não carregados", e); }
-  }
-  const lista=rs.map(a=>{
-    const o={id:a.codigo||a.id, tid:+a.tema.ordem, tipo:CR_TIPO_AN[a.tipo]||a.tipo||"Estudo",
-      data:crMes(a.data_ref), dataIso:a.data_ref, fonte:a.fonte||"Grupo de Tema", titulo:a.titulo||"", resumo:a.resumo||"",
-      recortes:(Array.isArray(a.recortes)?a.recortes:[]).filter(r=>r&&Array.isArray(r.itens)&&r.itens.length),
-      achados:Array.isArray(a.achados)?a.achados:[], chave:a.indicador_chave||null,
-      atacar:movs.filter(x=>x.analise_id===a.id && x.movimento && x.movimento.tema)
-                 .map(x=>({mov:x.movimento.tema.ordem+"-"+x.movimento.codigo, txt:x.texto||""}))};
-    Object.defineProperty(o, "ind", {get(){ return crIndDe(this.chave); }, enumerable:true});   
-    return o;
-  });
-  ANALISES.splice(0, ANALISES.length, ...lista);
-  CR.analises=lista.length;
-}
-function bibIr(id){ estado.bibTema=null; estado.bibAberta=id; irModulo("bib");
-  setTimeout(()=>{ const el=document.getElementById("bib-"+id); if(el) el.scrollIntoView({block:"start",behavior:"smooth"}); },60); }
 const irModuloAntesSimplifica = irModulo;
-irModulo = function(id){ if(!COM_ANALISES && id==="bib") return; return irModuloAntesSimplifica.apply(this, arguments); };
-const abrirAnexoAntesSimplifica = abrirAnexo;
-abrirAnexo = function(id){ if(COM_ANALISES) return abrirAnexoAntesSimplifica(id); };
-const htmlAnaliseAntesConteudo = htmlAnalise;
-htmlAnalise = function(a, op){
-  return htmlAnaliseAntesConteudo(a, op)
-    .replace(/<div class="an-ach"><span class="an-rot">O que salta<\/span>\s*<ul><\/ul><\/div>/, "")
-    .replace(/<div class="an-ata"><span class="an-rot">Onde isso sugere atacar<\/span>\s*<\/div>/, "");
-};
-const htmlBibliotecaAntesConteudo = htmlBiblioteca;
-htmlBiblioteca = function(){
-  let h=htmlBibliotecaAntesConteudo()
-    .replace(/<div class="dummy">Estudos ilustrativos[\s\S]*?<\/div>/, "")
-    .replace("no tema, em Gerenciar a estratégia.", "na ficha do tema, na aba Anexos.");
-  const msg = CR.analises===null ? "Carregando os estudos…"
-    : CR.analisesErro ? `Não consegui carregar os estudos agora (${esc(CR.analisesErro)}). Tente de novo em instantes.`
-    : !ANALISES.length ? "Nenhum estudo publicado ainda. Os Grupos de Temas publicam aqui." : null;
-  if(msg) h=h.replace('<div class="vazio">Nenhum estudo publicado neste tema ainda.</div>', `<div class="vazio">${msg}</div>`);
-  return h;
-};
+irModulo = function(id){ if(id==="bib") return; return irModuloAntesSimplifica.apply(this, arguments); };
+abrirAnexo = function(){};
 htmlNovidades = function(){
   const itens=[], eCAS=EH_CAS();
-  const rot={janela:"Janela", plano:"Estratégia", central:"Central", dados:"Dados", pacto:"Pacto do CAS", estudo:"Estudo"};
+  const rot={janela:"Janela", plano:"Estratégia", dados:"Dados", pacto:"Pacto do CAS"};
   crJanelas().forEach(j=>{
     const per=`de ${fmtData(j.abre_em)} a ${fmtData(j.fecha_em)}`, oque=ROT_JANELA[j.tipo]||"";
     if(j.st==="aberta") itens.push({tipo:"janela", ico:"◷", quando:j.abre_em, tit:`Janela ${j.nome} aberta`,
@@ -7933,12 +7807,12 @@ htmlNovidades = function(){
     else itens.push({tipo:"janela", ico:"◷", quando:j.abre_em, futuro:true, tit:`Próxima janela: ${j.nome}`,
       txt:`Abre em ${fmtData(j.abre_em)} e fecha em ${fmtData(j.fecha_em)}. ${oque}`});
   });
-  if(!eCAS && PLANO_SRV){
+  if(ENTIDADE.tipo==="cooperativa" && PLANO_SRV){
     const vs=PLANO_SRV.versoes||[], v=vs[0];
     if(v){
       const extra=[v.motivo?`Motivo: ${v.motivo}.`:"", PLANO_SRV.oficial?`A versão oficial é a ${PLANO_SRV.oficial}.`
-        : v.natureza==="provisoria" ? "Versão provisória: não entra na visão do Sistema." : "Ainda não há versão oficial: ela sai quando a janela fechar."];
-      itens.push({tipo:"plano", ico:"✓", quando:v.registrado_em, tit:`Versão ${v.versao} da estratégia registrada (${CR_NATUREZA[v.natureza]||v.natureza})`,
+        : "A oficial é a última versão registrada quando a janela fechar."];
+      itens.push({tipo:"plano", ico:"✓", quando:v.registrado_em, tit:`Versão ${v.versao} da estratégia registrada${v.tipo==="ajuste"?" (ajuste)":""}`,
         txt:`${vs.length} ${vs.length===1?"versão registrada":"versões registradas"} no ciclo ${CICLO}. ${extra.filter(Boolean).join(" ")}`,
         acao:["Ver a nossa estratégia","irMeuPlano()"]});
     } else if(PLANO_SRV.status==="rascunho"){
@@ -7948,10 +7822,6 @@ htmlNovidades = function(){
       itens.push({tipo:"plano", ico:"○", quando:null, tit:"Estratégia ainda não iniciada",
         txt:`${NOSSA_C()} ainda não começou a montar a estratégia de ${CICLO}.`});
     }
-  }
-  if(ENTIDADE.tipo==="cooperativa" && CENTRAL.declarou){
-    itens.push({tipo:"central", ico:"◈", quando:CENTRAL.registradoEm, tit:`A ${CENTRAL.nome} registrou a estratégia dela`,
-      txt:`Versão ${CR_NATUREZA[CENTRAL.natureza]||"registrada"}: ${CENTRAL.temas.length} ${CENTRAL.temas.length===1?"tema":"temas"} e ${CENTRAL.movimentos.length} ${CENTRAL.movimentos.length===1?"movimento":"movimentos"} do catálogo do Sistema. Eles aparecem marcados no passo Movimentos.`});
   }
   const inds=crIndicadoresTemas(), fichas=(CATALOGO&&CATALOGO.fichas)||{};
   const comDado=inds.filter(ch=>fichas[ch]&&fichas[ch].tem_dado).length, mes=crMesLeitura();
@@ -7971,9 +7841,6 @@ htmlNovidades = function(){
         +" Estão na ficha de cada tema, na aba Entregas previstas.",
       acao:["Ver na ficha do tema",`abrirFicha('${temaCom}');fichaAba('cas')`]});
   }
-  if(COM_ANALISES) ANALISES.forEach(a=>{ const t=TEMAS.find(x=>x.id===a.tid);
-    itens.push({tipo:"estudo", ico:"◫", quando:a.dataIso, tit:`Estudo publicado · ${a.titulo}`,
-      txt:`${a.fonte}${t?" · "+t.nome:""}. ${a.resumo}`, acao:["Abrir o estudo",`bibIr('${a.id}')`]}); });
   const agora=Date.now();
   itens.sort((a,b)=>{ const va=crTempo(a.quando), vb=crTempo(b.quando);
     const fa=va>agora, fb=vb>agora; if(fa!==fb) return fa?-1:1; return vb-va; });
@@ -7986,7 +7853,7 @@ htmlNovidades = function(){
     <span class="mod-quando">${itens.length} ${itens.length===1?"item":"itens"}</span>
   </div>
   <p class="secao-desc" style="max-width:74ch">Montado a partir do que a plataforma registra: as janelas do ciclo,
-  as versões da estratégia, a carga dos indicadores${COM_ANALISES?", as frentes do Pacto do CAS e os estudos que os Grupos de Temas publicam":" e as frentes do Pacto do CAS"}.</p>
+  as versões da estratégia, a carga dos indicadores e as frentes do Pacto do CAS.</p>
   ${itens.length ? `<div class="nw">${itens.map(i=>`
     <div class="nw-i">
       <span class="nw-ic ${i.tipo}">${i.ico}</span>
@@ -8045,19 +7912,17 @@ htmlGuias = function(){
       <div><b>${esc(j.nome)}</b> <small>· ${esc(CR_NIVEL_JAN[j.tipo]||j.tipo)} · ${fmtData(j.abre_em)} a ${fmtData(j.fecha_em)}</small>
       ${ROT_JANELA[j.tipo]?`<br><small>${esc(ROT_JANELA[j.tipo])}</small>`:""}</div></div>`).join("")}</div></section>` : "";
   const fichas = n ? ` As fichas técnicas dos ${n} indicadores dos temas estão no detalhe de cada indicador.` : "";
-  let h=htmlGuiasAntesConteudo().replace(CR_DUMMY_ED7, "");
-  h = COM_ANALISES
-    ? h.replace("<b>Biblioteca de insights</b>, no menu ao lado.</div></div>", `<b>Biblioteca de insights</b>, no menu ao lado.${fichas}</div></div>`)
-    : h.replace(/<div class="mod-nota"><span>◫<\/span><div>As análises e os estudos[\s\S]*?<\/div><\/div>/,
-        fichas ? `<div class="mod-nota"><span>◫</span><div>${fichas.trim()}</div></div>` : "");
+  const h=htmlGuiasAntesConteudo().replace(CR_DUMMY_ED7, "")
+    .replace(/<div class="mod-nota"><span>◫<\/span><div>As análises e os estudos[\s\S]*?<\/div><\/div>/,
+      fichas ? `<div class="mod-nota"><span>◫</span><div>${fichas.trim()}</div></div>` : "");
   return h + janelas;
 };
 const pintaFichaAntesConteudo = pintaFicha;
 pintaFicha = function(){
-  if(!COM_ANALISES && estado.fichaAba==="est") estado.fichaAba="desemp";
+  if(estado.fichaAba==="est") estado.fichaAba="desemp";
   pintaFichaAntesConteudo();
   const el=document.getElementById("ficha"); if(!el || !el.classList.contains("on")) return;
-  if(!COM_ANALISES) el.querySelectorAll(".fi-abas button").forEach(b=>{ if((b.getAttribute("onclick")||"").includes("'est'")) b.remove(); });
+  el.querySelectorAll(".fi-abas button").forEach(b=>{ if((b.getAttribute("onclick")||"").includes("'est'")) b.remove(); });
   const pe=el.querySelector(".fi-nota-pe");
   if(pe && pe.textContent.includes("98 cooperativas")) pe.textContent=pe.textContent.replace("entre as 98 cooperativas","entre as cooperativas do Sistema");
   const t=acharTema(estado.ficha);
@@ -8077,19 +7942,18 @@ carregarRealizados = async function(){
   return r;
 };
 async function crCarregarCiclo(){                    
-  if(CR.carregando || CR.analises!==null) return;
+  if(CR.carregando || CR.cicloCarregado) return;
   CR.carregando=true;
-  if(!COM_ANALISES) CR.analises=0;                  
-  try{ await Promise.all([crCarregarConteudoTemas(), COM_ANALISES ? crCarregarAnalises() : null]); }
+  try{ await crCarregarConteudoTemas(); CR.cicloCarregado=true; }
   finally{ CR.carregando=false; }
 }
 const sincronizarEntidadeAntesConteudo = sincronizarEntidade;
 sincronizarEntidade = async function(){
   CR.mesReal=null;
-  const ciclo=crCarregarCiclo(), central=crCarregarCentral();
+  const ciclo=crCarregarCiclo();
   await sincronizarEntidadeAntesConteudo.apply(this, arguments);
   if(EH_CAS()) montarMapaCAS();                     
-  await Promise.allSettled([ciclo, central]);
+  await Promise.allSettled([ciclo]);
   crRepinta();
 };
 MODULOS.guia.nota="As fichas técnicas dos indicadores dos temas estão no detalhe de cada indicador.";
@@ -8100,7 +7964,7 @@ const SIS_FILTROS = {
   concluidas: {rot:"Concluídas",   f:c=>c.concluida},
   andamento:  {rot:"Em andamento", f:c=>c.andamento}
 };
-const SIS_SIT_ANDAMENTO = ["provisorio","em_preenchimento"];
+const SIS_SIT_ANDAMENTO = ["em_preenchimento","em_ajuste"];      
 function paraCoopDoFront(p){
   const concluida=!!p.concluida;
   const andamento=!concluida && !!p.com_conteudo && SIS_SIT_ANDAMENTO.includes(p.situacao);
@@ -8213,8 +8077,8 @@ function fraseTopo(p, f){
 }
 const DESC_FILTRO = {
   todas:"que concluíram ou estão com a estratégia em andamento",
-  concluidas:"que concluíram a estratégia (versão final ou ajuste registrado)",
-  andamento:"com a estratégia em andamento (sem versão final, com parte já preenchida)"
+  concluidas:"que concluíram a estratégia (ao menos uma versão registrada)",
+  andamento:"com a estratégia em andamento (ainda sem registro, com parte já preenchida)"
 };
 function htmlPlacarSis(p){
   const seg=(n,cls,rot)=>n?`<i class="${cls}" style="flex:${n}" title="${n} ${rot}"></i>`:"";
@@ -8334,8 +8198,7 @@ htmlVisao = function(){
   ${erroAtualizar}
   ${corpo}
   <p class="sis-nota sis-rodape">A consolidação mostra apenas os temas e movimentos deliberados pelo CDE: o que cada entidade
-  cadastrou como local fica na estratégia dela e não entra nesta conta. Cooperativas que escolheram aparecer só no agregado
-  entram nos números sem o nome.${v.f!=="concluidas"?" O que está em andamento é o que já foi preenchido até agora e pode mudar até o registro da versão final.":""}</p>`;
+  cadastrou como local fica na estratégia dela e não entra nesta conta.${v.f!=="concluidas"?" O que está em andamento é o que já foi preenchido até agora e pode mudar até o registro.":""}</p>`;
 };
 (function(){
   const css=`
@@ -8380,7 +8243,7 @@ htmlVisao = function(){
     return `<div class="pe-demo leve">Simulação: esta visão mostra só os <b>planos de teste</b> montados nas simulações. Os planos reais não aparecem aqui.</div>` + h;
   if(typeof ehAdministrador==="function" && ehAdministrador() && ENTIDADE.tipo!=="cooperativa")
     return `<div class="pe-demo leve">Quer ver como fica com os planos de teste das simulações?
-      <button class="btn-t mini" onclick="iniciarSimulacao('CAS','editor')">Abrir como CAS com os planos de teste</button></div>` + h;
+      <button class="btn-t mini" onclick="iniciarSimulacao('CAS','sistemico')">Abrir como CAS com os planos de teste</button></div>` + h;
   return h;
 };
 (function(){
@@ -8974,403 +8837,9 @@ window.evoFecharHist = function(){ EVO.tema=null; EVO.aberto=null; pinta(); };
 window.evoTentarComparativo = function(){ const c=evoCmp(EVO.rec); Object.keys(c.por).forEach(k=>{ if(c.por[k]&&c.por[k].erro) delete c.por[k]; }); c.erro=null; pinta(); };
 window.EVO = EVO;   
 })();
-const ESC = {rec:"SIS", base:"todos", aberto:null, comoLer:false, entidade:null, panoramaPedido:false,
-             resumo:{}, comp:{}, graf:null};            
-const ESC_TTL = 5*60*1000;                               
-const ESC_GRUPOS = [["escolheram","Escolheram","quem escolheu"],["nao_escolheram","Não escolheram","quem não escolheu"],["sem_plano","Sem plano","quem está sem plano"]];
-const ESC_BASES = [["todos","Em andamento e concluídos"],["concluidos","Só concluídos"]];
-const ESC_SEM_NUMERO = "menos de 3 cooperativas com dado";
-let ESC_RECS = [], ESC_INDS = [];                        
-const naEscolha = () => estado.vista==="modulo" && estado.modulo==="escolha";
-const escNum = v => v!==null && v!==undefined && v!=="" && isFinite(Number(v));
-const escPlural = (n, um, varios) => n===1 ? um : varios;
-function escRepintar(){ if(naEscolha()) pinta(); }
-function escZerarSeTrocou(){
-  const id = ENTIDADE && ENTIDADE.id;
-  if(ESC.entidade===id) return;
-  Object.assign(ESC, {entidade:id, rec:"SIS", aberto:null, panoramaPedido:false, resumo:{}, comp:{}, graf:null});
-}
-function escCarregar(cache, chave, nome, args, forcar){
-  const c = cache[chave] || (cache[chave] = {});
-  if(c.carregando) return c.carregando;
-  if(!forcar && c.dados && c.em && Date.now()-c.em < ESC_TTL) return Promise.resolve(c.dados);
-  const ent = ENTIDADE.id;
-  c.erro = null;
-  c.carregando = rpc(nome, args)
-    .then(d => { if(ENTIDADE.id===ent){ c.dados=d; c.em=Date.now(); } return d; })
-    .catch(e => { c.erro = (e && e.message) || String(e); return null; })
-    .finally(() => { c.carregando=null; escRepintar(); });
-  return c.carregando;
-}
-function escPedirResumo(forcar){
-  const k = ESC.rec+"|"+ESC.base;
-  return escCarregar(ESC.resumo, k, "resumo_escolha", {p_ciclo:PE.ciclo, p_recorte:ESC.rec, p_base:ESC.base}, forcar);
-}
-function escPedirComparativo(chave, forcar){
-  const k = ESC.rec+"|"+ESC.base+"|"+chave;
-  return escCarregar(ESC.comp, k, "comparativo_escolha",
-    {p_ciclo:PE.ciclo, p_indicador:chave, p_recorte:ESC.rec, p_base:ESC.base, p_meses:25}, forcar);
-}
-function escTentarDeNovo(){ escPedirResumo(true); if(ESC.aberto) escPedirComparativo(ESC.aberto, true); pinta(); }
-const escVeTodasCentrais = () => ehAdministrador() || ENTIDADE.tipo==="cas";
-function escRecortes(){
-  const lista = [["SIS","O Sistema"]];
-  if(escVeTodasCentrais()){
-    const pan = (typeof PANORAMA!=="undefined" && Array.isArray(PANORAMA)) ? PANORAMA : [];
-    pan.filter(p => p.tipo==="central" && p.central_codigo)
-       .map(p => [String(p.central_codigo), p.central || p.nome || String(p.central_codigo)])
-       .sort((a,b) => a[1].localeCompare(b[1], "pt-BR"))
-       .forEach(x => { if(!lista.some(y => y[0]===x[0])) lista.push(x); });
-  } else if(ENTIDADE.tipo==="central"){
-    lista.push([String(ENTIDADE.id), ENTIDADE.nome || "A minha Central"]);
-  }
-  return lista;
-}
-const escRotuloCurto = n => String(n).replace(/^Central\s+(Sicredi\s+)?/i, "") || String(n);
-function escRecorte(i){ const r = ESC_RECS[i]; if(!r || r[0]===ESC.rec) return; ESC.rec = r[0]; ESC.aberto = null; pinta(); }
-function escBase(b){ if(!ESC_BASES.some(x => x[0]===b) || b===ESC.base) return; ESC.base = b; pinta(); }
-function escAbrir(i){
-  const chave = ESC_INDS[i]; if(!chave) return;
-  ESC.aberto = ESC.aberto===chave ? null : chave;
-  pinta();
-}
-function escComoLer(el){ ESC.comoLer = !!el.open; }
-function escMetrica(chave){
-  let m = null;
-  (TEMAS||[]).forEach(t => (t.metricas||[]).forEach(x => { if(!m && x && x.chave===chave) m = x; }));
-  if(!m && typeof metricaPorChave==="function") m = metricaPorChave(chave);
-  const f = ((typeof CATALOGO!=="undefined" && CATALOGO && CATALOGO.fichas) || {})[chave] || {};
-  const o = Object.assign({}, m || {});
-  o.chave = chave;
-  if(!o.curto) o.curto = f.nome_curto || f.nome || o.nome || chave;
-  if(!o.nome) o.nome = f.nome || o.curto;
-  if(o.casas==null) o.casas = f.casas!=null ? Number(f.casas) : 1;
-  if(o.prefixo==null) o.prefixo = f.prefixo || "";
-  if(o.un==null) o.un = f.sufixo || "";
-  if(o.varTipo==null) o.varTipo = ["pp","pontos","relativa"].includes(f.variacao_tipo) ? f.variacao_tipo : null;
-  if(o.varCasas==null && f.variacao_casas!=null) o.varCasas = Number(f.variacao_casas);
-  return o;
-}
-const escFmt = (v, m) => escNum(v) ? fmt(Number(v), m) : "—";
-function escCasasVar(m){
-  if(m.varTipo==="relativa") return m.casas || 0;
-  if(m.varCasas!=null) return m.varCasas;
-  return m.prefixo ? (m.casas || 0) : 1;
-}
-const escEstavel = (m, d) => Math.abs(d) < 0.5*Math.pow(10, -escCasasVar(m));
-function escVarTexto(m, d){
-  if(!escNum(d)) return "—";
-  d = Number(d);
-  if(m.varTipo==="relativa"){
-    const z = escEstavel(m, d) ? 0 : d;
-    return (z>0 ? "+" : z<0 ? "−" : "") + fmt(Math.abs(z), m);
-  }
-  return deltaTexto(m, d);
-}
-function escClasse(d, sentido, m){
-  if(!escNum(d)) return "neutro";
-  d = Number(d);
-  if(escEstavel(m, d)) return "estavel";
-  return (sentido==="menor_melhor" ? d<0 : d>0) ? "melhor" : "pior";
-}
-function escMesDe(l){
-  for(const [g] of ESC_GRUPOS){ const x = l[g]; if(x && x.mes) return x.mes; }
-  return null;
-}
-const escMes12Antes = am => { const [a, m] = String(am).split("-"); return (Number(a)-1)+"-"+m; };
-function escCelula(g, sentido, m){
-  g = g || {};
-  const n = Number(g.cooperativas) || 0;
-  const rotN = `${n} ${escPlural(n, "coop", "coops")}`;
-  if(!escNum(g.mediana))
-    return `<td class="esc-cel"><span class="esc-sem" title="${ESC_SEM_NUMERO}">—</span><small class="esc-n">${rotN}</small></td>`;
-  const cls = escClasse(g.variacao_12m, sentido, m);
-  const vr = escNum(g.variacao_12m)
-    ? `<span class="esc-var ${cls}" title="Variação da mediana em 12 meses">${esc(escVarTexto(m, g.variacao_12m))}</span>`
-    : `<span class="esc-var neutro" title="Sem leitura 12 meses antes para comparar">—</span>`;
-  const titN = escNum(g.n) && g.mes ? ` title="${Number(g.n)} com dado em ${esc(rotuloMes(g.mes))}"` : "";
-  return `<td class="esc-cel"><b class="esc-med">${esc(fmt(Number(g.mediana), m))}</b>${vr}<small class="esc-n"${titN}>${rotN}</small></td>`;
-}
-function escDiferenca(l, m){
-  const a = (l.escolheram || {}).variacao_12m, b = (l.nao_escolheram || {}).variacao_12m;
-  if(!escNum(a) || !escNum(b))
-    return `<td class="esc-dif"><span class="esc-var neutro" title="A diferença precisa da variação em 12 meses dos dois grupos">—</span></td>`;
-  const d = Number(a) - Number(b), cls = escClasse(d, l.sentido, m);
-  return `<td class="esc-dif"><span class="esc-var ${cls}">${esc(escVarTexto(m, d))}</span>${cls==="melhor" ? `<small>a favor de quem escolheu</small>` : ""}</td>`;
-}
-function escLinha(l, mesModa){
-  const m = escMetrica(l.indicador);
-  const i = ESC_INDS.push(l.indicador) - 1;
-  const aberto = ESC.aberto===l.indicador;
-  const mes = escMesDe(l);
-  const mesDif = mes && mesModa && mes!==mesModa ? `<small class="esc-mes">leitura de ${esc(rotuloMes(mes))}</small>` : "";
-  return `<tr class="esc-lin${aberto ? " aberta" : ""}" onclick="escAbrir(${i})">
-      <th scope="row" class="esc-ind"><button type="button" class="esc-nome" aria-expanded="${aberto}" title="${esc(m.nome)}">
-        <span>${esc(m.curto)}</span><i aria-hidden="true">${aberto ? "−" : "+"}</i></button>${mesDif}</th>
-      ${ESC_GRUPOS.map(([g]) => escCelula(l[g], l.sentido, m)).join("")}
-      ${escDiferenca(l, m)}
-    </tr>${aberto ? `<tr class="esc-det-lin"><td colspan="5"><div class="esc-det">${escDetalhe(l.indicador, m)}</div></td></tr>` : ""}`;
-}
-function escTabela(linhas, mesModa){
-  ESC_INDS = [];
-  const blocos = [];
-  const usados = new Set();
-  (TEMAS||[]).forEach(t => {
-    const ls = linhas.filter(l => Number(l.tema)===Number(t.id));
-    if(!ls.length) return;
-    ls.forEach(l => usados.add(l));
-    blocos.push(`<tr class="esc-tema"><th colspan="5"><span class="esc-tema-t"><span class="esc-tema-n">${esc(String(t.id))}</span>${esc(t.nome || "")}</span></th></tr>`
-      + ls.map(l => escLinha(l, mesModa)).join(""));
-  });
-  const resto = linhas.filter(l => !usados.has(l));
-  if(resto.length) blocos.push(`<tr class="esc-tema"><th colspan="5"><span class="esc-tema-t">Outros indicadores</span></th></tr>` + resto.map(l => escLinha(l, mesModa)).join(""));
-  const cab = (rot, cor, tit) => `<th scope="col" title="${tit}">${cor ? `<i class="esc-sw ${cor}" aria-hidden="true"></i>` : ""}${rot}<small>mediana · 12 meses</small></th>`;
-  return `<div class="esc-tab-wrap"><table class="esc-tab">
-    <thead><tr>
-      <th scope="col" class="esc-ind">Indicador</th>
-      ${cab("Escolheram", "g-esc", "Cooperativas com o indicador no plano")}
-      ${cab("Não escolheram", "g-nao", "Cooperativas com plano, sem o indicador")}
-      ${cab("Sem plano", "g-sem", ESC.base==="concluidos" ? "Cooperativas sem plano concluído (sem plano ou ainda em andamento)" : "Cooperativas que ainda não têm plano")}
-      <th scope="col" title="Variação em 12 meses de quem escolheu menos a de quem não escolheu">Diferença<small>na variação em 12 meses</small></th>
-    </tr></thead>
-    <tbody>${blocos.join("")}</tbody></table></div>`;
-}
-function escDetalhe(chave, m){
-  const k = ESC.rec+"|"+ESC.base+"|"+chave;
-  if(!ESC.comp[k] || (!ESC.comp[k].dados && !ESC.comp[k].carregando && !ESC.comp[k].erro)) escPedirComparativo(chave);
-  const c = ESC.comp[k] || {};
-  if(!c.dados){
-    if(c.erro) return `<div class="esc-aviso erro"><b>Não foi possível carregar a série.</b> ${esc(c.erro)}
-      <button class="btn-t mini" onclick="event.stopPropagation();escPedirComparativo('${esc(chave)}',true);pinta()">Tentar de novo</button></div>`;
-    return `<p class="esc-carregando">Carregando…</p>`;
-  }
-  return escGrafico(c.dados, m);
-}
-function escGrafico(d, m){
-  const meses = Array.isArray(d.meses) ? d.meses : [];
-  const N = meses.length, G = d.grupos || {};
-  const serie = g => { const mp = new Map((((G[g] || {}).serie) || []).map(x => [x.mes, x]));
-    return meses.map(mm => mp.get(mm) || {mes:mm, n:0, mediana:null, p25:null, p75:null}); };
-  const S = {}; ESC_GRUPOS.forEach(([g]) => { S[g] = serie(g); });
-  const vals = [];
-  ESC_GRUPOS.forEach(([g]) => S[g].forEach(x => { if(escNum(x.mediana)) vals.push(Number(x.mediana)); }));
-  S.escolheram.forEach(x => { if(escNum(x.p25)) vals.push(Number(x.p25)); if(escNum(x.p75)) vals.push(Number(x.p75)); });
-  const fechar = `<button class="btn-t mini esc-fechar" onclick="event.stopPropagation();ESC.aberto=null;pinta()">Fechar</button>`;
-  if(!N || !vals.length){
-    ESC.graf = null;
-    return `<div class="esc-det-cab"><b>${esc(m.curto)}</b>${fechar}</div>
-      <p class="esc-carregando">Nenhum grupo tem 3 ou mais cooperativas com dado nestes meses: não há série para desenhar.</p>`;
-  }
-  const min = Math.min(...vals), max = Math.max(...vals);
-  const folga = ((max-min) || Math.abs(max) || 1) * 0.08, lo = min-folga, hi = max+folga;
-  const X = i => N===1 ? 50 : i/(N-1)*100;                         
-  const Y = v => 100 - (v-lo)/(hi-lo)*100;                          
-  const caminho = s => { let p = "", caneta = false;
-    s.forEach((x, i) => { if(escNum(x.mediana)){ p += (caneta ? "L" : "M") + (X(i)*10).toFixed(1) + " " + Y(Number(x.mediana)).toFixed(2) + " "; caneta = true; } else caneta = false; });
-    return p.trim(); };
-  let faixa = "", seg = [];
-  const fechaSeg = () => {
-    if(seg.length > 1){
-      const cima = seg.map(i => (X(i)*10).toFixed(1) + " " + Y(Number(S.escolheram[i].p75)).toFixed(2));
-      const baixo = seg.slice().reverse().map(i => (X(i)*10).toFixed(1) + " " + Y(Number(S.escolheram[i].p25)).toFixed(2));
-      faixa += "M" + cima.join(" L") + " L" + baixo.join(" L") + " Z ";
-    }
-    seg = [];
-  };
-  S.escolheram.forEach((x, i) => { if(escNum(x.p25) && escNum(x.p75)) seg.push(i); else fechaSeg(); });
-  fechaSeg();
-  ESC.graf = {meses, S, X, Y, m};
-  const passo = Math.max(1, Math.ceil(N/7));
-  const rotX = meses.map((mm, i) => (N-1-i) % passo===0
-    ? `<span style="left:${X(i).toFixed(2)}%">${esc(rotuloMes(mm))}</span>` : "").join("");
-  const fins = ESC_GRUPOS.map(([g]) => { const s = S[g]; for(let i = s.length-1; i >= 0; i--) if(escNum(s[i].mediana))
-      return `<i class="esc-fim ${ESC_COR[g]}" style="left:${X(i).toFixed(2)}%;top:${Y(Number(s[i].mediana)).toFixed(2)}%"></i>`;
-    return ""; }).join("");
-  const nCoops = g => Number((G[g] || {}).cooperativas) || 0;
-  const legenda = ESC_GRUPOS.map(([g, rot]) => `<span><svg width="26" height="8" aria-hidden="true"><line x1="1" y1="4" x2="25" y2="4" class="esc-ln ${ESC_COR[g]}"/></svg>${rot}
-      <small>${nCoops(g)} ${escPlural(nCoops(g), "coop", "coops")}</small></span>`).join("")
-    + `<span><i class="esc-sw-faixa" aria-hidden="true"></i>Faixa p25–p75 de quem escolheu</span>`;
-  return `<div class="esc-det-cab"><b>${esc(m.curto)}</b><span>Mediana mês a mês${m.nome && m.nome!==m.curto ? ` · ${esc(m.nome)}` : ""}</span>${fechar}</div>
-    <p class="esc-leitura">${escLeitura(S, m)}</p>
-    <div class="esc-graf" onclick="event.stopPropagation()">
-      <div class="esc-y"><span style="top:${Y(max).toFixed(2)}%">${esc(fmt(max, m))}</span><span style="top:${Y(min).toFixed(2)}%">${esc(fmt(min, m))}</span></div>
-      <div class="esc-plot" onmousemove="escDica(event)" onclick="escDica(event)" onmouseleave="escDicaFora(this)">
-        <svg viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="0" x2="1000" y1="${Y(max).toFixed(2)}" y2="${Y(max).toFixed(2)}" class="esc-grade"/>
-          <line x1="0" x2="1000" y1="${Y(min).toFixed(2)}" y2="${Y(min).toFixed(2)}" class="esc-grade"/>
-          ${faixa ? `<path d="${faixa.trim()}" class="esc-faixa"/>` : ""}
-          ${["sem_plano", "nao_escolheram", "escolheram"].map(g => { const p = caminho(S[g]); return p ? `<path d="${p}" class="esc-ln ${ESC_COR[g]}"/>` : ""; }).join("")}
-        </svg>
-        ${fins}
-        <i class="esc-guia" hidden></i>
-        ${ESC_GRUPOS.map(([g]) => `<i class="esc-ponto ${ESC_COR[g]}" data-g="${g}" hidden></i>`).join("")}
-        <div class="esc-dica" role="status" hidden></div>
-      </div>
-      <div class="esc-x">${rotX}</div>
-    </div>
-    <div class="esc-leg">${legenda}</div>`;
-}
-const ESC_COR = {escolheram:"g-esc", nao_escolheram:"g-nao", sem_plano:"g-sem"};
-function escLeitura(S, m){
-  const parte = ([g, , quem], periodo) => {
-    const s = S[g]; let iu = -1;
-    for(let i = s.length-1; i >= 0; i--) if(escNum(s[i].mediana)){ iu = i; break; }
-    if(iu < 0) return `${quem}: sem número (${ESC_SEM_NUMERO})`;
-    const u = s[iu], a = s.find(x => x.mes===escMes12Antes(u.mes));
-    if(!a || !escNum(a.mediana)) return `${quem}: ${fmt(Number(u.mediana), m)} em ${rotuloMes(u.mes)} (sem leitura 12 meses antes)`;
-    return `${quem}: ${fmt(Number(a.mediana), m)} → ${fmt(Number(u.mediana), m)}${periodo ? " em 12 meses" : ""}`;
-  };
-  const txt = parte(ESC_GRUPOS[0], true) + "; " + parte(ESC_GRUPOS[1], false) + ".";
-  return esc(txt.charAt(0).toUpperCase() + txt.slice(1));
-}
-function escDica(ev){
-  const gf = ESC.graf, el = ev.currentTarget; if(!gf || !el) return;
-  const r = el.getBoundingClientRect(), N = gf.meses.length; if(!r.width || !N) return;
-  const i = Math.max(0, Math.min(N-1, Math.round((ev.clientX - r.left) / r.width * (N-1))));
-  const x = gf.X(i);
-  const guia = el.querySelector(".esc-guia"); guia.hidden = false; guia.style.left = x + "%";
-  el.querySelectorAll(".esc-ponto").forEach(p => {
-    const v = gf.S[p.dataset.g][i];
-    if(v && escNum(v.mediana)){ p.hidden = false; p.style.left = x + "%"; p.style.top = gf.Y(Number(v.mediana)) + "%"; }
-    else p.hidden = true;
-  });
-  const dica = el.querySelector(".esc-dica");
-  dica.innerHTML = `<b>${esc(rotuloMes(gf.meses[i]))}</b>` + ESC_GRUPOS.map(([g, rot]) => {
-    const v = gf.S[g][i] || {}, n = Number(v.n) || 0;
-    return `<span><i class="esc-sw ${ESC_COR[g]}"></i>${rot}: ${escNum(v.mediana)
-      ? `<b>${esc(fmt(Number(v.mediana), gf.m))}</b> · n ${n}` : `— <small>(${n} com dado)</small>`}</span>`;
-  }).join("");
-  dica.hidden = false;
-  const px = x/100*r.width, w = dica.offsetWidth, graf = el.closest(".esc-graf");
-  const esq = graf ? graf.getBoundingClientRect().left - r.left + 4 : 0;
-  const dir = graf ? graf.getBoundingClientRect().right - r.left - 4 : r.width;
-  let L = px + 12;
-  if(L + w > dir) L = px - 12 - w;
-  dica.style.left = Math.max(esq, Math.min(L, dir - w)) + "px";
-}
-function escDicaFora(el){
-  el.querySelectorAll(".esc-guia,.esc-ponto,.esc-dica").forEach(x => { x.hidden = true; });
-}
-function escTextoJanela(){
-  const js = ((typeof CATALOGO!=="undefined" && CATALOGO && CATALOGO.janelas) || []).filter(x => !x.central);
-  const agora = Date.now();
-  if(js.some(x => new Date(x.abre_em) <= agora && agora < new Date(x.fecha_em))) return `a janela está aberta até ${ATE_JANELA()}`;
-  const prox = js.filter(x => new Date(x.abre_em) > agora).sort((a, b) => new Date(a.abre_em) - new Date(b.abre_em))[0];
-  return prox ? `a janela abre em ${fmtData(prox.abre_em)}` : textoJanelaTopo().toLowerCase();
-}
-function escContexto(linhas, rotRec, mesModa){
-  const p = linhas[0] || {};
-  const com = (Number((p.escolheram || {}).cooperativas) || 0) + (Number((p.nao_escolheram || {}).cooperativas) || 0);
-  const sem = Number((p.sem_plano || {}).cooperativas) || 0;
-  const tipoPlano = ESC.base==="concluidos" ? "plano concluído" : "plano (em andamento ou concluído)";
-  return {com, html:`<p class="esc-ctx"><span><b>${esc(rotRec)}</b>: ${com ? `${com} ${escPlural(com, "cooperativa tem", "cooperativas têm")}` : "nenhuma cooperativa tem"} ${tipoPlano}
-    e ${sem} ${escPlural(sem, "ainda não tem", "ainda não têm")}${ESC.base==="concluidos" && sem ? " (sem plano ou em andamento)" : ""}.</span>
-    ${mesModa ? `<span class="esc-ctx-mes">Leitura de ${esc(rotuloMes(mesModa))}</span>` : ""}
-    ${typeof SIM!=="undefined" && SIM ? `<span class="esc-ctx-sim">Simulação: valem os planos de teste</span>` : ""}</p>`};
-}
-function escVazio(){
-  const qual = ESC.base==="concluidos" ? "Ainda não há planos concluídos neste recorte." : "Ainda não há planos neste ciclo.";
-  const sim = ehAdministrador() && !(typeof SIM!=="undefined" && SIM)
-    ? ` Para ver como fica, monte planos de teste na simulação e abra como CAS.
-       <button class="btn-t mini" onclick="iniciarSimulacao('CAS','editor')">Abrir como CAS na simulação</button>` : "";
-  return `<div class="esc-aviso">${qual} A comparação aparece à medida que as cooperativas montam a estratégia (${esc(escTextoJanela())}).${sim}</div>`;
-}
-function escComoLerHtml(){
-  return `<details class="esc-como" ${ESC.comoLer ? "open" : ""} ontoggle="escComoLer(this)">
-    <summary>Como ler</summary>
-    <ul>
-      <li><b>Mediana</b> é a cooperativa típica do grupo: metade está acima e metade abaixo. A faixa do gráfico vai do 1º ao 3º quartil de quem escolheu.</li>
-      <li>Grupos com <b>menos de 3 cooperativas</b> com dado ficam sem número (—), para ninguém ser identificado. A contagem de coops aparece mesmo assim.</li>
-      <li><b>A escolha vem do plano</b> de cada cooperativa: a versão final ou o ajuste. Em "Em andamento e concluídos", quem ainda está montando conta pela cópia de trabalho; em "Só concluídos", só entra quem registrou a versão final ou o ajuste.</li>
-      <li><b>Variação em 12 meses</b>: a mediana do último mês com dado menos a de 12 meses antes. <b>Diferença</b>: a variação de quem escolheu menos a de quem não escolheu, com a cor no sentido do indicador (verde melhor, terracota pior, cinza estável).</li>
-      <li>Na <b>simulação</b>, valem os planos de teste.</li>
-      <li>A comparação é descritiva: mostra se os grupos evoluem diferente, não prova que a escolha causou a diferença.</li>
-    </ul>
-  </details>`;
-}
-function htmlEscolha(){
-  escZerarSeTrocou();
-  const topo = `<div class="mapa-topo compacto esc-topo"><div class="mt-esq"><h1 class="titulo">Escolha × resultado</h1></div></div>
-    <p class="sub esc-sub">As cooperativas que escolheram cada indicador no seu plano evoluem diferente das que não escolheram?</p>`;
-  if(ENTIDADE.tipo==="cooperativa" && !ENTIDADE.teste)
-    return topo + `<div class="esc-aviso"><b>Esta visão é das Centrais, do CAS e dos administradores.</b>
-      A cooperativa acompanha a sua estratégia em "Nossa estratégia" e "Nossa evolução".</div>`;
-  if(escVeTodasCentrais() && !ESC.panoramaPedido && typeof carregarPanorama==="function"
-     && (typeof PANORAMA==="undefined" || !PANORAMA)){
-    ESC.panoramaPedido = true;
-    carregarPanorama().then(escRepintar);
-  }
-  const recs = escRecortes();
-  if(!recs.some(r => r[0]===ESC.rec)) ESC.rec = "SIS";
-  ESC_RECS = recs;
-  const rotRec = (recs.find(r => r[0]===ESC.rec) || ["", "O Sistema"])[1];
-  const k = ESC.rec+"|"+ESC.base;
-  let c = ESC.resumo[k];
-  if(!c || (!c.carregando && !c.erro && (!c.dados || Date.now()-(c.em||0) > ESC_TTL))) escPedirResumo();
-  c = ESC.resumo[k] || {};
-  const controles = `<div class="esc-ctrl">
-    <div class="esc-ctrl-g" role="group" aria-label="Recorte"><span class="esc-ctrl-r">Recorte</span>
-      <div class="rec-chips">${recs.map(([id, n], i) => `<button class="rchip ${id===ESC.rec ? "on" : ""}" aria-pressed="${id===ESC.rec}"
-        title="${esc(n)}" onclick="escRecorte(${i})">${esc(escRotuloCurto(n))}</button>`).join("")}</div></div>
-    <div class="esc-ctrl-g" role="group" aria-label="Quais planos entram"><span class="esc-ctrl-r">Planos</span>
-      <div class="rec-chips">${ESC_BASES.map(([id, n]) => `<button class="rchip ${id===ESC.base ? "on" : ""}" aria-pressed="${id===ESC.base}"
-        onclick="escBase('${id}')">${n}</button>`).join("")}</div></div>
-  </div>`;
-  let corpo;
-  if(!c.dados){
-    corpo = c.erro
-      ? `<div class="esc-aviso erro"><b>Não foi possível carregar a comparação.</b> ${esc(c.erro)}
-          <button class="btn-t mini" onclick="escTentarDeNovo()">Tentar de novo</button></div>`
-      : `<p class="esc-carregando">Carregando…</p>`;
-  } else {
-    const linhas = Array.isArray(c.dados.indicadores) ? c.dados.indicadores : [];
-    if(!linhas.length){
-      corpo = `<div class="esc-aviso">Nenhum indicador do ciclo tem dado realizado ainda.</div>`;
-    } else {
-      const cont = {};
-      linhas.forEach(l => { const mm = escMesDe(l); if(mm) cont[mm] = (cont[mm] || 0) + 1; });
-      const mesModa = Object.keys(cont).sort((a, b) => cont[b]-cont[a] || b.localeCompare(a))[0] || null;
-      const ctx = escContexto(linhas, rotRec, mesModa);
-      corpo = ctx.html
-        + (c.carregando ? `<p class="esc-carregando fino">Atualizando…</p>` : "")
-        + (c.erro ? `<div class="esc-aviso erro fino">Não consegui atualizar agora (mostrando a leitura anterior): ${esc(c.erro)}</div>` : "")
-        + (ctx.com ? "" : escVazio())
-        + escTabela(linhas, mesModa);
-    }
-  }
-  return topo + controles + corpo + escComoLerHtml();
-}
-const htmlModuloAntesEscolha = htmlModulo;
-htmlModulo = function(){ return estado.modulo==="escolha" ? htmlEscolha() : htmlModuloAntesEscolha.apply(this, arguments); };
-function escAjustarLargura(){
-  const w = document.querySelector(".esc-tab-wrap");
-  if(w) w.style.setProperty("--esc-larg", w.clientWidth + "px");
-  const eixo = document.querySelector(".esc-x");
-  if(eixo){
-    const rots = [...eixo.querySelectorAll("span")];
-    rots.forEach(sp => { sp.style.visibility = ""; });
-    let limite = Infinity;
-    rots.reverse().forEach(sp => {
-      const b = sp.getBoundingClientRect();
-      if(b.right + 6 > limite) sp.style.visibility = "hidden"; else limite = b.left;
-    });
-  }
-}
-window.addEventListener("resize", () => { if(naEscolha()) escAjustarLargura(); });
-const pintaAntesEscolha = pinta;
-pinta = function(){
-  pintaAntesEscolha.apply(this, arguments);
-  const b = document.getElementById("nav-escolha");
-  if(b){
-    b.disabled = !!(ENTIDADE && ENTIDADE.tipo==="cooperativa" && !ENTIDADE.teste);
-    b.setAttribute("aria-current", naEscolha());
-    const li = b.closest("li"); if(li) li.hidden = true;   
-  }
-  if(naEscolha()) escAjustarLargura();
-};
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 250920262350 -->
+<!-- beta 270920261042 -->
 </body>
 </html>
