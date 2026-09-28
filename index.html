@@ -2527,6 +2527,14 @@ body.rail .pe-versao{display:none}
 .adm-tab td input[type=checkbox]{width:16px; height:16px; cursor:pointer}
 
 
+@media (min-width:1680px){ html{zoom:1.1} }
+@media (min-width:1900px){ html{zoom:1.2} }
+@media (min-width:2300px){ html{zoom:1.35} }
+
+@media (min-width:1281px) and (max-width:1679px){ body.rail .corpo{zoom:1.1} }
+
+
+
 .ev6{--verde:#3FA110; --verde-escuro:#146E37; --verde-claro:#D7E6C8; --verde-lav:#F2F8ED;
   --tinta:#16261B; --texto:#404A42; --fraco:#7C867E; --tenue:#A2ABA4;
   --linha:#E4E8E4; --bege:#DDD6C4; --fundo:#F4F6F3; --branco:#FFFFFF; --nav:#0F2E1A;
@@ -2858,12 +2866,12 @@ body.rail .pe-versao{display:none}
       <li><button id="nav-acomp" onclick="irModulo('acomp')" title="Nossa evolução">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V12M10 20V6M16 20v-9M22 20H2"/></svg></span><span class="rot">Nossa evolução</span><span class="st" id="nav-acomp-st"></span></button></li>
       <div class="sep"></div>
-      <li><button id="nav-situacao" onclick="irModulo('situacao')" title="Situação dos planos">
-        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5"/><path d="M3.5 12l1.2 1.2L7 11"/><circle cx="5" cy="18" r="1.4"/></svg></span><span class="rot">Situação dos planos</span></button></li>
-      <li><button id="nav-visao" onclick="irModulo('visao')" title="Estratégia Sistêmica">
-        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="rot">Estratégia Sistêmica</span></button></li>
+      <li><button id="nav-visao" onclick="irModulo('visao')" title="Estratégia sistêmica">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="rot">Estratégia sistêmica</span></button></li>
       <li><button id="nav-evosis" onclick="irModulo('evosis')" title="Evolução sistêmica">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><span class="rot">Evolução sistêmica</span></button></li>
+      <li><button id="nav-situacao" onclick="irModulo('situacao')" title="Situação dos planos">
+        <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5"/><path d="M3.5 12l1.2 1.2L7 11"/><circle cx="5" cy="18" r="1.4"/></svg></span><span class="rot">Situação dos planos</span></button></li>
       <div class="sep"></div>
       <li><button id="nav-guia" onclick="irModulo('guia')" title="Ajuda">
         <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5"/><path d="M12 17h.01"/></svg></span><span class="rot">Ajuda</span></button></li>
@@ -3669,7 +3677,7 @@ const MODULOS={
       ["Relatório sem trabalho manual","O report sai da própria plataforma, com a visão da sua entidade, e alimenta os ritos do ano."],
       ["O que mudou desde a última vez","Ao abrir uma janela de revisão, a primeira coisa que aparece é o que se moveu nos temas onde você colocou energia."]],
     nota:"Este módulo não cadastra nem cobra execução. Projetos, OKRs e o que mais cada entidade usa para gerir seguem no método dela, como o grupo técnico definiu em 07/08." },
-  visao:{ nome:"Estratégia Sistêmica", ico:"◈", quando:"Roda a partir de 2027",
+  visao:{ nome:"Estratégia sistêmica", ico:"◈", quando:"Roda a partir de 2027",
     frase:"O mapa da estratégia do Sistema: a fotografia que hoje não existe.",
     o_que:[
       ["Adesão por tema e por movimento","Onde o Sistema concentrou energia, com filtro por Central e por região."],
@@ -4805,7 +4813,7 @@ const A4={ dpi:200, retrato:{w:8.27,h:11.69}, paisagem:{w:11.69,h:8.27}, margem:
 const px=(pol)=>Math.round(pol*A4.dpi);
 async function cssDasFontes(){
   try{
-    const link=document.querySelector('link[href*="fonts.googleapis.com"]');
+    const link=document.querySelector('link[rel="stylesheet"][href*="fonts.googleapis.com"]');
     if(!link) return "";
     let css=await (await fetch(link.href)).text();
     const urls=[...new Set([...css.matchAll(/url\((https:[^)]+)\)/g)].map(m=>m[1]))];
@@ -4826,7 +4834,7 @@ function avisoExport(txt,erro){
 async function exportarPNG(){
   const arq=estado.visMapa==="arq";
   const alvo=document.querySelector(arq?".arq":".corpo > .resumo-cards")?.parentElement;
-  const no=arq?document.querySelector(".arq"):document.getElementById("view");
+  const no=arq?document.querySelector(".fw, .arq"):document.getElementById("view");
   if(!no) return avisoExport("Nada para exportar nesta tela.",true);
   avisoExport("Gerando a imagem…");
   try{
@@ -4954,7 +4962,7 @@ function htmlPerfil(){
   <section class="secao">
     <div class="secao-cab"><h3>Configurações da entidade</h3><span class="cnt">valem para todos que acessam</span></div>
     <div class="pf-cartao">
-      ${escolha("visibilidade","Como aparecemos na Estratégia Sistêmica",
+      ${escolha("visibilidade","Como aparecemos na Estratégia sistêmica",
         "Na jornada técnica a maioria não se incomodou de ter o número visível às demais, e ficou um voto contra. Fica como escolha da entidade.",
         [["aberta","Abertos","As demais entidades enxergam os nossos números e as nossas escolhas."],
          ["agregada","Só no agregado","Entramos nas contagens e nas medianas, sem aparecer identificados."]])}
@@ -5865,7 +5873,7 @@ function htmlVisao(){
     ? BASE.coops.filter(c=>c.central===String(v.rec).slice(8)).length : BASE.coops.length;
   return `
   <div class="mapa-topo compacto">
-    <div class="mt-esq"><h1 class="titulo">Estratégia Sistêmica</h1>
+    <div class="mt-esq"><h1 class="titulo">Estratégia sistêmica</h1>
       <span class="mt-meta">${esc(nomeEscopo(v.rec))} · ${coopsRec.length} de ${univ} cooperativas registraram</span></div>
     <div class="mt-dir">
       <div class="seletor" role="group" aria-label="Como ver a consolidação">
@@ -6151,7 +6159,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "27/09/2026 11:21";
+const PE_VERSAO = "28/09/2026 15:34";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6684,6 +6692,7 @@ function irAdmin(){ if(!ehAdministrador()) return irPaginaInicial();
 const ROT_SIT_PLANO={nao_iniciou:"Não iniciou", em_preenchimento:"Em preenchimento", registrado:"Registrado", em_ajuste:"Em ajuste"};
 const COR_SIT_PLANO={nao_iniciou:"", em_preenchimento:"convidado", registrado:"ativo", em_ajuste:"confirmado"};
 const SIT = {linhas:null, em:null, erro:null, carregando:false, filtro:{central:"", sit:"", busca:""}};
+const SIT_CENTRAL_SO_AS_SUAS = true;
 const naSituacao = () => estado.vista==="modulo" && (estado.modulo==="situacao" || (estado.modulo==="admin" && ADM.aba==="situacao"));
 async function carregarSituacao(){
   if(SIT.carregando) return; SIT.carregando=true;
@@ -6697,10 +6706,11 @@ function sitFiltro(campo, v){ SIT.filtro[campo]=v; pinta();
 function htmlTabelaSituacao(){
   if(SIT.linhas===null){ carregarSituacao(); return `<p class="vazio">Carregando a situação dos planos…</p>`; }
   const f=SIT.filtro, q=semAcento(f.busca||"");
-  const centrais=[...new Map(SIT.linhas.filter(x=>x.central).map(x=>[x.central, x.central_nome||x.central])).entries()]
+  const linhas = SIT_CENTRAL_SO_AS_SUAS && ENTIDADE.tipo==="central" ? SIT.linhas.filter(x=>x.central===ENTIDADE.id) : SIT.linhas;
+  const centrais=[...new Map(linhas.filter(x=>x.central).map(x=>[x.central, x.central_nome||x.central])).entries()]
     .sort((a,b)=>String(a[1]).localeCompare(String(b[1]),"pt-BR"));
   if(f.central && !centrais.some(([c])=>c===f.central)) f.central="";
-  const base=SIT.linhas.filter(x=>!f.central || x.central===f.central);
+  const base=linhas.filter(x=>!f.central || x.central===f.central);
   const lista=base.filter(x=>(!f.sit||x.situacao===f.sit) && (!q||semAcento((x.nome||"")+" "+(x.entidade||"")).includes(q)))
     .sort((a,b)=>String(a.nome||"").localeCompare(String(b.nome||""),"pt-BR"));
   const cont=s=>base.filter(x=>x.situacao===s).length;
@@ -6740,7 +6750,7 @@ const ADM = {aba:"usuarios", carregado:false, carregando:false, usuarios:[], ent
 const ROT_CICLO={preparacao:"Em preparação", publicado:"Publicado", encerrado:"Encerrado"};
 const ROT_TIPO_JAN={construcao:"Construção", ajuste:"Ajuste"};
 const ROT_MODULO={montar:"Montar estratégia", nossa_estrategia:"Nossa estratégia", nossa_evolucao:"Nossa evolução",
-  situacao_planos:"Situação dos planos", estrategia_sistemica:"Estratégia Sistêmica", evolucao_sistemica:"Evolução sistêmica"};
+  situacao_planos:"Situação dos planos", estrategia_sistemica:"Estratégia sistêmica", evolucao_sistemica:"Evolução sistêmica"};
 async function admCarregar(){
   if(ADM.carregando) return; ADM.carregando=true;
   const erros=[], tentar=(p,padrao)=>p.catch(e=>{ erros.push(e.message); return padrao; });
@@ -8430,16 +8440,16 @@ htmlVisao = function(){
   const btnAtualizar = `<button class="btn-t sis-atu" onclick="sisAtualizar()" ${carregando?"disabled":""}
       title="Buscar de novo a estratégia de cada cooperativa">${carregando?"Atualizando…":"Atualizar"}</button>`;
   if(t==="cooperativa" && !ENTIDADE.teste){
-    return `<div class="mapa-topo compacto"><div class="mt-esq"><h1 class="titulo">Estratégia Sistêmica</h1></div></div>
+    return `<div class="mapa-topo compacto"><div class="mt-esq"><h1 class="titulo">Estratégia sistêmica</h1></div></div>
       <div class="sis-vazio"><b>Esta visão é das Centrais, do CAS e dos administradores.</b>
       <span>A cooperativa acompanha a sua estratégia em "Nossa estratégia" e "Nossa evolução".</span></div>`;
   }
   if(!PANORAMA){
     if(!carregando && !PANORAMA_ST.erro) carregarPanorama().then(()=>{ if(naSistemica()) pinta(); });
-    return `<div class="mapa-topo compacto"><div class="mt-esq"><h1 class="titulo">Estratégia Sistêmica</h1></div>
+    return `<div class="mapa-topo compacto"><div class="mt-esq"><h1 class="titulo">Estratégia sistêmica</h1></div>
       <div class="mt-dir">${btnAtualizar}</div></div>
       ${PANORAMA_ST.erro
-        ? `<div class="sis-vazio erro"><b>Não foi possível carregar a Estratégia Sistêmica.</b>
+        ? `<div class="sis-vazio erro"><b>Não foi possível carregar a Estratégia sistêmica.</b>
             <span>${esc(PANORAMA_ST.erro)}</span></div>`
         : `<div class="sis-vazio"><b>Carregando a estratégia das cooperativas…</b></div>`}`;
   }
@@ -8465,7 +8475,7 @@ htmlVisao = function(){
   }
   return `
   <div class="mapa-topo compacto">
-    <div class="mt-esq"><h1 class="titulo">Estratégia Sistêmica</h1>
+    <div class="mt-esq"><h1 class="titulo">Estratégia sistêmica</h1>
       <span class="mt-meta">${esc(nomeEscopo(v.rec))} · ${fraseTopo(pl, v.f)}${atualizado?` · ${atualizado}`:""}</span></div>
     <div class="mt-dir">
       ${btnAtualizar}
@@ -8603,7 +8613,7 @@ function dadosCoop(rows, v){
   const entidades = [{c: ent, n: v.nome, t: "cooperativa", ce}, ...(ce ? [{c: ce, n: v.central_nome || ce, t: "central"}] : []), {c: "SIS", n: "Sistema Sicredi", t: "sistema"}];
   return {meses, entidades, indicadores: meta, temas, valores, posicao, selos: SELOS_ORDEM, dist, rank: Object.keys(rank).length ? rank : null, temCentral};
 }
-function criarEvo(D, S, R){
+function criarEvo(D, S, R, OPC = {}){
   const MES = "jan fev mar abr mai jun jul ago set out nov dez".split(" ");
   const IDX = Object.fromEntries(D.meses.map((m, i) => [m, i]));
   const ENT = Object.fromEntries(D.entidades.map(e => [e.c, e]));
@@ -8866,12 +8876,14 @@ function criarEvo(D, S, R){
   const seta = d => d == null ? "" : d > 0 ? "▲" : d < 0 ? "▼" : "=";
   const centralDe = c => (ENT[c] || {}).ce;
   function htmlCab(){
-    const ents = NOSSA() ? "" : `${["SIS", ...D.entidades.filter(e => e.t === "central").sort((a, b) => a.n.localeCompare(b.n)).map(e => e.c)].map(c =>
-        `<button class="pil ${S.ent === c ? "on" : ""}" data-ent="${c}">${c === "SIS" ? "O Sistema" : esc(nomeEnt(c, true))}</button>`).join("")}
+    const cr = OPC.central || null;
+    const centraisVis = D.entidades.filter(e => e.t === "central" && (!cr || e.c === cr)).sort((a, b) => a.n.localeCompare(b.n));
+    const ents = NOSSA() ? "" : `${["SIS", ...centraisVis.map(e => e.c)].map(c =>
+        `<button class="pil ${S.ent === c ? "on" : ""}" data-ent="${c}">${c === "SIS" ? "O Sistema" : c === cr ? "Minha Central" : esc(nomeEnt(c, true))}</button>`).join("")}
       <label class="pil outra ${ENT[S.ent] && ENT[S.ent].t === "cooperativa" ? "on" : ""}">
         <select data-acao="coop" aria-label="Outra entidade">
           <option value="">outra entidade</option>
-          ${D.entidades.filter(e => e.t === "central").sort((a, b) => a.n.localeCompare(b.n)).map(ce => `<optgroup label="${esc(ce.n)}">
+          ${centraisVis.map(ce => `<optgroup label="${esc(ce.n)}">
             ${D.entidades.filter(e => e.t === "cooperativa" && e.ce === ce.c).sort((a, b) => a.n.localeCompare(b.n))
               .map(e => `<option value="${e.c}" ${S.ent === e.c ? "selected" : ""}>${esc(e.n)}</option>`).join("")}</optgroup>`).join("")}
         </select></label>`;
@@ -9103,14 +9115,15 @@ function criarEvo(D, S, R){
       el.innerHTML = ""; el.style.height = "0px";
       const det = el.closest(".e6-det"), esq = det && det.querySelector(".det-esq"), dir = el.closest(".det-dir");
       const lim = x => Math.max(250, Math.min(Math.round(x), Math.round(w * .75)));
+      const z = (el.getBoundingClientRect().width / Math.max(1, el.clientWidth)) || 1, alto = c => c.getBoundingClientRect().height / z;
       let h = 300, nat = 0;
       if(esq && dir){ const gap = parseFloat(getComputedStyle(esq).rowGap) || 0;
-        nat = [...esq.children].reduce((a, c) => a + c.getBoundingClientRect().height, 0) + gap * (esq.children.length - 1);
-        const outros = [...dir.children].filter(c => c !== el).reduce((a, c) => a + c.getBoundingClientRect().height, 0);
+        nat = [...esq.children].reduce((a, c) => a + alto(c), 0) + gap * (esq.children.length - 1);
+        const outros = [...dir.children].filter(c => c !== el).reduce((a, c) => a + alto(c), 0);
         h = nat - outros; }
       el.style.height = "";
       el.innerHTML = grafico({...o, larg: w, alt: lim(h)});
-      if(nat){ const sobra = dir.getBoundingClientRect().height - nat; if(Math.abs(sobra) > 3){ const h2 = lim(lim(h) - sobra); if(h2 !== lim(h)) el.innerHTML = grafico({...o, larg: w, alt: h2}); } }
+      if(nat){ const sobra = alto(dir) - nat; if(Math.abs(sobra) > 3){ const h2 = lim(lim(h) - sobra); if(h2 !== lim(h)) el.innerHTML = grafico({...o, larg: w, alt: h2}); } }
     });
   }
   const rotuloHtml = r => esc(r).replace(/\s(\(em [^)]*\))$/, ' <span class="un">$1</span>');
@@ -9189,6 +9202,7 @@ function criarEvo(D, S, R){
   return {html: () => htmlCab() + htmlRecorte() + (S.aba === "visao" ? htmlVisao() : htmlAnalitica()),
           depois: () => { encaixarTextos(); desenharGraficos(); }, ENT};
 }
+const EV6_CENTRAL_SO_A_SUA = true;
 const novoEstado = tela => ({tela, ent: null, mes: null, aba: "visao", sel: null, tema: null, ref: "SIS", refPor: {}, selosTodos: false});
 const EV6 = {estado: {nossa: novoEstado("nossa"), sistemica: novoEstado("sistemica")}, cache: {}, carregando: {}, erro: {}, inst: null, tela: null};
 const raiz = () => document.getElementById("ev6");
@@ -9221,8 +9235,10 @@ function htmlTela(tela){
   }
   if(!D.temas.length || !Object.keys(D.valores).length) return casca(`<div class="ev6-aviso">${typeof SEM_DADOS === "string" ? SEM_DADOS : "Sem dados na base ainda"}.</div>`);
   const S = EV6.estado[tela], ents = new Set(D.entidades.map(e => e.c));
-  if(!S.ent || !ents.has(S.ent)) S.ent = tela === "nossa" ? ENTIDADE.id : (ENTIDADE.tipo === "central" && ents.has(ENTIDADE.id) ? ENTIDADE.id : "SIS");
-  EV6.inst = criarEvo(D, S, raiz); EV6.tela = tela;
+  const cr = tela === "sistemica" && EV6_CENTRAL_SO_A_SUA && ENTIDADE.tipo === "central" && ents.has(ENTIDADE.id) ? ENTIDADE.id : null;
+  const permitida = c => !cr || c === "SIS" || c === cr || (D.entidades.find(e => e.c === c) || {}).ce === cr;
+  if(!S.ent || !ents.has(S.ent) || !permitida(S.ent)) S.ent = tela === "nossa" ? ENTIDADE.id : (ENTIDADE.tipo === "central" && ents.has(ENTIDADE.id) ? ENTIDADE.id : "SIS");
+  EV6.inst = criarEvo(D, S, raiz, {central: cr}); EV6.tela = tela;
   return `<div class="ev6" id="ev6" data-tela="${tela}">${EV6.inst.html()}</div>`;
 }
 window.ev6TentarDeNovo = function(){ const t = EV6.tela || (estado.modulo === "acomp" ? "nossa" : "sistemica"); delete EV6.erro[chaveDe(t)]; pinta(); };
@@ -9269,15 +9285,21 @@ document.addEventListener("mousemove", ev => {
   const fm = v => v == null ? "—" : nf(v * info.fator, info.casas);
   const tip = wrap.querySelector(".gr-tip");
   tip.innerHTML = `<b>${d.m}</b>` + info.nomes.map((nm, k) => `<div><span>${esc(nm)}</span><i>${fm(k ? d.c[k - 1] : d.p)}</i></div>`).join("");
-  const e2 = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
+  const e2 = wrap.clientWidth / svg.viewBox.baseVal.width;                   
   tip.hidden = false; tip.style.left = Math.min(cx * e2 + 12, wrap.clientWidth - tip.offsetWidth - 4) + "px";
 });
+const alternarTrilhoAntesEv6 = alternarTrilho;
+alternarTrilho = function(){
+  const r = alternarTrilhoAntesEv6.apply(this, arguments);
+  setTimeout(() => { if(telaVisivel() && raiz() && EV6.inst){ const y = window.scrollY; EV6.inst.depois(); window.scrollTo(0, y); } }, 320);
+  return r;
+};
 let _ev6rz; window.addEventListener("resize", () => { clearTimeout(_ev6rz); _ev6rz = setTimeout(() => { if(telaVisivel() && raiz() && EV6.inst){ const y = window.scrollY; EV6.inst.depois(); window.scrollTo(0, y); } }, 100); });
 window.EV6 = EV6;   
 })();
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 270920261121 -->
+<!-- beta 280920261534 -->
 </body>
 </html>
