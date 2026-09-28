@@ -3557,7 +3557,9 @@ function htmlPlano(){
         : estado.perfil!=="editor"
           ? `<span class="st-linha">Perfil de visualização: somente leitura.</span>`
           : estado.status==="registrado"
-            ? `<button class="btn-p" onclick="editarPlano()">Editar</button>`
+            ? (typeof PLANO_SRV!=="undefined" && PLANO_SRV && PLANO_SRV.pode_reabrir===false
+                ? `<span class="st-linha">Estratégia registrada. Para mudar algo, fale com o time de Estratégia do CAS.</span>`
+                : `<button class="btn-p" onclick="editarPlano()">Editar</button>`)
             : estado.status==="rascunho"
               ? `<button class="btn-p" onclick="irPasso(passoAtual())">Continuar montando</button>` : ""}`}
   ${rev?"":"</div>"}`;
@@ -3853,8 +3855,8 @@ function htmlInicio(){
                      :"Este navegador está bloqueando o armazenamento local, então o preenchimento vale só enquanto a aba estiver aberta."}</p>`
     : estado.status==="registrado"
       ? `<button class="btn-p grande" onclick="irMeuPlano()">Ver a nossa estratégia</button>
-         <p>Registrada em ${esc(estado.registradoEm||"")}. A janela segue aberta até ${ATE_JANELA()}.</p>
-         <button class="btn-t" style="width:100%;margin-top:9px" onclick="editarPlano()">Alterar</button>`
+         <p>Registrada em ${esc(estado.registradoEm||"")}.</p>
+         ${typeof PLANO_SRV!=="undefined" && PLANO_SRV && PLANO_SRV.pode_reabrir===false ? "" : `<button class="btn-t" style="width:100%;margin-top:9px" onclick="editarPlano()">Alterar</button>`}`
       : `<button class="btn-p grande" onclick="irPasso(${passoAtual()})">Continuar montando</button>
          <p>Você parou no passo ${passoAtual()}. ${TEM_DISCO?`Salvo ${esc(estado.salvoEm||"agora")}.`:"Guardado só nesta aba."}</p>
          ${p[0].feito?`<button class="btn-t" style="width:100%;margin-top:9px" onclick="irPasso(4)">Ver o resumo como está</button>`:""}`;
@@ -4492,7 +4494,7 @@ function cabecalhoPasso(n){
       ${ant?`<button class="btn-t" onclick="irPasso(${ant})">‹ Voltar</button>`:""}
       <button class="btn-t" onclick="irInicio()">Salvar e sair</button>
       ${prox?`<button class="btn-p" onclick="irPasso(${prox})">${PASSOS[prox-1].rot} ›</button>`
-        :`<button class="btn-p" id="btn-registrar" onclick="registrar()">${estado.registradoEm?"Registrar alterações":"Registrar a estratégia"}</button>`}
+        :`<button class="btn-p" id="btn-registrar" onclick="registrar()" ${typeof PLANO_SRV!=="undefined" && PLANO_SRV && PLANO_SRV.pode_registrar===false ? `title="O registro abre com a janela de construção. Até lá, tudo fica salvo onde você parou."` : ""}>${estado.registradoEm?"Registrar alterações":"Registrar a estratégia"}</button>`}
     </div></div>
     ${n<4?`<div class="pp-topo"><div class="pp-txt">
       <span class="pp-olho">Passo ${n} de 4</span>
@@ -6159,7 +6161,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "28/09/2026 15:56";
+const PE_VERSAO = "28/09/2026 17:28";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6400,7 +6402,7 @@ async function carregarPlano(){
   estado.status=/^em.ajuste$/.test(p.status||"") ? "rascunho" : (p.status||"vazio");
   estado.registradoEm=p.registrado_em?fmtDataHora(p.registrado_em):null;
   estado.salvoEm=p.atualizado_em?fmtDataHora(p.atualizado_em):null;
-  estado.janelaAberta=!!p.janela || !!p.teste;
+  estado.janelaAberta=!!p.janela || !!p.teste || !!(CATALOGO && CATALOGO.ciclo && CATALOGO.ciclo.status==="publicado");   
   PODE_EDITAR_SRV=!!p.pode_editar;
   ULTIMO_ENVIADO=JSON.stringify(estadoParaSalvar());
   if(typeof sincronizarBase==="function") sincronizarBase();
@@ -6445,6 +6447,10 @@ comecarPlano = function(){
 };
 registrar = async function(){
   if(!PODE_EDITAR_SRV) return aviso(SEM_EDICAO, true);
+  if(PLANO_SRV && PLANO_SRV.pode_registrar===false){                   
+    const pj=PLANO_SRV.proxima_janela;
+    return aviso(`O registro abre em ${pj&&pj.abre_em?fmtData(pj.abre_em):"a próxima janela"}. Até lá, monte à vontade: tudo fica salvo onde você parou.`);
+  }
   const atual=(PLANO_SRV&&PLANO_SRV.versao_atual)||0;
   let motivo=null;
   if(atual>0){
@@ -6452,7 +6458,7 @@ registrar = async function(){
     if(motivo===null) return;                            
     motivo=motivo.trim()||null;
     if(!confirm(`Registrar a versão ${atual+1} da estratégia?\n\nAs versões anteriores continuam guardadas.`)) return;
-  } else if(!confirm("Registrar a estratégia?\n\nEla pode ser ajustada enquanto a janela estiver aberta, e todas as versões ficam guardadas.")) return;
+  } else if(!confirm("Registrar a estratégia?\n\nDepois de registrada, a cooperativa não consegue mais editar nesta janela. Se precisar mudar algo, fale com o time de Estratégia do CAS. Até registrar, tudo fica salvo onde você parou.")) return;
   try{
     await salvarAgora();
     const v=await rpc("registrar_plano",{p_plano:PLANO_SRV.plano_id, p_motivo:motivo});
@@ -6626,7 +6632,7 @@ function irPaginaInicial(){
 function aplicarMenuReal(){
   const b=$id("nav-admin"); if(b) b.hidden=!ehAdministrador();
   const bts=document.querySelector(".quem-bts");                  
-  if(bts) bts.innerHTML=`<span class="pe-versao" title="Data e hora da montagem desta versão">Beta · versão ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>`;
+  if(bts) bts.innerHTML=ehAdministrador() ? `<span class="pe-versao" title="Data e hora da montagem desta versão">Versão ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>` : "";
   aplicarVisibilidadeMenu();
 }
 function textoJanelaTopo(){
@@ -6637,6 +6643,8 @@ function textoJanelaTopo(){
   const aberta=js.find(x=>new Date(x.abre_em)<=agora && agora<new Date(x.fecha_em));
   if(aberta) return `${aberta.nome} · aberta até ${fmtData(aberta.fecha_em)}`;   
   const prox=js.filter(x=>new Date(x.abre_em)>agora).sort((a,b)=>new Date(a.abre_em)-new Date(b.abre_em))[0];
+  const publicado=!!(CATALOGO && CATALOGO.ciclo && CATALOGO.ciclo.status==="publicado");
+  if(prox && publicado) return `${prox.nome} · registro a partir de ${fmtData(prox.abre_em)} · já dá para montar e salvar`;
   return prox ? `Janela fechada · ${prox.nome} abre em ${fmtData(prox.abre_em)}` : "Janela fechada";
 }
 function ATE_JANELA(){
@@ -6701,6 +6709,20 @@ async function carregarSituacao(){
   finally{ SIT.carregando=false; }
   if(naSituacao()) pinta();
 }
+async function admReabrirPlano(ent){
+  const n=((SIT.linhas||[]).find(x=>x.entidade===ent)||{}).nome||ent;
+  if(!confirm(`Reabrir a estratégia de ${n}?\n\nA cooperativa volta a poder editar e registrar uma nova versão. As versões registradas ficam guardadas.`)) return;
+  try{ await rpc("admin_reabrir_plano",{p_entidade:ent, p_ciclo:PE.ciclo}); aviso(`Estratégia de ${n} reaberta para edição.`); }
+  catch(e){ aviso("Não foi possível reabrir: "+e.message, true); }
+  SIT.linhas=null; pinta();
+}
+async function admLimparPlano(ent){
+  const n=((SIT.linhas||[]).find(x=>x.entidade===ent)||{}).nome||ent;
+  if(!confirm(`Apagar o rascunho de ${n}?\n\nA cooperativa recomeça do zero. Isto não pode ser desfeito.`)) return;
+  try{ await rpc("admin_limpar_plano",{p_entidade:ent, p_ciclo:PE.ciclo}); aviso(`Rascunho de ${n} apagado.`); }
+  catch(e){ aviso("Não foi possível apagar: "+e.message, true); }
+  SIT.linhas=null; pinta();
+}
 function sitFiltro(campo, v){ SIT.filtro[campo]=v; pinta();
   if(campo==="busca"){ const el=$id("sit-busca"); if(el){ el.focus(); el.setSelectionRange(v.length,v.length); } } }
 function htmlTabelaSituacao(){
@@ -6729,14 +6751,16 @@ function htmlTabelaSituacao(){
       <select onchange="sitFiltro('sit',this.value)">${optsLista(ROT_SIT_PLANO,f.sit,"Todas as situações")}</select>
     </div>
     <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Cooperativa</th><th>Central</th><th>Situação</th><th>Versão</th>
-      <th>Registrado em</th><th>Última alteração</th></tr></thead><tbody>
+      <th>Registrado em</th><th>Última alteração</th>${ehAdministrador()?"<th></th>":""}</tr></thead><tbody>
       ${lista.map(x=>`<tr><td><b>${esc(x.nome||x.entidade)}</b><small>${esc(x.entidade||"")}</small></td>
         <td><small>${esc(x.central_nome||x.central||"—")}</small></td>
         <td><span class="adm-sit ${COR_SIT_PLANO[x.situacao]||""}">${esc(ROT_SIT_PLANO[x.situacao]||x.situacao||"—")}</span></td>
         <td><small>${x.versao?"v"+esc(String(x.versao)):"—"}</small></td>
         <td><small>${x.registrado_em?fmtDataHora(x.registrado_em):"—"}</small></td>
-        <td><small>${x.atualizado_em?fmtDataHora(x.atualizado_em):"—"}</small></td></tr>`).join("")
-        ||`<tr><td colspan="6" class="vazio">Nenhuma cooperativa com esses filtros.</td></tr>`}
+        <td><small>${x.atualizado_em?fmtDataHora(x.atualizado_em):"—"}</small></td>${ehAdministrador()?`<td>${
+          x.situacao==="registrado" ? `<button class="btn-t mini" onclick="admReabrirPlano(${esc(JSON.stringify(x.entidade))})" title="Devolve a estratégia registrada para a cooperativa editar (as versões ficam guardadas)">Reabrir</button>`
+          : x.situacao==="em_preenchimento" ? `<button class="btn-t mini" onclick="admLimparPlano(${esc(JSON.stringify(x.entidade))})" title="Apaga o rascunho para a cooperativa recomeçar do zero">Limpar</button>` : ""}</td>`:""}</tr>`).join("")
+        ||`<tr><td colspan="${ehAdministrador()?7:6}" class="vazio">Nenhuma cooperativa com esses filtros.</td></tr>`}
     </tbody></table></div><p class="adm-nota">${lista.length} de ${base.length} cooperativas.</p>`;
 }
 function htmlSituacaoPagina(){
@@ -9301,6 +9325,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 280920261556 -->
+<!-- beta 280920261728 -->
 </body>
 </html>
