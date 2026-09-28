@@ -2527,9 +2527,9 @@ body.rail .pe-versao{display:none}
 .adm-tab td input[type=checkbox]{width:16px; height:16px; cursor:pointer}
 
 
-@media (min-width:1680px){ html{zoom:1.1} }
-@media (min-width:1900px){ html{zoom:1.2} }
-@media (min-width:2300px){ html{zoom:1.35} }
+@media (min-width:1680px){ html{zoom:1.05} .corpo{margin-inline:auto} }
+@media (min-width:1900px){ html{zoom:1.1} }
+@media (min-width:2300px){ html{zoom:1.18} }
 
 @media (min-width:1281px) and (max-width:1679px){ body.rail .corpo{zoom:1.1} }
 
@@ -4843,7 +4843,7 @@ async function exportarPNG(){
     const util=larguraPag-margem*2;
     const clone=no.cloneNode(true);
     clone.querySelectorAll(".mapa-acoes,.seletor,#aviso-export").forEach(x=>x.remove());
-    const larguraCSS=no.getBoundingClientRect().width;
+    const larguraCSS=no.offsetWidth||no.getBoundingClientRect().width;
     const cssPagina=[...document.querySelectorAll("style")].map(x=>x.textContent).join("\n");
     const cssFontes=await cssDasFontes();
     const envolucro=document.createElement("div");
@@ -4860,9 +4860,9 @@ async function exportarPNG(){
     const medidor=document.createElement("div");
     medidor.style.cssText=`position:fixed; left:-99999px; top:0; width:${larguraCSS}px`;
     medidor.appendChild(envolucro.cloneNode(true)); document.body.appendChild(medidor);
-    const alturaCSS=Math.ceil(medidor.firstChild.getBoundingClientRect().height)+8;
+    const alturaCSS=Math.ceil(medidor.firstChild.offsetHeight||medidor.firstChild.getBoundingClientRect().height)+8;
     medidor.remove();
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${larguraCSS}" height="${alturaCSS}">`
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.max(larguraCSS,1440)}" height="${alturaCSS}">`
       +`<foreignObject width="100%" height="100%">${new XMLSerializer().serializeToString(envolucro)}</foreignObject></svg>`;
     const img=new Image();
     await new Promise((ok,falha)=>{ img.onload=ok; img.onerror=()=>falha(new Error("imagem"));
@@ -6159,7 +6159,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "28/09/2026 15:34";
+const PE_VERSAO = "28/09/2026 15:54";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -7508,6 +7508,7 @@ sparkline = function(s,{w=84,h=26}={}){
     ${pathSe(caminhoComBuracos(v,px,py),`fill="none" stroke="${cor}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"`)}
     <circle cx="${px(iU[iU.length-1]).toFixed(1)}" cy="${py(pU).toFixed(1)}" r="2.5" fill="${cor}"/></svg>`;
 };
+const ponto = (x, y, d, cor) => `<path d="M${x.toFixed(1)} ${y.toFixed(1)}h0" stroke="${cor}" stroke-width="${d}" stroke-linecap="round" vector-effect="non-scaling-stroke" fill="none"/>`;
 grafico = function(s,{h=46,cor="var(--verde)",fill=true,pontos=false}={}){
   const w=150, v=(s||[]).slice(-12), ok=v.filter(ehNum);
   if(ok.length<2) return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"></svg>`;
@@ -7517,12 +7518,12 @@ grafico = function(s,{h=46,cor="var(--verde)",fill=true,pontos=false}={}){
   const iU=v.map((x,i)=>ehNum(x)?i:-1).filter(i=>i>=0), i0=iU[0], iN=iU[iU.length-1];
   const contiguo=iU.length===iN-i0+1;
   const area=contiguo ? d+` L${px(iN).toFixed(1)} ${h} L${px(i0).toFixed(1)} ${h} Z` : "";
-  return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+  return `<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true" style="overflow:visible">
     ${fill&&area?`<path d="${area}" fill="rgba(63,161,16,.10)"/>`:""}
     ${pathSe(d,`fill="none" stroke="${cor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"`)}
     ${!contiguo&&iU.length>1?`<path d="${iU.map((i,k)=>(k?"L":"M")+px(i).toFixed(1)+" "+py(v[i]).toFixed(1)).join(" ")}" fill="none" stroke="${cor}" stroke-width="1.4" stroke-dasharray="3 3" opacity=".7" vector-effect="non-scaling-stroke"/>`:""}
-    ${pontos||!contiguo?iU.map(i=>`<circle cx="${px(i).toFixed(1)}" cy="${py(v[i]).toFixed(1)}" r="2" fill="${cor}" vector-effect="non-scaling-stroke"/>`).join(""):""}
-    <circle cx="${px(iN).toFixed(1)}" cy="${py(v[iN]).toFixed(1)}" r="3" fill="${cor}" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>`;
+    ${pontos||!contiguo?iU.slice(0,-1).map(i=>ponto(px(i),py(v[i]),4,cor)).join(""):""}
+    ${ponto(px(iN),py(v[iN]),9,"#fff")}${ponto(px(iN),py(v[iN]),6,cor)}</svg>`;
 };
 const deltaTextoOriginal = deltaTexto;
 deltaTexto = function(m, d){
@@ -9300,6 +9301,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 280920261534 -->
+<!-- beta 280920261554 -->
 </body>
 </html>
