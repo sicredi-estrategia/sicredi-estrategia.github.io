@@ -4876,8 +4876,8 @@ async function exportarPNG(){
       c.width=larguraPag; c.height=alturaPag;
       const g=c.getContext("2d");
       g.fillStyle="#fff"; g.fillRect(0,0,c.width,c.height);
-      g.drawImage(img, 0, p*alturaUtil/escala, larguraCSS, alturaUtil/escala,
-                       margem, margem, util, Math.min(alturaUtil, alturaTotal-p*alturaUtil));
+      const sh=Math.min(alturaUtil/escala, alturaCSS-p*alturaUtil/escala);
+      g.drawImage(img, 0, p*alturaUtil/escala, larguraCSS, sh, margem, margem, util, sh*escala);
       const nome=`estrategia-${ENTIDADE.nome.toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${arq?"mapa":"resumo"}`
         +(paginas>1?`-p${p+1}`:"")+".png";
       const a=document.createElement("a");
@@ -6159,7 +6159,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "28/09/2026 15:54";
+const PE_VERSAO = "28/09/2026 15:56";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -9301,6 +9301,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 280920261554 -->
+<!-- beta 280920261556 -->
 </body>
 </html>
