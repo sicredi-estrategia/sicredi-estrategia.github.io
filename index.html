@@ -2531,10 +2531,13 @@ body.rail .pe-versao{font-size:9px; text-align:center; line-height:1.3; white-sp
 
 
 
-@media (min-width:1600px){ html{zoom:1.1; --zm:1.1} .corpo{margin-inline:auto} body.rail .corpo{zoom:1.05} }
-@media (min-width:1900px){ html{zoom:1.2; --zm:1.2} }
-@media (min-width:2300px){ html{zoom:1.3; --zm:1.3} }
-@media (min-width:2500px){ html{zoom:1.33; --zm:1.33} }
+
+#ev6 h1{font-size:26px}
+
+@media (min-width:1600px){ html{zoom:1.08; --zm:1.08} .corpo{margin-inline:auto}
+  .titulo, #ev6 h1{font-size:24px} #ev6 .frase{font-size:22px} }
+@media (min-width:1900px){ html{zoom:1.15; --zm:1.15} }
+@media (min-width:2300px){ html{zoom:1.2; --zm:1.2} }
 
 .nav{height:calc(100vh / var(--zm, 1))}
 .app{min-height:calc(100vh / var(--zm, 1))}
@@ -6206,7 +6209,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "29/09/2026 18:18";
+const PE_VERSAO = "29/09/2026 18:31";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -9328,10 +9331,18 @@ function htmlTela(tela){
   return `<div class="ev6" id="ev6" data-tela="${tela}">${EV6.inst.html()}</div>`;
 }
 window.ev6TentarDeNovo = function(){ const t = EV6.tela || (estado.modulo === "acomp" ? "nossa" : "sistemica"); delete EV6.erro[chaveDe(t)]; pinta(); };
+function animarAnel(){
+  const e = raiz(); if(!e || !e.querySelector(".anel .arco")) return false;
+  e.classList.remove("entra"); void e.offsetWidth; e.classList.add("entra");
+  clearTimeout(EV6._tAnel); EV6._tAnel = setTimeout(() => { const x = raiz(); if(x) x.classList.remove("entra"); }, 1000);
+  return true;
+}
+const mesAtual = () => (EV6.estado.nossa || {}).mes || "";
 function repintar(){
   const el = raiz(); if(!el || !EV6.inst) return;
   const y = window.scrollY;                                                  
   el.innerHTML = EV6.inst.html(); EV6.inst.depois(); window.scrollTo(0, y);
+  if(mesAtual() !== EV6._mesAnel){ EV6._mesAnel = mesAtual(); animarAnel(); }
 }
 htmlGestao = function(){ return htmlTela("nossa"); };
 htmlEvolucaoSistemica = function(){ return htmlTela("sistemica"); };
@@ -9340,8 +9351,7 @@ pinta = function(){
   const r = pintaAntesEv6.apply(this, arguments);
   if(telaVisivel() && raiz() && EV6.inst) EV6.inst.depois();
   if(estado.modulo !== EV6.ultModulo){ EV6.ultModulo = estado.modulo; EV6.animarAnel = estado.modulo === "acomp"; }
-  if(EV6.animarAnel && raiz() && raiz().querySelector(".anel .arco")){ raiz().classList.add("entra"); EV6.animarAnel = false;
-    setTimeout(() => { const e = raiz(); if(e) e.classList.remove("entra"); }, 1000); }   
+  if(EV6.animarAnel && animarAnel()){ EV6.animarAnel = false; EV6._mesAnel = mesAtual(); }
   return r;
 };
 const entrarVinculoAntesEv6 = entrarVinculo;
@@ -9393,6 +9403,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 290920261818 -->
+<!-- beta 290920261831 -->
 </body>
 </html>
