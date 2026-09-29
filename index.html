@@ -2545,6 +2545,25 @@ body.rail .pe-versao{font-size:9px; text-align:center; line-height:1.3; white-sp
 }
 
 
+.ev6 .rodape .conq{display:flex; flex-wrap:wrap; align-items:center; gap:4px 14px; margin-top:6px}
+.ev6 .rodape .conq span{display:inline-flex; align-items:center; gap:5px; white-space:nowrap}
+.ev6 .rodape .conq .selo-ico{width:12px; height:12px; color:var(--verde-escuro)}
+
+
+.fk-num .dr-vs{font-size:11px; font-weight:500; color:#8A968C; margin-left:6px; white-space:nowrap}
+.dr-como-ler{display:grid; grid-template-columns:repeat(3,1fr); gap:12px 22px; margin-top:14px; padding:12px 16px;
+  border:1px dashed #D5DDD3; border-radius:12px; color:#5E6B61; font-size:12px; line-height:1.5}
+.dr-como-ler h4{margin:0 0 4px; font:600 11px/1.3 var(--exo, inherit); letter-spacing:.06em; text-transform:uppercase; color:#3F6B4A;
+  display:flex; align-items:center; gap:8px}
+.dr-como-ler p{margin:0}
+.dr-como-ler b{font-weight:600; color:#2F3A32}
+.dr-cl-barra{position:relative; display:inline-flex; width:56px; height:7px; border-radius:4px; overflow:visible}
+.dr-cl-barra i{flex:1; height:100%}
+.dr-cl-barra i:first-child{border-radius:4px 0 0 4px} .dr-cl-barra i:last-child{border-radius:0 4px 4px 0}
+.dr-cl-barra b{position:absolute; left:70%; top:50%; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; border-radius:50%; background:#1F3326; border:2px solid #fff}
+@media(max-width:900px){ .dr-como-ler{grid-template-columns:1fr} }
+
+
 .ev6{--verde:#3FA110; --verde-escuro:#146E37; --verde-claro:#D7E6C8; --verde-lav:#F2F8ED;
   --tinta:#16261B; --texto:#404A42; --fraco:#7C867E; --tenue:#A2ABA4;
   --linha:#E4E8E4; --bege:#DDD6C4; --fundo:#F4F6F3; --branco:#FFFFFF; --nav:#0F2E1A;
@@ -6171,7 +6190,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "28/09/2026 18:12";
+const PE_VERSAO = "29/09/2026 17:00";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6924,7 +6943,9 @@ async function admSalvarUsuario(){
     const r=await rpc("admin_salvar_usuario",{p_email:email, p_nome:f.nome.trim(), p_cargo:f.cargo.trim()||null,
       p_entidade:f.entidade||null, p_perfil:f.entidade?f.perfil:null, p_administrador:!!f.administrador, p_ativo:!!f.ativo,
       p_observacao:(f.observacao||"").trim()||null});
-    const linha=Object.assign({}, r||{}, {entidade_nome:(r&&r.entidade_nome)||(r&&r.entidade?nomeEnt(r.entidade):null)});
+    const ent=(r&&(r.entidade||r.entidade_codigo))||null;
+    const linha=Object.assign({}, r||{}, {entidade:ent, entidade_nome:(r&&r.entidade_nome)||(ent?nomeEnt(ent):null),
+      entidade_tipo:(r&&r.entidade_tipo)||(ent?tipoEnt(ent):null), tem_login:r&&("tem_login" in r ? r.tem_login : !!r.auth_id)});
     const i=ADM.usuarios.findIndex(x=>x.email===linha.email);
     if(i>=0) ADM.usuarios[i]=Object.assign({}, ADM.usuarios[i], linha); else ADM.usuarios.unshift(linha);
     const novo=f.novo; ADM.form=null; pinta();
@@ -7712,11 +7733,20 @@ function cartaoFicha(m){
   const v=valorUlt(m), s=mesesAte(m.amUlt,12).map(am=>m.porMes[am]?m.porMes[am].v:null);
   return `<article class="fk-c">
       <span class="fk-r">${esc(m.curto||m.nome)} <span class="dr-mes">· ${esc(rotAm(m.amUlt))}</span></span>
-      <div class="fk-num">${fmt(v,m)}<span class="${clsVar(m)}">${deltaTexto(m,var12(m))}</span></div>
+      <div class="fk-num">${fmt(v,m)}<span class="${clsVar(m)}">${deltaTexto(m,var12(m))}</span>${ehNum(var12(m))?`<span class="dr-vs" title="Variação contra o mesmo mês do ano anterior">vs ${esc(rotAm(amMenos(m.amUlt,12)))}</span>`:""}</div>
       <div class="fk-spark">${grafico(s,{h:40})}</div>
       ${odometro(m)}
       ${compHtml(m, v)}
     </article>`;
+}
+function comoLerFicha(){
+  const quem = ENTIDADE.tipo==="cooperativa" ? "a sua cooperativa" : ENTIDADE.tipo==="central" ? "a sua Central" : "o Sistema";
+  const barra = `<span class="dr-cl-barra">${["#EFF3EC","#DCE9D0","#B6D79B","#7FBB5E"].map(c=>`<i style="background:${c}"></i>`).join("")}<b></b></span>`;
+  return `<div class="dr-como-ler">
+    <div><h4>Número e %</h4><p>O número é o último mês com dado. O % ao lado compara com o <b>mesmo mês do ano anterior</b> (ex.: ago/26 contra ago/25): verde melhorou, vermelho piorou.</p></div>
+    <div><h4>Faixas ${barra}</h4><p>As cooperativas do Sistema são ordenadas do pior para o melhor resultado e divididas em <b>4 grupos do mesmo tamanho</b> (quartis). Do verde mais claro (25% com resultado mais fraco) ao mais escuro (25% melhores). O ponto mostra onde ${quem} está.</p></div>
+    <div><h4>Central · Sistema · Melhores</h4><p>Quanto ${quem} está acima (▲) ou abaixo (▼) do valor do meio da Central, do valor do meio do Sistema e do valor que dá entrada no grupo dos <b>25% melhores</b>.</p></div>
+  </div>`;
 }
 function fichaMetrica(m){
   const f=fichaDe(m);
@@ -7744,9 +7774,10 @@ pintaFicha = function(){
   let corpo, nota;
   if(aba==="desemp"){
     corpo = !ms.length ? vazio("Este tema ainda não tem indicador do Sistema.")
-      : `<div class="fk-g fk-g3">${ms.map(cartaoFicha).join("")}${Array.from({length:Math.max(0,3-ms.length)},()=>fantasmaFicha()).join("")}</div>`;
+      : `<div class="fk-g fk-g3">${ms.map(cartaoFicha).join("")}${Array.from({length:Math.max(0,3-ms.length)},()=>fantasmaFicha()).join("")}</div>`
+        + (ms.some(temDado) ? comoLerFicha() : "");
     nota = ms.some(temDado)
-      ? `Último mês com dado de cada indicador (${esc(nomeEntSessao())}). Variação em 12 meses. Faixas: quartis das cooperativas do Sistema.`
+      ? `Último mês com dado de cada indicador (${esc(nomeEntSessao())}).`
       : `Os indicadores deste tema ainda não têm dados na base para ${esc(nomeEntSessao())}.`;
   } else {
     corpo = !ms.length ? vazio("Tema da entidade: não há indicadores do Sistema.")
@@ -9053,7 +9084,8 @@ function criarEvo(D, S, R, OPC = {}){
     const e = ENT[S.ent];
     const quem = e.t === "sistema" ? "Sistema · todas as cooperativas" : e.t === "central" ? `${esc(e.n)} · as cooperativas da Central` : esc(e.n);
     return `<div class="rodape">Mostrando: <b>${quem}</b> · referência <b>${S.mes ? rotMes(S.mes) : "último disponível"}</b> ·
-      <span class="m12">vs ano</span> = contra dezembro do ano anterior · <span class="m12">vs 12m</span> = contra o mesmo mês do ano anterior${NOSSA() ? " · o anel é a posição entre as cooperativas do Sistema: mais cheio, melhor" : ""}.</div>`;
+      <span class="m12">vs ano</span> = contra dezembro do ano anterior · <span class="m12">vs 12m</span> = contra o mesmo mês do ano anterior${NOSSA() ? " · o anel é a posição entre as cooperativas do Sistema: mais cheio, melhor" : ""}.${NOSSA() ? `
+      <div class="conq">Conquistas: ${Object.keys(SELO).map(k => `<span title="${esc(SELO[k].nome)}">${seloIco(k)}${esc(SELO[k].curto)}</span>`).join("")}</div>` : ""}</div>`;
   }
   function htmlDetalhe(k){
     const l = leitura(k, S.ent, S.mes), i = D.indicadores[k], e = ENT[S.ent];
@@ -9335,6 +9367,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 280920261812 -->
+<!-- beta 290920261700 -->
 </body>
 </html>
