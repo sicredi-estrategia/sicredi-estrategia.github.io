@@ -2530,14 +2530,17 @@ body.rail .pe-versao{font-size:9px; text-align:center; line-height:1.3; white-sp
 .adm-tab td input[type=checkbox]{width:16px; height:16px; cursor:pointer}
 
 
-@media (min-width:1680px){ html{zoom:1.05; --zm:1.05} .corpo{margin-inline:auto} }
-@media (min-width:1900px){ html{zoom:1.1; --zm:1.1} }
-@media (min-width:2300px){ html{zoom:1.18; --zm:1.18} }
+
+@media (min-width:1600px){ html{zoom:1.1; --zm:1.1} .corpo{margin-inline:auto} body.rail .corpo{zoom:1.05} }
+@media (min-width:1900px){ html{zoom:1.2; --zm:1.2} }
+@media (min-width:2300px){ html{zoom:1.3; --zm:1.3} }
+@media (min-width:2500px){ html{zoom:1.33; --zm:1.33} }
 
 .nav{height:calc(100vh / var(--zm, 1))}
+.app{min-height:calc(100vh / var(--zm, 1))}
 .fi-caixa{height:min(760px, calc(100vh / var(--zm, 1) - 56px))}
 
-@media (min-width:1281px) and (max-width:1679px){ body.rail .corpo{zoom:1.1} }
+@media (min-width:1281px) and (max-width:1599px){ body.rail .corpo{zoom:1.1} }
 
 @media(max-width:1280px) and (min-width:1001px){
   body:not(.rail-off) .nav .quem-bts{padding-left:0}
@@ -6190,7 +6193,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "29/09/2026 17:00";
+const PE_VERSAO = "29/09/2026 17:32";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -9367,6 +9370,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 290920261700 -->
+<!-- beta 290920261732 -->
 </body>
 </html>
