@@ -2575,6 +2575,10 @@ body.rail .pe-versao{font-size:9px; text-align:center; line-height:1.3; white-sp
 .ev6 .e6-tc .slot.com-anel .esq, .ev6 .e6-tc .esq.anel-esq{height:clamp(42px, calc(36cqi - 12px), 60px); grid-template-columns:clamp(42px, calc(36cqi - 12px), 60px) 1fr}
 @container (max-width: 150px){ .ev6 .vs-p{display:none} }   
 
+#ev6.entra .anel .arco{animation:e6-arco .9s cubic-bezier(.25,.7,.25,1) both}
+@keyframes e6-arco{from{stroke-dashoffset:var(--l)} to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){ #ev6.entra .anel .arco{animation:none} }
+
 
 .ev6{--verde:#3FA110; --verde-escuro:#146E37; --verde-claro:#D7E6C8; --verde-lav:#F2F8ED;
   --tinta:#16261B; --texto:#404A42; --fraco:#7C867E; --tenue:#A2ABA4;
@@ -6202,7 +6206,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "29/09/2026 18:12";
+const PE_VERSAO = "29/09/2026 18:18";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -9065,7 +9069,7 @@ function criarEvo(D, S, R, OPC = {}){
   }
   function htmlAnel(l, vv){
     const r = 23, C = 2 * Math.PI * r, p = l.percentil;
-    const arco = p == null ? "" : `<circle cx="26" cy="26" r="${r}" fill="none" stroke="var(--verde-escuro)" stroke-width="3.2" stroke-linecap="round"
+    const arco = p == null ? "" : `<circle class="arco" style="--l:${(C * p / 100).toFixed(1)}" cx="26" cy="26" r="${r}" fill="none" stroke="var(--verde-escuro)" stroke-width="3.2" stroke-linecap="round"
         stroke-dasharray="${(C * p / 100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/>`;
     return `<div class="anel" title="${p == null ? "Sem posição calculada" : `Posição ${p} de 100 entre as cooperativas (100 = melhor)`}">
       <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="${r}" fill="none" stroke="#E7ECE6" stroke-width="3.2"/>${arco}</svg><div class="anel-c">${vv}</div></div>`;
@@ -9332,7 +9336,14 @@ function repintar(){
 htmlGestao = function(){ return htmlTela("nossa"); };
 htmlEvolucaoSistemica = function(){ return htmlTela("sistemica"); };
 const pintaAntesEv6 = pinta;
-pinta = function(){ const r = pintaAntesEv6.apply(this, arguments); if(telaVisivel() && raiz() && EV6.inst) EV6.inst.depois(); return r; };
+pinta = function(){
+  const r = pintaAntesEv6.apply(this, arguments);
+  if(telaVisivel() && raiz() && EV6.inst) EV6.inst.depois();
+  if(estado.modulo !== EV6.ultModulo){ EV6.ultModulo = estado.modulo; EV6.animarAnel = estado.modulo === "acomp"; }
+  if(EV6.animarAnel && raiz() && raiz().querySelector(".anel .arco")){ raiz().classList.add("entra"); EV6.animarAnel = false;
+    setTimeout(() => { const e = raiz(); if(e) e.classList.remove("entra"); }, 1000); }   
+  return r;
+};
 const entrarVinculoAntesEv6 = entrarVinculo;
 entrarVinculo = function(){ EV6.estado = {nossa: novoEstado("nossa"), sistemica: novoEstado("sistemica")}; EV6.inst = null; return entrarVinculoAntesEv6.apply(this, arguments); };
 document.addEventListener("click", ev => {
@@ -9382,6 +9393,6 @@ window.EV6 = EV6;
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 290920261812 -->
+<!-- beta 290920261818 -->
 </body>
 </html>
