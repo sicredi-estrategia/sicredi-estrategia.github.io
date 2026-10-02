@@ -2581,6 +2581,7 @@ body.rail .pe-versao{font-size:9px; text-align:center; line-height:1.3; white-sp
 #ev6.entra .anel .arco{animation:e6-arco .9s cubic-bezier(.25,.7,.25,1) both}
 @keyframes e6-arco{from{stroke-dashoffset:var(--l)} to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion: reduce){ #ev6.entra .anel .arco{animation:none} }
+.dr-como-ler.dr-cl-1{grid-template-columns:repeat(2,1fr)}
 
 
 .ev6{--verde:#3FA110; --verde-escuro:#146E37; --verde-claro:#D7E6C8; --verde-lav:#F2F8ED;
@@ -6209,7 +6210,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "01/10/2026 18:57";
+const PE_VERSAO = "02/10/2026 18:10";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6290,7 +6291,7 @@ const rest = (caminho, {method="GET", body=null, prefer=null}={}) =>
 const funcao = (nome, corpo) => chamar(PE.url+"/functions/v1/"+nome, {method:"POST", body:JSON.stringify(corpo)});
 function sessaoExpirada(){ gravarAuth(null); document.body.classList.remove("dentro"); telaLogin("entrar","Sua sessão expirou. Entre de novo."); }
 const ROT_PERFIL = {visualizador:"Visualizador", editor:"Editor", sistemico:"Sistêmico (Central/CAS)"};
-const PERFIS_DO_TIPO = {cooperativa:["visualizador","editor"], central:["sistemico"], cas:["sistemico"]};
+const PERFIS_DO_TIPO = {cooperativa:["visualizador","editor"], central:["sistemico","editor"], cas:["sistemico"]};   
 const pessoaSessao = () => (SESSAO_REAL && SESSAO_REAL.pessoa) || {};
 const ehAdministrador = () => !!pessoaSessao().owner;
 const ehAdminReal = () => { const p=pessoaSessao(); return !!(p.administrador || p.owner_real || p.owner); };
@@ -6390,7 +6391,8 @@ function entrarVinculo(v){
   try{ localStorage.removeItem(LS_SESSAO); }catch(e){}
   aplicarMenuReal();
   irPaginaInicial();
-  sincronizarEntidade();
+  const ondeEntrou=estado.vista+"|"+estado.modulo;
+  Promise.resolve(sincronizarEntidade()).then(()=>{ if(estado.vista+"|"+estado.modulo===ondeEntrou) irPaginaInicial(); });
   abrirSimularSePedido();
 }
 async function sincronizarEntidade(){
@@ -6672,10 +6674,12 @@ irModulo = function(id){
 };
 function irPaginaInicial(){
   const abrir=(vista,modulo)=>ir(()=>{ estado.vista=vista; estado.modulo=modulo; pinta(); fecharNav(); });
-  if(podeVer("nav-montar")) return abrir("inicio", null);                      
-  if(podeVer("nav-plano")) return estado.perfil==="editor" ? irMeuPlanoIntegracao() : abrir("inicio", null);  
-  const alvo=["acomp","situacao","visao","evosis"].find(id=>podeVer(MODULO_DO_BOTAO[id]));
-  return alvo ? irModuloIntegracao(alvo) : abrir("modulo", "guia");
+  const registrada=PLANO_SRV && PLANO_SRV.status==="registrado";
+  if(podeVer("nav-montar") && estado.perfil==="editor" && PLANO_SRV && !registrada) return irMontarIntegracao();
+  if(podeVer("nav-plano")) return irMeuPlanoIntegracao();
+  const alvo=["visao","situacao","evosis","acomp"].find(id=>podeVer(MODULO_DO_BOTAO[id]));
+  if(alvo) return irModuloIntegracao(alvo);
+  return podeVer("nav-montar") ? abrir("inicio", null) : abrir("modulo", "guia");
 }
 function aplicarMenuReal(){
   const b=$id("nav-admin"); if(b) b.hidden=!ehAdministrador();
@@ -7749,18 +7753,23 @@ function cartaoFicha(m){
       <span class="fk-r">${esc(m.curto||m.nome)}</span>
       <span class="ft ft-v"></span><span class="ft ft-sp"></span>
       <span class="dr-tag">${construcao?"em construção":"sem dado"}</span>
-      <span class="ft ft-b"></span><span class="ft ft-g"></span></article>`;
+      ${ENTIDADE.tipo==="central" ? "" : `<span class="ft ft-b"></span><span class="ft ft-g"></span>`}</article>`;    
   }
   const v=valorUlt(m), s=mesesAte(m.amUlt,12).map(am=>m.porMes[am]?m.porMes[am].v:null);
   return `<article class="fk-c">
       <span class="fk-r">${esc(m.curto||m.nome)} <span class="dr-mes">· ${esc(rotAm(m.amUlt))}</span></span>
       <div class="fk-num">${fmt(v,m)}<span class="${clsVar(m)}">${deltaTexto(m,var12(m))}</span>${ehNum(var12(m))?`<span class="dr-vs" title="Variação contra o mesmo mês do ano anterior">vs ${esc(rotAm(amMenos(m.amUlt,12)))}</span>`:""}</div>
       <div class="fk-spark">${grafico(s,{h:40})}</div>
-      ${odometro(m)}
-      ${compHtml(m, v)}
-    </article>`;
+      ${ENTIDADE.tipo==="central" ? "" : odometro(m)}
+      ${ENTIDADE.tipo==="central" ? "" : compHtml(m, v)}
+    </article>`;      
 }
 function comoLerFicha(){
+  if(ENTIDADE.tipo==="central")                
+    return `<div class="dr-como-ler dr-cl-1">
+      <div><h4>Número e %</h4><p>O número é o último mês com dado da <b>Central inteira</b> (todas as suas cooperativas). O % ao lado compara com o <b>mesmo mês do ano anterior</b>; o gráfico mostra os últimos 12 meses.</p></div>
+      <div><h4>Comparações</h4><p>Faixas de quartis e comparações valem entre cooperativas. Para ver as suas cooperativas lado a lado, use a <b>Evolução sistêmica</b>.</p></div>
+    </div>`;
   const quem = ENTIDADE.tipo==="cooperativa" ? "a sua cooperativa" : ENTIDADE.tipo==="central" ? "a sua Central" : "o Sistema";
   const barra = `<span class="dr-cl-barra">${["#EFF3EC","#DCE9D0","#B6D79B","#7FBB5E"].map(c=>`<i style="background:${c}"></i>`).join("")}<b></b></span>`;
   return `<div class="dr-como-ler">
@@ -9424,10 +9433,11 @@ async function verEstrategia(cod){
 function veFechar(){ VE.ativo = false; VE.ent = null; VE.dado = null; pinta(); window.scrollTo(0, 0); }
 function veVis(v){ VE.vis = v; pinta(); }
 function comOutraEstrategia(est, fn){
-  const salvo = {}; VE_CAMPOS.forEach(k => { salvo[k] = estado[k]; });
+  const salvo = {}, distSalva = DIST; VE_CAMPOS.forEach(k => { salvo[k] = estado[k]; });
   Object.assign(estado, {escolhidos: est.escolhidos || [], temasLocais: est.temasLocais || [], nivel: est.nivel || {},
                          locais: est.locais || {}, indSel: est.indSel || {}, indLocais: est.indLocais || {}});
-  try{ return fn(); } finally{ Object.assign(estado, salvo); }
+  DIST = distribuicao();          
+  try{ return fn(); } finally{ Object.assign(estado, salvo); DIST = distSalva; }
 }
 const veOrigem = () => VE.modulo === "situacao" ? "Situação das estratégias" : "Estratégia sistêmica";
 function veCabecalho(titulo, meta, dir){
@@ -9436,8 +9446,8 @@ function veCabecalho(titulo, meta, dir){
     <div class="mt-dir">${dir || ""}</div></div>`;
 }
 function htmlVerEstrategia(){
-  const c = veEntidades().find(x => x.id === VE.ent) || {id: VE.ent, nome: VE.ent};
   const d = VE.dado;
+  const c = veEntidades().find(x => x.id === VE.ent) || {id: VE.ent, nome: (d && d.nome) || VE.ent};   
   if(VE.carregando || (!d && !VE.erro)) return veCabecalho(esc(c.nome)) + `<div class="vazio">Carregando a estratégia…</div>`;
   if(VE.erro) return veCabecalho(esc(c.nome)) + `<div class="vazio">Não foi possível abrir a estratégia: ${esc(VE.erro)}</div>`;
   return comOutraEstrategia(d.estado || {}, () => {
@@ -9495,9 +9505,203 @@ irModulo = function(){ VE.ativo = false; return irModuloAntesVE.apply(this, argu
 .adm-tab td .acoes{display:flex; gap:6px; justify-content:flex-end; flex-wrap:nowrap}`;
   const s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
 })();
+const MOD_EC = "estrategia_central";
+Object.assign(CENTRAL, {nome: "", sigla: "Central", declarou: false, temas: [], movimentos: [], inds: {}, registrado_em: null, estado: null});
+const ehCentralSessao = () => !!ENTIDADE && ENTIDADE.tipo === "central";
+const centralMonta = () => ehCentralSessao() && moduloLiberado(MOD_EC);
+const papelSessao = () => (typeof VINCULO_ATUAL !== "undefined" && VINCULO_ATUAL && VINCULO_ATUAL.papel) || null;
+const EC = {vis: "arq"};
+async function carregarEstrategiaCentral(){
+  Object.assign(CENTRAL, {declarou: false, temas: [], movimentos: [], inds: {}, registrado_em: null, estado: null});
+  if(!ENTIDADE || ENTIDADE.tipo !== "cooperativa") return;
+  let r = null;
+  try{ r = await rpc("estrategia_central", {p_ciclo: PE.ciclo}); }catch(e){ return; }
+  if(!r || r.status !== "registrado" || !r.estado) return;
+  const est = r.estado, sis = id => TEMAS.some(t => sid(t.id) === sid(id));
+  Object.assign(CENTRAL, {declarou: true, codigo: r.central_codigo, nome: r.central_nome || "sua Central", registrado_em: r.registrado_em, estado: est,
+    temas: (est.escolhidos || []).filter(sis).map(sid),
+    movimentos: Object.keys(est.nivel || {}).filter(kk => est.nivel[kk] && sis(kk.split("-")[0])),
+    inds: Object.fromEntries(Object.entries(est.indSel || {}).filter(([t]) => sis(t)).map(([t, xs]) => [sid(t), (xs || []).map(Number)]))});
+}
+const ecAtiva = () => CENTRAL.declarou && !!ENTIDADE && ENTIDADE.tipo === "cooperativa";
+const temaDaCentral = id => ecAtiva() && CENTRAL.temas.includes(sid(id));
+const indDaCentral = (tid, i) => ecAtiva() && (CENTRAL.inds[sid(tid)] || []).includes(i);
+const TAG_EC = `<span class="ec-tag" title="A sua Central também escolheu">◆ Central</span>`;
+function avisoCentral(){
+  if(!ecAtiva()) return "";
+  return `<div class="ec-aviso"><span class="ec-d" aria-hidden="true">◆</span>
+    <span>Sua Central já registrou a estratégia dela. As escolhas aparecem nos cards com ${TAG_EC}.</span>
+    <a href="#" onclick="abrirMapaCentral();return false">Quer ver o mapa da Central? Clique aqui</a></div>`;
+}
+const cabecalhoPassoAntesEC = cabecalhoPasso;
+cabecalhoPasso = function(n){ return cabecalhoPassoAntesEC.apply(this, arguments) + (n < 4 ? avisoCentral() : ""); };
+const htmlPasso1AntesEC = htmlPasso1;
+htmlPasso1 = function(){
+  let h = htmlPasso1AntesEC.apply(this, arguments);
+  if(ehCentralSessao()) h = h.replace("Cadastrar um tema da minha cooperativa", "Cadastrar um tema da minha Central")
+    .replace(/A bolinha ao lado de cada indicador mostra[\s\S]*?<\/span>\.\s*/, "");          
+  if(!ecAtiva()) return h;
+  return h.replace(/(<article class="tc[^"]*"[\s\S]*?alternarTema\('([^']+)'\)[\s\S]*?<span class="tc-linha1">[\s\S]*?)(<\/span>\s*<h3 class="tc-nome">)/g,
+    (m, a, id, fim) => temaDaCentral(id) ? `${a}${TAG_EC}${fim}` : m);
+};
+const htmlPasso2AntesEC = htmlPasso2;
+htmlPasso2 = function(){
+  return htmlPasso2AntesEC.apply(this, arguments)
+    .replace(/<span class="tag central">Central também prioriza<\/span>/g, TAG_EC)
+    .replace(/<p class="nota-central">[\s\S]*?<\/p>/, "");                      
+};
+const htmlPasso3AntesEC = htmlPasso3;
+htmlPasso3 = function(){
+  const h = htmlPasso3AntesEC.apply(this, arguments);
+  if(!ecAtiva()) return h;
+  return h.replace(/(<section class="p2-tema" id="p3-([^"]+)">)([\s\S]*?)(<\/section>)/g, (m, ab, tid, corpo, fe) => {
+    let i = -1;
+    corpo = corpo.replace(/<span class="n1">([\s\S]*?)<\/span>/g, (mm, nome) => {
+      i++; return /tag local/.test(nome) ? mm : `<span class="n1">${nome}${indDaCentral(tid, i) ? TAG_EC : ""}</span>`; });
+    return ab + corpo + fe;
+  });
+};
+const htmlInicioAntesEC = htmlInicio;
+htmlInicio = function(){
+  const h = htmlInicioAntesEC.apply(this, arguments);
+  return ecAtiva() ? h.replace(/(<\/p>)/, `$1${avisoCentral()}`) : h;
+};
+const htmlPlanoAntesEC = htmlPlano;
+htmlPlano = function(){
+  const h = htmlPlanoAntesEC.apply(this, arguments);
+  if(!ecAtiva() || estado.revisao) return h;
+  return h.replace(/(<button class="btn-t" onclick="exportarPNG\(\)">)/, `<button class="btn-t" onclick="abrirMapaCentral()">◆ Mapa da Central</button>$1`);
+};
+function htmlMapaCentralPop(){
+  return comOutraEstrategia(CENTRAL.estado, () => {
+    const ts = temasEscolhidos(), fora = TEMAS.filter(t => !escolhido(t.id));
+    const mapa = (EC.vis === "arq" ? mapaArquitetura(ts, fora) : mapaAnalitico(ts, fora)).replace("As escolhas " + DA_NOSSA(), "As escolhas da Central");
+    return `<div class="ec-pop-cab"><div><span class="ec-pop-k">ESTRATÉGIA DA CENTRAL · LEITURA</span>
+        <h2>${esc(CENTRAL.nome)}</h2></div>
+      <div class="ec-pop-dir"><div class="seletor" role="group" aria-label="Como ver a estratégia">
+        <button aria-pressed="${EC.vis === "arq"}" onclick="ecVis('arq')">Arquitetura</button>
+        <button aria-pressed="${EC.vis === "ana"}" onclick="ecVis('ana')">Analítica</button></div>
+        <button class="ec-x" onclick="fecharMapaCentral()" aria-label="Fechar">✕</button></div></div>
+      <div class="ec-pop-corpo">${mapa}</div>`;
+  });
+}
+function abrirMapaCentral(){
+  if(!ecAtiva()) return;
+  let el = document.getElementById("ec-pop");
+  if(!el){
+    el = document.createElement("div"); el.id = "ec-pop"; el.className = "ec-pop";
+    el.addEventListener("click", ev => { if(ev.target === el) fecharMapaCentral(); });
+    document.body.appendChild(el);
+  }
+  el.innerHTML = `<div class="ec-pop-caixa" role="dialog" aria-modal="true" aria-label="Mapa da estratégia da Central">${htmlMapaCentralPop()}</div>`;
+  el.classList.add("on"); document.body.classList.add("ec-pop-aberto");
+}
+function fecharMapaCentral(){ const el = document.getElementById("ec-pop"); if(el) el.classList.remove("on"); document.body.classList.remove("ec-pop-aberto"); }
+function ecVis(v){ EC.vis = v; abrirMapaCentral(); }
+document.addEventListener("keydown", ev => { if(ev.key === "Escape") fecharMapaCentral(); });
+const podeVerAntesEC = podeVer;
+podeVer = function(botao){
+  if(botao === "nav-montar" && centralMonta()) return papelSessao() === "editor";
+  if(botao === "nav-plano" && centralMonta()) return true;
+  return podeVerAntesEC.apply(this, arguments);
+};
+const sincronizarEntidadeAntesEC = sincronizarEntidade;
+sincronizarEntidade = async function(){
+  await sincronizarEntidadeAntesEC.apply(this, arguments);
+  if(centralMonta()){
+    await carregarPlano();
+    estado.perfil = papelSessao() === "editor" && PLANO_SRV && PLANO_SRV.pode_editar ? "editor" : "visualizador";
+    aplicarVisibilidadeMenu();
+  }
+  await carregarEstrategiaCentral();                                    
+  pinta();
+};
+const SIT_C = {linhas: null, carregando: false};
+const ROT_SIT_C = {vazio: "Não iniciou", rascunho: "Em preenchimento", em_ajuste: "Em ajuste", registrado: "Registrado"};
+async function carregarSitCentrais(){
+  if(SIT_C.carregando) return; SIT_C.carregando = true;
+  try{
+    const ents = ((await rest("entidade?select=codigo,nome,tipo,central_codigo&ativa=eq.true&tipo=neq.sistema&order=tipo,nome")) || []).filter(e => e.tipo === "central");
+    SIT_C.linhas = await Promise.all(ents.map(async e => {
+      try{ const p = await rpc("meu_plano", {p_entidade: e.codigo, p_ciclo: PE.ciclo});
+           const st = p.status === "rascunho" && p.versao_atual > 0 ? "em_ajuste" : (p.status || "vazio");
+           return {codigo: e.codigo, nome: e.nome, status: st, versao: p.versao_atual || 0, registrado_em: p.registrado_em, atualizado_em: p.atualizado_em}; }
+      catch(x){ return {codigo: e.codigo, nome: e.nome, status: "?"}; }
+    }));
+  }catch(e){ SIT_C.linhas = []; }
+  finally{ SIT_C.carregando = false; if(estado.vista === "modulo") pinta(); }
+}
+async function admReabrirCentral(cod, nome){
+  if(!confirm(`Reabrir a estratégia da ${nome}?\n\nA Central volta a poder editar e registrar uma nova versão. As versões registradas ficam guardadas.`)) return;
+  try{ await rpc("admin_reabrir_plano", {p_entidade: cod, p_ciclo: PE.ciclo}); aviso(`Estratégia da ${nome} reaberta para edição.`); }
+  catch(e){ aviso("Não foi possível reabrir: " + e.message, true); }
+  SIT_C.linhas = null; pinta();
+}
+async function admLimparCentral(cod, nome){
+  if(!confirm(`Apagar o rascunho da ${nome}?\n\nA Central recomeça do zero. Isto não pode ser desfeito.`)) return;
+  try{ await rpc("admin_limpar_plano", {p_entidade: cod, p_ciclo: PE.ciclo}); aviso(`Rascunho da ${nome} apagado.`); }
+  catch(e){ aviso("Não foi possível apagar: " + e.message, true); }
+  SIT_C.linhas = null; pinta();
+}
+function htmlSitCentrais(){
+  if(SIT_C.linhas === null){ carregarSitCentrais(); return `<p class="adm-nota">Carregando as estratégias das Centrais…</p>`; }
+  if(!SIT_C.linhas.length) return "";
+  const cor = {registrado: "ativo", rascunho: "conv", em_ajuste: "conv"};
+  const linhas = SIT_C.linhas.map(x => {
+    const js = s => esc(JSON.stringify(s));
+    const acoes = [x.status !== "vazio" && x.status !== "?" ? `<button class="btn-t mini" onclick="verEstrategia(${js(x.codigo)})">Ver estratégia</button>` : "",
+      x.status === "registrado" ? `<button class="btn-t mini" onclick="admReabrirCentral(${js(x.codigo)},${js(x.nome)})" title="Devolve a estratégia registrada para a Central editar (as versões ficam guardadas)">Reabrir</button>` : "",
+      x.status === "rascunho" ? `<button class="btn-t mini" onclick="admLimparCentral(${js(x.codigo)},${js(x.nome)})" title="Apaga o rascunho para a Central recomeçar do zero">Limpar</button>` : ""].join("");
+    return `<tr><td><b>${esc(x.nome)}</b><small>${esc(x.codigo)}</small></td>
+      <td><span class="adm-sit ${cor[x.status] || ""}">${esc(ROT_SIT_C[x.status] || x.status)}</span></td>
+      <td><small>${x.versao ? "v" + x.versao : "—"}</small></td>
+      <td><small>${x.registrado_em ? fmtDataHora(x.registrado_em) : "—"}</small></td>
+      <td><small>${x.atualizado_em ? fmtDataHora(x.atualizado_em) : "—"}</small></td><td><div class="acoes">${acoes}</div></td></tr>`; }).join("");
+  return `<h3 class="ec-sit-tit">Estratégias das Centrais</h3>
+    <div class="adm-tab-wrap"><table class="adm-tab"><thead><tr><th>Central</th><th>Situação</th><th>Versão</th><th>Registrado em</th><th>Última alteração</th><th></th></tr></thead>
+    <tbody>${linhas}</tbody></table></div>`;
+}
+const htmlTabelaSituacaoAntesEC = htmlTabelaSituacao;
+htmlTabelaSituacao = function(){
+  const h = htmlTabelaSituacaoAntesEC.apply(this, arguments);
+  return ehAdministrador() ? h + htmlSitCentrais() : h;
+};
+const textoJanelaTopoAntesEC = textoJanelaTopo;
+textoJanelaTopo = function(){
+  const pj = PLANO_SRV && PLANO_SRV.proxima_janela;
+  if(ehCentralSessao() && PLANO_SRV && !PLANO_SRV.janela && pj && /Central/.test(pj.nome || ""))
+    return `Estratégia da Central · registro a partir de ${fmtData(pj.abre_em)} · já dá para montar e salvar`;
+  return textoJanelaTopoAntesEC.apply(this, arguments);
+};
+(function(){
+  const css = `
+.ec-tag{display:inline-flex; align-items:center; gap:4px; font:700 9.5px/1 "Exo 2",system-ui,sans-serif; letter-spacing:.04em;
+  color:#146E37; background:#E3EFDD; border-radius:999px; padding:3px 8px; white-space:nowrap}
+.tc .tc-linha1{display:flex; align-items:center}
+.tc .tc-linha1 .ec-tag{margin-left:auto}
+.mv{position:relative} .mv h4 .ec-tag{position:absolute; right:16px; top:14px}
+.mr{position:relative} .mr .n1 .ec-tag{position:absolute; right:16px; top:12px}
+.ec-aviso{display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; font-size:12.5px; color:#5A645A; margin:2px 0 16px; line-height:1.5}
+.ec-aviso .ec-d{color:#3FA110; font-size:11px}
+.ec-aviso a{color:#146E37; font-weight:700; text-decoration:underline; text-decoration-color:#C9DFBE; text-underline-offset:3px}
+.ec-aviso a:hover{text-decoration-color:currentColor}
+.ec-sit-tit{font:600 15px/1.3 "Exo 2",system-ui,sans-serif; color:#146E37; margin:26px 0 10px}
+.ec-pop{position:fixed; inset:0; z-index:200; background:rgba(20,40,28,.42); display:none; align-items:center; justify-content:center; padding:24px}
+.ec-pop.on{display:flex}
+.ec-pop-caixa{background:#F8F4ED; border-radius:16px; width:min(1200px, 100%); max-height:calc(100vh / var(--zm, 1) - 48px); overflow:auto;
+  box-shadow:0 18px 60px rgba(0,0,0,.25); padding:20px 24px 26px}
+.ec-pop-cab{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:12px}
+.ec-pop-k{font:700 10px/1 "Exo 2",system-ui,sans-serif; letter-spacing:.16em; color:#55963F}
+.ec-pop-cab h2{margin:6px 0 0; font:600 20px/1.2 "Exo 2",system-ui,sans-serif; color:#146E37}
+.ec-pop-dir{display:flex; align-items:center; gap:10px}
+.ec-x{border:0; background:#fff; width:34px; height:34px; border-radius:50%; font-size:14px; color:#5A645A; cursor:pointer; box-shadow:0 0 0 1px #DDD6C4}
+.ec-x:hover{color:#146E37}
+body.ec-pop-aberto{overflow:hidden}`;
+  const s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
+})();
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 011020261857 -->
+<!-- beta 021020261810 -->
 </body>
 </html>
