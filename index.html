@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plataforma da Estratégia · beta</title>
+<title>Plataforma da Estratégia · piloto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -6210,7 +6210,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "02/10/2026 18:10";
+const PE_VERSAO = "02/10/2026 18:34";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6684,7 +6684,7 @@ function irPaginaInicial(){
 function aplicarMenuReal(){
   const b=$id("nav-admin"); if(b) b.hidden=!ehAdministrador();
   const bts=document.querySelector(".quem-bts");                  
-  if(bts) bts.innerHTML=`<span class="pe-versao" title="Data e hora da montagem desta versão">Versão beta · ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>`;
+  if(bts) bts.innerHTML=`<span class="pe-versao" title="Data e hora da montagem desta versão">Versão piloto · ${esc(typeof PE_VERSAO==="string"?PE_VERSAO:"")}</span>`;
   aplicarVisibilidadeMenu();
 }
 function textoJanelaTopo(){
@@ -9699,9 +9699,119 @@ textoJanelaTopo = function(){
 body.ec-pop-aberto{overflow:hidden}`;
   const s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
 })();
+const AVISO_VERSAO = "piloto-1";
+const AVISO_CAPACITACAO = "13 a 16/10";
+const avisoChave = () => "pe_aviso_" + AVISO_VERSAO + ":" + (((SESSAO_REAL || {}).pessoa || {}).email || "");
+function avisoDatas(){
+  const js = ((CATALOGO && CATALOGO.janelas) || []).filter(j => j.tipo === "construcao").sort((a, b) => new Date(a.abre_em) - new Date(b.abre_em));
+  const jc = js[0];
+  const central = ENTIDADE && ENTIDADE.tipo === "central";
+  const pj = PLANO_SRV && PLANO_SRV.proxima_janela;
+  const dm = s => String(s).replace(/\/\d{4}$/, "");
+  const regIni = central && pj && /Central/.test(pj.nome || "") ? dm(fmtData(pj.abre_em)) : central && PLANO_SRV && PLANO_SRV.janela ? "já aberto" : jc ? dm(fmtData(jc.abre_em)) : "a definir";
+  const regFim = jc ? dm(fmtData(new Date(new Date(jc.fecha_em).getTime() - 1000))) : "";
+  const reg = regIni === "já aberto" ? (regFim ? `aberto até ${regFim}` : "aberto") : regFim ? `${regIni} a ${regFim}` : regIni;
+  return [
+    ["Capacitação", AVISO_CAPACITACAO, "agendas gravadas, com o passo a passo da plataforma"],
+    ["Montar e salvar", "já disponível", "dá para ir e voltar: tudo fica salvo onde você parou"],
+    [central ? "Registro da estratégia da Central" : "Registro da estratégia", reg,
+      central ? "registre antes das cooperativas: as escolhas da Central aparecem para elas" : "o botão Registrar abre na janela de preenchimento"]
+  ];
+}
+function htmlAvisoPiloto(){
+  const datas = avisoDatas().map(([t, d, x]) => `<div class="ap-data"><span class="ap-d">${esc(d)}</span><b>${esc(t)}</b><small>${esc(x)}</small></div>`).join("");
+  return `<div class="ap-caixa" role="dialog" aria-modal="true" aria-labelledby="ap-tit">
+    <span class="ap-k">VERSÃO PILOTO</span>
+    <h2 id="ap-tit">Boas-vindas à Plataforma da Estratégia</h2>
+    <p class="ap-lead">Aqui ${ENTIDADE.tipo === "central" ? "a Central monta" : "a cooperativa monta"} a estratégia 2027. Antes de começar, as datas e alguns avisos.</p>
+    <div class="ap-datas">${datas}</div>
+    <ul class="ap-avisos">
+      <li><b>Piloto.</b> Por enquanto a plataforma está disponível só para os pontos focais que vão preencher a estratégia.</li>
+      <li><b>Indicadores em validação.</b> Os números ainda estão sendo conferidos e podem conter erros. Se notar algo estranho, fale com o time de Estratégia do CAS (contatos na Ajuda).</li>
+      <li><b>Acesso pessoal.</b> Login, senha e link são individuais e não podem ser repassados a outras pessoas.</li>
+    </ul>
+    <div class="ap-pe">
+      <label class="ap-nao"><input type="checkbox" id="ap-nao"> Não mostrar de novo</label>
+      <button class="btn-p" onclick="fecharAvisoPiloto()">Entendi, vamos lá</button>
+    </div></div>`;
+}
+function abrirAvisoPiloto(){
+  let el = document.getElementById("ap-pop");
+  if(!el){ el = document.createElement("div"); el.id = "ap-pop"; el.className = "ap-pop"; document.body.appendChild(el); }
+  el.innerHTML = htmlAvisoPiloto(); el.classList.add("on"); document.body.classList.add("ec-pop-aberto");
+}
+function fecharAvisoPiloto(){
+  const nao = document.getElementById("ap-nao");
+  if(nao && nao.checked){ try{ localStorage.setItem(avisoChave(), "1"); }catch(e){} }
+  const el = document.getElementById("ap-pop"); if(el) el.classList.remove("on");
+  document.body.classList.remove("ec-pop-aberto");
+}
+function talvezAvisoPiloto(){
+  const papel = (typeof VINCULO_ATUAL !== "undefined" && VINCULO_ATUAL && VINCULO_ATUAL.papel) || null;
+  if(estado.perfil !== "editor" || papel !== "editor" || (typeof SIM !== "undefined" && SIM)){   
+    const el = document.getElementById("ap-pop"); if(el && el.classList.contains("on")) fecharAvisoPiloto();
+    return;
+  }
+  let visto = null; try{ visto = localStorage.getItem(avisoChave()); }catch(e){}
+  if(!visto) abrirAvisoPiloto();
+}
+const sincronizarEntidadeAntesAP = sincronizarEntidade;
+sincronizarEntidade = async function(){
+  await sincronizarEntidadeAntesAP.apply(this, arguments);
+  await carregarContatos();
+  talvezAvisoPiloto();
+};
+document.addEventListener("keydown", ev => { if(ev.key === "Escape" && document.getElementById("ap-pop")?.classList.contains("on")) fecharAvisoPiloto(); });
+let CONTATOS = null;
+async function carregarContatos(){ try{ CONTATOS = await rpc("contatos_ajuda", {}); }catch(e){ CONTATOS = null; } }
+function htmlContatos(){
+  if(!CONTATOS) return "";
+  const ps = (CONTATOS.pessoas || []).map(p => `<div class="ct-p"><b>${esc(p.nome || "")}</b>${p.cargo ? `<small>${esc(p.cargo)}</small>` : ""}
+      <span class="ct-e">${esc(p.email || "")}</span></div>`).join("");
+  return `<section class="secao ct-sec"><div class="secao-cab"><h3>Contatos</h3></div>
+    <p class="secao-desc">Dúvidas, acesso ou algum número estranho? Fale com o time de Estratégia do CAS.</p>
+    <div class="ct-grade">${ps}${CONTATOS.email_time ? `<div class="ct-p ct-time"><b>Time de Estratégia</b><small>e-mail do time</small>
+      <span class="ct-e">${esc(CONTATOS.email_time)}</span></div>` : ""}</div></section>`;
+}
+const htmlGuiasAntesAP = htmlGuias;
+htmlGuias = function(){
+  let h = htmlGuiasAntesAP.apply(this, arguments);
+  if(estado.perfil === "editor") h = h.replace(/(<\/p>)/, `$1<p><a href="#" onclick="abrirAvisoPiloto();return false" class="ap-rever">Rever as datas e os avisos da Versão Piloto ›</a></p>`);
+  return h + htmlContatos();
+};
+(function(){
+  const css = `
+.ap-pop{position:fixed; inset:0; z-index:220; background:rgba(20,40,28,.45); display:none; align-items:center; justify-content:center; padding:24px}
+.ap-pop.on{display:flex}
+.ap-caixa{background:#F8F4ED; border-radius:18px; width:min(640px, 100%); max-height:calc(100vh / var(--zm, 1) - 48px); overflow:auto;
+  box-shadow:0 18px 60px rgba(0,0,0,.25); padding:28px 32px 24px; border-top:4px solid #3FA110}
+.ap-k{font:700 10px/1 "Exo 2",system-ui,sans-serif; letter-spacing:.18em; color:#55963F}
+.ap-caixa h2{margin:8px 0 6px; font:600 22px/1.25 "Exo 2",system-ui,sans-serif; color:#146E37}
+.ap-lead{margin:0 0 18px; font-size:14px; color:#5A645A; line-height:1.5}
+.ap-datas{display:grid; gap:8px; margin-bottom:18px}
+.ap-data{display:grid; grid-template-columns:118px 1fr; column-gap:14px; align-items:baseline; background:#fff; border:1px solid #DDD6C4; border-radius:10px; padding:10px 14px}
+.ap-d{grid-row:span 2; font:700 13px/1.3 "Exo 2",system-ui,sans-serif; color:#146E37}
+.ap-data b{font:600 13.5px/1.3 "Exo 2",system-ui,sans-serif; color:#2B2B28}
+.ap-data small{font-size:12px; color:#6F6F68; line-height:1.4}
+.ap-avisos{margin:0 0 18px; padding:0; list-style:none; display:grid; gap:8px}
+.ap-avisos li{font-size:13px; color:#3d4a40; line-height:1.5; padding-left:16px; position:relative}
+.ap-avisos li::before{content:"◆"; position:absolute; left:0; top:1px; font-size:9px; color:#3FA110}
+.ap-avisos b{color:#146E37}
+.ap-pe{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; border-top:1px solid #E5DECF; padding-top:16px}
+.ap-nao{display:flex; align-items:center; gap:7px; font-size:12.5px; color:#5A645A; cursor:pointer}
+.ap-rever{color:#146E37; font-weight:600}
+.ct-sec{margin-top:22px}
+.ct-grade{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:10px}
+.ct-p{background:#fff; border:1px solid #DDD6C4; border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; gap:2px}
+.ct-p b{font:600 13.5px/1.3 "Exo 2",system-ui,sans-serif; color:#146E37}
+.ct-p small{font-size:11.5px; color:#6F6F68}
+.ct-e{font-size:12.5px; color:#2B2B28; margin-top:4px; user-select:all; word-break:break-all}
+.ct-time{background:#F1F7EC; border-color:#C9DFBE}`;
+  const s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
+})();
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- beta 021020261810 -->
+<!-- piloto 021020261834 -->
 </body>
 </html>
