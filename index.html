@@ -6210,7 +6210,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "02/10/2026 19:13";
+const PE_VERSAO = "02/10/2026 20:20";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -6828,7 +6828,8 @@ const ADM = {aba:"usuarios", carregado:false, carregando:false, usuarios:[], ent
 const ROT_CICLO={preparacao:"Em preparação", publicado:"Publicado", encerrado:"Encerrado"};
 const ROT_TIPO_JAN={construcao:"Construção", ajuste:"Ajuste"};
 const ROT_MODULO={montar:"Montar estratégia", nossa_estrategia:"Nossa estratégia", nossa_evolucao:"Nossa evolução",
-  situacao_planos:"Situação das estratégias", estrategia_sistemica:"Estratégia sistêmica", evolucao_sistemica:"Evolução sistêmica"};
+  situacao_planos:"Situação das estratégias", estrategia_sistemica:"Estratégia sistêmica", evolucao_sistemica:"Evolução sistêmica",
+  estrategia_central:"Estratégia da Central"};
 async function admCarregar(){
   if(ADM.carregando) return; ADM.carregando=true;
   const erros=[], tentar=(p,padrao)=>p.catch(e=>{ erros.push(e.message); return padrao; });
@@ -7097,9 +7098,12 @@ async function admSalvarModulo(chave){
   const data=($id(`md-${chave}-data`)||{}).value||null;
   try{
     const r=await rpc("admin_salvar_modulo",{p_chave:chave, p_perfis:perfis, p_liberado_em:data});
-    const i=ADM.modulos.findIndex(m=>m.chave===chave);
-    const linha=Object.assign({}, ADM.modulos[i]||{chave}, r&&typeof r==="object"?r:{perfis, liberado_em:data});
-    if(i>=0) ADM.modulos[i]=linha; else ADM.modulos.push(linha);
+    if(Array.isArray(r)) ADM.modulos=r;                  
+    else {
+      const i=ADM.modulos.findIndex(m=>m.chave===chave);
+      const linha=Object.assign({}, ADM.modulos[i]||{chave}, r&&typeof r==="object"?r:{perfis, liberado_em:data});
+      if(i>=0) ADM.modulos[i]=linha; else ADM.modulos.push(linha);
+    }
     pinta(); aviso(`Módulo "${ROT_MODULO[chave]||chave}" salvo.`);
   }catch(e){ aviso("Não salvou: "+e.message, true); }
 }
@@ -9813,6 +9817,6 @@ htmlGuias = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- piloto 021020261913 -->
+<!-- piloto 021020262020 -->
 </body>
 </html>
