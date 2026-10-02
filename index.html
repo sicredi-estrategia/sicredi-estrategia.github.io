@@ -6210,7 +6210,7 @@ async function iniciar(){
   try{ sess=JSON.parse(localStorage.getItem(LS_SESSAO)||"null"); }catch(e){}
   if(sess && ENT_POR_ID(sess.ent)) entrar(sess);
 }
-const PE_VERSAO = "02/10/2026 18:34";
+const PE_VERSAO = "02/10/2026 19:13";
 const PE = {
   url: "https://fagpretcrwuxrixqfanv.supabase.co",
   chave: "sb_publishable_Cg1anFR6mhLwC6JsYIJvNg_X5OYBD8c",   
@@ -9699,7 +9699,7 @@ textoJanelaTopo = function(){
 body.ec-pop-aberto{overflow:hidden}`;
   const s = document.createElement("style"); s.textContent = css; document.head.appendChild(s);
 })();
-const AVISO_VERSAO = "piloto-1";
+const AVISO_VERSAO = "piloto-2";   
 const AVISO_CAPACITACAO = "13 a 16/10";
 const avisoChave = () => "pe_aviso_" + AVISO_VERSAO + ":" + (((SESSAO_REAL || {}).pessoa || {}).email || "");
 function avisoDatas(){
@@ -9715,7 +9715,7 @@ function avisoDatas(){
     ["Capacitação", AVISO_CAPACITACAO, "agendas gravadas, com o passo a passo da plataforma"],
     ["Montar e salvar", "já disponível", "dá para ir e voltar: tudo fica salvo onde você parou"],
     [central ? "Registro da estratégia da Central" : "Registro da estratégia", reg,
-      central ? "registre antes das cooperativas: as escolhas da Central aparecem para elas" : "o botão Registrar abre na janela de preenchimento"]
+      central ? "assim que a Central registrar, o mapa dela fica disponível para as cooperativas" : "janela de preenchimento: o botão Registrar abre nessas datas"]
   ];
 }
 function htmlAvisoPiloto(){
@@ -9727,6 +9727,7 @@ function htmlAvisoPiloto(){
     <div class="ap-datas">${datas}</div>
     <ul class="ap-avisos">
       <li><b>Piloto.</b> Por enquanto a plataforma está disponível só para os pontos focais que vão preencher a estratégia.</li>
+      ${ENTIDADE.tipo === "central" ? "" : `<li><b>Mapa da sua Central.</b> As Centrais registram a partir de 09/10. Assim que a sua registrar, o mapa dela fica disponível aqui também, com as escolhas da Central marcadas nos cards.</li>`}
       <li><b>Indicadores em validação.</b> Os números ainda estão sendo conferidos e podem conter erros. Se notar algo estranho, fale com o time de Estratégia do CAS (contatos na Ajuda).</li>
       <li><b>Acesso pessoal.</b> Login, senha e link são individuais e não podem ser repassados a outras pessoas.</li>
     </ul>
@@ -9812,6 +9813,6 @@ htmlGuias = function(){
 iniciarReal().catch(e=>{console.error("Falha ao iniciar",e); telaLogin("entrar","Falha ao iniciar: "+e.message,true);});
 </script>
 <script>if('serviceWorker' in navigator && location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
-<!-- piloto 021020261834 -->
+<!-- piloto 021020261913 -->
 </body>
 </html>
